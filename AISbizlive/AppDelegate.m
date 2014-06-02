@@ -6,12 +6,67 @@
 //  Copyright (c) 2557 promptnow. All rights reserved.
 //
 
+#define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
+#define IS_OS_5_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0)
+#define IS_OS_6_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0)
+#define IS_OS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 #import "AppDelegate.h"
-
+#import "AISGlobal.h"
 @implementation AppDelegate
-
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    // attempt to extract a token from the url
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:self.session];
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *language = [defaults stringForKey:@"lang"];
+    CGRect rect = CGRectMake(0.0f, 0.0f, 2.0f, 2.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [[AISColor lightgreenColor] CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [[UITabBar appearance] setBackgroundImage:image];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor],NSForegroundColorAttributeName ,[UIFont systemFontOfSize:12.0f],NSFontAttributeName, nil] forState:UIControlStateNormal];
+     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName ,[UIFont systemFontOfSize:12.0f],NSFontAttributeName, nil] forState:UIControlStateSelected];
+    CGRect rect1 = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect1.size);
+    CGContextRef context1 = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context1, [[UIColor whiteColor] CGColor]);
+    CGContextFillRect(context1, rect1);
+    
+    UIImage *image1 = UIGraphicsGetImageFromCurrentImageContext();
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[AISColor lightgreenColor],NSForegroundColorAttributeName ,[UIFont boldSystemFontOfSize:20.0f],NSFontAttributeName, nil]];
+    [[UINavigationBar appearance] setBackgroundImage:image1 forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTintColor:[AISColor lightgreenColor]];
+    [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"Back_Arrow.png"]];
+    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"Back_Arrow.png"]];
+    
+    [[UINavigationBar appearance] setShadowImage:image];
+    if(!language)
+    {
+        [defaults setValue:@"EN" forKey:@"lang"];
+        [defaults synchronize];
+    }
+    NSLog(@"%@",FBSession.activeSession);
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        
+        // If there's one, just open the session silently, without showing the user the login UI
+        [FBSession openActiveSessionWithReadPermissions:@[@"basic_info"]
+                                           allowLoginUI:NO
+                                      completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
+                                          // Handler for session state changes
+                                          // This method will be called EACH time the session state changes,
+                                          // also for intermediate states and NOT just when the session open
+//                                          [self sessionStateChanged:session state:state error:error];
+                                          NSLog(@"Session FB (basic_info)");
+                                      }];
+    }
     // Override point for customization after application launch.
     return YES;
 }
@@ -33,14 +88,16 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBAppEvents activateApp];
+    [FBAppCall handleDidBecomeActiveWithSession:self.session];
 }
+
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+     [self.session close];
 }
 
 @end

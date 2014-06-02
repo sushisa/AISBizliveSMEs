@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HEADER_FORGET</key>
+	<string>Forget Password</string>
+	<key>HEADER_SIGNIN</key>
+	<string>Sign In</string>
+	<key>HEADER_EMAIL</key>
+	<string>Email Verification</string>
+	<key>HEADER_OTP</key>
+	<string>Activation</string>
+	<key>HEADER_SIGNUP</key>
+	<string>Sign Up</string>
+	<key>HEADER_TERM</key>
+	<string>Term of Service</string>
+	<key>HEADER_POLICY</key>
+	<string>Privacy Policy</string>
+	<key>PLACEHODER_SIGNIN_EMAIL</key>
+	<string>E-mail</string>
+	<key>PLACEHODER_SIGNIN_PASSWORD</key>
+	<string>Password</string>
+	<key>PLACEHODER_FORGET</key>
+	<string>E-mail</string>
+	<key>PLACEHODER_SIGNUP_CONFIRMPASSWORD</key>
+	<string>At Least 8 Characters</string>
+	<key>PLACEHODER_SIGNUP_PASSWORD</key>
+	<string>At Least 8 Characters</string>
+	<key>PLACEHODER_SIGNUP_PHONE</key>
+	<string>Required</string>
+	<key>PLACEHODER_SIGNUP_EMAIL</key>
+	<string>Example@abc.com</string>
+	<key>PLACEHODER_SIGNUP_FULLNAME</key>
+	<string>Input Full Name</string>
+	<key>PLACEHODER_EMAIL</key>
+	<string>Email Verification Code</string>
+	<key>PLACEHODER_OTP</key>
+	<string>OTP Password</string>
+	<key>LABEL_EMAIL</key>
+	<string>Please enter your email verification code</string>
+	<key>LABEL_FORGET</key>
+	<string>We&apos;ll send you to forgot your password</string>
+	<key>LABEL_OTP</key>
+	<string>Before you can login, you must active your account with the code sent to your phone number </string>
+	<key>LABEL_SIGNUP_EMAIL</key>
+	<string>Email</string>
+	<key>LABEL_SIGNUP_PHONE</key>
+	<string>Phone</string>
+	<key>LABEL_SIGNUP_PASSWORD</key>
+	<string>Password</string>
+	<key>LABEL_SIGNUP_CONFIRMPASSWORD</key>
+	<string>Confirm Password</string>
+	<key>LABEL_SIGNUP_TERM_POLICY</key>
+	<string>By signing up, you agree to the</string>
+	<key>BUTTON_RESEND_EMAIL</key>
+	<string>Resend Verification Code</string>
+	<key>BUTTON_RESEND_OTP</key>
+	<string>Resend OTP Password</string>
+	<key>BUTTON_DONE</key>
+	<string>Done</string>
+	<key>BUTTON_FACEBOOK_SIGNUP</key>
+	<string>Sign Up With Facebook</string>
+	<key>BUTTON_SIGNUP</key>
+	<string>Sign Up With Email</string>
+	<key>BUTTON_SIGNIN</key>
+	<string>Sign In Now</string>
+	<key>BUTTON_TERM</key>
+	<string>Term of Service</string>
+	<key>BUTTON_POLICY</key>
+	<string>Privacy Policy</string>
+	<key>BUTTON_SIGNIN_FORGET</key>
+	<string>Forget Password</string>
+	<key>BUTTON_SIGNIN_SIGNIN</key>
+	<string>Sign In</string>
+</dict>
+</plist>
