@@ -184,7 +184,6 @@
         [alertView showAlertView];
     }
     else if(confirmPassField.text.length < 8){
-        NSLog(@"Confirm");
         [AISView changeLayerError:confirmView];
         [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:@"กรุณาระบุยืนยันรหัสผ่านให้ครบถ้วน" LeftString:@"Done" RightString:nil];
         [alertView showAlertView];
@@ -197,8 +196,7 @@
     }
     else {
         [self performSegueWithIdentifier:@"signUpToOTP" sender:self];
-        NSLog(@"112");
-        NSLog(@"aaa");
+        
     }
 }
 -(void)doneAction:(id)sender{
