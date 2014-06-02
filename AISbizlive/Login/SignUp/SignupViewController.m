@@ -196,6 +196,7 @@
     }
     else {
         [self performSegueWithIdentifier:@"signUpToOTP" sender:self];
+        NSLog(@"new");
     }
 }
 -(void)doneAction:(id)sender{
