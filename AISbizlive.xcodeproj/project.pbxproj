@@ -13,6 +13,7 @@
 		710E59CC18AC7FAD006F4CB2 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 710E59CB18AC7FAD006F4CB2 /* EmailViewController.m */; };
 		710E59CF18ACC96A006F4CB2 /* FogetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 710E59CE18ACC96A006F4CB2 /* FogetPasswordViewController.m */; };
 		7115E09D18F5220E0030AF26 /* AddTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7115E09C18F5220E0030AF26 /* AddTemplateViewController.m */; };
+		71198E0B193C874E006C05CE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71198E0A193C874E006C05CE /* FacebookSDK.framework */; };
 		711C685B18EBE3D40009C3B4 /* AISColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 711C685A18EBE3D40009C3B4 /* AISColor.m */; };
 		7122EE7B1900F610002B9181 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7122EE7A1900F610002B9181 /* PaymentViewController.m */; };
 		7124223A193590F900BAD376 /* MoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71242239193590F900BAD376 /* MoresViewController.m */; };
@@ -50,7 +51,6 @@
 		716D02781910E7B700855F19 /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716D02771910E7B700855F19 /* PolicyViewController.m */; };
 		7176D6E618AA2AEC004D849C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176D6E518AA2AEC004D849C /* AddressBookUI.framework */; };
 		7176D6E818AA2AF2004D849C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176D6E718AA2AF2004D849C /* Social.framework */; };
-		7176D6EA18AA2B0D004D849C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176D6E918AA2B0D004D849C /* FacebookSDK.framework */; };
 		717A9C2118F7952E00993805 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717A9C2018F7952E00993805 /* CoreData.framework */; };
 		717A9C2318F7953C00993805 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717A9C2218F7953C00993805 /* QuartzCore.framework */; };
 		717A9C2518F7AED100993805 /* Box1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 717A9C2418F7AED000993805 /* Box1@2x.png */; };
@@ -134,6 +134,7 @@
 		710E59CE18ACC96A006F4CB2 /* FogetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FogetPasswordViewController.m; path = Login/FogetPasswordViewController.m; sourceTree = "<group>"; };
 		7115E09B18F5220E0030AF26 /* AddTemplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddTemplateViewController.h; path = More/Template/AddTemplateViewController.h; sourceTree = "<group>"; };
 		7115E09C18F5220E0030AF26 /* AddTemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddTemplateViewController.m; path = More/Template/AddTemplateViewController.m; sourceTree = "<group>"; };
+		71198E0A193C874E006C05CE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		711C685918EBE3D40009C3B4 /* AISColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISColor.h; path = Global/AISColor.h; sourceTree = "<group>"; };
 		711C685A18EBE3D40009C3B4 /* AISColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISColor.m; path = Global/AISColor.m; sourceTree = "<group>"; };
 		7122EE791900F610002B9181 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentViewController.h; path = Package/PaymentViewController.h; sourceTree = "<group>"; };
@@ -201,7 +202,6 @@
 		716D02771910E7B700855F19 /* PolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PolicyViewController.m; path = Login/SignUp/PolicyViewController.m; sourceTree = "<group>"; };
 		7176D6E518AA2AEC004D849C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		7176D6E718AA2AF2004D849C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		7176D6E918AA2B0D004D849C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		717A9C2018F7952E00993805 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		717A9C2218F7953C00993805 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		717A9C2418F7AED000993805 /* Box1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Box1@2x.png"; sourceTree = "<group>"; };
@@ -302,9 +302,9 @@
 			files = (
 				717A9C2318F7953C00993805 /* QuartzCore.framework in Frameworks */,
 				717A9C2118F7952E00993805 /* CoreData.framework in Frameworks */,
-				7176D6EA18AA2B0D004D849C /* FacebookSDK.framework in Frameworks */,
 				7176D6E818AA2AF2004D849C /* Social.framework in Frameworks */,
 				7176D6E618AA2AEC004D849C /* AddressBookUI.framework in Frameworks */,
+				71198E0B193C874E006C05CE /* FacebookSDK.framework in Frameworks */,
 				716120C918A4DB24004077D9 /* CoreGraphics.framework in Frameworks */,
 				716120CB18A4DB24004077D9 /* UIKit.framework in Frameworks */,
 				716120C718A4DB24004077D9 /* Foundation.framework in Frameworks */,
@@ -396,9 +396,9 @@
 		716120C518A4DB24004077D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71198E0A193C874E006C05CE /* FacebookSDK.framework */,
 				717A9C2218F7953C00993805 /* QuartzCore.framework */,
 				717A9C2018F7952E00993805 /* CoreData.framework */,
-				7176D6E918AA2B0D004D849C /* FacebookSDK.framework */,
 				7176D6E718AA2AF2004D849C /* Social.framework */,
 				7176D6E518AA2AEC004D849C /* AddressBookUI.framework */,
 				716120C618A4DB24004077D9 /* Foundation.framework */,
@@ -1005,6 +1005,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/North/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AISbizlive/AISbizlive-Prefix.pch";
@@ -1026,6 +1027,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/North/Documents/FacebookSDK,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AISbizlive/AISbizlive-Prefix.pch";
