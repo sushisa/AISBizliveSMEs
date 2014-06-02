@@ -195,7 +195,7 @@
         [alertView showAlertView];
     }
     else {
-        NSLog(@"TEST");
+        NSLog(@"TESaaaaT");
         [self performSegueWithIdentifier:@"signUpToOTP" sender:self];
     }
 }
