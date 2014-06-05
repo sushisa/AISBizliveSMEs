@@ -10,7 +10,9 @@
 #import "AppDelegate.h"
 #import "AISGlobal.h"
 @interface StartViewController ()
-
+{
+    NSUserDefaults *defaults;
+}
 @end
 
 @implementation StartViewController
@@ -20,6 +22,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    defaults = [NSUserDefaults standardUserDefaults];
+    if ([[defaults objectForKey:@"lang"] isEqualToString:@"EN"]) {
+        [BtnchangeLanguage setOn:YES];
+    }
+    else{
+        [BtnchangeLanguage setOn:NO];
+    }
     _pageImages = @[@"Avatar_Default.png", @"Avatar_Edit.png", @"More_B.png", @"Packgage_B.png", @"TellFriends_B.png"];
    
 //    NSLog(@"%@",);
@@ -87,9 +96,9 @@
     btnSignIn.layer.cornerRadius = 5.0f;
     btnSignIn.layer.borderWidth = 1.0f;
     btnSignIn.layer.borderColor = [AISColor lightgreenColor].CGColor;
-    [btnSignIn setTitle:[AISBLString defaultString:BUTTON_SIGNIN] forState:UIControlStateNormal];
-    [btnSignUpEmail setTitle:[AISBLString defaultString:BUTTON_SIGNUP] forState:UIControlStateNormal];
-    [btnSignUpFacebook setTitle:[AISBLString defaultString:BUTTON_FACEBOOK_SIGNUP] forState:UIControlStateNormal];
+    [btnSignIn setTitle:[AISString commonString:BUTTON :@"SIGNIN"]forState:UIControlStateNormal];
+    [btnSignUpEmail setTitle:[AISString commonString:BUTTON :@"SIGNUP_EMAIL"] forState:UIControlStateNormal];
+    [btnSignUpFacebook setTitle:[AISString commonString:BUTTON :@"SIGNUP_FACE"] forState:UIControlStateNormal];
 }
 -(void)checkSessionFB{
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
@@ -182,7 +191,7 @@
 }
 
 - (IBAction)ChangeLanguage:(id)sender {
-     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+ 
 
     if ([sender isOn]) {
         NSLog(@"ON");

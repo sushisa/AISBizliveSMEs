@@ -10,6 +10,7 @@
 
 @interface EmailViewController : UIViewController
 {
+    __weak IBOutlet UIView *emailView;
     __weak IBOutlet UIButton *Donebtn;
     __weak IBOutlet UILabel *emailLabel;
     __weak IBOutlet UIButton *resendEmailButton;

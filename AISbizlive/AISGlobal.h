@@ -12,3 +12,4 @@
 #import "AISAlertView.h"
 #import "AISNavigationBarLeftItem.h"
 #import "AISView.h"
+#import "AISString.h"

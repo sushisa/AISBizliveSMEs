@@ -42,13 +42,13 @@
 }
 -(void)setTextLangage{
     //Header
-    [self.navigationController setTitle:[AISBLString defaultString:HEADER_SIGNIN]];
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"SIGNIN"]];
     //TextField
-    [emailField setPlaceholder:[AISBLString defaultString:PLACEHODER_SIGNIN_EMAIL]];
-    [passwordField setPlaceholder:[AISBLString defaultString:PLACEHODER_SIGNIN_PASSWORD]];
+    [emailField setPlaceholder:[AISString commonString:PLACEHODER :@"EMAIL"]];
+    [passwordField setPlaceholder:[AISString commonString:PLACEHODER :@"PASSWORD"]];
     //Button
-    [forgetPassButton setTitle:[AISBLString defaultString:BUTTON_SIGNIN_FORGET] forState:UIControlStateNormal];
-    [signinButton setTitle:[AISBLString defaultString:BUTTON_SIGNIN_SIGNIN] forState:UIControlStateNormal];
+    [forgetPassButton setTitle:[AISString commonString:BUTTON :@"FORGET_PASS"] forState:UIControlStateNormal];
+    [signinButton setTitle:[AISString commonString:BUTTON :@"SIGNIN"] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning

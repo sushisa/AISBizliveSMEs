@@ -31,7 +31,7 @@
     [self setTextLangage];
 }
 -(void)setTextLangage{
-    [self.navigationController setTitle:[AISBLString defaultString:HEADER_TERM]];
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"POLICY"]];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];

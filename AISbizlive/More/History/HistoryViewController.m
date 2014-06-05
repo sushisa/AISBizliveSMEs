@@ -32,18 +32,20 @@
     
     history = [[NSMutableArray alloc] initWithObjects:@"Send Message History",@"TopUp History",@"Quota Balance History", nil];
     NSLog(@"History Load");
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"History";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+}
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"HISTORY"]];
+    
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"History";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 - (void)didReceiveMemoryWarning

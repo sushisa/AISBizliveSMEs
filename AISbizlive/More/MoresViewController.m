@@ -36,15 +36,19 @@
     [self.tabBarController setSelectedIndex:0];
 }
 -(void)setTextLangague{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *language = [defaults stringForKey:@"lang"];
-    if([language isEqualToString:@"EN"])
-    {
-        self.title = @"More";
-    }
-    else{
-        self.title = @"อื่นๆ";
-    }
+    
+    self.title = [AISString commonString:TITLE :@"MORE"];
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"MORE"]];
+    settingLabel.text =[AISString commonString:TITLE :@"SETTING"];
+    addContactLabel.text =[AISString commonString:TITLE :@"ADDCONTACT"];
+    newsLabel.text =[AISString commonString:TITLE :@"NEWS"];
+    scheduleLabel.text =[AISString commonString:TITLE :@"SCHEDULE"];
+    historyLabel.text =[AISString commonString:TITLE :@"HISTORY"];
+    topupLabel.text =[AISString commonString:TITLE :@"TOPUP"];
+    importLabel.text =[AISString commonString:TITLE :@"IMPORTCONTACT"];
+    informationLabel.text =[AISString commonString:TITLE :@"INFORMATION"];
+    templateLabel.text =[AISString commonString:TITLE :@"TEMPLATE"];
+    logoutLabel.text =[AISString commonString:TITLE :@"LOGOUT"];
 }
 -(void)selectMoreCell{
     //Setting

@@ -8,6 +8,7 @@
 
 #import "SignupViewController.h"
 #import "AISGlobal.h"
+#import "OTPViewController.h"
 @interface SignupViewController ()
 {
     UIActionSheet *choosePhoto;
@@ -46,23 +47,23 @@
 }
 -(void)setTextLangage{
     //Title
-    [self.navigationController setTitle:[AISBLString defaultString:HEADER_SIGNIN]];
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"SIGNUP"]];
     //TextField
-    [fullNameField setPlaceholder:[AISBLString defaultString:PLACEHODER_SIGNUP_FULLNAME]];
-    [emailField setPlaceholder:[AISBLString defaultString:PLACEHODER_SIGNUP_EMAIL]];
-    [phoneField setPlaceholder:[AISBLString defaultString:PLACEHODER_SIGNUP_PHONE]];
-    [passField setPlaceholder:[AISBLString defaultString:PLACEHODER_SIGNUP_PASSWORD]];
-    [confirmPassField setPlaceholder:[AISBLString defaultString:PLACEHODER_SIGNUP_CONFIRMPASSWORD]];
+    [fullNameField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_NAME"]];
+    [emailField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_EMAIL"]];
+    [phoneField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_PHONE"]];
+    [passField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_PASSWORD"]];
+    [confirmPassField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_PASSWORD"]];
     //Label
-    [emailLabel setText:[AISBLString defaultString:LABEL_SIGNUP_EMAIL]];
-    [phoneLabel setText:[AISBLString defaultString:LABEL_SIGNUP_PHONE]];
-    [passLabel setText:[AISBLString defaultString:LABEL_SIGNUP_PASSWORD]];
-    [confirmPassLabel setText:[AISBLString defaultString:LABEL_SIGNUP_CONFIRMPASSWORD]];
-    [termandpolicyLabel setText:[AISBLString defaultString:LABEL_SIGNUP_TERM_POLICY]];
+    [emailLabel setText:[AISString commonString:LABEL :@"SIGNUP_EMAIL"]];
+    [phoneLabel setText:[AISString commonString:LABEL :@"SIGNUP_PHONE"]];
+    [passLabel setText:[AISString commonString:LABEL :@"SIGNUP_PASS"]];
+    [confirmPassLabel setText:[AISString commonString:LABEL :@"SIGNUP_CONFIRM"]];
+    [termandpolicyLabel setText:[AISString commonString:LABEL :@"SIGNUP_TERM"]];
     //Button
-    [termButton setTitle:[AISBLString defaultString:BUTTON_TERM] forState:UIControlStateNormal];
-    [policyButton setTitle:[AISBLString defaultString:BUTTON_POLICY] forState:UIControlStateNormal];
-    [doneButton setTitle:[AISBLString defaultString:BUTTON_DONE] forState:UIControlStateNormal];
+    [termButton setTitle:[AISString commonString:TITLE :@"TERM"] forState:UIControlStateNormal];
+    [policyButton setTitle:[AISString commonString:TITLE :@"POLICY"] forState:UIControlStateNormal];
+    [doneButton setTitle:[AISString commonString:BUTTON :@"DONE"] forState:UIControlStateNormal];
 }
 // Event Gesture for Hide Keyboard
 - (void)hideKeyboard:(UITapGestureRecognizer *)sender {
@@ -165,41 +166,50 @@
     [AISView changeLayerNomal:passwordView];
     [AISView changeLayerNomal:confirmView];
     if ([emailField.text isEqualToString:@""] || [phoneField.text isEqualToString:@""] || [passField.text isEqualToString:@""] || [confirmPassField.text isEqualToString:@""] || [fullNameField.text isEqualToString:@""]) {
-       [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:@"กรุณาระบุข้อมูลที่จำเป็นให้ครบถ้วน" LeftString:@"Done" RightString:nil];
-        [alertView showAlertView];
+        [self alert:[AISString commonString:POPUP :@"TEXTFIELDNIL"]];
     }
     else if ([emailField.text rangeOfString:@"@"].location == NSNotFound || [emailField.text rangeOfString:@"."].location == NSNotFound){
         [AISView changeLayerError:emailView];
-        [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:@"กรุณาระบุ E-mail ให้ถูกต้อง" LeftString:@"Done" RightString:nil];
-        [alertView showAlertView];
+        [self alert:[AISString commonString:POPUP :@"TEXTFIELDEMAIL"]];
     }
     else if (phoneField.text.length != 10){
         [AISView changeLayerError:phoneView];
-        [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:@"กรุณาระบุเบอร์โทรศัพท์ ให้ครบ 10 ตำแหน่ง" LeftString:@"Done" RightString:nil];
-        [alertView showAlertView];
+        
+        [self alert:[AISString commonString:POPUP :@"TEXTFIELDPHONE"]];
     }
     else if(passField.text.length < 8){
         [AISView changeLayerError:passwordView];
-        [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:@"กรุณาระบุรหัสผ่านให้ครบถ้วน" LeftString:@"Done" RightString:nil];
-        [alertView showAlertView];
+         [self alert:[AISString commonString:POPUP :@"TEXTFIELDPASS"]];
     }
     else if(confirmPassField.text.length < 8){
         [AISView changeLayerError:confirmView];
-        [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:@"กรุณาระบุยืนยันรหัสผ่านให้ครบถ้วน" LeftString:@"Done" RightString:nil];
-        [alertView showAlertView];
+        
+        [self alert:[AISString commonString:POPUP :@"TEXTFIELDCONFIRM"]];
     }
     else if (![passField.text isEqualToString:confirmPassField.text]){
         [AISView changeLayerError:passwordView];
         [AISView changeLayerError:confirmView];
-        [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:@"Password / Confirm Password is not match, plase try again" LeftString:@"Done" RightString:nil];
-        [alertView showAlertView];
+        [self alert:[AISString commonString:POPUP :@"TEXTFIELDPASSANDCONFIRM"]];
     }
     else {
+        
+        [self alert:[NSString stringWithFormat:[AISString commonString:POPUP :@"CONFIRMPHONE"], "%@",phoneField.text ]];
         [self performSegueWithIdentifier:@"signUpToOTP" sender:self];
-        NSLog(@"new");
     }
 }
 -(void)doneAction:(id)sender{
     [alertView dismissAlertView];
+}
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:BUTTON :@"DONE"] RightString:nil];
+    [alertView showAlertView];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString: @"signUpToOTP"]) {
+        OTPViewController *otp = segue.destinationViewController;
+        otp.phoneNumber = phoneField.text;
+        otp.emailAddress = emailField.text;
+    }
 }
 @end

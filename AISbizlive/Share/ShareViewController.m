@@ -7,7 +7,7 @@
 //
 
 #import "ShareViewController.h"
-
+#import "AISGlobal.h"
 @interface ShareViewController ()
 
 @end
@@ -31,18 +31,9 @@
     [self.tabBarController setSelectedIndex:4];
 }
 -(void)setTextLangague{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *language = [defaults stringForKey:@"lang"];
-    if([language isEqualToString:@"EN"])
-    {
-        self.title = @"Tell Friends";
-        [self.navigationItem setTitle:@"Tell Friends"];
-    }
-    else{
-        
-        self.title = @"บอกเพื่อน";
-        [self.navigationItem setTitle:@"บอกเพื่อน"];
-    }
+        self.title = [AISString commonString:TITLE :@"SHARE"];
+        [self.navigationItem setTitle:[AISString commonString:TITLE :@"SHARE"]];
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden = NO;

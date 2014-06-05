@@ -12,6 +12,7 @@
 @interface StartViewController : UIViewController <UIPageViewControllerDataSource>
 {
     __weak IBOutlet UIButton *btnFB;
+    __weak IBOutlet UISwitch *BtnchangeLanguage;
     __weak IBOutlet UIButton *btnSignUpEmail;
     __weak IBOutlet UIButton *btnSignUpFacebook;
     __weak IBOutlet UIButton *btnSignIn;

@@ -31,18 +31,20 @@
     // Do any additional setup after loading the view.
     schedule = [[NSMutableArray alloc] initWithObjects:@"Message1",@"Message2",@"Message3",@"Message4", nil];
     NSLog(@"Schedule Load");
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"Message Schedule";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"SCHEDULE"]];
+    
+}
 -(void)viewDidAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"Message Schedule";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 - (void)didReceiveMemoryWarning

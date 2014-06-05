@@ -28,10 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"Top Up Load");
-    
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"Top Up";
     self.navigationItem.rightBarButtonItem = [self topupRightBarButton];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
     currentLabel.text = @"1,000.00";
@@ -39,6 +37,10 @@
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"TOPUP"]];
+    
 }
 -(UIBarButtonItem *)topupRightBarButton{
     UIBarButtonItem *topupDoneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(DoneButton)];
@@ -50,9 +52,8 @@
     NSLog(@"Done");
 }
 -(void)viewDidAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"Top Up";
     self.navigationItem.rightBarButtonItem = [self topupRightBarButton];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }

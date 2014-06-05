@@ -27,23 +27,19 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-//    self.navigationController.navigationBarHidden = NO;
-//    self.tabBarController.tabBar.hidden = YES;
+    [self setTextLangague];
     self.navigationController.navigationBar.topItem.title = @"Setting";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"SETTING"]];
+    
+}
 -(void)viewWillAppear:(BOOL)animated{
-//    self.navigationController.navigationBarHidden = NO;
-//    self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"Setting";
+    [self setTextLangague];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 

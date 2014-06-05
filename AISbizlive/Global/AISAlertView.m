@@ -14,7 +14,6 @@
 UIView *newView;
 UIView* backGroundView;
 -(id)withActionLeft:(SEL)leftactionbutton withActionRight:(SEL)rightactionbutton  withTarget:(id)target message:(NSString *)message LeftString : (NSString *)LeftString RightString: (NSString *)RightString{
-    
 //    CGFloat positionY = ([[UIScreen mainScreen] bounds].size.height-200 ) /2 ;
     UIWindow* mainWindow = (((AppDelegate *)[UIApplication sharedApplication].delegate).window);
     

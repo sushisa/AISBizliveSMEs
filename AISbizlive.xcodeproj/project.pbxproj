@@ -68,6 +68,7 @@
 		718FE71619346B4200E9C9E2 /* AISNavigationBarLeftItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 718FE71519346B4200E9C9E2 /* AISNavigationBarLeftItem.m */; };
 		71996D611924B28300AC1EDF /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71996D601924B28300AC1EDF /* MessageTableViewController.m */; };
 		71996D641924C96F00AC1EDF /* AISButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 71996D631924C96F00AC1EDF /* AISButton.m */; };
+		719E0243193F0293004A043A /* AISString.m in Sources */ = {isa = PBXBuildFile; fileRef = 719E0242193F0293004A043A /* AISString.m */; };
 		71A15ECC1919E6E8001D1B56 /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A15ECB1919E6E8001D1B56 /* SplashScreenViewController.m */; };
 		71A15ECF191A2F00001D1B56 /* MessageHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A15ECE191A2F00001D1B56 /* MessageHistoryViewController.m */; };
 		71A15ED2191A3FBD001D1B56 /* TopupHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A15ED1191A3FBD001D1B56 /* TopupHistoryViewController.m */; };
@@ -112,6 +113,7 @@
 		71AC4DC71932F38F002D9387 /* AISAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AC4DC61932F38F002D9387 /* AISAlertView.m */; };
 		71B6FC3C18F64B27000930F4 /* DetailNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B6FC3B18F64B27000930F4 /* DetailNewsViewController.m */; };
 		71C3DDEB18D97170002B6E79 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C3DDEA18D97170002B6E79 /* ScheduleViewController.m */; };
+		71E44157193DBB02004282AC /* Common.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71E44156193DBB02004282AC /* Common.plist */; };
 		71EBF62618B30D1900B1690B /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EBF62518B30D1900B1690B /* Contact.m */; };
 		71EF928A18D6986B00A51C52 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EF928918D6986B00A51C52 /* NewsViewController.m */; };
 		71F1752618EA97AB0047E842 /* ENGlobalString.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71F1752518EA97AB0047E842 /* ENGlobalString.plist */; };
@@ -226,6 +228,8 @@
 		71996D601924B28300AC1EDF /* MessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageTableViewController.m; path = Message/MessageTableViewController.m; sourceTree = "<group>"; };
 		71996D621924C96F00AC1EDF /* AISButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISButton.h; path = Global/AISButton.h; sourceTree = "<group>"; };
 		71996D631924C96F00AC1EDF /* AISButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISButton.m; path = Global/AISButton.m; sourceTree = "<group>"; };
+		719E0241193F0293004A043A /* AISString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISString.h; path = Global/AISString.h; sourceTree = "<group>"; };
+		719E0242193F0293004A043A /* AISString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISString.m; path = Global/AISString.m; sourceTree = "<group>"; };
 		71A15ECA1919E6E8001D1B56 /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
 		71A15ECB1919E6E8001D1B56 /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
 		71A15ECD191A2F00001D1B56 /* MessageHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageHistoryViewController.h; path = More/History/MessageHistoryViewController.h; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 		71B6FC3B18F64B27000930F4 /* DetailNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailNewsViewController.m; sourceTree = "<group>"; };
 		71C3DDE918D97170002B6E79 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewController.h; path = More/Schedule/ScheduleViewController.h; sourceTree = "<group>"; };
 		71C3DDEA18D97170002B6E79 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleViewController.m; path = More/Schedule/ScheduleViewController.m; sourceTree = "<group>"; };
+		71E44156193DBB02004282AC /* Common.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Common.plist; sourceTree = "<group>"; };
 		71EBF62418B30D1900B1690B /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contact.h; path = Model/Contact.h; sourceTree = "<group>"; };
 		71EBF62518B30D1900B1690B /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contact.m; path = Model/Contact.m; sourceTree = "<group>"; };
 		71EF928818D6986B00A51C52 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsViewController.h; path = More/News/NewsViewController.h; sourceTree = "<group>"; };
@@ -351,13 +356,6 @@
 			name = TopUp;
 			sourceTree = "<group>";
 		};
-		7115E09E18F52EE70030AF26 /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = iPad;
-			sourceTree = "<group>";
-		};
 		713F2456192AFBF2003C4822 /* Share */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,7 +412,6 @@
 			children = (
 				717A9C3418F7AF4200993805 /* icon@2x.png */,
 				715C200F18FE572C00CB046C /* Logo@2x.png */,
-				7115E09E18F52EE70030AF26 /* iPad */,
 				71A4C31118E4157300BA120E /* images */,
 				71EF928C18D6AE2700A51C52 /* Library */,
 				718B908D18B7560500488C48 /* Global */,
@@ -554,6 +551,9 @@
 				718FE71519346B4200E9C9E2 /* AISNavigationBarLeftItem.m */,
 				7124223B1935995B00BAD376 /* AISMoreView.h */,
 				7124223C1935995B00BAD376 /* AISMoreView.m */,
+				71E44156193DBB02004282AC /* Common.plist */,
+				719E0241193F0293004A043A /* AISString.h */,
+				719E0242193F0293004A043A /* AISString.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -830,6 +830,7 @@
 				717A9C4218F7AF4200993805 /* icon@2x.png in Resources */,
 				71A4C35E18E4157300BA120E /* L_Setting_Icon@2x.png in Resources */,
 				71A4C36318E4157300BA120E /* Search_Bold@2x.png in Resources */,
+				71E44157193DBB02004282AC /* Common.plist in Resources */,
 				7143D57F190E03D100A4DC10 /* Plus@2x.png in Resources */,
 				71A4C34A18E4157300BA120E /* Group_More@2x.png in Resources */,
 				71A4C34D18E4157300BA120E /* Contact@2x.png in Resources */,
@@ -864,6 +865,7 @@
 				713F2455192AFBEC003C4822 /* ShareViewController.m in Sources */,
 				71EF928A18D6986B00A51C52 /* NewsViewController.m in Sources */,
 				710E59CF18ACC96A006F4CB2 /* FogetPasswordViewController.m in Sources */,
+				719E0243193F0293004A043A /* AISString.m in Sources */,
 				718FE71019344B1F00E9C9E2 /* ForgetEmailViewController.m in Sources */,
 				7124223A193590F900BAD376 /* MoresViewController.m in Sources */,
 				71C3DDEB18D97170002B6E79 /* ScheduleViewController.m in Sources */,
@@ -955,7 +957,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "D5B788D2-A1AF-46A9-9A09-77A871223512";
 				SDKROOT = iphoneos;
@@ -989,7 +991,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PROVISIONING_PROFILE = "D5B788D2-A1AF-46A9-9A09-77A871223512";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1012,8 +1014,8 @@
 				INFOPLIST_FILE = "AISbizlive/AISbizlive-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D5B788D2-A1AF-46A9-9A09-77A871223512";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "BEF89153-9C6E-48DC-BB77-4AE092F7E73C";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1034,8 +1036,8 @@
 				INFOPLIST_FILE = "AISbizlive/AISbizlive-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D5B788D2-A1AF-46A9-9A09-77A871223512";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "BEF89153-9C6E-48DC-BB77-4AE092F7E73C";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

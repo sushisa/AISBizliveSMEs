@@ -18,11 +18,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"Detail News Load");
-    
-    self.navigationItem.title = @"News";
     self.newsLabelTitle.text = self.titleItem;
     self.newsImage.image = [UIImage imageNamed:self.imageItem];
+    [self setTextLangague];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+}
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"NEWS"]];
+    
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];

@@ -66,18 +66,20 @@
         NSLog(@"Not Allow 2");
     }
     NSLog(@"Import Contact");
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"Import Contact";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"IMPORTCONTACT"]];
+    
+}
 -(void)viewDidAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"Import Contact";
     [self phonebook];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }

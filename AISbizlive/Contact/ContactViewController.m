@@ -75,17 +75,9 @@
 //    [passwordField resignFirstResponder];
 }
 -(void)setTextLangague{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *language = [defaults stringForKey:@"lang"];
-    if([language isEqualToString:@"EN"])
-    {
-        self.title = @"Contact";
-        [self.navigationItem setTitle:@"Contact"];
-    }
-    else{
-        self.title = @"รายชื่อ";
-        [self.navigationItem setTitle:@"รายชื่อ"];
-    }
+    
+    self.title = [AISString commonString:TITLE :@"CONTACT"];
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"CONTACT"]];
 }
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     UIAlertView *didFailWithErrorMessage = [[UIAlertView alloc] initWithTitle: @"NSURLConnection " message: @"didFailWithError"  delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];

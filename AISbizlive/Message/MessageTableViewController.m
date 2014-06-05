@@ -83,18 +83,8 @@
     [self.tabBarController setSelectedIndex:2];
 }
 -(void)setTextLangague{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *language = [defaults stringForKey:@"lang"];
-    if([language isEqualToString:@"EN"])
-    {
-        self.title = @"Message";
-        [self.navigationItem setTitle:@"Message"];
-    }
-    else{
-        
-        self.title = @"ข้อความ";
-        [self.navigationItem setTitle:@"ข้อความ"];
-    }
+        self.title = [AISString commonString:TITLE :@"MESSAGE"];
+        [self.navigationItem setTitle:[AISString commonString:TITLE :@"MESSAGE"]];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self setTextLangague];

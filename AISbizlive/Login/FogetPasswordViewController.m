@@ -39,13 +39,13 @@
 }
 -(void)setTextLangage{
     //Header
-    [self.navigationController setTitle:[AISBLString defaultString:HEADER_FORGET]];
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"FORGETPASSWORD"]];
     //TextField
-    [emailField setPlaceholder:[AISBLString defaultString:PLACEHODER_FORGET]];
+    [emailField setPlaceholder:[AISString commonString:PLACEHODER :@"EMAIL"]];
     //Label
-    [forgetPassLabel setText:[AISBLString defaultString:LABEL_FORGET]];
+    [forgetPassLabel setText:[AISString commonString:LABEL :@"FORGETPASS"]];
     //Button
-    [doneButton setTitle:[AISBLString defaultString:BUTTON_DONE] forState:UIControlStateNormal];
+    [doneButton setTitle:[AISString commonString:BUTTON :@"DONE"] forState:UIControlStateNormal];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];

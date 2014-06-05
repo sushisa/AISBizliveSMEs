@@ -38,18 +38,9 @@
     [self.tabBarController setSelectedIndex:3];
 }
 -(void)setTextLangague{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *language = [defaults stringForKey:@"lang"];
-    if([language isEqualToString:@"EN"])
-    {
-        self.title = @"Package";
-        [self.navigationItem setTitle:@"Package"];
-    }
-    else{
-        
-        self.title = @"โปรโมชั่น";
-        [self.navigationItem setTitle:@"โปรโมชั่น"];
-    }
+        self.title = [AISString commonString:TITLE :@"PACKAGE"];
+        [self.navigationItem setTitle:[AISString commonString:TITLE :@"PACKAGE"]];
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden = NO;

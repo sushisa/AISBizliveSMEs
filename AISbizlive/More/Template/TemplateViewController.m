@@ -133,9 +133,8 @@
     [myObject addObject:dict];
     
     NSLog(@"Template Load");
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"Template";
     if ([self.templeSelected isEqualToString:@"YES"]) {
         NSLog(@"isMessage");
     }
@@ -144,13 +143,16 @@
     }
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"TEMPLATE"]];
+    
+}
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"Template";
     self.navigationController.navigationItem.rightBarButtonItem = [self templateRightButton];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }

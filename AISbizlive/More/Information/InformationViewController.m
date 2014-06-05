@@ -30,19 +30,20 @@
     [super viewDidLoad];
     info = [[NSMutableArray alloc] initWithObjects:@"Help",@"Private Policy",@"Terms of Service",@"About", nil];
     NSLog(@"Information Load");
-    
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"Information";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"INFORMATION"]];
+    
+}
 -(void)viewDidAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"Information";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 

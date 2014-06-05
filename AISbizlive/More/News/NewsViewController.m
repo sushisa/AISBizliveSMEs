@@ -34,18 +34,20 @@
     newsimages = [[NSMutableArray alloc] initWithObjects:@"icon.png",@"icon.png",@"icon.png",@"icon.png", nil];
     news = [[NSMutableArray alloc] initWithObjects:@"Message1",@"Message2",@"Message3",@"Message4", nil];
     NSLog(@"News Load");
-    self.navigationController.navigationBarHidden = NO;
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"News";
+    [self setTextLangague];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+}
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"NEWS"]];
+    
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+    [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBar.topItem.title = @"News";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 - (void)didReceiveMemoryWarning
