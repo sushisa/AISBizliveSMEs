@@ -51,6 +51,10 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    
+    self.imageContact.layer.cornerRadius = 10.0f;
+    self.imageContact.layer.borderWidth = 1.0f;
+    self.imageContact.layer.borderColor = [AISColor lightgrayColor].CGColor;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
@@ -66,7 +70,9 @@
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
-
+//-(void)setImageContact:(UIImageView *)imageContact{
+//    
+//}
 - (void)setFrame:(CGRect)frame {
 //    NSLog(@"Frame");
     frame.origin.x += 10;

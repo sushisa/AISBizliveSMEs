@@ -68,33 +68,34 @@
                              CGRectMake(0, 0, tableView.frame.size.width, 40.0)];
     
     twoHeaderView.backgroundColor = [UIColor whiteColor];
+    float labelWidth = twoHeaderView.frame.size.width/4;
     UILabel *packageLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(10, 0, 60.0, 40.0)];
+                            CGRectMake(0, 0, labelWidth, 40.0)];
     
     packageLabel.textColor = [AISColor  grayColor];
     packageLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    packageLabel.text = @"Package";
+    packageLabel.text = [AISString commonString:TITLE :@"PACKAGE"];
     [packageLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:
-                          CGRectMake(70, 0, 90.0, 40.0)];
+                          CGRectMake(labelWidth, 0, labelWidth, 40.0)];
     dateLabel.textColor = [AISColor  grayColor];
     dateLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    dateLabel.text = @"Date";
+    dateLabel.text = [AISString commonString:LABEL :@"HISTORY_QUOTA_DATE"];
     [dateLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *statusLabel = [[UILabel alloc] initWithFrame:
-                             CGRectMake(160, 0, 50.0, 40.0)];
+                             CGRectMake(labelWidth*2, 0, labelWidth, 40.0)];
     statusLabel.textColor =  [AISColor  grayColor];
     statusLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    statusLabel.text = @"Status";
+    statusLabel.text = [AISString commonString:LABEL :@"HISTORY_QUOTA_STATUS"];
     [statusLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *smsLabel = [[UILabel alloc] initWithFrame:
-                          CGRectMake(210, 0, 105.0, 40.0)];
+                          CGRectMake(labelWidth*3, 0, labelWidth, 40.0)];
     smsLabel.textColor =  [AISColor  grayColor];
     smsLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    smsLabel.text = @"Balance(SMS)";
+    smsLabel.text = [AISString commonString:LABEL :@"HISTORY_QUOTA_BALANCE"];
     [smsLabel setTextAlignment:NSTextAlignmentCenter];
     
     [twoHeaderView addSubview:packageLabel];
@@ -111,21 +112,22 @@
     oneFooterView.backgroundColor = [AISColor lightgreenColor];
     UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 2, self.tableView.frame.size.width, 40)];
     whiteView.backgroundColor = [UIColor whiteColor];
+    float labelWidth = oneFooterView.frame.size.width/4;
     UIView *twoFooterView = [[UIView alloc] initWithFrame:
-                             CGRectMake(160, 0, tableView.frame.size.width, 40.0)];
+                             CGRectMake(labelWidth*2, 0, tableView.frame.size.width, 40.0)];
     UILabel *totalLable = [[UILabel alloc] initWithFrame:
-                             CGRectMake(0, 0, 45.0, 40.0)];
+                             CGRectMake(0, 0, labelWidth, 40.0)];
     totalLable.backgroundColor = [AISColor lightgreenColor];
     totalLable.textColor = [UIColor whiteColor];
     totalLable.font = [UIFont boldSystemFontOfSize:15.0f];
-    totalLable.text = @"Total";
+    totalLable.text = [AISString commonString:LABEL :@"HISTORY_QUOTA_TOTAL"];
     [totalLable setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *totalBalanceLable = [[UILabel alloc] initWithFrame:
-                         CGRectMake(45, 0, 110.0, 40.0)];
+                         CGRectMake(labelWidth, 0, labelWidth, 40.0)];
     totalBalanceLable.textColor =  [AISColor  grayColor];
     totalBalanceLable.font = [UIFont boldSystemFontOfSize:14.0f];
-    totalBalanceLable.text = @"Balance(SMS)";
+    totalBalanceLable.text = @"400";
     [totalBalanceLable setTextAlignment:NSTextAlignmentCenter];
     
     [twoFooterView addSubview:totalLable];

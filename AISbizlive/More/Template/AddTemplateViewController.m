@@ -9,7 +9,12 @@
 #import "AddTemplateViewController.h"
 #import "AISGlobal.h"
 @interface AddTemplateViewController ()
-
+{
+    int checkFontThai;
+    bool checkFomatThai;
+    NSString *format;
+    int checkShots;
+}
 @end
 
 @implementation AddTemplateViewController
@@ -28,14 +33,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"Add Template Load");
-    
+   
     self.navigationItem.title = @"Add Template";
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
                                              initWithTarget: self
                                              action: @selector(hideKeyboard:)];
     [oneTapGesture setNumberOfTouchesRequired:1];
     [[self view] addGestureRecognizer:oneTapGesture];
-    self.navigationItem.rightBarButtonItem = [self templateRightButton];
+    if(self.descritionItem != nil){
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(templateAdd)];
+        descritionTemplate.text = self.descritionItem;
+        [textLength setText:[AISSMSCharacter bytesString:descritionTemplate.text]];
+        self.tabBarController.tabBar.hidden = YES;
+    }
+    else{
+        self.navigationItem.rightBarButtonItem = [self templateRightButton];
+    }
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(UIBarButtonItem *)templateRightButton{
@@ -44,6 +57,14 @@
 }
 -(void)templateAdd{
     NSLog(@"Template ADD");
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"TemplateList" ofType:@"plist"];
+    NSMutableArray *favs = [[NSMutableArray alloc] initWithContentsOfFile: path];
+    NSDictionary *test = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                          nameTemplate.text, @"TITLE",
+                          descritionTemplate.text,@"DESCRIPTION",
+                          nil];
+    [favs addObject:test];
+    [favs writeToFile:path atomically:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)backAction{
@@ -62,7 +83,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)textViewDidChange:(UITextView *)textView{
+    [textLength setText:[AISSMSCharacter bytesString:descritionTemplate.text]];
+}
 /*
 #pragma mark - Navigation
 

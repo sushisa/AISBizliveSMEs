@@ -10,6 +10,8 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import <AddressBook/AddressBook.h>
 @interface ImportContactViewController : UITableViewController
-
+{
+    
+}
 
 @end

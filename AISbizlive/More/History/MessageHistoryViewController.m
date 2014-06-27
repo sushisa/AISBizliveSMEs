@@ -67,33 +67,35 @@
                              CGRectMake(0, 0, tableView.frame.size.width, 40.0)];
     
     twoHeaderView.backgroundColor = [UIColor whiteColor];
+    
+    float labelWidth = twoHeaderView.frame.size.width/4;
     UILabel *detailLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(10, 0, 100.0, 40.0)];
+                            CGRectMake(0, 0, labelWidth, 40.0)];
     
     detailLabel.textColor = [AISColor  grayColor];
     detailLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    detailLabel.text = @"Detail";
+    detailLabel.text =[AISString commonString:LABEL :@"HISTORY_SEND_DETAIL"];
     [detailLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(110, 0, 90.0, 40.0)];
+                            CGRectMake(labelWidth, 0, labelWidth, 40.0)];
     dateLabel.textColor = [AISColor  grayColor];
     dateLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    dateLabel.text = @"Date/Time";
+    dateLabel.text = [AISString commonString:LABEL :@"HISTORY_SEND_DATE"];
     [dateLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *successLabel = [[UILabel alloc] initWithFrame:
-                          CGRectMake(200, 0, 60.0, 40.0)];
+                          CGRectMake((labelWidth)*2, 0, labelWidth, 40.0)];
     successLabel.textColor =  [AISColor  grayColor];
     successLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    successLabel.text = @"Success";
+    successLabel.text = [AISString commonString:LABEL :@"HISTORY_SEND_SUCCESS"];
     [successLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *failLabel = [[UILabel alloc] initWithFrame:
-                             CGRectMake(260, 0, 50.0, 40.0)];
+                             CGRectMake((labelWidth)*3, 0, labelWidth, 40.0)];
     failLabel.textColor =  [AISColor  grayColor];
     failLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    failLabel.text = @"Failed";
+    failLabel.text = [AISString commonString:LABEL :@"HISTORY_SEND_FAILED"];
     [failLabel setTextAlignment:NSTextAlignmentCenter];
     
     [twoHeaderView addSubview:detailLabel];
@@ -110,33 +112,15 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"messagehistory";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    //    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:CELL_BACKGROUND_DEFAULT] stretchableImageWithLeftCapWidth:0.0 topCapHeight:15.0] ];
-    //
-    //    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:CELL_BACKGROUND_HIGHLIGHT] stretchableImageWithLeftCapWidth:0.0 topCapHeight:15.0] ];
-    // Configure the cell...
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     UILabel *TextLabel = (UILabel *)[cell viewWithTag:10001];
     [TextLabel setTextColor:[AISColor lightgrayColor]];
+    
     TextLabel.text = [messageHistory objectAtIndex:indexPath.row];
     return cell;
+//    TextLabel.text = ;
+    return cell;
 }
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // Return NO if you do not want the specified item to be editable.
-//    return YES;
-//}
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [package removeObjectAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    }
-//}
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//   
-//}
 @end

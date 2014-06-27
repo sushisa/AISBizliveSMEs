@@ -1,18 +1,18 @@
 //
-//  AddGroupViewController.m
+//  mPayViewController.m
 //  AISbizlive
 //
-//  Created by Wachirawit on 4/16/2557 BE.
+//  Created by Wachirawit on 6/26/2557 BE.
 //  Copyright (c) 2557 promptnow. All rights reserved.
 //
 
-#import "AddGroupViewController.h"
+#import "mPayViewController.h"
 #import "AISGlobal.h"
-@interface AddGroupViewController ()
+@interface mPayViewController ()
 
 @end
 
-@implementation AddGroupViewController
+@implementation mPayViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,35 +27,19 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBarHidden = NO;
-    self.navigationItem.rightBarButtonItem = [self DoneButton];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
     [self setTextLangague];
 }
 -(void)setTextLangague{
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"ADDGROUP"]];
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"MPAY"]];
     
 }
--(void)viewWillAppear:(BOOL)animated {
-    [self setTextLangague];
-    self.navigationController.navigationBarHidden = NO;
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.rightBarButtonItem = [self DoneButton];
+-(void)viewWillAppear:(BOOL)animated{
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
--(UIBarButtonItem *)DoneButton{
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"] style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
-    
-    return doneButton;
-}
--(void)doneAction{
-    NSLog(@"Done");
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -73,4 +57,8 @@
 }
 */
 
+- (IBAction)goToAppStore:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:
+                                                @"https://itunes.apple.com/th/app/mpay/id401853685?mt=8&uo=4"]];
+}
 @end

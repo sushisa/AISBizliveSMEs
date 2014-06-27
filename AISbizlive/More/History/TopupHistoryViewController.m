@@ -67,33 +67,34 @@
                              CGRectMake(0, 0, tableView.frame.size.width, 40.0)];
     
     twoHeaderView.backgroundColor = [UIColor whiteColor];
+     float labelWidth = twoHeaderView.frame.size.width/4;
     UILabel *channelLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(10, 0, 75.0, 40.0)];
+                             CGRectMake(0, 0, labelWidth, 40.0)];
     
     channelLabel.textColor = [AISColor  grayColor];
     channelLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    channelLabel.text = @"Channel";
+    channelLabel.text = [AISString commonString:LABEL :@"HISTORY_TOPUP_CHANNEL"];
     [channelLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:
-                          CGRectMake(85, 0, 80.0, 40.0)];
+                          CGRectMake(labelWidth, 0, labelWidth, 40.0)];
     dateLabel.textColor = [AISColor  grayColor];
     dateLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    dateLabel.text = @"Date";
+    dateLabel.text = [AISString commonString:LABEL :@"HISTORY_SEND_DATE"];
     [dateLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *amountLabel = [[UILabel alloc] initWithFrame:
-                             CGRectMake(165, 0, 60.0, 40.0)];
+                             CGRectMake(labelWidth*2, 0, labelWidth, 40.0)];
     amountLabel.textColor =  [AISColor  grayColor];
     amountLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    amountLabel.text = @"Amount";
+    amountLabel.text = [AISString commonString:LABEL :@"HISTORY_TOPUP_AMOUNT"];
     [amountLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *mobileLabel = [[UILabel alloc] initWithFrame:
-                          CGRectMake(225, 0, 95.0, 40.0)];
+                          CGRectMake(labelWidth*3, 0, labelWidth, 40.0)];
     mobileLabel.textColor =  [AISColor  grayColor];
     mobileLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    mobileLabel.text = @"Mobile No.";
+    mobileLabel.text = [AISString commonString:LABEL :@"MOBILE"];
     [mobileLabel setTextAlignment:NSTextAlignmentCenter];
     
     [twoHeaderView addSubview:channelLabel];
@@ -120,24 +121,9 @@
     }
     UILabel *TextLabel = (UILabel *)[cell viewWithTag:10001];
     [TextLabel setTextColor:[AISColor lightgrayColor]];
+    
     TextLabel.text = [topupHistory objectAtIndex:indexPath.row];
     return cell;
 }
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // Return NO if you do not want the specified item to be editable.
-//    return YES;
-//}
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [package removeObjectAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    }
-//}
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//
-//}
 
 @end

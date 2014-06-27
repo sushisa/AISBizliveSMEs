@@ -9,6 +9,7 @@
 #import "TemplateViewController.h"
 #import "AddTemplateViewController.h"
 #import "AISGlobal.h"
+#import "MessageTableViewController.h"
 
 @interface TemplateViewController ()
 {
@@ -36,6 +37,7 @@
     NSString *fullTemplate;
     NSString *heightTemplateCell;
     int *cellHeight;
+    NSString *fullReturn;
 }
 @end
 
@@ -53,119 +55,58 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"%@",[AISString TemplateArray]);
     currentSelect = -1;
     currentHeight = 65;
-    headTemplate = @"headTemplate";
-    sampleTemplate = @"sampleTemplate";
-    fullTemplate = @"fullTemplate";
     heightTemplateCell = @"heightTemplateCell";
-    myObject = [[NSMutableArray alloc] init];
     
-    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            @"Cash Cart1", headTemplate,
-            @"Casdasdasdasddasdassh Cart", sampleTemplate,
-            @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa093892374893265479823748972394u23874923", fullTemplate,
-            @"65", heightTemplateCell,
-            nil];
-    [myObject addObject:dict];
-    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            @"Cash Cart2", headTemplate,
-            @"Casdasdasdasddasdassh Cart", sampleTemplate,
-            @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", fullTemplate,
-            @"65", heightTemplateCell,
-            nil];
-    [myObject addObject:dict];
-    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            @"Cash Cart3", headTemplate,
-            @"Casdasdasdasddasdassh Cart", sampleTemplate,
-            @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", fullTemplate,
-            @"65", heightTemplateCell,
-            nil];
-    [myObject addObject:dict];
-    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            @"Cash Cart4", headTemplate,
-            @"Casdasdasdasddasdassh Cart", sampleTemplate,
-            @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", fullTemplate,
-            @"65", heightTemplateCell,
-            nil];
-    [myObject addObject:dict];
-    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            @"Cash Cart5", headTemplate,
-            @"Casdasdasdasddasdassh Cart", sampleTemplate,
-            @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", fullTemplate,
-            @"65", heightTemplateCell,
-            nil];
-    [myObject addObject:dict];
-    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            @"Cash Cart6", headTemplate,
-            @"Casdasdasdasddasdassh Cart", sampleTemplate,
-            @"lkjgfkdlgjkldfjgkldfjglkdfjgkldfjgkldfjkgljdflkgjkldfjglfdlkgj", fullTemplate,
-            @"65", heightTemplateCell,
-            nil];
-    [myObject addObject:dict];
-    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            @"Cash Cart7", headTemplate,
-            @"Casdasdasdasddasdassh Cart", sampleTemplate,
-            @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", fullTemplate,
-            @"65", heightTemplateCell,
-            nil];
-    [myObject addObject:dict];
-    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            @"Cash Cart8", headTemplate,
-            @"Casdasdasdasddasdassh Cart", sampleTemplate,
-            @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafffffffffffffffff", fullTemplate,
-            @"65", heightTemplateCell,
-            nil];
-    [myObject addObject:dict];
-    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            @"Cash Cart9", headTemplate,
-            @"Casdasdasdasddasdassh Cart", sampleTemplate,
-            @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", fullTemplate,
-            @"65", heightTemplateCell,
-            nil];
-    [myObject addObject:dict];
-    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            @"Cash Cart10", headTemplate,
-            @"Casdasdasdasddasdassh Cart", sampleTemplate,
-            @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", fullTemplate,
-            @"65", heightTemplateCell,
-            nil];
-    [myObject addObject:dict];
-    
-    NSLog(@"Template Load");
     [self setTextLangague];
-    self.tabBarController.tabBar.hidden = YES;
-    if ([self.templeSelected isEqualToString:@"YES"]) {
-        NSLog(@"isMessage");
-    }
-    else{
-        self.navigationItem.rightBarButtonItem = [self templateRightButton];
-    }
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    
 }
 -(void)setTextLangague{
+    
+    self.tabBarController.tabBar.hidden = YES;
     [self.navigationItem setTitle:[AISString commonString:TITLE :@"TEMPLATE"]];
+    if ([self.templeSelected isEqualToString:@"YES"]) {
+        self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(popBackAction) withTarget:self];
+    }
+    else{
+        self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+        self.navigationItem.rightBarButtonItem = [self templateRightButton];
+       
+    }
+    myObject = [[NSMutableArray alloc] init];
+    for (int k = 0; k<[AISString TemplateArray].count; k++) {
+        dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                @"65", heightTemplateCell,
+                nil];
+        [myObject addObject:dict];
+    }
+    [messageTable reloadData];
     
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+-(void)popBackAction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)viewWillAppear:(BOOL)animated{
     [self setTextLangague];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationItem.rightBarButtonItem = [self templateRightButton];
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(UIBarButtonItem *)templateRightButton{
-    UIImageView *customTemplateAdd = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BUTTON_ADD_DEFAULT]];
-    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightButton.bounds = CGRectMake( 10, 0, customTemplateAdd.frame.size.width, customTemplateAdd.frame.size.height );
-    [rightButton setImage:[UIImage imageNamed:BUTTON_ADD_HIGHLIGHT] forState:UIControlStateHighlighted];
-    [rightButton setImage:[UIImage imageNamed:BUTTON_ADD_DEFAULT]forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(templateAdd) forControlEvents:UIControlEventTouchUpInside];
-
-    UIBarButtonItem *templateRightButton = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    UIBarButtonItem *templateRightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_ADD_DEFAULT] style:UIBarButtonItemStyleBordered target:self action:@selector(templateAdd)];
     return templateRightButton;
+}
+-(UIBarButtonItem *)selectTemplateRightButton{
+    UIBarButtonItem *templateRightButton = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"] style:UIBarButtonItemStyleBordered target:self action:@selector(selectTemplate)];
+    return templateRightButton;
+}
+-(void)selectTemplate{
+    NSArray *arr = [self.navigationController viewControllers];
+    MessageTableViewController *rvc = (MessageTableViewController *)[arr objectAtIndex:[arr count]-2];
+    rvc.msgText = fullReturn;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)templateAdd{
     NSLog(@"Template ADD");
@@ -199,21 +140,23 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
+     if ([self.templeSelected isEqualToString:@"YES"]) {
+         self.navigationItem.rightBarButtonItem = [self selectTemplateRightButton];
+     }
     cell = [tableView cellForRowAtIndexPath:indexPath];
     
     UILabel *subtitle = (UILabel *)[cell viewWithTag:2];
     UILabel *fulltitle = (UILabel *)[cell viewWithTag:42];
     
-    CGFloat width = 100;
+    CGFloat width = 280;
     CGFloat height = 0;
-    CGRect r = [[[myObject objectAtIndex:indexPath.row] objectForKey:fullTemplate] boundingRectWithSize:CGSizeMake(width, height)
+    CGRect r = [[[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"]boundingRectWithSize:CGSizeMake(width, height)
                                                                         options:NSStringDrawingUsesLineFragmentOrigin
-                                                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}
+                                                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]}
                                                                         context:nil];
 
-    [[myObject objectAtIndex:indexPath.row] setValue:[NSString stringWithFormat:@"%f",currentHeight+r.size.height] forKey:heightTemplateCell];
+    [[myObject objectAtIndex:indexPath.row] setValue:[NSString stringWithFormat:@"%f",currentHeight+r.size.height+30] forKey:heightTemplateCell];
+    fullReturn = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
     [UIView animateWithDuration:.3f animations:^{
         subtitle.alpha = 0.0f;
         fulltitle.alpha = 1.0f;
@@ -246,25 +189,36 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
-        cell.userInteractionEnabled = NO;
+//        cell.userInteractionEnabled = NO;
     }
     head = (UILabel *)[cell viewWithTag:1];
-    head.text = [[myObject objectAtIndex:indexPath.row] objectForKey:headTemplate];
+    head.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"TITLE"];
     sample = (UILabel *)[cell viewWithTag:2];
-    sample.text =  [[myObject objectAtIndex:indexPath.row] objectForKey:sampleTemplate];
+    sample.text =  [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
     full = (UILabel *)[cell viewWithTag:3];
     
     [full setNumberOfLines:0];
     [full setLineBreakMode:NSLineBreakByWordWrapping];
-    full.text =[[myObject objectAtIndex:indexPath.row] objectForKey:fullTemplate];
+    full.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
     return cell;
 
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [schedule removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [myObject removeObjectAtIndex:indexPath.row];
+        NSString *path = [[NSBundle mainBundle] pathForResource: @"TemplateList" ofType:@"plist"];
+         NSMutableArray *delete = [[NSMutableArray alloc] initWithContentsOfFile: path];
+        [delete removeObjectAtIndex:indexPath.row];
+        NSLog(@"%@",myObject);
+//        NSFileManager *fileManager = [NSFileManager defaultManager];
+//        [fileManager removeItemAtPath:path error:NULL];
+//        [[NSFileManager defaultManager] removeFileAtPath:path error:NULL];
+
+        [delete writeToFile:path atomically:YES];
+//        [delete re:path atomically:YES];
+        [messageTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+//        [messageTable reloadData];
     }
 }
 @end

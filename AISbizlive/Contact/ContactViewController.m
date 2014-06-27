@@ -13,6 +13,8 @@
 #import "ContactCell.h"
 #import "SWTableViewCell.h"
 #import "AppDelegate.h"
+#import "DetailPeopleViewController.h"
+#import "MessageTableViewController.h"
 @interface ContactViewController ()
 {
     NSMutableArray *Checkcontact;
@@ -22,6 +24,7 @@
     NSMutableArray *Imagecontact;
     NSMutableData *jsonData;
     UIAlertView *loading;
+    int selectIndex;
 }
 
 @end
@@ -40,28 +43,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadPeopleView];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSURLRequest *theRequest =
-    [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://dldtestbed.com/php/appAdmin.php"]
-                     cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-                 timeoutInterval:10.0];
-    
-    NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-//    [testTable setMultipleTouchEnabled:YES];
-    // Loading...
-    loading = [[UIAlertView alloc] initWithTitle:@"" message:@"Please Wait..." delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-//    [loading show];
-    [testTable setContentOffset:CGPointMake(0.0, 44.0)];
-    
-    if (theConnection) {
-		
-        jsonData = [[NSMutableData alloc] init];
-    }
-    else {
-        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"NSURLConnection " message:@"Failed in viewDidLoad"  delegate: self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-		[connectFailMessage show];
-    }
+   
+//    [selectPeopleAndGroup setBackgroundColor:[UIColor greenColor]];
+//    [selectPeopleAndGroup setTintColor:[UIColor redColor]];
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//    NSURLRequest *theRequest =
+//    [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://dldtestbed.com/php/appAdmin.php"]
+//                     cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+//                 timeoutInterval:10.0];
+//    
+//    NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+////    [testTable setMultipleTouchEnabled:YES];
+//    // Loading...
+//    loading = [[UIAlertView alloc] initWithTitle:@"" message:@"Please Wait..." delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+////    [loading show];
+//    [testTable setContentOffset:CGPointMake(0.0, 44.0)];
+//    
+//    if (theConnection) {
+//		
+//        jsonData = [[NSMutableData alloc] init];
+//    }
+//    else {
+//        UIAlertView *connectFailMessage = [[UIAlertView alloc] initWithTitle:@"NSURLConnection " message:@"Failed in viewDidLoad"  delegate: self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+//		[connectFailMessage show];
+//    }
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
                                              initWithTarget: self
                                              action: @selector(hideKeyboard:)];
@@ -72,52 +77,57 @@
 }
 - (void)hideKeyboard:(UITapGestureRecognizer *)sender {
     [seachTextField resignFirstResponder];
-//    [passwordField resignFirstResponder];
 }
 -(void)setTextLangague{
     
     self.title = [AISString commonString:TITLE :@"CONTACT"];
     [self.navigationItem setTitle:[AISString commonString:TITLE :@"CONTACT"]];
-}
--(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-    UIAlertView *didFailWithErrorMessage = [[UIAlertView alloc] initWithTitle: @"NSURLConnection " message: @"didFailWithError"  delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
-    [didFailWithErrorMessage show];
-    //inform the user
-    NSLog(@"Connection failed! Error - %@", [error localizedDescription]);
-    [loading dismissWithClickedButtonIndex:0 animated:YES];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [jsonData appendData:data];
-}
--(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
-    if (jsonData) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        [loading dismissWithClickedButtonIndex:0 animated:YES];
-        id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-        
-        //    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        Checkcontact = [[NSMutableArray alloc] init];
-        Namecontact = [[NSMutableArray alloc] init];
-        Telcontact = [[NSMutableArray alloc] init];
-        Imagecontact = [[NSMutableArray alloc] init];
-        // value in key name
-        for (NSDictionary *dataDict in jsonObjects) {
-            [Checkcontact addObject:@"Ok_Grey.png"];
-            
-            [Namecontact addObject:[dataDict objectForKey:@"Name_app"]];
-            [Telcontact addObject:[dataDict objectForKey:@"Version_app"]];
-            [Imagecontact addObject:[dataDict objectForKey:@"Logo_app"]];
-           
-            //            NSLog(@"%@",Imagecontact);
-        }
-        [testTable reloadData];
-    }
+    [selectPeopleAndGroup setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[AISColor lightgreenColor],NSForegroundColorAttributeName ,[UIFont boldSystemFontOfSize:18.0f],NSFontAttributeName, nil] forState:UIControlStateNormal];
+    [selectPeopleAndGroup setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName ,[UIFont boldSystemFontOfSize:18.0f],NSFontAttributeName, nil] forState:UIControlStateHighlighted];
+    [selectPeopleAndGroup setTitle:[AISString commonString:LABEL :@"TABPEOPLE"] forSegmentAtIndex:0];
+    [selectPeopleAndGroup setTitle:[AISString commonString:LABEL :@"TABGROUP"] forSegmentAtIndex:1];
+    [self loadPeopleView];
 }
+//-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+//    UIAlertView *didFailWithErrorMessage = [[UIAlertView alloc] initWithTitle: @"NSURLConnection " message: @"didFailWithError"  delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
+//    [didFailWithErrorMessage show];
+//    //inform the user
+//    NSLog(@"Connection failed! Error - %@", [error localizedDescription]);
+//    [loading dismissWithClickedButtonIndex:0 animated:YES];
+//}
+//
+//- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+//{
+//    [jsonData appendData:data];
+//}
+//-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+//    
+//    if (jsonData) {
+//        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//        [loading dismissWithClickedButtonIndex:0 animated:YES];
+//        id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+//        
+//        //    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//        Checkcontact = [[NSMutableArray alloc] init];
+//        Namecontact = [[NSMutableArray alloc] init];
+//        Telcontact = [[NSMutableArray alloc] init];
+//        Imagecontact = [[NSMutableArray alloc] init];
+//        // value in key name
+//        for (NSDictionary *dataDict in jsonObjects) {
+//            [Checkcontact addObject:@"Ok_Grey.png"];
+//            
+//            [Namecontact addObject:[dataDict objectForKey:@"Name_app"]];
+//            [Telcontact addObject:[dataDict objectForKey:@"Version_app"]];
+//            [Imagecontact addObject:[dataDict objectForKey:@"Logo_app"]];
+//           
+//            //            NSLog(@"%@",Imagecontact);
+//        }
+//        [testTable reloadData];
+//    }
+//}
 -(void)viewWillAppear:(BOOL)animated{
-    self.tabBarController.tabBar.hidden = NO;
+//    self.tabBarController.tabBar.hidden = NO;
     [self setTextLangague];
 }
 - (void)didReceiveMemoryWarning
@@ -141,14 +151,64 @@
             break;
     }
 }
+-(void)popBackAction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)selectContact{
+//    Checkcontact
+    NSArray *arr = [self.navigationController viewControllers];
+    MessageTableViewController *rvc = (MessageTableViewController *)[arr objectAtIndex:[arr count]-2];
+    NSMutableArray *returnContact = [[NSMutableArray alloc] init];
+    for (int i = 0; i < Checkcontact.count; i++) {
+        if ([[Checkcontact objectAtIndex:i] isEqualToString:@"Ok_Green.png"]) {
+            [returnContact addObject:[Namecontact objectAtIndex:i]];
+        }
+    }
+    rvc.arrayContact = returnContact;
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)loadPeopleView{
-    
-    self.navigationItem.rightBarButtonItem = [self ContactRightButton];
-    self.navigationItem.leftBarButtonItem = [self ContactLeftButton];
+    if ([self.contactSelect isEqualToString:@"YES"]) {
+        self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(popBackAction) withTarget:self];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"] style:UIBarButtonItemStyleBordered target:self action:@selector(selectContact)];
+        self.tabBarController.tabBar.hidden = YES;
+        [testTable setEditing:YES animated:YES];
+    }
+    else{
+        
+        self.tabBarController.tabBar.hidden = NO;
+        self.navigationItem.rightBarButtonItem = [self ContactRightButton];
+        [testTable setEditing:NO animated:NO];
+        self.navigationItem.leftBarButtonItem = [self ContactLeftButton];
+    }
+    Checkcontact = [[NSMutableArray alloc] initWithObjects:@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png", nil];
+    Namecontact = [[NSMutableArray alloc] initWithObjects:@"Test1",@"Test2",@"Test3",@"Test4",@"Test5",@"Test1",@"Test2",@"Test3",@"Test4",@"Test5",@"Test1",@"Test2",@"Test3",@"Test4",@"Test5",@"Test1",@"Test2",@"Test3",@"Test4",@"Test5",nil];
+    Telcontact = [[NSMutableArray alloc] initWithObjects:@"tel1",@"tel2",@"tel3",@"tel4",@"tel5",@"tel1",@"tel2",@"tel3",@"tel4",@"tel5",@"tel1",@"tel2",@"tel3",@"tel4",@"tel5",@"tel1",@"tel2",@"tel3",@"tel4",@"tel5",nil];
+    Imagecontact = [[NSMutableArray alloc] initWithObjects:@"Logo.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",nil];
+    [testTable reloadData];
 }
 -(void)loadGroupView{
-    self.navigationItem.rightBarButtonItem = [self GroupRightButton];
-    self.navigationItem.leftBarButtonItem =[self GroupLeftButton];
+    if ([self.contactSelect isEqualToString:@"YES"]) {
+        self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(popBackAction) withTarget:self];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"] style:UIBarButtonItemStyleBordered target:self action:@selector(selectContact)];
+        self.tabBarController.tabBar.hidden = YES;
+        [testTable setEditing:YES animated:YES];
+    }
+    else{
+        self.navigationItem.rightBarButtonItem = [self GroupRightButton];
+        self.navigationItem.leftBarButtonItem =[self GroupLeftButton];
+        
+        self.tabBarController.tabBar.hidden = NO;
+
+        [testTable setEditing:NO animated:NO];
+    }
+    Checkcontact = [[NSMutableArray alloc] initWithObjects:@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png", nil];
+    Namecontact = [[NSMutableArray alloc] initWithObjects:@"Group1",@"Group2",@"Group3",@"Group4",@"Group5",nil];
+    Telcontact = [[NSMutableArray alloc] initWithObjects:@"tel1",@"tel2",@"tel3",@"tel4",@"tel5",nil];
+    Imagecontact = [[NSMutableArray alloc] initWithObjects:@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",nil];
+    [testTable reloadData];
 }
 -(void)peopleAdd{
     [self performSegueWithIdentifier: @"AddPeople" sender: self];
@@ -160,7 +220,8 @@
 -(void)peopleDelete{
     if(!testTable.editing){
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelDelete)];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete(0)" style:UIBarButtonItemStyleDone target:self action:@selector(peopleDeleteBtn)];
+        [self.navigationItem.leftBarButtonItem setTintColor:[AISColor lightgrayColor]];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStyleDone target:self action:@selector(peopleDeleteBtn)];
         self.navigationItem.rightBarButtonItem.tintColor = [UIColor redColor];
     }
     [testTable setEditing:!testTable.editing animated:YES];
@@ -186,53 +247,25 @@
     NSLog(@"groupDelete");
 }
 -(UIBarButtonItem *)ContactRightButton{
-    UIImageView *customAddPeople = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BUTTON_PEOPLE_ADD]];
-    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightButton.bounds = CGRectMake( 0, 0, customAddPeople.frame.size.width, customAddPeople.frame.size.height );
-    [rightButton setImage:[UIImage imageNamed:BUTTON_PEOPLE_ADD] forState:UIControlStateHighlighted];
-    [rightButton setImage:[UIImage imageNamed:BUTTON_PEOPLE_ADD]forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(peopleAdd) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *contactAddBtn = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
-    
+    UIBarButtonItem *contactAddBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_PEOPLE_ADD] style:UIBarButtonItemStyleBordered target:self action:@selector(peopleAdd)];
+    contactAddBtn.tintColor = [AISColor lightgreenColor];
     return contactAddBtn;
 }
 -(UIBarButtonItem *)ContactLeftButton{
-//    UIImageView *customDeletePeople = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BUTTON_PEOPLE_DELETE]];
-//    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    leftButton.bounds = CGRectMake( 0, 0, customDeletePeople.frame.size.width, customDeletePeople.frame.size.height );
-//    [leftButton setImage:[UIImage imageNamed:BUTTON_PEOPLE_DELETE] forState:UIControlStateHighlighted];
-//    [leftButton setImage:[UIImage imageNamed:BUTTON_PEOPLE_DELETE]forState:UIControlStateNormal];
-//    [leftButton addTarget:self action:@selector(peopleDelete) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *contactDeleteBtn =  [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-//    
-    
-    UIBarButtonItem *contactEditBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(peopleDelete)];
-    contactEditBtn.tintColor = [AISColor grayColor];
+    UIBarButtonItem *contactEditBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_PEOPLE_DELETE] style:UIBarButtonItemStyleBordered target:self action:@selector(peopleDelete)];
+    contactEditBtn.tintColor = [UIColor redColor];
     return contactEditBtn;
 }
 -(UIBarButtonItem *)GroupRightButton{
-    UIImageView *customAddGroup = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BUTTON_GROUP_ADD]];
-    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightButton.bounds = CGRectMake( 0, 0, customAddGroup.frame.size.width, customAddGroup.frame.size.height );
-    [rightButton setImage:[UIImage imageNamed:BUTTON_GROUP_ADD] forState:UIControlStateHighlighted];
-    [rightButton setImage:[UIImage imageNamed:BUTTON_GROUP_ADD]forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(groupAdd) forControlEvents:UIControlEventTouchUpInside];
     
-    UIBarButtonItem *groudAddBtn =  [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    UIBarButtonItem *groudAddBtn =   [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_GROUP_ADD] style:UIBarButtonItemStyleBordered target:self action:@selector(groupAdd)];
+    groudAddBtn.tintColor = [AISColor lightgreenColor];
+
     return groudAddBtn;
 }
 -(UIBarButtonItem *)GroupLeftButton{
-//    UIImageView *customDeleteGroup = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BUTTON_GROUP_DELETE]];
-//    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    leftButton.bounds = CGRectMake( 10, 0, customDeleteGroup.frame.size.width, customDeleteGroup.frame.size.height );
-//    [leftButton setImage:[UIImage imageNamed:BUTTON_GROUP_DELETE] forState:UIControlStateHighlighted];
-//    [leftButton setImage:[UIImage imageNamed:BUTTON_GROUP_DELETE]forState:UIControlStateNormal];
-//    [leftButton addTarget:self action:@selector(groupDelete) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    UIBarButtonItem *groupDeleteBtn = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-//
-    UIBarButtonItem *groupEditBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(peopleDelete)];
-    groupEditBtn.tintColor = [AISColor grayColor];
+    UIBarButtonItem *groupEditBtn =  [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_GROUP_DELETE] style:UIBarButtonItemStyleBordered target:self action:@selector(groupDelete)];
+    groupEditBtn.tintColor = [UIColor redColor];
     return groupEditBtn;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -248,7 +281,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellIdentifier = @"ContactCell";
+    static NSString *CellIdentifier = @"PeopleCell";
 
     ContactCell *cell = [testTable dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         ContactCell __weak *weakCell = cell;
@@ -257,22 +290,24 @@
             weakCell.leftUtilityButtons =  nil;
             weakCell.rightUtilityButtons = [self rightButtons];
             weakCell.delegate = self;
-            weakCell.containingTableView = tableView;
+            weakCell.containingTableView = testTable;
         } force:YES];
 
         [cell setCellHeight:cell.frame.size.height];
         //    //Image
-        NSString *tst = [NSString stringWithFormat:@"http://dldtestbed.com/image/app/%@",[Imagecontact objectAtIndex:indexPath.row]];
-        NSURL *url = [NSURL URLWithString:tst];
-        NSData *data = [NSData dataWithContentsOfURL:url];
+//        NSString *tst = [NSString stringWithFormat:@"http://dldtestbed.com/image/app/%@",[Imagecontact objectAtIndex:indexPath.row]];
+//        NSURL *url = [NSURL URLWithString:tst];
+//        NSData *data = [NSData dataWithContentsOfURL:url];
         cell.checkContact.image = [UIImage imageNamed:[Checkcontact objectAtIndex:indexPath.row]];
-        cell.imageContact.image = [UIImage imageWithData:data];
+    
+    cell.imageContact.image = [UIImage imageNamed:[Imagecontact objectAtIndex:indexPath.row]];
         cell.nameContact.text = [Namecontact objectAtIndex:indexPath.row];
         cell.telContact.text = [Telcontact objectAtIndex:indexPath.row];
         return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"cell selected at index path %ld:%ld", (long)indexPath.section, (long)indexPath.row);
+  
+    
     if(tableView.isEditing){
         ContactCell *checkCell = (ContactCell *)[testTable cellForRowAtIndexPath:indexPath];
         UIImage *check = [UIImage imageNamed:@"Ok_Grey.png"];
@@ -287,22 +322,49 @@
         }
         
     }
+    else{
+        
+        selectIndex = (int) indexPath.row;
+        if ([selectPeopleAndGroup selectedSegmentIndex] == 0) {
+            [self performSegueWithIdentifier:@"cellToPeople" sender:self];
+        }
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"Segue");
     if ([[segue identifier] isEqualToString:@"cellToPeople"]) {
-        NSLog(@"YESSSSS");
+        DetailPeopleViewController *detailPeople = [segue destinationViewController];
+        detailPeople.firstName = [Namecontact objectAtIndex:selectIndex];
+        detailPeople.phoneNumber = [Telcontact objectAtIndex:selectIndex];
+        detailPeople.profile = [Imagecontact objectAtIndex:selectIndex];
+    }
+    else if([[segue identifier] isEqualToString:@"EditPeople"]) {
+        AddPeopleViewController *editPeople = [segue destinationViewController];
+        editPeople.checkPush = @"YES";
+        editPeople.firstName = [Namecontact objectAtIndex:selectIndex];
+        editPeople.phoneNumber = [Telcontact objectAtIndex:selectIndex];
+        editPeople.profile = [Imagecontact objectAtIndex:selectIndex];
+    } else if([[segue identifier] isEqualToString:@"AddPeople"]) {
+        AddPeopleViewController *editPeople = [segue destinationViewController];
+        editPeople.checkPush = @"YES";
     }
 }
 -(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     return UITableViewCellEditingStyleNone;
 }
 - (void)swipeableTableViewCell:(ContactCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    
+    [cell setAccessoryType:UITableViewCellAccessoryNone];
+    selectIndex = (int) [testTable indexPathForCell:cell].row;
     switch (index) {
         case 0:
         {
-            NSLog(@"More button was pressed");
+            if ([selectPeopleAndGroup selectedSegmentIndex] == 0) {
+                [self performSegueWithIdentifier:@"EditPeople" sender:self];
+            }
             break;
         }
         case 1:

@@ -1,18 +1,18 @@
 //
-//  ChangePasswordViewController.m
+//  WebViewController.m
 //  AISbizlive
 //
-//  Created by Wachirawit on 5/20/2557 BE.
+//  Created by Wachirawit on 6/27/2557 BE.
 //  Copyright (c) 2557 promptnow. All rights reserved.
 //
 
-#import "ChangePasswordViewController.h"
+#import "WebViewController.h"
 #import "AISGlobal.h"
-@interface ChangePasswordViewController ()
+@interface WebViewController ()
 
 @end
 
-@implementation ChangePasswordViewController
+@implementation WebViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,26 +26,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
-    [self setTextLangague];
-}
--(void)setTextLangague{
-    [self.navigationItem setTitle:[AISString commonString:BUTTON :@"CHANGE_PASS"]];
-    [oldPasswordTextField setPlaceholder:[AISString commonString:PLACEHODER :@"OLD_PASS"]];
     
-    [newPasswordTextField setPlaceholder:[AISString commonString:PLACEHODER :@"NEW_PASS"]];
-    [reNewPasswordTextField setPlaceholder:[AISString commonString:PLACEHODER :@"CONFIRM_PASS"]];
-    [oldPasswordLabel setText:[AISString commonString:LABEL :@"OLD_PASS"]];
-    [newPasswordLabel setText:[AISString commonString:LABEL :@"NEW_PASS"]];
+    // Do any additional setup after loading the view.
+    [self setTextLangague];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
--(void)viewWillAppear:(BOOL)animated{
+-(void)setTextLangague{
+    [self.navigationItem setTitle:self.Header];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    
 }
-//[AISString commonString:BUTTON :@"DONE"]
+-(void)viewDidAppear:(BOOL)animated{
+    [self setTextLangague];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

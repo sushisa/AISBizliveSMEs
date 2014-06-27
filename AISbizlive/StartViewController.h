@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PageView/PageContentViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
-@interface StartViewController : UIViewController <UIPageViewControllerDataSource>
+@interface StartViewController : UIViewController <UIPageViewControllerDataSource,FBLoginViewDelegate>
 {
     __weak IBOutlet UIButton *btnFB;
     __weak IBOutlet UISwitch *BtnchangeLanguage;
@@ -19,8 +19,8 @@
 }
 //- (IBAction)SignClick:(id)sender;
 - (IBAction)ChangeLanguage:(id)sender;
-
 - (IBAction)FacebookLogin:(id)sender;
+- (IBAction)SignupEmail:(id)sender;
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *pageImages;
 @end

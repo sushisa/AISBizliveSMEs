@@ -28,7 +28,6 @@
     [super viewDidLoad];
     
     [self setTextLangague];
-    self.navigationController.navigationBar.topItem.title = @"Setting";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
@@ -36,6 +35,18 @@
 }
 -(void)setTextLangague{
     [self.navigationItem setTitle:[AISString commonString:TITLE :@"SETTING"]];
+    [bathLabel setText:[AISString commonString:LABEL :@"BATH"]];
+    [message1Label setText:[AISString commonString:LABEL :@"MESSAGE"]];
+    [message2Label setText:[AISString commonString:LABEL :@"MESSAGE"]];
+    [message3Label setText:[AISString commonString:LABEL :@"MESSAGE"]];
+    [yourBalanceLabel setText:[AISString commonString:LABEL :@"SETTING_BALANCE"]];
+     [numberSMSLabel setText:[AISString commonString:LABEL :@"SETTING_NUMBER"]];
+     [usedSMSLabel setText:[AISString commonString:LABEL :@"SETTING_USED"]];
+     [smsBalanceLabel setText:[AISString commonString:LABEL :@"SETTING_SMS"]];
+    [yourPackageLabel setText:[AISString commonString:LABEL :@"SETTING_PACKAGE"]];
+    [linkFacebookButton setTitle:[AISString commonString:BUTTON :@"LINK_FACEBOOK"] forState:UIControlStateNormal];
+    [changPasswordButton setTitle:[AISString commonString:BUTTON :@"CHANGE_PASS"] forState:UIControlStateNormal];
+    
     
 }
 -(void)viewWillAppear:(BOOL)animated{

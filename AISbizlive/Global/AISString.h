@@ -14,4 +14,6 @@
 #define POPUP @"POPUP"
 @interface AISString : NSObject
 +(NSString*)commonString:(NSString *) commonType :(NSString *)key;
++(NSMutableArray*)commonArray :(NSString *)key;
++(NSMutableArray*)TemplateArray;
 @end

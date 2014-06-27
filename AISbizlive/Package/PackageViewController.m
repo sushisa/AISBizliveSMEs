@@ -77,7 +77,7 @@
     
     headerLabel.textColor = [AISColor lightgreenColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:17.0f];
-    headerLabel.text = @"Select Package";
+    headerLabel.text = [AISString commonString:LABEL :@"SELECT_PACKAGE"];
 //    headerLabel.backgroundColor = [AISColor lightgreenColor];
     [twoHeaderView addSubview:headerLabel];
     [oneHeaderView addSubview:twoHeaderView];

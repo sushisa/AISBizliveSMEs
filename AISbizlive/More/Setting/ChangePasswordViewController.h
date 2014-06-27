@@ -9,5 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface ChangePasswordViewController : UIViewController
-
+{
+    __weak IBOutlet UILabel *newPasswordLabel;
+    __weak IBOutlet UILabel *oldPasswordLabel;
+    
+    __weak IBOutlet UITextField *oldPasswordTextField;
+    
+    __weak IBOutlet UITextField *newPasswordTextField;
+    
+    __weak IBOutlet UITextField *reNewPasswordTextField;
+}
 @end

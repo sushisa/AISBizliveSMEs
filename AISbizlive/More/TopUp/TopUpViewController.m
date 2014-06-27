@@ -30,20 +30,25 @@
     NSLog(@"Top Up Load");
     [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.rightBarButtonItem = [self topupRightBarButton];
+    self.navigationItem.rightBarButtonItem = [self doneBarButton];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
     currentLabel.text = @"1,000.00";
     mobileLabel.text = @"0953285722";
 }
 -(void)backAction{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    if ([self.checkPackage isEqualToString:@"YES"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else{
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 -(void)setTextLangague{
     [self.navigationItem setTitle:[AISString commonString:TITLE :@"TOPUP"]];
     
 }
--(UIBarButtonItem *)topupRightBarButton{
-    UIBarButtonItem *topupDoneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(DoneButton)];
+-(UIBarButtonItem *)doneBarButton{
+    UIBarButtonItem *topupDoneButton = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"] style:UIBarButtonItemStyleBordered target:self action:@selector(DoneButton)];
     [topupDoneButton setTintColor:[AISColor lightgreenColor]];
     
     return topupDoneButton;
@@ -54,7 +59,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.rightBarButtonItem = [self topupRightBarButton];
+    self.navigationItem.rightBarButtonItem = [self doneBarButton];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 

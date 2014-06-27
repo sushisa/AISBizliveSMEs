@@ -8,6 +8,7 @@
 
 #import "PaymentViewController.h"
 #import "AISGlobal.h"
+#import "TopUpViewController.h"
 
 @interface PaymentViewController ()
 
@@ -33,14 +34,16 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    NSLog(@"News Load");
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"Payment";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    [self setTextLangague];
+}
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"PAYMENT"]];
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.title = @"Payment";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
@@ -65,7 +68,7 @@
     
     headerLabel.textColor = [AISColor lightgreenColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:17.0f];
-    headerLabel.text = @"TopUp List";
+    headerLabel.text =[AISString commonString:LABEL :@"SELECT_PAYMENT"];
 //    headerLabel.backgroundColor = [AISColor lightgreenColor];
     [twoHeaderView addSubview:headerLabel];
     [oneHeaderView addSubview:twoHeaderView];
@@ -148,7 +151,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -156,7 +159,11 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+     if ([[segue identifier] isEqualToString:@"topupToBalance"]) {
+         TopUpViewController *topup = [segue destinationViewController];
+         topup.checkPackage = @"YES";
+    }
 }
-*/
+
 
 @end

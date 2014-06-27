@@ -19,4 +19,6 @@
 }
 - (IBAction)actionSelect:(id)sender;
 
+@property (strong, nonatomic) NSString *contactSelect;
+
 @end

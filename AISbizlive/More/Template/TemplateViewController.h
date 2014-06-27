@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TemplateViewController : UITableViewController
+@interface TemplateViewController : UITableViewController{
+    
+    IBOutlet UITableView *messageTable;
+}
 @property (strong, nonatomic) NSString *templeSelected;
 @end

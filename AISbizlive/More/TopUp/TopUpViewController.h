@@ -14,4 +14,6 @@
     __weak IBOutlet UILabel *mobileLabel;
     __weak IBOutlet UILabel *currentLabel;
 }
+
+@property (strong, nonatomic) NSString *checkPackage;
 @end

@@ -13,6 +13,8 @@
 {
     UIActionSheet *choosePhoto;
     AISAlertView *alertView ;
+    NSDictionary *facebookData;
+    NSUserDefaults *defaults;
 }
 @end
 
@@ -41,9 +43,43 @@
     alertView = [AISAlertView alloc];
     [self setTextLangage];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    
+    defaults = [NSUserDefaults standardUserDefaults];
+    if ([[defaults objectForKey:@"type"] isEqualToString:@"Facebook"]) {
+        [AISLoading loadingStart];
+        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile", @"email", @"user_friends"] allowLoginUI:YES completionHandler: ^(FBSession *session, FBSessionState state, NSError *error) {
+            if (state == FBSessionStateOpen) {
+                [[FBRequest requestForMe] startWithCompletionHandler:
+                 ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
+                     if (!error) {
+                         facebookData = user;
+                         NSLog(@"%@",facebookData);
+                         [self setDataFacebook];
+                     }
+                 }];
+            }
+        }];
+    }
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+-(void)setDataFacebook{
+//    SIGNUPFACEBOOK
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"SIGNUPFACEBOOK"]];
+    [fullNameField setText:[facebookData objectForKey:@"name"]];
+//    SIGNUP_IDFACEBOOK
+    [emailLabel setText:[AISString commonString:LABEL :@"SIGNUP_IDFACEBOOK"]];
+    [emailField setText:[facebookData objectForKey:@"id"]];
+    [emailField setEnabled:NO];
+    //    [photoImage setAlpha:0.0f];
+     NSString *userImageURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large", [facebookData objectForKey:@"username"]];
+    NSURL *imageURL = [NSURL URLWithString:userImageURL];
+    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+    [photoImage setBackgroundImage: [UIImage imageWithData:imageData] forState:UIControlStateNormal];
+    
+    [AISLoading loadingStop];
+//    self.profilePictureView.profileID = [facebookData objectForKey:@"id"];
 }
 -(void)setTextLangage{
     //Title

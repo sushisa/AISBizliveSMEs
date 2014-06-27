@@ -23,6 +23,8 @@
 #define MORE_BUTTON_TEMPLATE @"L_Template_Icon.png"
 #define MORE_BUTTON_TOPUP @"L_TopUp_Icon.png"
 
+
+#define PROFILE_DEFALUT @"Avatar_Default.png"
 #define OK_GREEN @"Ok_Green.png"
 #define OK_GREY @"Ok_Grey.png"
 #define BUTTON_ADD_DEFAULT @"Plus.png"

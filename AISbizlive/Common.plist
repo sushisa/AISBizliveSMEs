@@ -14,23 +14,30 @@
 		<key>SIGNUP</key>
 		<dict>
 			<key>EN</key>
-			<string>Sign Up</string>
+			<string>Sign Up,Email</string>
 			<key>TH</key>
-			<string>ลงทะเบียน</string>
+			<string>ลงทะเบียนด้วยอีเมล์</string>
+		</dict>
+		<key>SIGNUPFACEBOOK</key>
+		<dict>
+			<key>EN</key>
+			<string>Sign Up,Facebook</string>
+			<key>TH</key>
+			<string>ลงทะเบียนด้วยเฟสบุ๊ค</string>
 		</dict>
 		<key>POLICY</key>
 		<dict>
 			<key>EN</key>
 			<string>Privacy Policy</string>
 			<key>TH</key>
-			<string></string>
+			<string>นโยบายความเป็นส่วนตัว</string>
 		</dict>
 		<key>TERM</key>
 		<dict>
 			<key>EN</key>
 			<string>Term of Service</string>
 			<key>TH</key>
-			<string></string>
+			<string>เงื่อนไขการให้บริการ</string>
 		</dict>
 		<key>OTP</key>
 		<dict>
@@ -74,6 +81,20 @@
 			<key>TH</key>
 			<string>แพ็กเกจ</string>
 		</dict>
+		<key>PAYMENT</key>
+		<dict>
+			<key>EN</key>
+			<string>Payment</string>
+			<key>TH</key>
+			<string>การจ่ายเงิน</string>
+		</dict>
+		<key>MPAY</key>
+		<dict>
+			<key>EN</key>
+			<string>mPay</string>
+			<key>TH</key>
+			<string>mPay</string>
+		</dict>
 		<key>SHARE</key>
 		<dict>
 			<key>EN</key>
@@ -94,6 +115,27 @@
 			<string>Setting</string>
 			<key>TH</key>
 			<string>ตั้งค่า</string>
+		</dict>
+		<key>ADDCONTACT</key>
+		<dict>
+			<key>EN</key>
+			<string>Add Contact</string>
+			<key>TH</key>
+			<string>เพิ่มรายชื่อ</string>
+		</dict>
+		<key>DETAILCONTACT</key>
+		<dict>
+			<key>EN</key>
+			<string>Detail Contact</string>
+			<key>TH</key>
+			<string>รายละเอียดรายชื่อ</string>
+		</dict>
+		<key>ADDGROUP</key>
+		<dict>
+			<key>EN</key>
+			<string>Add Group</string>
+			<key>TH</key>
+			<string>เพิ่มกลุ่ม</string>
 		</dict>
 		<key>NEWS</key>
 		<dict>
@@ -160,6 +202,55 @@
 			<string>Done</string>
 			<key>TH</key>
 			<string>ตกลง</string>
+		</dict>
+		<key>IMMEDIATELY</key>
+		<dict>
+			<key>EN</key>
+			<string>Immediately</string>
+			<key>TH</key>
+			<string>ส่งทันที</string>
+		</dict>
+		<key>SCHEDULE</key>
+		<dict>
+			<key>EN</key>
+			<string>Schedule</string>
+			<key>TH</key>
+			<string>ตั้งเวลาส่ง</string>
+		</dict>
+		<key>SELECT_TEMPLATE</key>
+		<dict>
+			<key>EN</key>
+			<string>Select Template</string>
+			<key>TH</key>
+			<string>เลือกแบบข้อความ</string>
+		</dict>
+		<key>SAVE_TEMPLATE</key>
+		<dict>
+			<key>EN</key>
+			<string>Save Template</string>
+			<key>TH</key>
+			<string>บันทึกแบบข้อความ</string>
+		</dict>
+		<key>VARIABLE_SMS</key>
+		<dict>
+			<key>EN</key>
+			<string>Variable SMS</string>
+			<key>TH</key>
+			<string>ข้อความแบบตัวแปร</string>
+		</dict>
+		<key>CLEAR</key>
+		<dict>
+			<key>EN</key>
+			<string>Clear</string>
+			<key>TH</key>
+			<string>ล้าง</string>
+		</dict>
+		<key>DELETE_CONTACT</key>
+		<dict>
+			<key>EN</key>
+			<string>Delete Contact</string>
+			<key>TH</key>
+			<string>ลบรายชื่อ</string>
 		</dict>
 		<key>LIKE</key>
 		<dict>
@@ -234,6 +325,20 @@
 	</dict>
 	<key>PLACEHODER</key>
 	<dict>
+		<key>FIRST_NAME</key>
+		<dict>
+			<key>EN</key>
+			<string>Input First Name</string>
+			<key>TH</key>
+			<string>.....fistname</string>
+		</dict>
+		<key>LAST_NAME</key>
+		<dict>
+			<key>EN</key>
+			<string>Input Last Name</string>
+			<key>TH</key>
+			<string>....lastname</string>
+		</dict>
 		<key>TOPUP_SERIAL</key>
 		<dict>
 			<key>EN</key>
@@ -297,6 +402,27 @@
 			<key>TH</key>
 			<string>รหัสผ่านจากอีเมล์</string>
 		</dict>
+		<key>OLD_PASS</key>
+		<dict>
+			<key>EN</key>
+			<string>Enter Your Old Password</string>
+			<key>TH</key>
+			<string>รหัสผ่านเก่า</string>
+		</dict>
+		<key>NEW_PASS</key>
+		<dict>
+			<key>EN</key>
+			<string>Enter Your New Password</string>
+			<key>TH</key>
+			<string>รหัสผ่านใหม่</string>
+		</dict>
+		<key>CONFIRM_PASS</key>
+		<dict>
+			<key>EN</key>
+			<string>Re-Enter Your New Password</string>
+			<key>TH</key>
+			<string>ยืนยันรหัสผ่านใหม่</string>
+		</dict>
 	</dict>
 	<key>LABEL</key>
 	<dict>
@@ -314,12 +440,26 @@
 			<key>TH</key>
 			<string></string>
 		</dict>
+		<key>FIRST_NAME</key>
+		<dict>
+			<key>EN</key>
+			<string>First Name</string>
+			<key>TH</key>
+			<string>ชื่อ</string>
+		</dict>
+		<key>LAST_NAME</key>
+		<dict>
+			<key>EN</key>
+			<string>Last Name</string>
+			<key>TH</key>
+			<string>นามสกุล</string>
+		</dict>
 		<key>MOBILE</key>
 		<dict>
 			<key>EN</key>
 			<string>Mobile No.</string>
 			<key>TH</key>
-			<string></string>
+			<string>หมายเลขโทรศัพท์</string>
 		</dict>
 		<key>EMAIL</key>
 		<dict>
@@ -342,12 +482,33 @@
 			<key>TH</key>
 			<string></string>
 		</dict>
+		<key>OLD_PASS</key>
+		<dict>
+			<key>EN</key>
+			<string>Old Password</string>
+			<key>TH</key>
+			<string>รหัสเก่า</string>
+		</dict>
+		<key>NEW_PASS</key>
+		<dict>
+			<key>EN</key>
+			<string>New Password</string>
+			<key>TH</key>
+			<string>รหัสใหม่</string>
+		</dict>
 		<key>SIGNUP_EMAIL</key>
 		<dict>
 			<key>EN</key>
 			<string>E-mail</string>
 			<key>TH</key>
 			<string>อีเมล์</string>
+		</dict>
+		<key>SIGNUP_IDFACEBOOK</key>
+		<dict>
+			<key>EN</key>
+			<string>ID Facebook</string>
+			<key>TH</key>
+			<string>ไอดีเฟสบุ๊ค</string>
 		</dict>
 		<key>SIGNUP_PHONE</key>
 		<dict>
@@ -382,35 +543,35 @@
 			<key>EN</key>
 			<string>Your Balance</string>
 			<key>TH</key>
-			<string></string>
+			<string>ยอดเงินของคุณ</string>
 		</dict>
 		<key>SETTING_NUMBER</key>
 		<dict>
 			<key>EN</key>
 			<string>Number of SMS</string>
 			<key>TH</key>
-			<string></string>
+			<string>จำนวนของ SMS</string>
 		</dict>
 		<key>SETTING_USED</key>
 		<dict>
 			<key>EN</key>
 			<string>Used SMS</string>
 			<key>TH</key>
-			<string></string>
+			<string>ยอดการใช้ SMS</string>
 		</dict>
 		<key>SETTING_SMS</key>
 		<dict>
 			<key>EN</key>
 			<string>SMS Balance</string>
 			<key>TH</key>
-			<string></string>
+			<string>ยอดรวม SMS</string>
 		</dict>
 		<key>SETTING_PACKAGE</key>
 		<dict>
 			<key>EN</key>
 			<string>Your Package</string>
 			<key>TH</key>
-			<string></string>
+			<string>แพ็กเกจของคุณ</string>
 		</dict>
 		<key>HISTORY_DATE</key>
 		<dict>
@@ -424,7 +585,7 @@
 			<key>EN</key>
 			<string>Send Message History</string>
 			<key>TH</key>
-			<string></string>
+			<string>รายการส่งข้อความย้อนหลัง</string>
 		</dict>
 		<key>HISTORY_SEND_DETAIL</key>
 		<dict>
@@ -457,9 +618,9 @@
 		<key>HISTORY_TOPUP</key>
 		<dict>
 			<key>EN</key>
-			<string>Topup History</string>
+			<string>Top up History</string>
 			<key>TH</key>
-			<string></string>
+			<string>รายการเติมเงินย้อนหลัง</string>
 		</dict>
 		<key>HISTORY_TOPUP_CHANNEL</key>
 		<dict>
@@ -480,7 +641,7 @@
 			<key>EN</key>
 			<string>Quota Balance History</string>
 			<key>TH</key>
-			<string></string>
+			<string>รายการเติมแพ๊กเกจย้อนหลัง</string>
 		</dict>
 		<key>HISTORY_QUOTA_STATUS</key>
 		<dict>
@@ -489,12 +650,26 @@
 			<key>TH</key>
 			<string>สถานะ</string>
 		</dict>
+		<key>HISTORY_QUOTA_DATE</key>
+		<dict>
+			<key>EN</key>
+			<string>Date</string>
+			<key>TH</key>
+			<string>วัน</string>
+		</dict>
 		<key>HISTORY_QUOTA_BALANCE</key>
 		<dict>
 			<key>EN</key>
 			<string>Balance(SMS)</string>
 			<key>TH</key>
-			<string></string>
+			<string>ยอด (SMS)</string>
+		</dict>
+		<key>HISTORY_QUOTA_TOTAL</key>
+		<dict>
+			<key>EN</key>
+			<string>Total</string>
+			<key>TH</key>
+			<string>รวม</string>
 		</dict>
 		<key>TOPUP_CASH</key>
 		<dict>
@@ -510,6 +685,20 @@
 			<key>TH</key>
 			<string></string>
 		</dict>
+		<key>SELECT_PACKAGE</key>
+		<dict>
+			<key>EN</key>
+			<string>Select Package</string>
+			<key>TH</key>
+			<string>เลือกแพ็กเกจ</string>
+		</dict>
+		<key>SELECT_PAYMENT</key>
+		<dict>
+			<key>EN</key>
+			<string>Top up List</string>
+			<key>TH</key>
+			<string>ช่องทางการจ่ายเงิน</string>
+		</dict>
 		<key>ADDTEMPLATE_NAME</key>
 		<dict>
 			<key>EN</key>
@@ -522,7 +711,7 @@
 			<key>EN</key>
 			<string>Message</string>
 			<key>TH</key>
-			<string></string>
+			<string>ข้อความ</string>
 		</dict>
 		<key>BATH</key>
 		<dict>
@@ -530,6 +719,118 @@
 			<string>Bath</string>
 			<key>TH</key>
 			<string>บาท</string>
+		</dict>
+		<key>MESSAGE_NO</key>
+		<dict>
+			<key>EN</key>
+			<string>Message No.</string>
+			<key>TH</key>
+			<string>จำนวนข้อความ</string>
+		</dict>
+		<key>EXP_TIME</key>
+		<dict>
+			<key>EN</key>
+			<string>Exp Time</string>
+			<key>TH</key>
+			<string>เวลาส่งซ้ำ</string>
+		</dict>
+		<key>CHARACTER</key>
+		<dict>
+			<key>EN</key>
+			<string>Character</string>
+			<key>TH</key>
+			<string>จำนวนตัวอักษร</string>
+		</dict>
+		<key>REAL_CHARACTER</key>
+		<dict>
+			<key>EN</key>
+			<string>Real Character</string>
+			<key>TH</key>
+			<string>จำนวนไบท์</string>
+		</dict>
+		<key>START_DATE</key>
+		<dict>
+			<key>EN</key>
+			<string>Start Date</string>
+			<key>TH</key>
+			<string>วันเริ่มต้น</string>
+		</dict>
+		<key>END_DATE</key>
+		<dict>
+			<key>EN</key>
+			<string>End Date</string>
+			<key>TH</key>
+			<string>วันสิ้นสุด</string>
+		</dict>
+		<key>SEND_TIME</key>
+		<dict>
+			<key>EN</key>
+			<string>Send Time</string>
+			<key>TH</key>
+			<string>เวลาที่ส่ง</string>
+		</dict>
+		<key>ONE_TIME</key>
+		<dict>
+			<key>EN</key>
+			<string>One Time</string>
+			<key>TH</key>
+			<string>ส่งครั้งเดียว</string>
+		</dict>
+		<key>EVERY_DAY</key>
+		<dict>
+			<key>EN</key>
+			<string>Every Day</string>
+			<key>TH</key>
+			<string>ทุกวัน</string>
+		</dict>
+		<key>WEEK</key>
+		<dict>
+			<key>EN</key>
+			<string>Week</string>
+			<key>TH</key>
+			<string>สัปดาห์</string>
+		</dict>
+		<key>MONTH</key>
+		<dict>
+			<key>EN</key>
+			<string>Month</string>
+			<key>TH</key>
+			<string>เดือน</string>
+		</dict>
+		<key>MONTH_END_MONTH</key>
+		<dict>
+			<key>EN</key>
+			<string>End of Month</string>
+			<key>TH</key>
+			<string>วันสุดท้ายของเดือน</string>
+		</dict>
+		<key>MONTH_ALL</key>
+		<dict>
+			<key>EN</key>
+			<string>All</string>
+			<key>TH</key>
+			<string>ทั้งหมด</string>
+		</dict>
+		<key>TOTALSMS</key>
+		<dict>
+			<key>EN</key>
+			<string>Your Current Balance (SMS)</string>
+			<key>TH</key>
+			<string>ยอดรวมทั้งหมด (SMS)</string>
+		</dict>
+		<key>TABPEOPLE</key>
+		<dict>
+			<key>EN</key>
+			<string>People</string>
+			<key>TH</key>
+			<string>รายชื่อ</string>
+		</dict>
+		<key>TABGROUP</key>
+		<dict>
+			<key>EN</key>
+			<string>Group</string>
+			<key>TH</key>
+			<string>กลุ่ม</string>
 		</dict>
 	</dict>
 	<key>POPUP</key>
@@ -604,6 +905,46 @@
 			<key>TH</key>
 			<string>ระบบได้ทำการลงทะเบียนให้ท่านเรียบร้อยแล้ว กรุณา Log in เพื่อเข้าใช้งานระบบ</string>
 		</dict>
+	</dict>
+	<key>WEEK_DETAIL</key>
+	<dict>
+		<key>EN</key>
+		<array>
+			<string>Monday</string>
+			<string>Tuesday</string>
+			<string>Wednesday</string>
+			<string>Thursday</string>
+			<string>Friday</string>
+			<string>Saturday</string>
+			<string>Sunday</string>
+		</array>
+		<key>TH</key>
+		<array>
+			<string>วันจันทร์</string>
+			<string>วันอังคาร</string>
+			<string>วันพุธ</string>
+			<string>วันพฤหัสบดี</string>
+			<string>วันศุกร์</string>
+			<string>วันเสาร์</string>
+			<string>วันอาทิตย์</string>
+		</array>
+	</dict>
+	<key>INFORMATION</key>
+	<dict>
+		<key>EN</key>
+		<array>
+			<string>Help</string>
+			<string>Private Policy</string>
+			<string>Terms of Service</string>
+			<string>About</string>
+		</array>
+		<key>TH</key>
+		<array>
+			<string>ช่วยเหลือ</string>
+			<string>นโยบายความเป็นส่วนตัว</string>
+			<string>เงื่อนไขการให้บริการ</string>
+			<string>อื่นๆ</string>
+		</array>
 	</dict>
 </dict>
 </plist>

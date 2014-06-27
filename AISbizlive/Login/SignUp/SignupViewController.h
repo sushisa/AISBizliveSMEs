@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <FacebookSDK/FacebookSDK.h>
 @interface SignupViewController : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>{
     //Views
     
@@ -35,8 +35,10 @@
     __weak IBOutlet UIButton *doneButton;
 }
 
-- (IBAction)choosePicture:(id)sender;
+@property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
 
+@property (strong, nonatomic) NSString *facebookID;
+- (IBAction)choosePicture:(id)sender;
 
 - (IBAction)confirmSignUp:(id)sender;
 @end

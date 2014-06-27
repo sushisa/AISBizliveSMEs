@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface HistoryViewController : UITableViewController
-
+{
+    __weak IBOutlet UILabel *sendHistory;
+    
+    __weak IBOutlet UILabel *balanceHistory;
+    __weak IBOutlet UILabel *topupHistory;
+}
 @end

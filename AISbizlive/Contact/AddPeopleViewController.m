@@ -28,33 +28,70 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"Add People Load");
     self.tabBarController.tabBar.hidden = YES;
     self.navigationController.navigationBarHidden = NO;
-    [self.navigationItem setTitle:@"Add People"];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.rightBarButtonItem = [self DoneButton];
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
                                              initWithTarget: self
                                              action: @selector(hideKeyboard:)];
     [oneTapGesture setNumberOfTouchesRequired:1];
     [[self view] addGestureRecognizer:oneTapGesture];
+    if (self.profile == nil) {
+        [imagePeople setBackgroundImage:[UIImage imageNamed:PROFILE_DEFALUT] forState:UIControlStateNormal];
+    }
+    else {
+        [imagePeople setBackgroundImage:[UIImage imageNamed:self.profile] forState:UIControlStateNormal];
+    }
+    [self setTextLangague];
+}
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:TITLE :@"ADDCONTACT"]];
+    [nameLabel setText:[AISString commonString:LABEL :@"FIRST_NAME"]];
+    [nameTextField setText:self.firstName];
+    [nameTextField setPlaceholder:[AISString commonString:PLACEHODER :@"FIRST_NAME"]];
+    
+    [lastNameLabel setText:[AISString commonString:LABEL :@"LAST_NAME"]];
+    [lastNameTextField setPlaceholder:[AISString commonString:PLACEHODER :@"LAST_NAME"]];
+    
+    [mobileLabel setText:[AISString commonString:LABEL :@"MOBILE"]];
+    [mobileNoTextField setText:self.phoneNumber];
+    [mobileNoTextField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_PHONE"]];
+
 }
 - (void)hideKeyboard:(UITapGestureRecognizer *)sender {
     [nameTextField resignFirstResponder];
     [lastNameTextField resignFirstResponder];
     [mobileNoTextField resignFirstResponder];
 }
+-(void)viewDidDisappear:(BOOL)animated{
+    [self clearAllData];
+}
+-(void)clearAllData{
+    [nameTextField setText:@""];
+    [lastNameTextField setText:@""];
+    [mobileNoTextField setText:@""];
+    self.firstName = @"";
+    self.phoneNumber = @"";
+    self.profile = @"";
+}
 -(void)viewWillAppear:(BOOL)animated {
+    [self setTextLangague];
     self.navigationController.navigationBarHidden = NO;
     self.tabBarController.tabBar.hidden = YES;
-    [self.navigationItem setTitle:@"Add People"];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    if ([self.checkPush isEqualToString: @"YES"]) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 -(UIBarButtonItem *)DoneButton{
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"] style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
     
     return doneButton;
 }
@@ -112,6 +149,7 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     //imageVieq.image = chosenImage;
+    NSLog(@"%@",chosenImage);
     [imagePeople setBackgroundImage:chosenImage forState:UIControlStateNormal];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     

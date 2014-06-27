@@ -8,7 +8,7 @@
 
 #import "ImportContactViewController.h"
 #import "AISGlobal.h"
-
+#import "ContactCell.h"
 @interface ImportContactViewController ()
 {
     NSDictionary *dict;
@@ -97,9 +97,8 @@
         ABRecordRef ref = CFArrayGetValueAtIndex(Contant, i);
         Firstname = [[NSString alloc] initWithFormat:@"%@",ABRecordCopyValue(ref, kABPersonFirstNameProperty) ];
         Lastname = [[NSString alloc] initWithFormat:@"%@",ABRecordCopyValue(ref, kABPersonLastNameProperty) ];
+        
        contactImageData  = (__bridge NSData *)ABPersonCopyImageDataWithFormat(ref, kABPersonImageFormatThumbnail);
-//
-//        [contactInfoDict setObject:contactImageData forKey:@"image"];
         Phone = ABRecordCopyValue(ref, kABPersonPhoneProperty);
         if (ABMultiValueGetCount(Phone)>0){
             phones = [[NSString alloc] initWithFormat:@"%@",ABMultiValueCopyValueAtIndex(Phone, 0) ];
@@ -109,8 +108,8 @@
                     phones, phone1,
                     contactImageData,profileImage,
                     nil];
+            [myObject addObject:dict];
         }
-        [myObject addObject:dict];
         
     }
     check =[[NSMutableArray alloc] initWithArray:myObject];
@@ -137,29 +136,25 @@
     return [check count];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70;
+    return 75;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"contactCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+//    if (cell == nil) {
+//        cell = [[ContactCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
      NSDictionary *cellValue = [check objectAtIndex:indexPath.row];
-    UIImageView *profile = (UIImageView *)[cell viewWithTag:19];
     if([cellValue objectForKey:profileImage] != nil){
-        profile.image = [UIImage imageWithData:[cellValue objectForKey:profileImage]];
+        cell.imageContact.image = [UIImage imageWithData:[cellValue objectForKey:profileImage]];
     }
     else {
-        profile.image = [UIImage imageNamed:@"Avatar_Default.png"];
+        cell.imageContact.image = [UIImage imageNamed:PROFILE_DEFALUT];
     }
-    UILabel *nameLabel = (UILabel *)[cell viewWithTag:20];
-    nameLabel.textColor = [AISColor lightgrayColor];
-    nameLabel.text =  [[NSString alloc]initWithFormat:@"%@ %@",[cellValue objectForKey:firstname],[cellValue objectForKey:lastname]];
-    UILabel *telLabel = (UILabel *)[cell viewWithTag:21];
-    telLabel.textColor = [AISColor lightgrayColor];
-    telLabel.text =  [[NSString alloc]initWithFormat:@"%@",[cellValue objectForKey:phone1]];
+//    cell.imageContact
+    cell.nameContact.text =  [[NSString alloc]initWithFormat:@"%@ %@",[cellValue objectForKey:firstname],[cellValue objectForKey:lastname]];
+    cell.telContact.text =  [[NSString alloc]initWithFormat:@"%@",[cellValue objectForKey:phone1]];
     return cell;
 }
 /*

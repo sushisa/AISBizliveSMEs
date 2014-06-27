@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddTemplateViewController : UIViewController
+@interface AddTemplateViewController : UIViewController <UITextViewDelegate>
 {
     
     __weak IBOutlet UITextField *nameTemplate;
     __weak IBOutlet UITextView *descritionTemplate;
+    __weak IBOutlet UILabel *textLength;
 }
+
+@property (strong, nonatomic) NSString *descritionItem;
 @end

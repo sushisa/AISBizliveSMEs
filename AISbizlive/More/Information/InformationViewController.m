@@ -8,9 +8,11 @@
 
 #import "InformationViewController.h"
 #import "AISGlobal.h"
+#import "WebViewController.h"
 @interface InformationViewController ()
 {
     NSMutableArray *info;
+    int selectIndex;
 }
 @end
 
@@ -28,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    info = [[NSMutableArray alloc] initWithObjects:@"Help",@"Private Policy",@"Terms of Service",@"About", nil];
+    info = [[NSMutableArray alloc] initWithArray:[AISString commonArray:@"INFORMATION"]];
     NSLog(@"Information Load");
     [self setTextLangague];
     self.tabBarController.tabBar.hidden = YES;
@@ -78,5 +80,14 @@
     TextLabel.textColor = [AISColor lightgrayColor];
     TextLabel.text = [info objectAtIndex:indexPath.row];
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    selectIndex = (int ) indexPath.row;
+//    [self performSegueWithIdentifier:@"informationToWeb" sender:self];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    WebViewController *web = [segue destinationViewController];
+    web.Header = [info objectAtIndex:selectIndex];
 }
 @end
