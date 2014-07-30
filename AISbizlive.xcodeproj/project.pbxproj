@@ -16,6 +16,7 @@
 		7115E09D18F5220E0030AF26 /* AddTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7115E09C18F5220E0030AF26 /* AddTemplateViewController.m */; };
 		71198E0B193C874E006C05CE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71198E0A193C874E006C05CE /* FacebookSDK.framework */; };
 		711A9DA7195D13DA00B52AEF /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711A9DA6195D13DA00B52AEF /* WebViewController.m */; };
+		711A9DAB195D481700B52AEF /* FontUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 711A9DAA195D481700B52AEF /* FontUtil.m */; };
 		711C685B18EBE3D40009C3B4 /* AISColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 711C685A18EBE3D40009C3B4 /* AISColor.m */; };
 		711E0D9A195C19EE00423448 /* ImportCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 711E0D99195C19EE00423448 /* ImportCell.m */; };
 		711E0D9D195C23CD00423448 /* mPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711E0D9C195C23CD00423448 /* mPayViewController.m */; };
@@ -39,6 +40,9 @@
 		715C201218FE572C00CB046C /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 715C200F18FE572C00CB046C /* Logo@2x.png */; };
 		715C201818FE680100CB046C /* Add_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 715C201718FE680100CB046C /* Add_Icon@2x.png */; };
 		715C201B18FE696D00CB046C /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 715C201A18FE696D00CB046C /* AddGroupViewController.m */; };
+		71602610196BC82C005B3193 /* startup_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7160260F196BC82C005B3193 /* startup_sdk.framework */; };
+		71602612196BCAC2005B3193 /* StartUp_20018.crt in Resources */ = {isa = PBXBuildFile; fileRef = 71602611196BCAC2005B3193 /* StartUp_20018.crt */; };
+		71602615196BEF2B005B3193 /* PackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71602614196BEF2B005B3193 /* PackageCell.m */; };
 		716120C718A4DB24004077D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716120C618A4DB24004077D9 /* Foundation.framework */; };
 		716120C918A4DB24004077D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716120C818A4DB24004077D9 /* CoreGraphics.framework */; };
 		716120CB18A4DB24004077D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716120CA18A4DB24004077D9 /* UIKit.framework */; };
@@ -51,8 +55,7 @@
 		7161210418A4E600004077D9 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161210318A4E600004077D9 /* PageContentViewController.m */; };
 		7161210F18A4EA5C004077D9 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161210E18A4EA5C004077D9 /* ContactViewController.m */; };
 		7161211718A4EACA004077D9 /* PackageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161211618A4EACA004077D9 /* PackageViewController.m */; };
-		716D02751910E7A300855F19 /* TermViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716D02741910E7A300855F19 /* TermViewController.m */; };
-		716D02781910E7B700855F19 /* PolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716D02771910E7B700855F19 /* PolicyViewController.m */; };
+		7169DE12196E968800039AE0 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7169DE11196E968800039AE0 /* TemplateCell.m */; };
 		7176D6E618AA2AEC004D849C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176D6E518AA2AEC004D849C /* AddressBookUI.framework */; };
 		7176D6E818AA2AF2004D849C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176D6E718AA2AF2004D849C /* Social.framework */; };
 		717A9C2118F7952E00993805 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717A9C2018F7952E00993805 /* CoreData.framework */; };
@@ -67,10 +70,8 @@
 		717A9C4318F7AF4200993805 /* Iphone_120X120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 717A9C3518F7AF4200993805 /* Iphone_120X120@2x.png */; };
 		7181430E19581A4B00871B3D /* AISMessageHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7181430D19581A4B00871B3D /* AISMessageHead.m */; };
 		7189FE161908F9D400B636FB /* AISView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7189FE151908F9D400B636FB /* AISView.m */; };
-		718B909318B7569200488C48 /* AISBLString.m in Sources */ = {isa = PBXBuildFile; fileRef = 718B909218B7569200488C48 /* AISBLString.m */; };
 		718FE71019344B1F00E9C9E2 /* ForgetEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718FE70F19344B1F00E9C9E2 /* ForgetEmailViewController.m */; };
-		718FE71319344B3600E9C9E2 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718FE71219344B3600E9C9E2 /* ResetPasswordViewController.m */; };
-		718FE71619346B4200E9C9E2 /* AISNavigationBarLeftItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 718FE71519346B4200E9C9E2 /* AISNavigationBarLeftItem.m */; };
+		718FE71619346B4200E9C9E2 /* AISNavigationBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 718FE71519346B4200E9C9E2 /* AISNavigationBarItem.m */; };
 		71996D611924B28300AC1EDF /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71996D601924B28300AC1EDF /* MessageTableViewController.m */; };
 		71996D641924C96F00AC1EDF /* AISButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 71996D631924C96F00AC1EDF /* AISButton.m */; };
 		719E0243193F0293004A043A /* AISString.m in Sources */ = {isa = PBXBuildFile; fileRef = 719E0242193F0293004A043A /* AISString.m */; };
@@ -119,12 +120,11 @@
 		71B023C819417BBD0031AA3F /* AISLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B023C719417BBD0031AA3F /* AISLoading.m */; };
 		71B023CB1941A3460031AA3F /* DetailPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B023CA1941A3460031AA3F /* DetailPeopleViewController.m */; };
 		71B6FC3C18F64B27000930F4 /* DetailNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B6FC3B18F64B27000930F4 /* DetailNewsViewController.m */; };
+		71BD0B10196261EC00ECC0F0 /* DetailGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BD0B0F196261EC00ECC0F0 /* DetailGroupViewController.m */; };
 		71C3DDEB18D97170002B6E79 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C3DDEA18D97170002B6E79 /* ScheduleViewController.m */; };
 		71CD62531959687A00692B4C /* TemplateList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71CD62521959687A00692B4C /* TemplateList.plist */; };
 		71E44157193DBB02004282AC /* Common.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71E44156193DBB02004282AC /* Common.plist */; };
-		71EBF62618B30D1900B1690B /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EBF62518B30D1900B1690B /* Contact.m */; };
 		71EF928A18D6986B00A51C52 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EF928918D6986B00A51C52 /* NewsViewController.m */; };
-		71F1752618EA97AB0047E842 /* ENGlobalString.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71F1752518EA97AB0047E842 /* ENGlobalString.plist */; };
 		71F2043518D2C4F100EBE5BF /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F2043418D2C4F100EBE5BF /* HistoryViewController.m */; };
 		71F9030C18E2B723001E7663 /* DWTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9030518E2B723001E7663 /* DWTagList.m */; };
 		71FA02DF1904F8E90016FF57 /* TopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FA02DE1904F8E90016FF57 /* TopUpViewController.m */; };
@@ -149,6 +149,8 @@
 		71198E0A193C874E006C05CE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		711A9DA5195D13DA00B52AEF /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = Web/WebViewController.h; sourceTree = "<group>"; };
 		711A9DA6195D13DA00B52AEF /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = Web/WebViewController.m; sourceTree = "<group>"; };
+		711A9DA9195D481700B52AEF /* FontUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontUtil.h; path = Global/FontUtil.h; sourceTree = "<group>"; };
+		711A9DAA195D481700B52AEF /* FontUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontUtil.m; path = Global/FontUtil.m; sourceTree = "<group>"; };
 		711C685918EBE3D40009C3B4 /* AISColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISColor.h; path = Global/AISColor.h; sourceTree = "<group>"; };
 		711C685A18EBE3D40009C3B4 /* AISColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISColor.m; path = Global/AISColor.m; sourceTree = "<group>"; };
 		711E0D98195C19EE00423448 /* ImportCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImportCell.h; path = More/ImportContact/ImportCell.h; sourceTree = "<group>"; };
@@ -193,6 +195,10 @@
 		715C201718FE680100CB046C /* Add_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add_Icon@2x.png"; sourceTree = "<group>"; };
 		715C201918FE696D00CB046C /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddGroupViewController.h; path = Contact/AddGroupViewController.h; sourceTree = "<group>"; };
 		715C201A18FE696D00CB046C /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddGroupViewController.m; path = Contact/AddGroupViewController.m; sourceTree = "<group>"; };
+		7160260F196BC82C005B3193 /* startup_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = startup_sdk.framework; path = AISbizlive/Library/startup_sdk.framework; sourceTree = "<group>"; };
+		71602611196BCAC2005B3193 /* StartUp_20018.crt */ = {isa = PBXFileReference; lastKnownFileType = file; name = StartUp_20018.crt; path = Library/StartUp_20018.crt; sourceTree = "<group>"; };
+		71602613196BEF2B005B3193 /* PackageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PackageCell.h; path = Package/PackageCell.h; sourceTree = "<group>"; };
+		71602614196BEF2B005B3193 /* PackageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PackageCell.m; path = Package/PackageCell.m; sourceTree = "<group>"; };
 		716120C318A4DB24004077D9 /* AISbizlive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AISbizlive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		716120C618A4DB24004077D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		716120C818A4DB24004077D9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -214,10 +220,8 @@
 		7161210E18A4EA5C004077D9 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactViewController.m; path = Contact/ContactViewController.m; sourceTree = "<group>"; };
 		7161211518A4EACA004077D9 /* PackageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PackageViewController.h; path = Package/PackageViewController.h; sourceTree = "<group>"; };
 		7161211618A4EACA004077D9 /* PackageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PackageViewController.m; path = Package/PackageViewController.m; sourceTree = "<group>"; };
-		716D02731910E7A300855F19 /* TermViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermViewController.h; path = Login/SignUp/TermViewController.h; sourceTree = "<group>"; };
-		716D02741910E7A300855F19 /* TermViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermViewController.m; path = Login/SignUp/TermViewController.m; sourceTree = "<group>"; };
-		716D02761910E7B700855F19 /* PolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PolicyViewController.h; path = Login/SignUp/PolicyViewController.h; sourceTree = "<group>"; };
-		716D02771910E7B700855F19 /* PolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PolicyViewController.m; path = Login/SignUp/PolicyViewController.m; sourceTree = "<group>"; };
+		7169DE10196E968800039AE0 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateCell.h; path = More/Template/TemplateCell.h; sourceTree = "<group>"; };
+		7169DE11196E968800039AE0 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateCell.m; path = More/Template/TemplateCell.m; sourceTree = "<group>"; };
 		7176D6E518AA2AEC004D849C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		7176D6E718AA2AF2004D849C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		717A9C2018F7952E00993805 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -234,14 +238,10 @@
 		7181430D19581A4B00871B3D /* AISMessageHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISMessageHead.m; path = Global/AISMessageHead.m; sourceTree = "<group>"; };
 		7189FE141908F9D400B636FB /* AISView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISView.h; path = Global/AISView.h; sourceTree = "<group>"; };
 		7189FE151908F9D400B636FB /* AISView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISView.m; path = Global/AISView.m; sourceTree = "<group>"; };
-		718B909118B7569200488C48 /* AISBLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISBLString.h; path = Global/AISBLString.h; sourceTree = "<group>"; };
-		718B909218B7569200488C48 /* AISBLString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISBLString.m; path = Global/AISBLString.m; sourceTree = "<group>"; };
 		718FE70E19344B1F00E9C9E2 /* ForgetEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgetEmailViewController.h; path = Login/Forget/ForgetEmailViewController.h; sourceTree = "<group>"; };
 		718FE70F19344B1F00E9C9E2 /* ForgetEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgetEmailViewController.m; path = Login/Forget/ForgetEmailViewController.m; sourceTree = "<group>"; };
-		718FE71119344B3600E9C9E2 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResetPasswordViewController.h; path = Login/Forget/ResetPasswordViewController.h; sourceTree = "<group>"; };
-		718FE71219344B3600E9C9E2 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResetPasswordViewController.m; path = Login/Forget/ResetPasswordViewController.m; sourceTree = "<group>"; };
-		718FE71419346B4200E9C9E2 /* AISNavigationBarLeftItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISNavigationBarLeftItem.h; path = Global/AISNavigationBarLeftItem.h; sourceTree = "<group>"; };
-		718FE71519346B4200E9C9E2 /* AISNavigationBarLeftItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISNavigationBarLeftItem.m; path = Global/AISNavigationBarLeftItem.m; sourceTree = "<group>"; };
+		718FE71419346B4200E9C9E2 /* AISNavigationBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISNavigationBarItem.h; path = Global/AISNavigationBarItem.h; sourceTree = "<group>"; };
+		718FE71519346B4200E9C9E2 /* AISNavigationBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISNavigationBarItem.m; path = Global/AISNavigationBarItem.m; sourceTree = "<group>"; };
 		71996D5F1924B28300AC1EDF /* MessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageTableViewController.h; path = Message/MessageTableViewController.h; sourceTree = "<group>"; };
 		71996D601924B28300AC1EDF /* MessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageTableViewController.m; path = Message/MessageTableViewController.m; sourceTree = "<group>"; };
 		71996D621924C96F00AC1EDF /* AISButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISButton.h; path = Global/AISButton.h; sourceTree = "<group>"; };
@@ -304,15 +304,14 @@
 		71B023CA1941A3460031AA3F /* DetailPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailPeopleViewController.m; path = Contact/DetailPeopleViewController.m; sourceTree = "<group>"; };
 		71B6FC3A18F64B27000930F4 /* DetailNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailNewsViewController.h; sourceTree = "<group>"; };
 		71B6FC3B18F64B27000930F4 /* DetailNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailNewsViewController.m; sourceTree = "<group>"; };
+		71BD0B0E196261EC00ECC0F0 /* DetailGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailGroupViewController.h; path = Contact/DetailGroupViewController.h; sourceTree = "<group>"; };
+		71BD0B0F196261EC00ECC0F0 /* DetailGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailGroupViewController.m; path = Contact/DetailGroupViewController.m; sourceTree = "<group>"; };
 		71C3DDE918D97170002B6E79 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewController.h; path = More/Schedule/ScheduleViewController.h; sourceTree = "<group>"; };
 		71C3DDEA18D97170002B6E79 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleViewController.m; path = More/Schedule/ScheduleViewController.m; sourceTree = "<group>"; };
 		71CD62521959687A00692B4C /* TemplateList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateList.plist; sourceTree = "<group>"; };
 		71E44156193DBB02004282AC /* Common.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Common.plist; sourceTree = "<group>"; };
-		71EBF62418B30D1900B1690B /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contact.h; path = Model/Contact.h; sourceTree = "<group>"; };
-		71EBF62518B30D1900B1690B /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contact.m; path = Model/Contact.m; sourceTree = "<group>"; };
 		71EF928818D6986B00A51C52 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsViewController.h; path = More/News/NewsViewController.h; sourceTree = "<group>"; };
 		71EF928918D6986B00A51C52 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsViewController.m; path = More/News/NewsViewController.m; sourceTree = "<group>"; };
-		71F1752518EA97AB0047E842 /* ENGlobalString.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ENGlobalString.plist; sourceTree = "<group>"; };
 		71F2043318D2C4F100EBE5BF /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryViewController.h; path = More/History/HistoryViewController.h; sourceTree = "<group>"; };
 		71F2043418D2C4F100EBE5BF /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryViewController.m; path = More/History/HistoryViewController.m; sourceTree = "<group>"; };
 		71F9030418E2B723001E7663 /* DWTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTagList.h; path = Library/DWTagList.h; sourceTree = "<group>"; };
@@ -328,6 +327,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71602610196BC82C005B3193 /* startup_sdk.framework in Frameworks */,
 				717A9C2318F7953C00993805 /* QuartzCore.framework in Frameworks */,
 				717A9C2118F7952E00993805 /* CoreData.framework in Frameworks */,
 				7176D6E818AA2AF2004D849C /* Social.framework in Frameworks */,
@@ -362,10 +362,6 @@
 				710E59C818AC7F9E006F4CB2 /* OTPViewController.m */,
 				710E59CA18AC7FAD006F4CB2 /* EmailViewController.h */,
 				710E59CB18AC7FAD006F4CB2 /* EmailViewController.m */,
-				716D02731910E7A300855F19 /* TermViewController.h */,
-				716D02741910E7A300855F19 /* TermViewController.m */,
-				716D02761910E7B700855F19 /* PolicyViewController.h */,
-				716D02771910E7B700855F19 /* PolicyViewController.m */,
 			);
 			name = Signup;
 			sourceTree = "<group>";
@@ -426,6 +422,7 @@
 		716120C518A4DB24004077D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7160260F196BC82C005B3193 /* startup_sdk.framework */,
 				71198E0A193C874E006C05CE /* FacebookSDK.framework */,
 				717A9C2218F7953C00993805 /* QuartzCore.framework */,
 				717A9C2018F7952E00993805 /* CoreData.framework */,
@@ -462,7 +459,6 @@
 				7161211C18A4EAE5004077D9 /* More */,
 				711A9DA8195D13E500B52AEF /* Web */,
 				710E59C218AB5693006F4CB2 /* Login */,
-				71EBF62718B30D2200B1690B /* Model */,
 				71A15ECA1919E6E8001D1B56 /* SplashScreenViewController.h */,
 				71A15ECB1919E6E8001D1B56 /* SplashScreenViewController.m */,
 			);
@@ -502,6 +498,8 @@
 				713DC1D31907616E00E34CB2 /* ContactCell.m */,
 				71B023C91941A3460031AA3F /* DetailPeopleViewController.h */,
 				71B023CA1941A3460031AA3F /* DetailPeopleViewController.m */,
+				71BD0B0E196261EC00ECC0F0 /* DetailGroupViewController.h */,
+				71BD0B0F196261EC00ECC0F0 /* DetailGroupViewController.m */,
 			);
 			name = Contact;
 			sourceTree = "<group>";
@@ -524,6 +522,8 @@
 				7122EE7A1900F610002B9181 /* PaymentViewController.m */,
 				711E0D9B195C23CD00423448 /* mPayViewController.h */,
 				711E0D9C195C23CD00423448 /* mPayViewController.m */,
+				71602613196BEF2B005B3193 /* PackageCell.h */,
+				71602614196BEF2B005B3193 /* PackageCell.m */,
 			);
 			name = Package;
 			sourceTree = "<group>";
@@ -535,10 +535,10 @@
 				71242239193590F900BAD376 /* MoresViewController.m */,
 				71F2043218D2C48300EBE5BF /* Setting */,
 				71EF928B18D6986F00A51C52 /* News */,
-				71F2043618D2C4F400EBE5BF /* History */,
+				71F2043618D2C4F400EBE5BF /* History(LG) */,
 				71C3DDEC18D97174002B6E79 /* Schedule */,
 				710F347718DC2E30005CFA7F /* TopUp */,
-				71A4C31018E4091800BA120E /* Template */,
+				71A4C31018E4091800BA120E /* Template(addLg) */,
 				7141C39618EEA66600AC6EC7 /* Information */,
 				71FA02E319051D2A0016FF57 /* ImportContact */,
 			);
@@ -569,11 +569,8 @@
 		718B908D18B7560500488C48 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				718B909118B7569200488C48 /* AISBLString.h */,
-				718B909218B7569200488C48 /* AISBLString.m */,
 				71A4C30818E3D04400BA120E /* AISImageGlobal.h */,
 				71A4C30C18E3DA6500BA120E /* AISGlobal.h */,
-				71F1752518EA97AB0047E842 /* ENGlobalString.plist */,
 				711C685918EBE3D40009C3B4 /* AISColor.h */,
 				711C685A18EBE3D40009C3B4 /* AISColor.m */,
 				713DC92318F7DA37005D1E2F /* AISTableViewCell.h */,
@@ -584,8 +581,8 @@
 				71996D631924C96F00AC1EDF /* AISButton.m */,
 				71AC4DC51932F38F002D9387 /* AISAlertView.h */,
 				71AC4DC61932F38F002D9387 /* AISAlertView.m */,
-				718FE71419346B4200E9C9E2 /* AISNavigationBarLeftItem.h */,
-				718FE71519346B4200E9C9E2 /* AISNavigationBarLeftItem.m */,
+				718FE71419346B4200E9C9E2 /* AISNavigationBarItem.h */,
+				718FE71519346B4200E9C9E2 /* AISNavigationBarItem.m */,
 				7124223B1935995B00BAD376 /* AISMoreView.h */,
 				7124223C1935995B00BAD376 /* AISMoreView.m */,
 				71E44156193DBB02004282AC /* Common.plist */,
@@ -598,6 +595,8 @@
 				7181430C19581A4B00871B3D /* AISMessageHead.h */,
 				7181430D19581A4B00871B3D /* AISMessageHead.m */,
 				71CD62521959687A00692B4C /* TemplateList.plist */,
+				711A9DA9195D481700B52AEF /* FontUtil.h */,
+				711A9DAA195D481700B52AEF /* FontUtil.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -609,21 +608,21 @@
 				710E59CE18ACC96A006F4CB2 /* FogetPasswordViewController.m */,
 				718FE70E19344B1F00E9C9E2 /* ForgetEmailViewController.h */,
 				718FE70F19344B1F00E9C9E2 /* ForgetEmailViewController.m */,
-				718FE71119344B3600E9C9E2 /* ResetPasswordViewController.h */,
-				718FE71219344B3600E9C9E2 /* ResetPasswordViewController.m */,
 			);
 			name = Forget;
 			sourceTree = "<group>";
 		};
-		71A4C31018E4091800BA120E /* Template */ = {
+		71A4C31018E4091800BA120E /* Template(addLg) */ = {
 			isa = PBXGroup;
 			children = (
 				71A4C30D18E4091300BA120E /* TemplateViewController.h */,
 				71A4C30E18E4091300BA120E /* TemplateViewController.m */,
 				7115E09B18F5220E0030AF26 /* AddTemplateViewController.h */,
 				7115E09C18F5220E0030AF26 /* AddTemplateViewController.m */,
+				7169DE10196E968800039AE0 /* TemplateCell.h */,
+				7169DE11196E968800039AE0 /* TemplateCell.m */,
 			);
-			name = Template;
+			name = "Template(addLg)";
 			sourceTree = "<group>";
 		};
 		71A4C31118E4157300BA120E /* images */ = {
@@ -698,15 +697,6 @@
 			name = Schedule;
 			sourceTree = "<group>";
 		};
-		71EBF62718B30D2200B1690B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				71EBF62418B30D1900B1690B /* Contact.h */,
-				71EBF62518B30D1900B1690B /* Contact.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		71EF928B18D6986F00A51C52 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -721,6 +711,7 @@
 		71EF928C18D6AE2700A51C52 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				71602611196BCAC2005B3193 /* StartUp_20018.crt */,
 				713DC1D51907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.h */,
 				713DC1D61907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.m */,
 				713DC1D71907628A00E34CB2 /* SWCellScrollView.h */,
@@ -751,7 +742,7 @@
 			name = Setting;
 			sourceTree = "<group>";
 		};
-		71F2043618D2C4F400EBE5BF /* History */ = {
+		71F2043618D2C4F400EBE5BF /* History(LG) */ = {
 			isa = PBXGroup;
 			children = (
 				71F2043318D2C4F100EBE5BF /* HistoryViewController.h */,
@@ -763,7 +754,7 @@
 				71A15ED3191A4358001D1B56 /* QuotaBalanceViewController.h */,
 				71A15ED4191A4358001D1B56 /* QuotaBalanceViewController.m */,
 			);
-			name = History;
+			name = "History(LG)";
 			sourceTree = "<group>";
 		};
 		71FA02E319051D2A0016FF57 /* ImportContact */ = {
@@ -833,6 +824,7 @@
 				716120DF18A4DB25004077D9 /* Images.xcassets in Resources */,
 				71A4C35618E4157300BA120E /* TellFriends_B@2x.png in Resources */,
 				71A4C35918E4157300BA120E /* L_ImportContact_Icon@2x.png in Resources */,
+				71602612196BCAC2005B3193 /* StartUp_20018.crt in Resources */,
 				71A4C34918E4157300BA120E /* Facebook_Bar@2x.png in Resources */,
 				71A4C35118E4157300BA120E /* More@2x.png in Resources */,
 				717A9C3618F7AF4200993805 /* Add_Contact@2x.png in Resources */,
@@ -864,7 +856,6 @@
 				71A4C36518E4157300BA120E /* Triangle_Icon@2x.png in Resources */,
 				71A4C35A18E4157300BA120E /* L_Information_Icon@2x.png in Resources */,
 				715C201818FE680100CB046C /* Add_Icon@2x.png in Resources */,
-				71F1752618EA97AB0047E842 /* ENGlobalString.plist in Resources */,
 				71A4C34818E4157300BA120E /* Down_Arrow@2x.png in Resources */,
 				71A4C34E18E4157300BA120E /* Contact_B@2x.png in Resources */,
 				716120DA18A4DB25004077D9 /* Main.storyboard in Resources */,
@@ -897,9 +888,10 @@
 				71996D611924B28300AC1EDF /* MessageTableViewController.m in Sources */,
 				71A15ECC1919E6E8001D1B56 /* SplashScreenViewController.m in Sources */,
 				71A15ECF191A2F00001D1B56 /* MessageHistoryViewController.m in Sources */,
+				7169DE12196E968800039AE0 /* TemplateCell.m in Sources */,
 				711C685B18EBE3D40009C3B4 /* AISColor.m in Sources */,
 				71A15ED2191A3FBD001D1B56 /* TopupHistoryViewController.m in Sources */,
-				718FE71619346B4200E9C9E2 /* AISNavigationBarLeftItem.m in Sources */,
+				718FE71619346B4200E9C9E2 /* AISNavigationBarItem.m in Sources */,
 				71FA02E219051D220016FF57 /* ImportContactViewController.m in Sources */,
 				713DC92518F7DA37005D1E2F /* AISTableViewCell.m in Sources */,
 				71F2043518D2C4F100EBE5BF /* HistoryViewController.m in Sources */,
@@ -910,11 +902,13 @@
 				7141C39518EEA66300AC6EC7 /* InformationViewController.m in Sources */,
 				71B023CB1941A3460031AA3F /* DetailPeopleViewController.m in Sources */,
 				71A4C30F18E4091300BA120E /* TemplateViewController.m in Sources */,
+				71BD0B10196261EC00ECC0F0 /* DetailGroupViewController.m in Sources */,
 				715C201B18FE696D00CB046C /* AddGroupViewController.m in Sources */,
 				713DC1D41907616E00E34CB2 /* ContactCell.m in Sources */,
 				713F2455192AFBEC003C4822 /* ShareViewController.m in Sources */,
 				71EF928A18D6986B00A51C52 /* NewsViewController.m in Sources */,
 				710E59CF18ACC96A006F4CB2 /* FogetPasswordViewController.m in Sources */,
+				71602615196BEF2B005B3193 /* PackageCell.m in Sources */,
 				719E0243193F0293004A043A /* AISString.m in Sources */,
 				718FE71019344B1F00E9C9E2 /* ForgetEmailViewController.m in Sources */,
 				7124223A193590F900BAD376 /* MoresViewController.m in Sources */,
@@ -927,10 +921,8 @@
 				7115E09D18F5220E0030AF26 /* AddTemplateViewController.m in Sources */,
 				713DC1E61907628A00E34CB2 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				7122EE7B1900F610002B9181 /* PaymentViewController.m in Sources */,
-				716D02751910E7A300855F19 /* TermViewController.m in Sources */,
 				710E59C518AC7F72006F4CB2 /* SignupViewController.m in Sources */,
-				71EBF62618B30D1900B1690B /* Contact.m in Sources */,
-				718FE71319344B3600E9C9E2 /* ResetPasswordViewController.m in Sources */,
+				711A9DAB195D481700B52AEF /* FontUtil.m in Sources */,
 				713F245C192B0E9B003C4822 /* ChangePasswordViewController.m in Sources */,
 				713DC1E31907628A00E34CB2 /* SWCellScrollView.m in Sources */,
 				71B023C819417BBD0031AA3F /* AISLoading.m in Sources */,
@@ -940,7 +932,6 @@
 				71008B0D1949A66400FA8DE9 /* AISSMSCharacter.m in Sources */,
 				716120DD18A4DB25004077D9 /* StartViewController.m in Sources */,
 				711E0D9A195C19EE00423448 /* ImportCell.m in Sources */,
-				718B909318B7569200488C48 /* AISBLString.m in Sources */,
 				7161210418A4E600004077D9 /* PageContentViewController.m in Sources */,
 				71B6FC3C18F64B27000930F4 /* DetailNewsViewController.m in Sources */,
 				713F2459192B076D003C4822 /* SettingViewController.m in Sources */,
@@ -949,7 +940,6 @@
 				713DC1E21907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				716120D718A4DB25004077D9 /* AppDelegate.m in Sources */,
 				716120D318A4DB24004077D9 /* main.m in Sources */,
-				716D02781910E7B700855F19 /* PolicyViewController.m in Sources */,
 				713DC1E71907628A00E34CB2 /* SWUtilityButtonView.m in Sources */,
 				7161211718A4EACA004077D9 /* PackageViewController.m in Sources */,
 				713DC1E41907628A00E34CB2 /* SWLongPressGestureRecognizer.m in Sources */,
@@ -1062,11 +1052,13 @@
 					"$(inherited)",
 					/Users/North/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/AISbizlive/Library",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AISbizlive/AISbizlive-Prefix.pch";
 				INFOPLIST_FILE = "AISbizlive/AISbizlive-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BEF89153-9C6E-48DC-BB77-4AE092F7E73C";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1084,11 +1076,13 @@
 					"$(inherited)",
 					/Users/North/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/AISbizlive/Library",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AISbizlive/AISbizlive-Prefix.pch";
 				INFOPLIST_FILE = "AISbizlive/AISbizlive-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BEF89153-9C6E-48DC-BB77-4AE092F7E73C";
 				TARGETED_DEVICE_FAMILY = 1;

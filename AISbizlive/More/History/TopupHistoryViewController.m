@@ -32,14 +32,14 @@
     topupHistory = [[NSMutableArray alloc] initWithObjects:@"100 SMS/Package",@"200 SMS/Package",@"300 SMS/Package",@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" , nil];
     
     self.navigationItem.title = @"Topup History";
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationItem.title = @"Topup History";
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -73,28 +73,28 @@
     
     channelLabel.textColor = [AISColor  grayColor];
     channelLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    channelLabel.text = [AISString commonString:LABEL :@"HISTORY_TOPUP_CHANNEL"];
+    channelLabel.text = [AISString commonString:typeLabel KeyOfValue :@"HISTORY_TOPUP_CHANNEL"];
     [channelLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:
                           CGRectMake(labelWidth, 0, labelWidth, 40.0)];
     dateLabel.textColor = [AISColor  grayColor];
     dateLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    dateLabel.text = [AISString commonString:LABEL :@"HISTORY_SEND_DATE"];
+    dateLabel.text = [AISString commonString:typeLabel KeyOfValue :@"HISTORY_SEND_DATE"];
     [dateLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *amountLabel = [[UILabel alloc] initWithFrame:
                              CGRectMake(labelWidth*2, 0, labelWidth, 40.0)];
     amountLabel.textColor =  [AISColor  grayColor];
     amountLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    amountLabel.text = [AISString commonString:LABEL :@"HISTORY_TOPUP_AMOUNT"];
+    amountLabel.text = [AISString commonString:typeLabel KeyOfValue :@"HISTORY_TOPUP_AMOUNT"];
     [amountLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *mobileLabel = [[UILabel alloc] initWithFrame:
                           CGRectMake(labelWidth*3, 0, labelWidth, 40.0)];
     mobileLabel.textColor =  [AISColor  grayColor];
     mobileLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    mobileLabel.text = [AISString commonString:LABEL :@"MOBILE"];
+    mobileLabel.text = [AISString commonString:typeLabel KeyOfValue :@"MOBILE"];
     [mobileLabel setTextAlignment:NSTextAlignmentCenter];
     
     [twoHeaderView addSubview:channelLabel];

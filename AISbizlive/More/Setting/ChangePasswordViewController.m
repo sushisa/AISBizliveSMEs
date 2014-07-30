@@ -27,23 +27,25 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
     [self setTextLangague];
 }
 -(void)setTextLangague{
-    [self.navigationItem setTitle:[AISString commonString:BUTTON :@"CHANGE_PASS"]];
-    [oldPasswordTextField setPlaceholder:[AISString commonString:PLACEHODER :@"OLD_PASS"]];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     
-    [newPasswordTextField setPlaceholder:[AISString commonString:PLACEHODER :@"NEW_PASS"]];
-    [reNewPasswordTextField setPlaceholder:[AISString commonString:PLACEHODER :@"CONFIRM_PASS"]];
-    [oldPasswordLabel setText:[AISString commonString:LABEL :@"OLD_PASS"]];
-    [newPasswordLabel setText:[AISString commonString:LABEL :@"NEW_PASS"]];
+    self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(backAction) withTarget:self];
+    [self.navigationItem setTitle:[AISString commonString:typeButton KeyOfValue :@"CHANGE_PASS"]];
+    [oldPasswordTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"OLD_PASS"]];
+    
+    [newPasswordTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"NEW_PASS"]];
+    [reNewPasswordTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"CONFIRM_PASS"]];
+    [oldPasswordLabel setText:[AISString commonString:typeLabel KeyOfValue :@"OLD_PASS"]];
+    [newPasswordLabel setText:[AISString commonString:typeLabel KeyOfValue :@"NEW_PASS"]];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    [self setTextLangague];
 }
 //[AISString commonString:BUTTON :@"DONE"]
 - (void)didReceiveMemoryWarning

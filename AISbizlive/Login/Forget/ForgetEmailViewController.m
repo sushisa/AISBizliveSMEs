@@ -27,22 +27,22 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
     [self setTextLangage];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)setTextLangage{
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     //Header
-    [self.navigationController setTitle:[AISBLString defaultString:HEADER_EMAIL]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"EMAIL"]];
     //Textfield
-    [emailPlaceholder setPlaceholder:[AISBLString defaultString:PLACEHODER_EMAIL]];
+    [emailPlaceholder setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue:@"ACTIVATION_EMAIL"]];
     //Label
-    [emailLabel setText:[AISBLString defaultString:LABEL_EMAIL]];
+    [emailLabel setText:[AISString commonString:typeLabel KeyOfValue :@"EMAIL"]];
     //Button
-    [resendEmail setTitle:[AISBLString defaultString:BUTTON_RESEND_EMAIL] forState:UIControlStateNormal];
-    [doneButton setTitle:[AISBLString defaultString:BUTTON_DONE] forState:UIControlStateNormal];
+    [resendEmail setTitle:[AISString commonString:typeButton KeyOfValue :@"RESEND_EMAIL"] forState:UIControlStateNormal];
+    [doneButton setTitle:[AISString commonString:typeButton KeyOfValue :@"DONE"] forState:UIControlStateNormal];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -63,6 +63,6 @@
 
 - (IBAction)doneAction:(id)sender{
 //  emailToReset
-    [self performSegueWithIdentifier:@"emailToReset" sender:self];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 @end

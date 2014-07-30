@@ -115,6 +115,7 @@ UIView* backGroundView;
     [UIView commitAnimations];
 }
 -(void)dismissAlertView{
+    
     [backGroundView removeFromSuperview];
     [newView removeFromSuperview];
 }

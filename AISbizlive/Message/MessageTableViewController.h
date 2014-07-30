@@ -97,6 +97,7 @@
 
 @property (nonatomic, strong) DWTagList             *tagList;
 - (IBAction)variableSMSBtn:(id)sender;
+- (IBAction)popupDetailMessage:(id)sender;
 
 @property (strong, nonatomic) NSString *msgText;
 @property (strong, nonatomic) NSArray *arrayContact;

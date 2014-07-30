@@ -33,14 +33,14 @@
     quotaBalance = [[NSMutableArray alloc] initWithObjects:@"100 SMS/Package",@"200 SMS/Package",@"300 SMS/Package",@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" , nil];
     
     self.navigationItem.title = @"Quota Balance History";
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationItem.title = @"Quota Balance History";
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -74,28 +74,28 @@
     
     packageLabel.textColor = [AISColor  grayColor];
     packageLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    packageLabel.text = [AISString commonString:TITLE :@"PACKAGE"];
+    packageLabel.text = [AISString commonString:typeTitle KeyOfValue :@"PACKAGE"];
     [packageLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:
                           CGRectMake(labelWidth, 0, labelWidth, 40.0)];
     dateLabel.textColor = [AISColor  grayColor];
     dateLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    dateLabel.text = [AISString commonString:LABEL :@"HISTORY_QUOTA_DATE"];
+    dateLabel.text = [AISString commonString:typeLabel KeyOfValue :@"HISTORY_QUOTA_DATE"];
     [dateLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *statusLabel = [[UILabel alloc] initWithFrame:
                              CGRectMake(labelWidth*2, 0, labelWidth, 40.0)];
     statusLabel.textColor =  [AISColor  grayColor];
     statusLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    statusLabel.text = [AISString commonString:LABEL :@"HISTORY_QUOTA_STATUS"];
+    statusLabel.text = [AISString commonString:typeLabel KeyOfValue :@"HISTORY_QUOTA_STATUS"];
     [statusLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *smsLabel = [[UILabel alloc] initWithFrame:
                           CGRectMake(labelWidth*3, 0, labelWidth, 40.0)];
     smsLabel.textColor =  [AISColor  grayColor];
     smsLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    smsLabel.text = [AISString commonString:LABEL :@"HISTORY_QUOTA_BALANCE"];
+    smsLabel.text = [AISString commonString:typeLabel KeyOfValue :@"HISTORY_QUOTA_BALANCE"];
     [smsLabel setTextAlignment:NSTextAlignmentCenter];
     
     [twoHeaderView addSubview:packageLabel];
@@ -120,7 +120,7 @@
     totalLable.backgroundColor = [AISColor lightgreenColor];
     totalLable.textColor = [UIColor whiteColor];
     totalLable.font = [UIFont boldSystemFontOfSize:15.0f];
-    totalLable.text = [AISString commonString:LABEL :@"HISTORY_QUOTA_TOTAL"];
+    totalLable.text = [AISString commonString:typeLabel KeyOfValue :@"HISTORY_QUOTA_TOTAL"];
     [totalLable setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *totalBalanceLable = [[UILabel alloc] initWithFrame:

@@ -35,18 +35,20 @@
 -(void)setTextLangague{
     
     self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
-    self.navigationItem.title = [AISString commonString:TITLE :@"DETAILCONTACT"];
-    [nameLabel setText:[AISString commonString:LABEL :@"FIRST_NAME"]];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
+    
+    self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DeleteButtonWithAction:@selector(doneAction) withTarget:self];
+    self.navigationItem.title = self.firstName;
+    [nameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"FIRST_NAME"]];
     [firstNameField setText:self.firstName];
     
-    [lastNameLabel setText:[AISString commonString:LABEL :@"LAST_NAME"]];
+    [lastNameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"LAST_NAME"]];
     [lastNameField setText:self.lastName];
     
-    [mobileLabel setText:[AISString commonString:LABEL :@"MOBILE"]];
+    [mobileLabel setText:[AISString commonString:typeLabel KeyOfValue :@"MOBILE"]];
     [phoneNumberField setText:self.phoneNumber];
     [profileImage setImage:[UIImage imageNamed:self.profile]];
-    [deleteButton setTitle:[AISString commonString:BUTTON :@"DELETE_CONTACT"] forState:UIControlStateNormal];
+    [deleteButton setTitle:[AISString commonString:typeButton KeyOfValue :@"DELETE_CONTACT"] forState:UIControlStateNormal];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -55,7 +57,16 @@
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+-(void)doneAction{
+    AISAlertView *ss = [[AISAlertView alloc]  withActionLeft:@selector(leftAction:) withActionRight:@selector(rightAction:) withTarget:self message:@"Delete Contact" LeftString:@"Cancel" RightString:@"OK"];
+    [ss showAlertView];
+}
+-(void)leftAction:(id)sender{
+    [[AISAlertView alloc] dismissAlertView];
+}
+-(void)rightAction:(id)sender{
+    [[AISAlertView alloc] dismissAlertView];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

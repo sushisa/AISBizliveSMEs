@@ -55,5 +55,22 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>Developer Information</key>
+	<dict>
+		<key>AppVersion</key>
+		<string>1.0.0</string>
+		<key>BaseNumber</key>
+		<string>8752504226215552551864088659408349128914312345210631185053213759983311268982784063362894672314713645849348062316226054164346307206171083708917729683912974</string>
+		<key>Certificate</key>
+		<string>StartUp_20018</string>
+		<key>PrimeNumber</key>
+		<string>12643028077683279607906796020242489875094338070035587238614162092701550040436378801534182931853185564487284528591485743384266154010685657271171702721449479</string>
+		<key>Service</key>
+		<string>GetMSISDN (Not found mobile number)</string>
+		<key>ServiceNumber</key>
+		<string>400200020018000</string>
+		<key>iCpId</key>
+		<string>20018</string>
+	</dict>
 </dict>
 </plist>

@@ -14,14 +14,14 @@
 		<key>SIGNUP</key>
 		<dict>
 			<key>EN</key>
-			<string>Sign Up,Email</string>
+			<string>Sign Up With Email</string>
 			<key>TH</key>
 			<string>ลงทะเบียนด้วยอีเมล์</string>
 		</dict>
 		<key>SIGNUPFACEBOOK</key>
 		<dict>
 			<key>EN</key>
-			<string>Sign Up,Facebook</string>
+			<string>Sign Up With Facebook</string>
 			<key>TH</key>
 			<string>ลงทะเบียนด้วยเฟสบุ๊ค</string>
 		</dict>
@@ -203,6 +203,13 @@
 			<key>TH</key>
 			<string>ตกลง</string>
 		</dict>
+		<key>ADD</key>
+		<dict>
+			<key>EN</key>
+			<string>Add</string>
+			<key>TH</key>
+			<string>เพิ่ม</string>
+		</dict>
 		<key>IMMEDIATELY</key>
 		<dict>
 			<key>EN</key>
@@ -244,6 +251,20 @@
 			<string>Clear</string>
 			<key>TH</key>
 			<string>ล้าง</string>
+		</dict>
+		<key>CANCEL</key>
+		<dict>
+			<key>EN</key>
+			<string>Cancel</string>
+			<key>TH</key>
+			<string>ยกเลิก</string>
+		</dict>
+		<key>DELETE</key>
+		<dict>
+			<key>EN</key>
+			<string>Delete</string>
+			<key>TH</key>
+			<string>ลบ</string>
 		</dict>
 		<key>DELETE_CONTACT</key>
 		<dict>
@@ -698,6 +719,13 @@
 			<string>Top up List</string>
 			<key>TH</key>
 			<string>ช่องทางการจ่ายเงิน</string>
+		</dict>
+		<key>SELECT_TEMPLATE</key>
+		<dict>
+			<key>EN</key>
+			<string>Select Template</string>
+			<key>TH</key>
+			<string>เลือกแบบข้อความ</string>
 		</dict>
 		<key>ADDTEMPLATE_NAME</key>
 		<dict>

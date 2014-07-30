@@ -14,6 +14,7 @@
 #import "SWTableViewCell.h"
 #import "AppDelegate.h"
 #import "DetailPeopleViewController.h"
+#import "DetailGroupViewController.h"
 #import "MessageTableViewController.h"
 @interface ContactViewController ()
 {
@@ -43,7 +44,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
+    ServiceBizLive *service = [[ServiceBizLive alloc] init];
+    [service setBizLiveURL:@"https://www.google.com"];
+    NSDictionary *newdict = [[NSDictionary alloc] init];
+    [service setRequestDict:newdict];
+    service.delegate = self;
+    [service fungusRequest];
 //    [selectPeopleAndGroup setBackgroundColor:[UIColor greenColor]];
 //    [selectPeopleAndGroup setTintColor:[UIColor redColor]];
 //    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
@@ -80,14 +86,18 @@
 }
 -(void)setTextLangague{
     
-    self.title = [AISString commonString:TITLE :@"CONTACT"];
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"CONTACT"]];
+    self.title = [AISString commonString:typeTitle KeyOfValue:@"CONTACT"];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"CONTACT"]];
     
-    [selectPeopleAndGroup setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[AISColor lightgreenColor],NSForegroundColorAttributeName ,[UIFont boldSystemFontOfSize:18.0f],NSFontAttributeName, nil] forState:UIControlStateNormal];
-    [selectPeopleAndGroup setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName ,[UIFont boldSystemFontOfSize:18.0f],NSFontAttributeName, nil] forState:UIControlStateHighlighted];
-    [selectPeopleAndGroup setTitle:[AISString commonString:LABEL :@"TABPEOPLE"] forSegmentAtIndex:0];
-    [selectPeopleAndGroup setTitle:[AISString commonString:LABEL :@"TABGROUP"] forSegmentAtIndex:1];
-    [self loadPeopleView];
+    [selectPeopleAndGroup setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[AISColor lightgreenColor],NSForegroundColorAttributeName ,[UIFont systemFontOfSize:18.0f],NSFontAttributeName, nil] forState:UIControlStateNormal];
+    [selectPeopleAndGroup setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName ,[UIFont systemFontOfSize:18.0f],NSFontAttributeName, nil] forState:UIControlStateHighlighted];
+    [selectPeopleAndGroup setTitle:[AISString commonString:typeLabel KeyOfValue:@"TABPEOPLE"] forSegmentAtIndex:0];
+    [selectPeopleAndGroup setTitle:[AISString commonString:typeLabel KeyOfValue:@"TABGROUP"] forSegmentAtIndex:1];
+    if (selectPeopleAndGroup.selectedSegmentIndex == 0) {
+        [self loadPeopleView];
+    }else{
+        [self loadGroupView];
+    }
 }
 //-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
 //    UIAlertView *didFailWithErrorMessage = [[UIAlertView alloc] initWithTitle: @"NSURLConnection " message: @"didFailWithError"  delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil];
@@ -169,18 +179,17 @@
 }
 -(void)loadPeopleView{
     if ([self.contactSelect isEqualToString:@"YES"]) {
-        self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(popBackAction) withTarget:self];
-        
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"] style:UIBarButtonItemStyleBordered target:self action:@selector(selectContact)];
+        self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(popBackAction) withTarget:self];
+        self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(selectContact) withTarget:self];
         self.tabBarController.tabBar.hidden = YES;
         [testTable setEditing:YES animated:YES];
     }
     else{
         
         self.tabBarController.tabBar.hidden = NO;
-        self.navigationItem.rightBarButtonItem = [self ContactRightButton];
+        self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] PeopleAddButtonWithAction:@selector(peopleAdd) withTarget:self];
         [testTable setEditing:NO animated:NO];
-        self.navigationItem.leftBarButtonItem = [self ContactLeftButton];
+        self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] PeopleDeleteButtonWithAction:@selector(peopleDelete) withTarget:self];
     }
     Checkcontact = [[NSMutableArray alloc] initWithObjects:@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png", nil];
     Namecontact = [[NSMutableArray alloc] initWithObjects:@"Test1",@"Test2",@"Test3",@"Test4",@"Test5",@"Test1",@"Test2",@"Test3",@"Test4",@"Test5",@"Test1",@"Test2",@"Test3",@"Test4",@"Test5",@"Test1",@"Test2",@"Test3",@"Test4",@"Test5",nil];
@@ -190,15 +199,15 @@
 }
 -(void)loadGroupView{
     if ([self.contactSelect isEqualToString:@"YES"]) {
-        self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(popBackAction) withTarget:self];
+        self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(popBackAction) withTarget:self];
         
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"] style:UIBarButtonItemStyleBordered target:self action:@selector(selectContact)];
+        self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(selectContact) withTarget:self];
         self.tabBarController.tabBar.hidden = YES;
         [testTable setEditing:YES animated:YES];
     }
     else{
-        self.navigationItem.rightBarButtonItem = [self GroupRightButton];
-        self.navigationItem.leftBarButtonItem =[self GroupLeftButton];
+        self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] GroupAddButtonWithAction:@selector(groupAdd) withTarget:self];
+        self.navigationItem.leftBarButtonItem =[[AISNavigationBarItem alloc] GroupDeleteButtonWithAction:@selector(groupDelete) withTarget:self];
         
         self.tabBarController.tabBar.hidden = NO;
 
@@ -214,15 +223,12 @@
     [self performSegueWithIdentifier: @"AddPeople" sender: self];
 }
 -(void)groupAdd{
-    
     [self performSegueWithIdentifier: @"AddGroup" sender: self];
 }
 -(void)peopleDelete{
     if(!testTable.editing){
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelDelete)];
-        [self.navigationItem.leftBarButtonItem setTintColor:[AISColor lightgrayColor]];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStyleDone target:self action:@selector(peopleDeleteBtn)];
-        self.navigationItem.rightBarButtonItem.tintColor = [UIColor redColor];
+        self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] CancelButtonWithAction:@selector(cancelDelete) withTarget:self];
+        self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DeleteButtonWithAction:@selector(peopleDeleteBtn) withTarget:self];
     }
     [testTable setEditing:!testTable.editing animated:YES];
 }
@@ -237,36 +243,14 @@
     [[AISAlertView alloc] dismissAlertView];
 }
 -(void)cancelDelete{
-    self.navigationItem.leftBarButtonItem = [self ContactLeftButton];
-    self.navigationItem.rightBarButtonItem = [self ContactRightButton];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] PeopleDeleteButtonWithAction:@selector(peopleDelete) withTarget:self];
+    self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] PeopleAddButtonWithAction:@selector(peopleAdd) withTarget:self];
 
      [testTable setEditing:NO animated:YES];
 }
 
 -(void)groupDelete{
     NSLog(@"groupDelete");
-}
--(UIBarButtonItem *)ContactRightButton{
-    UIBarButtonItem *contactAddBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_PEOPLE_ADD] style:UIBarButtonItemStyleBordered target:self action:@selector(peopleAdd)];
-    contactAddBtn.tintColor = [AISColor lightgreenColor];
-    return contactAddBtn;
-}
--(UIBarButtonItem *)ContactLeftButton{
-    UIBarButtonItem *contactEditBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_PEOPLE_DELETE] style:UIBarButtonItemStyleBordered target:self action:@selector(peopleDelete)];
-    contactEditBtn.tintColor = [UIColor redColor];
-    return contactEditBtn;
-}
--(UIBarButtonItem *)GroupRightButton{
-    
-    UIBarButtonItem *groudAddBtn =   [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_GROUP_ADD] style:UIBarButtonItemStyleBordered target:self action:@selector(groupAdd)];
-    groudAddBtn.tintColor = [AISColor lightgreenColor];
-
-    return groudAddBtn;
-}
--(UIBarButtonItem *)GroupLeftButton{
-    UIBarButtonItem *groupEditBtn =  [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_GROUP_DELETE] style:UIBarButtonItemStyleBordered target:self action:@selector(groupDelete)];
-    groupEditBtn.tintColor = [UIColor redColor];
-    return groupEditBtn;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -328,7 +312,10 @@
         if ([selectPeopleAndGroup selectedSegmentIndex] == 0) {
             [self performSegueWithIdentifier:@"cellToPeople" sender:self];
         }
-        
+        else{
+            
+            [self performSegueWithIdentifier:@"cellToGroup" sender:self];
+        }
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
@@ -349,6 +336,18 @@
     } else if([[segue identifier] isEqualToString:@"AddPeople"]) {
         AddPeopleViewController *editPeople = [segue destinationViewController];
         editPeople.checkPush = @"YES";
+    }else if ([[segue identifier] isEqualToString:@"AddGroup"]) {
+        
+    }else if ([[segue identifier] isEqualToString:@"EditGroup"]) {
+        AddGroupViewController *addGroup = [segue destinationViewController];
+        addGroup.nameGroup = [Namecontact objectAtIndex:selectIndex];
+        addGroup.profileGroup = [Imagecontact objectAtIndex:selectIndex];
+//        NSLog(@"EditGroup");
+    }else if ([[segue identifier] isEqualToString:@"cellToGroup"]) {
+        DetailGroupViewController *addGroup = [segue destinationViewController];
+        addGroup.nameGroup = [Namecontact objectAtIndex:selectIndex];
+        addGroup.profileGroup = [Imagecontact objectAtIndex:selectIndex];
+        NSLog(@"cellToGroup");
     }
 }
 -(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -364,6 +363,8 @@
         {
             if ([selectPeopleAndGroup selectedSegmentIndex] == 0) {
                 [self performSegueWithIdentifier:@"EditPeople" sender:self];
+            }else{
+                [self performSegueWithIdentifier:@"EditGroup" sender:self];
             }
             break;
         }
@@ -392,5 +393,11 @@
                                                 title:@"Delete"];
     
     return rightUtilityButtons;
+}
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict{
+    
+}
+- (void)serviceBizLiveError:(ResponseStatus *)status{
+    
 }
 @end

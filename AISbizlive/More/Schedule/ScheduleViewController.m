@@ -32,20 +32,18 @@
     schedule = [[NSMutableArray alloc] initWithObjects:@"Message1",@"Message2",@"Message3",@"Message4", nil];
     NSLog(@"Schedule Load");
     [self setTextLangague];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)setTextLangague{
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"SCHEDULE"]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"SCHEDULE"]];
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self setTextLangague];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 - (void)didReceiveMemoryWarning
 {

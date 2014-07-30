@@ -24,13 +24,13 @@
     NSUInteger i;
     NSUInteger checkLine;
     UIPickerView *hourPicker;
-    UITextField *toText;
+    UITextView *toText;
     float checkLineTo;
     float fixHeight;
     int tagTag;
-    bool textFieldEmpty;
     UIView *addTagView;
-    UITapGestureRecognizer *tagTap;
+    UIView *tagView;
+    int lineTo;
 }
 @end
 
@@ -56,6 +56,7 @@
 -(void)setDataDefault{
     i = 3;
     checkLine = 1;
+    lineTo = 0;
     checkLineTo = 0.0f;
     fixHeight = 0.0f;
     tagTag = 1000;
@@ -63,14 +64,11 @@
     hour = [[NSMutableArray alloc] initWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24", nil];
     checkHeightCell = [[NSMutableArray alloc] initWithObjects:@"60",@"80",@"237",@"40",@"120",@"56",@"56",@"56",@"56",@"50", nil];
     weekDetail = [[NSMutableArray alloc] initWithArray:[AISString commonArray:@"WEEK_DETAIL"]];
-    self.navigationItem.rightBarButtonItem = [self MessageRightButton];
-    self.navigationItem.leftBarButtonItem = [self MessageLeftButton];
-    //    [toText setFrame:CGRectMake(10, 5, 30, 50)];
-    toText = [[UITextField alloc] initWithFrame:CGRectMake(10, 7, addTagView.frame.size.width, 30)];
+    self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:nil  withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] ClearButtonWithAction:@selector(clearAction)  withTarget:self];
+    toText = [[UITextView alloc] initWithFrame:CGRectMake(10, 7, addTagView.frame.size.width-10, 30)];
     toText.delegate = self;
     
-//    [toText setPlaceholder:@"To :fd;lgkf;ldgk;ldfkg;ldfk"];
-//    //    toText.text = @"\u200B";
     [addTagView addSubview:toText];
     [bytesLabel setText:@"0/160"];
     [messageNoLabel setText:@"0"];
@@ -93,15 +91,15 @@
     [self showImmediately];
     [self setViewGesture];
     [self returnFormSelectTemplate];
-//    [toTextField setFrame:CGRectMake(30, toTextField.frame.origin.y, toTextField.frame.size.width, toTextField.frame.size.height)];
-    
+    [self addContactTo];
+}
+-(void)addContactTo{
     for (int l = 0; l < self.arrayContact.count; l ++) {
         CGRect r = [[self.arrayContact objectAtIndex:l] boundingRectWithSize:CGSizeMake(contactView.frame.size.width, 0)
-                                                         options:NSStringDrawingUsesLineFragmentOrigin
-                                                      attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]}
-                                                         context:nil];
-//        NSLog(@"%f",r.size.width);
-        UIView *tagView = [[UIView alloc] initWithFrame:CGRectMake(toText.frame.origin.x, toText.frame.origin.y,r.size.width , 30)];
+                                                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                                                  attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]}
+                                                                     context:nil];
+        tagView = [[UIView alloc] initWithFrame:CGRectMake(toText.frame.origin.x, toText.frame.origin.y,r.size.width , 30)];
         UILabel *tagLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0,r.size.width , 30)];
         tagLabel.text = [self.arrayContact objectAtIndex:l];
         tagView.backgroundColor = [UIColor whiteColor];
@@ -110,14 +108,18 @@
         UILabel *colon = [[UILabel alloc] initWithFrame:CGRectMake(tagLabel.frame.size.width, 0, 5, 30)];
         colon.text = @",";
         [tagView addSubview:colon];
+        
+        tagTag += 1;
+        
         checkLineTo += tagView.frame.size.width;
         if (checkLineTo >= 200) {
+            lineTo += 1;
             [toText setFrame:CGRectMake(10, toText.frame.origin.y + 35,contactView.frame.size.width , 30)];
             checkLineTo = 0;
             [addTagView setFrame:CGRectMake(addTagView.frame.origin.x, addTagView.frame.origin.y, addTagView.frame.size.width, toText.frame.origin.y +105)];
         }
         else{
-            [toText setFrame:CGRectMake(toText.frame.origin.x + r.size.width + 10, toText.frame.origin.y, toText.frame.size.width-r.size.width, toText.frame.size.height)];
+            [toText setFrame:CGRectMake(toText.frame.origin.x + r.size.width + 10, toText.frame.origin.y, toText.frame.size.width-r.size.width-10, toText.frame.size.height)];
         }
         float old = toText.frame.origin.y;
         [checkHeightCell replaceObjectAtIndex:0 withObject:[NSString stringWithFormat:@"%f",old+55]];
@@ -125,44 +127,8 @@
         [myTableView endUpdates];
         [addTagView addSubview:tagView];
         [tagView setTag:tagTag];
-        tagTap = [[UITapGestureRecognizer alloc]
-                                               initWithTarget: self
-                  action: @selector(tagSelect:)];
-        [tagTap setNumberOfTouchesRequired:1];
-        [tagView addGestureRecognizer:tagTap];
-        tagTag += 1;
     }
     [scrollContactView addSubview:addTagView];
-    
-    toText.text = @"\u200B";
-    
-}
-- (void)tagSelect:(UITapGestureRecognizer *)sender{
-    NSLog(@"%@",[[sender.view viewWithTag:sender.view.tag ] backgroundColor] );
-    if ([[sender.view viewWithTag:sender.view.tag ] backgroundColor] == [UIColor redColor]) {
-        
-        [sender.view setBackgroundColor:[UIColor whiteColor]];
-    }
-    else{
-    
-      [[sender.view viewWithTag:sender.view.tag ] setBackgroundColor:[UIColor redColor]];
-    }
-//    [tagTap setState:UIGestureRecognizerStateChanged];
-}
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if (string.length == 0  && textFieldEmpty) {
-        //
-        [tagTap setState:UIGestureRecognizerStateRecognized];
-    }
-    return YES;
-}
--(void)textFieldDidBeginEditing:(UITextField *)textField{
-    NSLog(@"%@",textField);
-    textFieldEmpty = YES;
-    [tagTap setState:UIGestureRecognizerStateBegan];
-}
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    [tagTap setState:UIGestureRecognizerStateEnded];
 }
 -(void)returnFormSelectTemplate{
     if (self.msgText != nil) {
@@ -234,32 +200,33 @@
 
 #pragma mark - Langague In View
 -(void)setTextLangague{
-     [messageTextField setText:self.msgText];
-
-        self.title = [AISString commonString:TITLE :@"MESSAGE"];
-        [self.navigationItem setTitle:[AISString commonString:TITLE :@"MESSAGE"]];
-    [selectTemplate setTitle:[AISString commonString:BUTTON :@"SELECT_TEMPLATE"] forState:UIControlStateNormal];
-    [saveTemplate setTitle:[AISString commonString:BUTTON :@"SAVE_TEMPLATE"] forState:UIControlStateNormal];
-    [variableSMS setTitle:[AISString commonString:BUTTON :@"VARIABLE_SMS"] forState:UIControlStateNormal];
-    [messageNoTitle setText:[AISString commonString:LABEL :@"MESSAGE_NO"]];
-    [expTimeTitle setText:[AISString commonString:LABEL :@"EXP_TIME"]];
-    [characterTitle setText:[AISString commonString:LABEL :@"CHARACTER"]];
-    [realCharacterTitle setText:[AISString commonString:LABEL :@"REAL_CHARACTER"]];
-    [scheduleLabel setText:[AISString commonString:BUTTON :@"SCHEDULE"]];
-    [immediatelyLabel setText:[AISString commonString:BUTTON :@"IMMEDIATELY"]];
-    [startDateTitle setText:[AISString commonString:LABEL :@"START_DATE"]];
-    [endDateTitle setText:[AISString commonString:LABEL :@"END_DATE"]];
-    [sendTimeTitle setText:[AISString commonString:LABEL :@"SEND_TIME"]];
+    if (self.msgText !=nil) {
+        [messageTextField setText:self.msgText];
+    }
+        self.title = [AISString commonString:typeTitle KeyOfValue :@"MESSAGE"];
+        [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"MESSAGE"]];
+    [selectTemplate setTitle:[AISString commonString:typeButton KeyOfValue :@"SELECT_TEMPLATE"] forState:UIControlStateNormal];
+    [saveTemplate setTitle:[AISString commonString:typeButton KeyOfValue :@"SAVE_TEMPLATE"] forState:UIControlStateNormal];
+    [variableSMS setTitle:[AISString commonString:typeButton KeyOfValue :@"VARIABLE_SMS"] forState:UIControlStateNormal];
+    [messageNoTitle setText:[AISString commonString:typeLabel KeyOfValue :@"MESSAGE_NO"]];
+    [expTimeTitle setText:[AISString commonString:typeLabel KeyOfValue :@"EXP_TIME"]];
+    [characterTitle setText:[AISString commonString:typeLabel KeyOfValue :@"CHARACTER"]];
+    [realCharacterTitle setText:[AISString commonString:typeLabel KeyOfValue :@"REAL_CHARACTER"]];
+    [scheduleLabel setText:[AISString commonString:typeButton KeyOfValue :@"SCHEDULE"]];
+    [immediatelyLabel setText:[AISString commonString:typeButton KeyOfValue :@"IMMEDIATELY"]];
+    [startDateTitle setText:[AISString commonString:typeLabel KeyOfValue :@"START_DATE"]];
+    [endDateTitle setText:[AISString commonString:typeLabel KeyOfValue :@"END_DATE"]];
+    [sendTimeTitle setText:[AISString commonString:typeLabel KeyOfValue :@"SEND_TIME"]];
     
-    [onetimeLabel setText:[AISString commonString:LABEL :@"ONE_TIME"]];
+    [onetimeLabel setText:[AISString commonString:typeLabel KeyOfValue :@"ONE_TIME"]];
     
-    [everydayLabel setText:[AISString commonString:LABEL :@"EVERY_DAY"]];
+    [everydayLabel setText:[AISString commonString:typeLabel KeyOfValue :@"EVERY_DAY"]];
     
-    [weekLabel setText:[AISString commonString:LABEL :@"WEEK"]];
+    [weekLabel setText:[AISString commonString:typeLabel KeyOfValue :@"WEEK"]];
     
-    [monthLabel setText:[AISString commonString:LABEL :@"MONTH"]];
-    [totalSMS setText:[AISString commonString:LABEL :@"TOTALSMS"]];
-    [totalSMSSchedule setText:[AISString commonString:LABEL :@"TOTALSMS"]];
+    [monthLabel setText:[AISString commonString:typeLabel KeyOfValue :@"MONTH"]];
+    [totalSMS setText:[AISString commonString:typeLabel KeyOfValue :@"TOTALSMS"]];
+    [totalSMSSchedule setText:[AISString commonString:typeLabel KeyOfValue :@"TOTALSMS"]];
 }
 
 #pragma mark - Immediately
@@ -411,13 +378,13 @@
             else if (day == 32) {
                 //END
                 [label setFrame:CGRectMake(22, 0, 120, 20)];
-                [label setText:[AISString commonString:LABEL :@"MONTH_END_MONTH"]];
+                [label setText:[AISString commonString:typeLabel KeyOfValue :@"MONTH_END_MONTH"]];
                 [dateMonth setFrame:CGRectMake(60, 168, 140, originHeight)];
             }
             else if (day == 33){
                 //ALL
                 [label setFrame:CGRectMake(22, 0, 50, 20)];
-                [label setText:[AISString commonString:LABEL :@"MONTH_ALL"]];
+                [label setText:[AISString commonString:typeLabel KeyOfValue :@"MONTH_ALL"]];
                 [dateMonth setFrame:CGRectMake(225, 168, originWidth, originHeight)];
                 [dateMonth addSubview:checkBox];
                 [dateMonth addSubview:label];
@@ -451,37 +418,65 @@
 
 #pragma mark - Text View data source
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    NSUInteger numLines = textView.contentSize.height/textView.font.lineHeight;
-    
-    NSString *oldHeight = [checkHeightCell objectAtIndex:1];
-    NSLog(@"NumLine : %lu",(unsigned long)numLines);
-    if([text isEqualToString:@"\n"] || (numLines > checkLine)){
-        
-        if (i < 3) {
-            i += 1;
+    if (textView == toText) {
+        if([text isEqualToString:@"\n"]){
+            return NO;
         }
-        
-        if ([oldHeight intValue] < 200) {
-            checkLine += 1;
-            [messageView setFrame:CGRectMake(messageView.frame.origin.x, messageView.frame.origin.y, messageView.frame.size.width, messageView.frame.size.height+20)];
-            
-            int old = [oldHeight intValue] + 20;
-            [checkHeightCell replaceObjectAtIndex:1 withObject:[NSString stringWithFormat:@"%d",old]];
-            [myTableView beginUpdates];
-            [myTableView endUpdates];
-        }
-    }
-    else if([text isEqualToString:@""]){
-        if ([oldHeight intValue] > 110) {
-            if (numLines < 4) {
-                if (i == numLines) {
-                    checkLine -= 1;
-                    [messageView setFrame:CGRectMake(messageView.frame.origin.x, messageView.frame.origin.y, messageView.frame.size.width, messageView.frame.size.height-20)];
-                    int old = [oldHeight intValue] - 20;
-                    [checkHeightCell replaceObjectAtIndex:1 withObject:[NSString stringWithFormat:@"%d",old]];
+        else if([text isEqualToString:@""]){
+            if ([toText.text isEqualToString:@""] && tagTag > 1000) {
+//                NSLog(@"%d",tagTag);
+                UIView *removeView = [self.view viewWithTag:tagTag];
+                if (removeView.frame.origin.y != toText.frame.origin.y) {
+                    [toText setFrame:CGRectMake(removeView.frame.origin.x, removeView.frame.origin.y,removeView.frame.size.width, 40)];
+                    [addTagView setFrame:CGRectMake(addTagView.frame.origin.x, addTagView.frame.origin.y, addTagView.frame.size.width, addTagView.frame.size.height - 55)];
+                    [checkHeightCell replaceObjectAtIndex:0 withObject:[NSString stringWithFormat:@"%f",[[checkHeightCell objectAtIndex:0] floatValue]-35]];
                     [myTableView beginUpdates];
                     [myTableView endUpdates];
-                    i -= 1;
+                }
+                else {
+                     [toText setFrame:CGRectMake(removeView.frame.origin.x, removeView.frame.origin.y,toText.frame.size.width+removeView.frame.size.width, 40)];
+                }
+                    
+                    [removeView removeFromSuperview];
+                
+                tagTag -= 1;
+
+            }
+        }
+    }
+    else {
+        NSUInteger numLines = textView.contentSize.height/textView.font.lineHeight;
+        
+        NSString *oldHeight = [checkHeightCell objectAtIndex:1];
+        NSLog(@"NumLine : %lu",(unsigned long)numLines);
+        if([text isEqualToString:@"\n"] || (numLines > checkLine)){
+            
+            if (i < 3) {
+                i += 1;
+            }
+            
+            if ([oldHeight intValue] < 190) {
+                checkLine += 1;
+                [messageView setFrame:CGRectMake(messageView.frame.origin.x, messageView.frame.origin.y, messageView.frame.size.width, messageView.frame.size.height+20)];
+                
+                int old = [oldHeight intValue] + 20;
+                [checkHeightCell replaceObjectAtIndex:1 withObject:[NSString stringWithFormat:@"%d",old]];
+                [myTableView beginUpdates];
+                [myTableView endUpdates];
+            }
+        }
+        else if([text isEqualToString:@""]){
+            if ([oldHeight intValue] > 110) {
+                if (numLines < 4) {
+                    if (i == numLines) {
+                        checkLine -= 1;
+                        [messageView setFrame:CGRectMake(messageView.frame.origin.x, messageView.frame.origin.y, messageView.frame.size.width, messageView.frame.size.height-20)];
+                        int old = [oldHeight intValue] - 20;
+                        [checkHeightCell replaceObjectAtIndex:1 withObject:[NSString stringWithFormat:@"%d",old]];
+                        [myTableView beginUpdates];
+                        [myTableView endUpdates];
+                        i -= 1;
+                    }
                 }
             }
         }
@@ -648,19 +643,6 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     expTimeLabel.text = [NSString stringWithFormat:@"%@ HR",[hour objectAtIndex:row]];
 }
-
-#pragma mark - Navigation Bar Item
--(UIBarButtonItem *)MessageRightButton{
-    UIBarButtonItem *contactAddBtn = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"]  style:UIBarButtonItemStyleBordered target:self action:nil];
-    [contactAddBtn setTintColor:[AISColor lightgreenColor]];
-    return contactAddBtn;
-}
--(UIBarButtonItem *)MessageLeftButton{
-    UIBarButtonItem *contactDeleteBtn = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"CLEAR"]  style:UIBarButtonItemStyleBordered target:self action:@selector(clearAction)];
-    [contactDeleteBtn setTintColor:[AISColor lightgrayColor]];
-    
-    return contactDeleteBtn;
-}
 -(void)clearAction{
     [self setDataDefault];
 }
@@ -726,6 +708,7 @@
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    self.arrayContact = nil;
     if ([[segue identifier] isEqualToString:@"messageToAddTemplate"]) {
         AddTemplateViewController *add =[segue destinationViewController];
         add.descritionItem = messageTextField.text;
@@ -737,18 +720,19 @@
     else if ([[segue identifier] isEqualToString:@"MessageAddContact"]) {
         ContactViewController *selectContact =[segue destinationViewController];
         selectContact.contactSelect = @"YES";
-        self.arrayContact = nil;
     }
 }
 - (IBAction)variableSMSBtn:(id)sender {
     AISAlertView *ss = [[AISAlertView alloc]  withActionLeft:@selector(leftAction:) withActionRight:nil withTarget:self message:@"@name" LeftString:@"Done" RightString:nil];
     [ss showAlertView];
 }
+
+- (IBAction)popupDetailMessage:(id)sender {
+    AISAlertView *ss = [[AISAlertView alloc]  withActionLeft:@selector(leftAction:) withActionRight:nil withTarget:self message:[NSString stringWithFormat:@"%@",messageTextField.text] LeftString:@"Done" RightString:nil];
+    [ss showAlertView];
+}
 -(void)leftAction:(id)sender{
     [[AISAlertView alloc] dismissAlertView];
 }
-//-(void)rightAction:(id)sender{
-//    [[AISAlertView alloc] dismissAlertView];
-//}
 
 @end

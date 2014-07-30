@@ -13,6 +13,7 @@
 {
     NSMutableArray *info;
     int selectIndex;
+    UITableViewCell *cell;
 }
 @end
 
@@ -30,23 +31,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    info = [[NSMutableArray alloc] initWithArray:[AISString commonArray:@"INFORMATION"]];
-    NSLog(@"Information Load");
     [self setTextLangague];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)setTextLangague{
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"INFORMATION"]];
+    info = [[NSMutableArray alloc] initWithArray:[AISString commonArray:@"INFORMATION"]];
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"INFORMATION"]];
     
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self setTextLangague];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,7 +69,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"InformationCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell = [informationTable dequeueReusableCellWithIdentifier:CellIdentifier];
     // Configure the cell...
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -82,12 +80,16 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    selectIndex = (int ) indexPath.row;
+//    selectIndex = (int) indexPath.row;
 //    [self performSegueWithIdentifier:@"informationToWeb" sender:self];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    WebViewController *web = [segue destinationViewController];
-    web.Header = [info objectAtIndex:selectIndex];
+    if ([[segue identifier] isEqualToString: @"informationToWeb"]) {
+        selectIndex =(int )[informationTable indexPathForSelectedRow].row;
+        
+        WebViewController *web = [segue destinationViewController];
+        web.Header = [info objectAtIndex:selectIndex];
+    }
 }
 @end

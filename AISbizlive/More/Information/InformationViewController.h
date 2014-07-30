@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface InformationViewController : UITableViewController
-
+{
+    IBOutlet UITableView *informationTable;
+    
+}
 @end

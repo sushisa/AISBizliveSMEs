@@ -31,12 +31,12 @@
     [self.tabBarController setSelectedIndex:4];
 }
 -(void)setTextLangague{
-        self.title = [AISString commonString:TITLE :@"SHARE"];
-        [self.navigationItem setTitle:[AISString commonString:TITLE :@"SHARE"]];
+    self.tabBarController.tabBar.hidden = NO;
+        self.title = [AISString commonString:typeTitle KeyOfValue :@"SHARE"];
+        [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"SHARE"]];
     
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.tabBarController.tabBar.hidden = NO;
     [self setTextLangague];
 }
 

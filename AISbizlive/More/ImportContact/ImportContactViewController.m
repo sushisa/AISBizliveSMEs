@@ -36,16 +36,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     firstname = @"firstname";
     lastname = @"lastname";
     phone1 = @"phone";
     profileImage = @"profileImage";
+    [self authorizationAddressBook];
+    [self setTextLangague];
+}
+-(void)authorizationAddressBook{
     ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(nil, nil);
     
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
@@ -65,23 +63,20 @@
     else {
         NSLog(@"Not Allow 2");
     }
-    NSLog(@"Import Contact");
-    [self setTextLangague];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)setTextLangague{
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"IMPORTCONTACT"]];
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
+     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(backAction) withTarget:self];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"IMPORTCONTACT"]];
     
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self setTextLangague];
-    self.tabBarController.tabBar.hidden = YES;
     [self phonebook];
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 
 -(void)phonebook{

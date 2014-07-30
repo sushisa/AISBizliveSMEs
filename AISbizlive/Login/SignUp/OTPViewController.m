@@ -35,20 +35,23 @@
                                              action: @selector(hideKeyboard:)];
     [oneTapGesture setNumberOfTouchesRequired:1];
     [[self view] addGestureRecognizer:oneTapGesture];
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     [self setTextLangage];
 }
 -(void)setTextLangage{
     //Header
 //    [self.navigationController.navigationBar.topItem setTitle:[AISString commonString:TITLE :@"OTP"]];
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"OTP"]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"OTP"]];
     //TextField
-    [otpTextField setPlaceholder:[AISString commonString:PLACEHODER :@"ACTIVATION_OTP"]];
+    [otpTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"ACTIVATION_OTP"]];
     //Label
-    [OTPLabel setText:[AISString commonString:LABEL :@"OTP"]];
+    [OTPLabel setText:[AISString commonString:typeLabel KeyOfValue :@"OTP"]];
+    [OTPLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     //Button
-    [resendOTPButton setTitle:[AISString commonString:BUTTON :@"RESEND_OTP"] forState:UIControlStateNormal];
-    [doneButton setTitle:[AISString commonString:BUTTON :@"DONE"] forState:UIControlStateNormal];
+    [resendOTPButton setTitle:[AISString commonString:typeButton KeyOfValue :@"RESEND_OTP"] forState:UIControlStateNormal];
+    [resendOTPButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
+    [doneButton setTitle:[AISString commonString:typeButton KeyOfValue :@"DONE"] forState:UIControlStateNormal];
+    [doneButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
@@ -69,26 +72,26 @@
     [AISView changeLayerNomal:otpView];
     if ([otpTextField.text isEqualToString:@""]) {
         [AISView changeLayerError:otpView];
-        [self alert:[AISString commonString:POPUP :@"TEXTFIELDNIL"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
     }
     else if(otpTextField.text.length < 4){
         [AISView changeLayerError:otpView];
-        [self alert:[AISString commonString:POPUP :@"ACTIVATECODE"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue  :@"ACTIVATECODE"]];
     }
     else {
-        [self alert:[AISString commonString:POPUP :@"ACTIVATEEMAIL"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue  :@"ACTIVATEEMAIL"]];
         [self performSegueWithIdentifier:@"otpToEmail" sender:self];
     }
 }
 -(void)alert:(NSString *)message{
-    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:BUTTON :@"DONE"] RightString:nil];
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue  :@"DONE"] RightString:nil];
     [alertView showAlertView];
 }
 -(IBAction)resendOTP:(id)sender{
     [otpTextField setText:@""];
     [otpTextField resignFirstResponder];
     [AISView changeLayerNomal:otpView];
-    [self alert:[NSString stringWithFormat:@"%@ %@",[AISString commonString:POPUP :@"CONFIRMPHONE"] ,self.phoneNumber]];
+    [self alert:[NSString stringWithFormat:@"%@ %@",[AISString commonString:typePopup KeyOfValue  :@"CONFIRMPHONE"] ,self.phoneNumber]];
 }
 -(void)doneAction:(id)sender{
     [alertView dismissAlertView];

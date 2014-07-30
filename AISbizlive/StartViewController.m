@@ -93,10 +93,13 @@
 -(void)setTextLangage{
     btnSignIn.layer.cornerRadius = 5.0f;
     btnSignIn.layer.borderWidth = 1.0f;
+    btnSignIn.titleLabel.font = [FontUtil fontWithFontSize:eFontSizeNormal];
     btnSignIn.layer.borderColor = [AISColor lightgreenColor].CGColor;
-    [btnSignIn setTitle:[AISString commonString:BUTTON :@"SIGNIN"]forState:UIControlStateNormal];
-    [btnSignUpEmail setTitle:[AISString commonString:BUTTON :@"SIGNUP_EMAIL"] forState:UIControlStateNormal];
-    [btnSignUpFacebook setTitle:[AISString commonString:BUTTON :@"SIGNUP_FACE"] forState:UIControlStateNormal];
+    [btnSignIn setTitle:[AISString commonString:typeButton KeyOfValue:@"SIGNIN"]forState:UIControlStateNormal];
+    [btnSignUpEmail setTitle:[AISString commonString:typeButton KeyOfValue:@"SIGNUP_EMAIL"] forState:UIControlStateNormal];
+    btnSignUpEmail.titleLabel.font = [FontUtil fontWithFontSize:eFontSizeNormal];
+    [btnSignUpFacebook setTitle:[AISString commonString:typeButton KeyOfValue:@"SIGNUP_FACE"] forState:UIControlStateNormal];
+   btnSignUpFacebook.titleLabel.font = [FontUtil fontWithFontSize:eFontSizeNormal];
 }
 -(void)viewDidAppear:(BOOL)animated{
     

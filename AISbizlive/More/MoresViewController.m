@@ -23,32 +23,32 @@
     return self;
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.tabBarController.tabBar.hidden = NO;
     [self setTextLangague];
+    [self selectMoreCell];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tabBarController.tabBar.hidden = NO;
     [self setTextLangague];
     [self selectMoreCell];
     [self.tabBarController setSelectedIndex:0];
 }
 -(void)setTextLangague{
     
-    self.title = [AISString commonString:TITLE :@"MORE"];
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"MORE"]];
-    settingLabel.text =[AISString commonString:TITLE :@"SETTING"];
-    addContactLabel.text =[AISString commonString:TITLE :@"ADDCONTACT"];
-    newsLabel.text =[AISString commonString:TITLE :@"NEWS"];
-    scheduleLabel.text =[AISString commonString:TITLE :@"SCHEDULE"];
-    historyLabel.text =[AISString commonString:TITLE :@"HISTORY"];
-    topupLabel.text =[AISString commonString:TITLE :@"TOPUP"];
-    importLabel.text =[AISString commonString:TITLE :@"IMPORTCONTACT"];
-    informationLabel.text =[AISString commonString:TITLE :@"INFORMATION"];
-    templateLabel.text =[AISString commonString:TITLE :@"TEMPLATE"];
-    logoutLabel.text =[AISString commonString:TITLE :@"LOGOUT"];
+    self.tabBarController.tabBar.hidden = NO;
+    self.title = [AISString commonString:typeTitle KeyOfValue :@"MORE"];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"MORE"]];
+    settingLabel.text =[AISString commonString:typeTitle KeyOfValue :@"SETTING"];
+    addContactLabel.text =[AISString commonString:typeTitle KeyOfValue :@"ADDCONTACT"];
+    newsLabel.text =[AISString commonString:typeTitle KeyOfValue :@"NEWS"];
+    scheduleLabel.text =[AISString commonString:typeTitle KeyOfValue :@"SCHEDULE"];
+    historyLabel.text =[AISString commonString:typeTitle KeyOfValue :@"HISTORY"];
+    topupLabel.text =[AISString commonString:typeTitle KeyOfValue :@"TOPUP"];
+    importLabel.text =[AISString commonString:typeTitle KeyOfValue :@"IMPORTCONTACT"];
+    informationLabel.text =[AISString commonString:typeTitle KeyOfValue :@"INFORMATION"];
+    templateLabel.text =[AISString commonString:typeTitle KeyOfValue :@"TEMPLATE"];
+    logoutLabel.text =[AISString commonString:typeTitle KeyOfValue :@"LOGOUT"];
 }
 -(void)selectMoreCell{
     //Setting

@@ -33,19 +33,19 @@
                                              action: @selector(hideKeyboard:)];
     [oneTapGesture setNumberOfTouchesRequired:1];
     [[self view] addGestureRecognizer:oneTapGesture];
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
 
     [self setTextLangage];
 }
 -(void)setTextLangage{
     //Header
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"FORGETPASSWORD"]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"FORGETPASSWORD"]];
     //TextField
-    [emailField setPlaceholder:[AISString commonString:PLACEHODER :@"EMAIL"]];
+    [emailField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"EMAIL"]];
     //Label
-    [forgetPassLabel setText:[AISString commonString:LABEL :@"FORGETPASS"]];
+    [forgetPassLabel setText:[AISString commonString:typeLabel KeyOfValue :@"FORGETPASS"]];
     //Button
-    [doneButton setTitle:[AISString commonString:BUTTON :@"DONE"] forState:UIControlStateNormal];
+    [doneButton setTitle:[AISString commonString:typeButton KeyOfValue :@"DONE"] forState:UIControlStateNormal];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];

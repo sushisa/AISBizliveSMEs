@@ -29,22 +29,20 @@
 	// Do any additional setup after loading the view.
     
     [self setTextLangague];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)setTextLangague{
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"HISTORY"]];
-    [sendHistory setText:[AISString commonString:LABEL :@"HISTORY_SEND"]];
-    [balanceHistory setText:[AISString commonString:LABEL :@"HISTORY_QUOTA"]];
-    [topupHistory setText:[AISString commonString:LABEL :@"HISTORY_TOPUP"]];
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"HISTORY"]];
+    [sendHistory setText:[AISString commonString:typeLabel KeyOfValue :@"HISTORY_SEND"]];
+    [balanceHistory setText:[AISString commonString:typeLabel KeyOfValue :@"HISTORY_QUOTA"]];
+    [topupHistory setText:[AISString commonString:typeLabel KeyOfValue :@"HISTORY_TOPUP"]];
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self setTextLangague];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 - (void)didReceiveMemoryWarning
 {

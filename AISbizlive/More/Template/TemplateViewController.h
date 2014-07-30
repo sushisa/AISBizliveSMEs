@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
-@interface TemplateViewController : UITableViewController{
+@interface TemplateViewController : UITableViewController<SWTableViewCellDelegate>{
     
     IBOutlet UITableView *messageTable;
 }

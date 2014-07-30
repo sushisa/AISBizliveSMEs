@@ -9,6 +9,7 @@
 #import "PackageViewController.h"
 #import "AISGlobal.h"
 #import "PaymentViewController.h"
+#import "PackageCell.h"
 @interface PackageViewController ()
 {
     NSMutableArray *package;
@@ -31,19 +32,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     package = [[NSMutableArray alloc] initWithObjects:@"100 SMS/Package",@"200 SMS/Package",@"300 SMS/Package",@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" , nil];
-    self.tabBarController.tabBar.hidden = NO;
-//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
     [self setTextLangague];
     [self.tabBarController setSelectedIndex:3];
 }
 -(void)setTextLangague{
-        self.title = [AISString commonString:TITLE :@"PACKAGE"];
-        [self.navigationItem setTitle:[AISString commonString:TITLE :@"PACKAGE"]];
+    
+        self.tabBarController.tabBar.hidden = NO;
+        self.title = [AISString commonString:typeTitle KeyOfValue :@"PACKAGE"];
+        [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"PACKAGE"]];
     
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.tabBarController.tabBar.hidden = NO;
     [self setTextLangague];
 }
 - (void)didReceiveMemoryWarning
@@ -77,8 +77,7 @@
     
     headerLabel.textColor = [AISColor lightgreenColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:17.0f];
-    headerLabel.text = [AISString commonString:LABEL :@"SELECT_PACKAGE"];
-//    headerLabel.backgroundColor = [AISColor lightgreenColor];
+    headerLabel.text = [AISString commonString:typeLabel KeyOfValue :@"SELECT_PACKAGE"];
     [twoHeaderView addSubview:headerLabel];
     [oneHeaderView addSubview:twoHeaderView];
     NSLog(@"%f",headerLabel.frame.origin.x);
@@ -90,41 +89,24 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"PackageCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    PackageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.packageName.text = [package objectAtIndex:indexPath.row];
+    cell.sumSMS.text = @"120";
+    cell.amountPackage.text = @"20 บาท";
+    cell.descriptionAmount.text = @"ค่าบริการรายเดือน";
     
-//    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:CELL_BACKGROUND_DEFAULT] stretchableImageWithLeftCapWidth:0.0 topCapHeight:15.0] ];
-//    
-//    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:CELL_BACKGROUND_HIGHLIGHT] stretchableImageWithLeftCapWidth:0.0 topCapHeight:15.0] ];
-    // Configure the cell...
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    UILabel *TextLabel = (UILabel *)[cell viewWithTag:1];
-    [TextLabel setTextColor:[AISColor lightgrayColor]];
-    TextLabel.text = [package objectAtIndex:indexPath.row];
+    cell.descriptionSMS.text = @"ข้อความ";
     return cell;
 }
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 //{
-//    // Return NO if you do not want the specified item to be editable.
-//    return YES;
-//}
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [package removeObjectAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//    if ([[segue identifier] isEqualToString:@"Payment"]) {
+////        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+////        PaymentViewController *payment = segue.destinationViewController;
+//        
+////        detail.titleItem = [news objectAtIndex:indexPath.row];
+////        detail.imageItem = [newsimages objectAtIndex:indexPath.row];
+//        //        [[segue destinationViewController] setDescritionItem:[newsimages objectAtIndex:indexPath.row]];
 //    }
 //}
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"Payment"]) {
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//        PaymentViewController *payment = segue.destinationViewController;
-        
-//        detail.titleItem = [news objectAtIndex:indexPath.row];
-//        detail.imageItem = [newsimages objectAtIndex:indexPath.row];
-        //        [[segue destinationViewController] setDescritionItem:[newsimages objectAtIndex:indexPath.row]];
-    }
-}
 @end

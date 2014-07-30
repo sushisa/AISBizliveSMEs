@@ -12,8 +12,16 @@
 #define PLACEHODER @"PLACEHODER"
 #define LABEL @"LABEL"
 #define POPUP @"POPUP"
+typedef enum
+{
+    typeButton = 1,
+    typeTitle,
+    typePlacehoder,
+    typeLabel,
+    typePopup,
+}typeText;
 @interface AISString : NSObject
-+(NSString*)commonString:(NSString *) commonType :(NSString *)key;
++(NSString*)commonString:(typeText) commonType KeyOfValue:(NSString *)key;
 +(NSMutableArray*)commonArray :(NSString *)key;
 +(NSMutableArray*)TemplateArray;
 @end

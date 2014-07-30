@@ -35,20 +35,24 @@
     [[self view] addGestureRecognizer:oneTapGesture];
 //    [self.navigationItem.leftBarButtonItem setTintColor:[AISColor grayColor]];
     [self setTextLangage];
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)setTextLangage{
     //Header
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"SIGNIN"]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"SIGNIN"]];
     //TextField
-    [emailField setPlaceholder:[AISString commonString:PLACEHODER :@"EMAIL"]];
-    [passwordField setPlaceholder:[AISString commonString:PLACEHODER :@"PASSWORD"]];
+    [emailField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"EMAIL"]];
+    [emailField setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
+    [passwordField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"PASSWORD"]];
+    [passwordField setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     //Button
-    [forgetPassButton setTitle:[AISString commonString:BUTTON :@"FORGET_PASS"] forState:UIControlStateNormal];
-    [signinButton setTitle:[AISString commonString:BUTTON :@"SIGNIN"] forState:UIControlStateNormal];
+    [forgetPassButton setTitle:[AISString commonString:typeButton KeyOfValue :@"FORGET_PASS"] forState:UIControlStateNormal];
+    [forgetPassButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
+    [signinButton setTitle:[AISString commonString:typeButton KeyOfValue :@"SIGNIN"] forState:UIControlStateNormal];
+    [signinButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
 }
 
 - (void)didReceiveMemoryWarning

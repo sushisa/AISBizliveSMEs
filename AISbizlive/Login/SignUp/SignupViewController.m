@@ -9,12 +9,14 @@
 #import "SignupViewController.h"
 #import "AISGlobal.h"
 #import "OTPViewController.h"
+#import "WebViewcontroller.h"
 @interface SignupViewController ()
 {
     UIActionSheet *choosePhoto;
     AISAlertView *alertView ;
     NSDictionary *facebookData;
     NSUserDefaults *defaults;
+    NSString *headerToWeb;
 }
 @end
 
@@ -42,12 +44,13 @@
     [[self view] addGestureRecognizer:oneTapGesture];
     alertView = [AISAlertView alloc];
     [self setTextLangage];
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     
     defaults = [NSUserDefaults standardUserDefaults];
     if ([[defaults objectForKey:@"type"] isEqualToString:@"Facebook"]) {
         [AISLoading loadingStart];
-        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile", @"email", @"user_friends"] allowLoginUI:YES completionHandler: ^(FBSession *session, FBSessionState state, NSError *error) {
+        
+        [FBSession openActiveSessionWithReadPermissions:@[ @"user_friends"] allowLoginUI:YES completionHandler: ^(FBSession *session, FBSessionState state, NSError *error) {
             if (state == FBSessionStateOpen) {
                 [[FBRequest requestForMe] startWithCompletionHandler:
                  ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
@@ -66,10 +69,10 @@
 }
 -(void)setDataFacebook{
 //    SIGNUPFACEBOOK
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"SIGNUPFACEBOOK"]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"SIGNUPFACEBOOK"]];
     [fullNameField setText:[facebookData objectForKey:@"name"]];
 //    SIGNUP_IDFACEBOOK
-    [emailLabel setText:[AISString commonString:LABEL :@"SIGNUP_IDFACEBOOK"]];
+    [emailLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_IDFACEBOOK"]];
     [emailField setText:[facebookData objectForKey:@"id"]];
     [emailField setEnabled:NO];
     //    [photoImage setAlpha:0.0f];
@@ -83,23 +86,31 @@
 }
 -(void)setTextLangage{
     //Title
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"SIGNUP"]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"SIGNUP"]];
     //TextField
-    [fullNameField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_NAME"]];
-    [emailField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_EMAIL"]];
-    [phoneField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_PHONE"]];
-    [passField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_PASSWORD"]];
-    [confirmPassField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_PASSWORD"]];
+    [fullNameField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_NAME"]];
+    [emailField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_EMAIL"]];
+    [phoneField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PHONE"]];
+    [passField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PASSWORD"]];
+    [confirmPassField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PASSWORD"]];
     //Label
-    [emailLabel setText:[AISString commonString:LABEL :@"SIGNUP_EMAIL"]];
-    [phoneLabel setText:[AISString commonString:LABEL :@"SIGNUP_PHONE"]];
-    [passLabel setText:[AISString commonString:LABEL :@"SIGNUP_PASS"]];
-    [confirmPassLabel setText:[AISString commonString:LABEL :@"SIGNUP_CONFIRM"]];
-    [termandpolicyLabel setText:[AISString commonString:LABEL :@"SIGNUP_TERM"]];
+    [emailLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_EMAIL"]];
+    [emailLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
+    [phoneLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_PHONE"]];
+    [phoneLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
+    [passLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_PASS"]];
+    [passLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
+    [confirmPassLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_CONFIRM"]];
+    [confirmPassLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
+    [termandpolicyLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_TERM"]];
+    [termandpolicyLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     //Button
-    [termButton setTitle:[AISString commonString:TITLE :@"TERM"] forState:UIControlStateNormal];
-    [policyButton setTitle:[AISString commonString:TITLE :@"POLICY"] forState:UIControlStateNormal];
-    [doneButton setTitle:[AISString commonString:BUTTON :@"DONE"] forState:UIControlStateNormal];
+    [termButton setTitle:[AISString commonString:typeTitle KeyOfValue :@"TERM"] forState:UIControlStateNormal];
+    [termButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
+    [policyButton setTitle:[AISString commonString:typeTitle KeyOfValue :@"POLICY"] forState:UIControlStateNormal];
+    [policyButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
+    [doneButton setTitle:[AISString commonString:typeButton KeyOfValue :@"DONE"] forState:UIControlStateNormal];
+    [doneButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
 }
 // Event Gesture for Hide Keyboard
 - (void)hideKeyboard:(UITapGestureRecognizer *)sender {
@@ -202,34 +213,34 @@
     [AISView changeLayerNomal:passwordView];
     [AISView changeLayerNomal:confirmView];
     if ([emailField.text isEqualToString:@""] || [phoneField.text isEqualToString:@""] || [passField.text isEqualToString:@""] || [confirmPassField.text isEqualToString:@""] || [fullNameField.text isEqualToString:@""]) {
-        [self alert:[AISString commonString:POPUP :@"TEXTFIELDNIL"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
     }
     else if ([emailField.text rangeOfString:@"@"].location == NSNotFound || [emailField.text rangeOfString:@"."].location == NSNotFound){
         [AISView changeLayerError:emailView];
-        [self alert:[AISString commonString:POPUP :@"TEXTFIELDEMAIL"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDEMAIL"]];
     }
     else if (phoneField.text.length != 10){
         [AISView changeLayerError:phoneView];
         
-        [self alert:[AISString commonString:POPUP :@"TEXTFIELDPHONE"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPHONE"]];
     }
     else if(passField.text.length < 8){
         [AISView changeLayerError:passwordView];
-         [self alert:[AISString commonString:POPUP :@"TEXTFIELDPASS"]];
+         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASS"]];
     }
     else if(confirmPassField.text.length < 8){
         [AISView changeLayerError:confirmView];
         
-        [self alert:[AISString commonString:POPUP :@"TEXTFIELDCONFIRM"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDCONFIRM"]];
     }
     else if (![passField.text isEqualToString:confirmPassField.text]){
         [AISView changeLayerError:passwordView];
         [AISView changeLayerError:confirmView];
-        [self alert:[AISString commonString:POPUP :@"TEXTFIELDPASSANDCONFIRM"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASSANDCONFIRM"]];
     }
     else {
         
-        [self alert:[NSString stringWithFormat:[AISString commonString:POPUP :@"CONFIRMPHONE"], "%@",phoneField.text ]];
+        [self alert:[NSString stringWithFormat:[AISString commonString:typePopup KeyOfValue :@"CONFIRMPHONE"], "%@",phoneField.text ]];
         [self performSegueWithIdentifier:@"signUpToOTP" sender:self];
     }
 }
@@ -237,7 +248,7 @@
     [alertView dismissAlertView];
 }
 -(void)alert:(NSString *)message{
-    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:BUTTON :@"DONE"] RightString:nil];
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
     [alertView showAlertView];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -247,5 +258,19 @@
         otp.phoneNumber = phoneField.text;
         otp.emailAddress = emailField.text;
     }
+    else if ([[segue identifier] isEqualToString: @"signupToWeb"]) {
+        WebViewController *web = [segue destinationViewController];
+        web.Header = headerToWeb;
+    }
+}
+- (IBAction)termClick:(id)sender {
+    
+    headerToWeb = termButton.titleLabel.text;
+    [self performSegueWithIdentifier:@"signupToWeb" sender:self];
+}
+
+- (IBAction)policyClick:(id)sender {
+    headerToWeb = policyButton.titleLabel.text;
+    [self performSegueWithIdentifier:@"signupToWeb" sender:self];
 }
 @end

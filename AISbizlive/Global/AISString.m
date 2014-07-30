@@ -15,13 +15,35 @@
     NSDictionary *root;
     NSDictionary *type;
     NSDictionary *returnText;
++(NSString *) getTypeText:(typeText)type
+{
+    switch (type)
+    {
+        case typeButton:
+            return BUTTON;
+            
+        case typeTitle:
+            return TITLE;
+            
+        case typeLabel:
+            return LABEL;
+            
+        case typePlacehoder:
+            return PLACEHODER;
+        case typePopup:
+            return POPUP;
+        default:
+            return nil;
+    }
+    return nil;
+}
 
-+(NSString*)commonString:(NSString *) commonType :(NSString *)key
++(NSString*)commonString:(typeText) commonType KeyOfValue:(NSString *)key
 {
     lang = [[NSUserDefaults standardUserDefaults] stringForKey:@"lang"];
     path = [[NSBundle mainBundle] pathForResource:@"Common" ofType:@"plist"];
     root = [[NSDictionary alloc]initWithContentsOfFile:path];
-    type = [[NSDictionary alloc]initWithDictionary:[root objectForKey:commonType]];
+    type = [[NSDictionary alloc]initWithDictionary:[root objectForKey:[AISString getTypeText:commonType]]];
     returnText = [[NSDictionary alloc] initWithDictionary:[type objectForKey:key]];
     return [returnText objectForKey:lang];
 }

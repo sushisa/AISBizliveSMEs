@@ -36,7 +36,9 @@
 }
 
 @property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
+- (IBAction)termClick:(id)sender;
 
+- (IBAction)policyClick:(id)sender;
 @property (strong, nonatomic) NSString *facebookID;
 - (IBAction)choosePicture:(id)sender;
 

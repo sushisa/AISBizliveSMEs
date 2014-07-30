@@ -36,19 +36,19 @@
                                              action: @selector(hideKeyboard:)];
     [oneTapGesture setNumberOfTouchesRequired:1];
     [[self view] addGestureRecognizer:oneTapGesture];
-    self.navigationItem.leftBarButtonItem =[[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem =[[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     [self setTextLangage];
 }
 -(void)setTextLangage{
     //Header
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"EMAIL"]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"EMAIL"]];
     //Textfield
-    [emailTextField setPlaceholder:[AISString commonString:PLACEHODER :@"ACTIVATION_EMAIL"]];
+    [emailTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"ACTIVATION_EMAIL"]];
     //Label
-    [emailLabel setText:[AISString commonString:LABEL :@"EMAIL"]];
+    [emailLabel setText:[AISString commonString:typeLabel KeyOfValue :@"EMAIL"]];
     //Button
-    [resendEmailButton setTitle:[AISString commonString:BUTTON :@"RESEND_EMAIL"] forState:UIControlStateNormal];
-    [Donebtn setTitle:[AISString commonString:BUTTON :@"DONE"] forState:UIControlStateNormal];
+    [resendEmailButton setTitle:[AISString commonString:typeButton KeyOfValue :@"RESEND_EMAIL"] forState:UIControlStateNormal];
+    [Donebtn setTitle:[AISString commonString:typeButton KeyOfValue :@"DONE"] forState:UIControlStateNormal];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
@@ -68,7 +68,7 @@
     [emailTextField setText:@""];
     [emailTextField resignFirstResponder];
     [AISView changeLayerNomal:emailView];
-    [self alert:[AISString commonString:POPUP :@"ACTIVATEEMAIL"]];
+    [self alert:[AISString commonString:typePopup KeyOfValue :@"ACTIVATEEMAIL"]];
     
 }
 - (IBAction)Donebtn:(id)sender {
@@ -77,21 +77,21 @@
     [AISView changeLayerNomal:emailView];
     if ([emailTextField.text isEqualToString:@""]) {
         [AISView changeLayerError:emailView];
-        [self alert:[AISString commonString:POPUP :@"TEXTFIELDNIL"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
     }
     else if (emailTextField.text.length < 4)
     {
         [AISView changeLayerError:emailView];
-        [self alert:[AISString commonString:POPUP :@"ACTIVATECODE"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"ACTIVATECODE"]];
     }
     else{
-        [self alert:[AISString commonString:POPUP :@"SUCCESSSIGNUP"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"SUCCESSSIGNUP"]];
         [self performSegueWithIdentifier:@"emailToSignIn" sender:self];
     }
 //    [self.navigationController dismissViewControllerAnimated:YES completion:Nil];
 }
 -(void)alert:(NSString *)message{
-    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:BUTTON :@"DONE"] RightString:nil];
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
     [alertView showAlertView];
 }
 -(void)doneAction:(id)sender{

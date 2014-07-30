@@ -35,7 +35,7 @@
 }
 -(void)setTextLangague{
     [self.navigationItem setTitle:self.Header];
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     
 }
 -(void)viewDidAppear:(BOOL)animated{

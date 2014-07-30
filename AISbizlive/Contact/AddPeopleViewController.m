@@ -28,10 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBarHidden = NO;
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
-    self.navigationItem.rightBarButtonItem = [self DoneButton];
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
                                              initWithTarget: self
                                              action: @selector(hideKeyboard:)];
@@ -46,17 +42,22 @@
     [self setTextLangague];
 }
 -(void)setTextLangague{
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"ADDCONTACT"]];
-    [nameLabel setText:[AISString commonString:LABEL :@"FIRST_NAME"]];
+    
+    self.navigationController.navigationBarHidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
+    self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(doneAction) withTarget:self];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"ADDCONTACT"]];
+    [nameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"FIRST_NAME"]];
     [nameTextField setText:self.firstName];
-    [nameTextField setPlaceholder:[AISString commonString:PLACEHODER :@"FIRST_NAME"]];
+    [nameTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"FIRST_NAME"]];
     
-    [lastNameLabel setText:[AISString commonString:LABEL :@"LAST_NAME"]];
-    [lastNameTextField setPlaceholder:[AISString commonString:PLACEHODER :@"LAST_NAME"]];
+    [lastNameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"LAST_NAME"]];
+    [lastNameTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"LAST_NAME"]];
     
-    [mobileLabel setText:[AISString commonString:LABEL :@"MOBILE"]];
+    [mobileLabel setText:[AISString commonString:typeLabel KeyOfValue :@"MOBILE"]];
     [mobileNoTextField setText:self.phoneNumber];
-    [mobileNoTextField setPlaceholder:[AISString commonString:PLACEHODER :@"SIGNUP_PHONE"]];
+    [mobileNoTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PHONE"]];
 
 }
 - (void)hideKeyboard:(UITapGestureRecognizer *)sender {
@@ -77,9 +78,6 @@
 }
 -(void)viewWillAppear:(BOOL)animated {
     [self setTextLangague];
-    self.navigationController.navigationBarHidden = NO;
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     if ([self.checkPush isEqualToString: @"YES"]) {
@@ -89,11 +87,6 @@
     else {
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
-}
--(UIBarButtonItem *)DoneButton{
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"] style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
-    
-    return doneButton;
 }
 -(void)doneAction{
     NSLog(@"Done");

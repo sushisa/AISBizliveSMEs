@@ -27,30 +27,22 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationController.navigationBarHidden = NO;
-    self.navigationItem.rightBarButtonItem = [self DoneButton];
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    NSLog(@"%@",self.nameGroup);
     [self setTextLangague];
 }
 -(void)setTextLangague{
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"ADDGROUP"]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"ADDGROUP"]];
+    self.tabBarController.tabBar.hidden = YES;
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(doneAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     
 }
 -(void)viewWillAppear:(BOOL)animated {
     [self setTextLangague];
-    self.navigationController.navigationBarHidden = NO;
-    self.tabBarController.tabBar.hidden = YES;
-    self.navigationItem.rightBarButtonItem = [self DoneButton];
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
--(UIBarButtonItem *)DoneButton{
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"] style:UIBarButtonItemStyleBordered target:self action:@selector(doneAction)];
-    
-    return doneButton;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)doneAction{
     NSLog(@"Done");

@@ -10,7 +10,7 @@
 #import "AddTemplateViewController.h"
 #import "AISGlobal.h"
 #import "MessageTableViewController.h"
-
+#import "TemplateCell.h"
 @interface TemplateViewController ()
 {
 //    NSMutableArray *headTemplate;
@@ -20,7 +20,8 @@
     UILabel *head;
     UILabel *sample;
     UILabel *full;
-    UITableViewCell *cell ;
+//    UITableViewCell *cell ;
+    TemplateCell  *cell;
     int currentSelect;
     float currentHeight;
     float newHeight;
@@ -66,13 +67,13 @@
 -(void)setTextLangague{
     
     self.tabBarController.tabBar.hidden = YES;
-    [self.navigationItem setTitle:[AISString commonString:TITLE :@"TEMPLATE"]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"TEMPLATE"]];
     if ([self.templeSelected isEqualToString:@"YES"]) {
-        self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(popBackAction) withTarget:self];
+        self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(popBackAction) withTarget:self];
     }
     else{
-        self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
-        self.navigationItem.rightBarButtonItem = [self templateRightButton];
+        self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
+        self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] TemplateAddButtonWithAction:@selector(templateAdd) withTarget:self];
        
     }
     myObject = [[NSMutableArray alloc] init];
@@ -94,14 +95,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self setTextLangague];
 }
--(UIBarButtonItem *)templateRightButton{
-    UIBarButtonItem *templateRightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_ADD_DEFAULT] style:UIBarButtonItemStyleBordered target:self action:@selector(templateAdd)];
-    return templateRightButton;
-}
--(UIBarButtonItem *)selectTemplateRightButton{
-    UIBarButtonItem *templateRightButton = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:BUTTON :@"DONE"] style:UIBarButtonItemStyleBordered target:self action:@selector(selectTemplate)];
-    return templateRightButton;
-}
 -(void)selectTemplate{
     NSArray *arr = [self.navigationController viewControllers];
     MessageTableViewController *rvc = (MessageTableViewController *)[arr objectAtIndex:[arr count]-2];
@@ -109,11 +102,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)templateAdd{
-    NSLog(@"Template ADD");
-    
-    AddTemplateViewController *addTemplate = [self.storyboard instantiateViewControllerWithIdentifier:@"AddTemplateViewController"];
-    
-    [self.navigationController pushViewController:addTemplate animated:YES];
+    [self performSegueWithIdentifier:@"AddTemplate" sender:self];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -141,13 +130,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
      if ([self.templeSelected isEqualToString:@"YES"]) {
-         self.navigationItem.rightBarButtonItem = [self selectTemplateRightButton];
+        self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(selectTemplate) withTarget:self];
      }
-    cell = [tableView cellForRowAtIndexPath:indexPath];
+//    cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    UILabel *subtitle = (UILabel *)[cell viewWithTag:2];
-    UILabel *fulltitle = (UILabel *)[cell viewWithTag:42];
-    
+//    UILabel *subtitle = (UILabel *)[[tableView cellForRowAtIndexPath:indexPath] viewWithTag:2];
+//    UILabel *fulltitle = (UILabel *)[[tableView cellForRowAtIndexPath:indexPath] viewWithTag:42];
     CGFloat width = 280;
     CGFloat height = 0;
     CGRect r = [[[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"]boundingRectWithSize:CGSizeMake(width, height)
@@ -158,67 +146,132 @@
     [[myObject objectAtIndex:indexPath.row] setValue:[NSString stringWithFormat:@"%f",currentHeight+r.size.height+30] forKey:heightTemplateCell];
     fullReturn = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
     [UIView animateWithDuration:.3f animations:^{
-        subtitle.alpha = 0.0f;
-        fulltitle.alpha = 1.0f;
+        cell.descriptionTemplate.alpha = 1.0f;
+        cell.sampleDescriptionTemplate.alpha = 0.0f;
     }];
+    NSLog(@"%@",cell.descriptionTemplate.text);
     [tableView beginUpdates];
     [tableView endUpdates];
     
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView beginUpdates];
     
-    cell = [tableView cellForRowAtIndexPath:indexPath];
-    UILabel *subtitle = (UILabel *)[cell viewWithTag:2];
-    UILabel *fulltitle = (UILabel *)[cell viewWithTag:42];
+//    cell = ;
+//    UILabel *subtitle = (UILabel *)[[tableView cellForRowAtIndexPath:indexPath] viewWithTag:2];
+//    UILabel *fulltitle = (UILabel *)[[tableView cellForRowAtIndexPath:indexPath] viewWithTag:42];
       [[myObject objectAtIndex:indexPath.row] setValue:@"65" forKey:heightTemplateCell];
     [UIView animateWithDuration:.3f animations:^{
-        subtitle.alpha = 1.0f;
-        fulltitle.alpha = 0.0f;
+        cell.descriptionTemplate.alpha = 0.0f;
+        cell.sampleDescriptionTemplate.alpha = 1.0f;
     }];
-   
+    
+    [tableView beginUpdates];
     [tableView endUpdates];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     static NSString *CellIdentifier = @"TemplateCell";
-    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell = [messageTable dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     // Configure the cell...
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[TemplateCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
 //        cell.userInteractionEnabled = NO;
     }
-    head = (UILabel *)[cell viewWithTag:1];
-    head.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"TITLE"];
-    sample = (UILabel *)[cell viewWithTag:2];
-    sample.text =  [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
-    full = (UILabel *)[cell viewWithTag:3];
     
-    [full setNumberOfLines:0];
-    [full setLineBreakMode:NSLineBreakByWordWrapping];
-    full.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
+    
+    TemplateCell  __weak *weakCell = cell;
+    [cell setAppearanceWithBlock:^{
+        weakCell.leftUtilityButtons =  nil;
+        weakCell.rightUtilityButtons = nil;
+        weakCell.delegate = self;
+        weakCell.containingTableView = messageTable;
+    } force:YES];
+    
+//    [cell setCellHeight:cell.frame.size.height];
+    cell.nameTemplate.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"TITLE"];
+    cell.sampleDescriptionTemplate.text =  [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
+    cell.descriptionTemplate.alpha = 0.0f;
+    cell.descriptionTemplate.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
     return cell;
 
 }
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [myObject removeObjectAtIndex:indexPath.row];
-        NSString *path = [[NSBundle mainBundle] pathForResource: @"TemplateList" ofType:@"plist"];
-         NSMutableArray *delete = [[NSMutableArray alloc] initWithContentsOfFile: path];
-        [delete removeObjectAtIndex:indexPath.row];
-        NSLog(@"%@",myObject);
-//        NSFileManager *fileManager = [NSFileManager defaultManager];
-//        [fileManager removeItemAtPath:path error:NULL];
-//        [[NSFileManager defaultManager] removeFileAtPath:path error:NULL];
-
-        [delete writeToFile:path atomically:YES];
-//        [delete re:path atomically:YES];
-        [messageTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-//        [messageTable reloadData];
+-(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return UITableViewCellEditingStyleNone;
+}
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    
+//    [cell setAccessoryType:UITableViewCellAccessoryNone];
+//    selectIndex = (int) [testTable indexPathForCell:cell].row;
+    switch (index) {
+        case 0:
+        {
+            NSLog(@"Edit");
+            break;
+        }
+        case 1:
+        {
+            NSLog(@"DELETE");
+            break;
+        }
+        default:
+            break;
     }
 }
+
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
+    return YES;
+}
+
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor grayColor]
+                                                title:@"Edit"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor redColor]
+                                                title:@"Delete"];
+    
+    return rightUtilityButtons;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *oneHeaderView = [[UIView alloc] initWithFrame:
+                             CGRectMake(0, 0, tableView.frame.size.width, 60.0)];
+    
+    oneHeaderView.backgroundColor = [UIColor whiteColor];
+    UIView *twoHeaderView = [[UIView alloc] initWithFrame:
+                             CGRectMake(10, 10, tableView.frame.size.width-20, 40.0)];
+    
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:
+                            CGRectMake(10, 5, tableView.frame.size.width-40, 30.0)];
+    
+    headerLabel.textColor = [AISColor lightgreenColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+    headerLabel.text = [AISString commonString:typeLabel KeyOfValue :@"SELECT_TEMPLATE"];
+    [twoHeaderView addSubview:headerLabel];
+    [oneHeaderView addSubview:twoHeaderView];
+    return oneHeaderView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 60.0f;
+}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        [myObject removeObjectAtIndex:indexPath.row];
+//        NSString *path = [[NSBundle mainBundle] pathForResource: @"TemplateList" ofType:@"plist"];
+//         NSMutableArray *delete = [[NSMutableArray alloc] initWithContentsOfFile: path];
+//        [delete removeObjectAtIndex:indexPath.row];
+//        NSLog(@"%@",myObject);
+//        [delete writeToFile:path atomically:YES];
+//        [messageTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+//    }
+//}
 @end

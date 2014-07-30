@@ -10,4 +10,8 @@
 
 @interface AddGroupViewController : UIViewController
 
+@property (strong, nonatomic) NSString *nameGroup;
+@property (strong, nonatomic) NSString *profileGroup;
+@property (strong, nonatomic) NSString *idGroup;
+
 @end

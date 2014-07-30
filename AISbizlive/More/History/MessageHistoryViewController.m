@@ -32,14 +32,14 @@
     messageHistory = [[NSMutableArray alloc] initWithObjects:@"100 SMS/Package",@"200 SMS/Package",@"300 SMS/Package",@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" , nil];
     
     self.navigationItem.title = @"Message History";
-    self.navigationItem.leftBarButtonItem =[[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem =[[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationItem.title = @"Message History";
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -74,28 +74,28 @@
     
     detailLabel.textColor = [AISColor  grayColor];
     detailLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    detailLabel.text =[AISString commonString:LABEL :@"HISTORY_SEND_DETAIL"];
+    detailLabel.text =[AISString commonString:typeLabel KeyOfValue :@"HISTORY_SEND_DETAIL"];
     [detailLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:
                             CGRectMake(labelWidth, 0, labelWidth, 40.0)];
     dateLabel.textColor = [AISColor  grayColor];
     dateLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    dateLabel.text = [AISString commonString:LABEL :@"HISTORY_SEND_DATE"];
+    dateLabel.text = [AISString commonString:typeLabel KeyOfValue :@"HISTORY_SEND_DATE"];
     [dateLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *successLabel = [[UILabel alloc] initWithFrame:
                           CGRectMake((labelWidth)*2, 0, labelWidth, 40.0)];
     successLabel.textColor =  [AISColor  grayColor];
     successLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    successLabel.text = [AISString commonString:LABEL :@"HISTORY_SEND_SUCCESS"];
+    successLabel.text = [AISString commonString:typeLabel KeyOfValue :@"HISTORY_SEND_SUCCESS"];
     [successLabel setTextAlignment:NSTextAlignmentCenter];
     
     UILabel *failLabel = [[UILabel alloc] initWithFrame:
                              CGRectMake((labelWidth)*3, 0, labelWidth, 40.0)];
     failLabel.textColor =  [AISColor  grayColor];
     failLabel.font = [UIFont boldSystemFontOfSize:13.0f];
-    failLabel.text = [AISString commonString:LABEL :@"HISTORY_SEND_FAILED"];
+    failLabel.text = [AISString commonString:typeLabel KeyOfValue :@"HISTORY_SEND_FAILED"];
     [failLabel setTextAlignment:NSTextAlignmentCenter];
     
     [twoHeaderView addSubview:detailLabel];

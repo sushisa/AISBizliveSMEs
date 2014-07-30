@@ -41,31 +41,29 @@
     [oneTapGesture setNumberOfTouchesRequired:1];
     [[self view] addGestureRecognizer:oneTapGesture];
     if(self.descritionItem != nil){
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(templateAdd)];
         descritionTemplate.text = self.descritionItem;
         [textLength setText:[AISSMSCharacter bytesString:descritionTemplate.text]];
         self.tabBarController.tabBar.hidden = YES;
     }
-    else{
-        self.navigationItem.rightBarButtonItem = [self templateRightButton];
-    }
-    self.navigationItem.leftBarButtonItem = [[AISNavigationBarLeftItem alloc] withAction:@selector(backAction) withTarget:self];
-}
--(UIBarButtonItem *)templateRightButton{
-    UIBarButtonItem *templateRightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(templateAdd)];
-    return templateRightButton;
+//    else{
+        self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] AddButtonWithAction:@selector(templateAdd) withTarget:self];
+//    }
+    self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
 }
 -(void)templateAdd{
     NSLog(@"Template ADD");
-    NSString *path = [[NSBundle mainBundle] pathForResource: @"TemplateList" ofType:@"plist"];
-    NSMutableArray *favs = [[NSMutableArray alloc] initWithContentsOfFile: path];
-    NSDictionary *test = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                          nameTemplate.text, @"TITLE",
-                          descritionTemplate.text,@"DESCRIPTION",
-                          nil];
-    [favs addObject:test];
-    [favs writeToFile:path atomically:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+    if (![nameTemplate.text isEqualToString:@""] && ![descritionTemplate.text isEqualToString:@""]) {
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource: @"TemplateList" ofType:@"plist"];
+        NSMutableArray *favs = [[NSMutableArray alloc] initWithContentsOfFile: path];
+        NSDictionary *test = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                              nameTemplate.text, @"TITLE",
+                              descritionTemplate.text,@"DESCRIPTION",
+                              nil];
+        [favs addObject:test];
+        [favs writeToFile:path atomically:YES];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
