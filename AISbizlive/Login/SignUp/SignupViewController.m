@@ -123,7 +123,26 @@
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     NSInteger locationAndStringLengthSum = range.location + [string length];
     if ([textField isEqual:phoneField]) {
+//        if (locationAndStringLengthSum == 3 || locationAndStringLengthSum == 8) {
+//            phoneField.text = [NSString stringWithFormat:@"%@-",phoneField.text];
+//        }
         if (locationAndStringLengthSum > 10) {
+            phoneField.text = [NSString stringWithFormat:@"%@-%@-%@",[phoneField.text substringToIndex:2] ,phoneField.text];
+            return NO;
+        }
+    }
+    else if ([textField isEqual:passField] || [textField isEqual:confirmPassField]) {
+        if (locationAndStringLengthSum > 20) {
+            return NO;
+        }
+    }
+    else if ([textField isEqual:fullNameField]) {
+        if (locationAndStringLengthSum > 200) {
+            return NO;
+        }
+    }
+    else if ([textField isEqual:emailField]) {
+        if (locationAndStringLengthSum > 100) {
             return NO;
         }
     }
@@ -135,10 +154,6 @@
         return NO;
     }
     else if ([textField isEqual:emailField]) {
-        [phoneField becomeFirstResponder];
-        return NO;
-    }
-    else if ([textField isEqual:phoneField]) {
         [passField becomeFirstResponder];
         return NO;
     }
@@ -147,7 +162,7 @@
         return NO;
     }
     else if ([textField isEqual:confirmPassField]) {
-        [confirmPassField resignFirstResponder];
+        [phoneField becomeFirstResponder];
         return NO;
     }
     return YES;
@@ -212,32 +227,45 @@
     [AISView changeLayerNomal:phoneView];
     [AISView changeLayerNomal:passwordView];
     [AISView changeLayerNomal:confirmView];
-    if ([emailField.text isEqualToString:@""] || [phoneField.text isEqualToString:@""] || [passField.text isEqualToString:@""] || [confirmPassField.text isEqualToString:@""] || [fullNameField.text isEqualToString:@""]) {
+    if ([emailField.text isEqualToString:@""] && [phoneField.text isEqualToString:@""] && [passField.text isEqualToString:@""] && [confirmPassField.text isEqualToString:@""] && [fullNameField.text isEqualToString:@""]) {
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
     }
     else if ([emailField.text rangeOfString:@"@"].location == NSNotFound || [emailField.text rangeOfString:@"."].location == NSNotFound){
         [AISView changeLayerError:emailView];
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDEMAIL"]];
     }
-    else if (phoneField.text.length != 10){
-        [AISView changeLayerError:phoneView];
-        
-        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPHONE"]];
+    else if([passField.text isEqualToString:@""]){
+        [AISView changeLayerError:passwordView];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASS"]];
     }
     else if(passField.text.length < 8){
         [AISView changeLayerError:passwordView];
-         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASS"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASSDIGIT"]];
+    }
+    else if([confirmPassField.text isEqualToString:@""]){
+        [AISView changeLayerError:confirmView];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDCONFIRM"]];
     }
     else if(confirmPassField.text.length < 8){
         [AISView changeLayerError:confirmView];
         
-        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDCONFIRM"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDCONFIRMDIGIT"]];
     }
     else if (![passField.text isEqualToString:confirmPassField.text]){
         [AISView changeLayerError:passwordView];
         [AISView changeLayerError:confirmView];
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASSANDCONFIRM"]];
     }
+    else if (phoneField.text.length != 10){
+        [AISView changeLayerError:phoneView];
+        
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPHONE"]];
+    }
+    else if (![[phoneField.text substringToIndex:2]  isEqual: @"08"] && ![[phoneField.text substringToIndex:2]  isEqual: @"09"] ){
+            [AISView changeLayerError:phoneView];
+            [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDISNOPHONE"]];
+    }
+    
     else {
         
         [self alert:[NSString stringWithFormat:[AISString commonString:typePopup KeyOfValue :@"CONFIRMPHONE"], "%@",phoneField.text ]];

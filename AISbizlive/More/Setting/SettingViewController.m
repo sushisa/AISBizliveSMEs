@@ -35,7 +35,7 @@
 -(void)setTextLangague{
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"SETTING"]];
-    [bathLabel setText:[AISString commonString:typeLabel KeyOfValue :@"BATH"]];
+    [bathLabel setText:[AISString commonString:typeLabel KeyOfValue :@"BAHT"]];
     [message1Label setText:[AISString commonString:typeLabel KeyOfValue :@"MESSAGE"]];
     [message2Label setText:[AISString commonString:typeLabel KeyOfValue :@"MESSAGE"]];
     [message3Label setText:[AISString commonString:typeLabel KeyOfValue :@"MESSAGE"]];

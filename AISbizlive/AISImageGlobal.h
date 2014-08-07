@@ -8,9 +8,9 @@
 
 //CONTACT PAGE
 #define BUTTON_PEOPLE_ADD @"Add_Contact.png"
-#define BUTTON_PEOPLE_DELETE @"Delete_Contact.png"
+#define BUTTON_PEOPLE_DELETE @"Pen_Icon.png"
 #define BUTTON_GROUP_ADD @"Add_Group.png"
-#define BUTTON_GROUP_DELETE @"Delete_Group.png"
+#define BUTTON_GROUP_DELETE @"Pen_Icon.png"
 //MORE PAGE
 #define MORE_BUTTON_ADDCONTACT @"L_AddContact_Icon.png"
 #define MORE_BUTTON_HISTORY @"L_History_Icon.png"

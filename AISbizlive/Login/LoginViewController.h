@@ -11,9 +11,11 @@
 @interface LoginViewController : UIViewController{
     
     __weak IBOutlet UIButton *forgetPassButton;
+    __weak IBOutlet UILabel *emailLabel;
     __weak IBOutlet UITextField *emailField;
     __weak IBOutlet UIButton *signinButton;
     __weak IBOutlet UITextField *passwordField;
+    __weak IBOutlet UILabel *passwordLabel;
 }
 - (IBAction)signIn:(id)sender;
 

@@ -9,7 +9,9 @@
 #import "LoginViewController.h"
 #import "AISGlobal.h"
 @interface LoginViewController ()
-
+{
+    AISAlertView *alertView ;
+}
 @end
 
 @implementation LoginViewController
@@ -26,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    alertView = [[AISAlertView alloc] init];
 	// Do any additional setup after loading the view.
     [self.navigationController.navigationBar setHidden:NO];
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
@@ -42,12 +45,15 @@
 }
 -(void)setTextLangage{
     //Header
-    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"SIGNIN"]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"LOGIN"]];
     //TextField
-    [emailField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"EMAIL"]];
-    [emailField setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
-    [passwordField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"PASSWORD"]];
-    [passwordField setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
+    [emailLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_EMAIL"]];
+    [emailField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_EMAIL"]];
+    [emailField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
+    
+    [passwordLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_PASS"]];
+    [passwordField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PHONE"]];
+    [passwordField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     //Button
     [forgetPassButton setTitle:[AISString commonString:typeButton KeyOfValue :@"FORGET_PASS"] forState:UIControlStateNormal];
     [forgetPassButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
@@ -66,13 +72,33 @@
 }
 
 - (IBAction)signIn:(id)sender {
- 
+    if ([emailField.text isEqualToString:@""] && [passwordField.text isEqualToString:@""] ){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
+    }
+    else if([emailField.text rangeOfString:@"@"].location == NSNotFound || [emailField.text rangeOfString:@"."].location == NSNotFound){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDEMAIL"]];
+    }
+    else if([passwordField.text isEqualToString:@""] ){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASS"]];
+    }
+    else if(passwordField.text.length < 8){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASSDIGIT"]];
+    }
+    else {
         [self performSegueWithIdentifier: @"tabEN" sender: self];
+    }
 }
 // Event Gesture for Hide Keyboard
 - (void)hideKeyboard:(UITapGestureRecognizer *)sender {
     [emailField resignFirstResponder];
     [passwordField resignFirstResponder];
+}
+-(void)doneAction:(id)sender{
+    [alertView dismissAlertView];
+}
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
+    [alertView showAlertView];
 }
 
 @end

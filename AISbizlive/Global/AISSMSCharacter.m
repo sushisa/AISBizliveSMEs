@@ -57,8 +57,8 @@ int messageNo = 1;
                 checkSpecial += 1;
             }
             else{
-                format = @"140";
-                checkShots = 140;
+                format = @"70";
+                checkShots = 70;
                 checkFomatThai = NO;
                 checkSpecial = 0;
                 break;
@@ -72,10 +72,10 @@ int messageNo = 1;
         formatReturn = [NSString stringWithFormat:@"%lu / %@",characterString.length+checkSpecial,format];
     }
     else{
-        while (characterString.length*2 > [format intValue]) {
+        while (characterString.length > [format intValue]) {
         format = [NSString stringWithFormat:@"%d",[format intValue]+checkShots];
         }
-         formatReturn = [NSString stringWithFormat:@"%lu / %@",characterString.length*2,format];
+         formatReturn = [NSString stringWithFormat:@"%u / %@",characterString.length,format];
     }
     return formatReturn;
 }
@@ -84,7 +84,7 @@ int messageNo = 1;
         messageNo = (int) [format intValue]/160;
     }
     else{
-        messageNo = (int) [format intValue]/140;
+        messageNo = (int) [format intValue]/70;
     }
     return [NSString stringWithFormat:@"%d",messageNo];
 }

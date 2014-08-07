@@ -18,5 +18,7 @@
     __weak IBOutlet UITextField *newPasswordTextField;
     
     __weak IBOutlet UITextField *reNewPasswordTextField;
+    __weak IBOutlet UIButton *doneButton;
 }
+- (IBAction)doneAction:(id)sender;
 @end

@@ -9,7 +9,9 @@
 #import "FogetPasswordViewController.h"
 #import "AISGlobal.h"
 @interface FogetPasswordViewController ()
-
+{
+    AISAlertView *alertView;
+}
 @end
 
 @implementation FogetPasswordViewController
@@ -26,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    alertView = [[AISAlertView alloc] init];
 	// Do any additional setup after loading the view.
     [self.navigationController.navigationBar setHidden:NO];
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
@@ -41,7 +44,12 @@
     //Header
     [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"FORGETPASSWORD"]];
     //TextField
-    [emailField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"EMAIL"]];
+    [emailLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_EMAIL"]];
+    [emailLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
+    
+    [emailField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_EMAIL"]];
+    [emailField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
+    
     //Label
     [forgetPassLabel setText:[AISString commonString:typeLabel KeyOfValue :@"FORGETPASS"]];
     //Button
@@ -62,8 +70,25 @@
 }
 - (IBAction)doneAction:(id)sender {
 //  forgetToEmail
-    [self performSegueWithIdentifier:@"forgetToEmail" sender:self];
+    if ([emailField.text isEqualToString:@""]) {
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
+    }
+    else if ([emailField.text rangeOfString:@"@"].location == NSNotFound || [emailField.text rangeOfString:@"."].location == NSNotFound)
+    {
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDEMAIL"]];
+    }
+    else{
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"SUCCESSSIGNUP"]];
+        [self performSegueWithIdentifier:@"forgetToEmail" sender:self];
+    }
 
 }
 
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(doneBTN:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
+    [alertView showAlertView];
+}
+-(void)doneBTN:(id)sender{
+    [alertView dismissAlertView];
+}
 @end

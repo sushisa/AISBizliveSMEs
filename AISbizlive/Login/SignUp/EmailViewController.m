@@ -82,7 +82,7 @@
     else if (emailTextField.text.length < 4)
     {
         [AISView changeLayerError:emailView];
-        [self alert:[AISString commonString:typePopup KeyOfValue :@"ACTIVATECODE"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"EMAILACTIVATECODE"]];
     }
     else{
         [self alert:[AISString commonString:typePopup KeyOfValue :@"SUCCESSSIGNUP"]];

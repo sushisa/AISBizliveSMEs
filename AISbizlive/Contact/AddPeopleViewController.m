@@ -48,9 +48,9 @@
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(doneAction) withTarget:self];
     [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"ADDCONTACT"]];
-    [nameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"FIRST_NAME"]];
+    [nameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"NAME"]];
     [nameTextField setText:self.firstName];
-    [nameTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"FIRST_NAME"]];
+    [nameTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"NAME"]];
     
     [lastNameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"LAST_NAME"]];
     [lastNameTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"LAST_NAME"]];

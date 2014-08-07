@@ -55,7 +55,7 @@
     UIPageControl *pageControl = [UIPageControl appearance];
     
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.currentPageIndicatorTintColor = [AISColor  lightgreenColor];
     [self setTextLangage];
 //    [self updateView];
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
@@ -200,7 +200,7 @@
             }];
         }
     }
-//    [self performSegueWithIdentifier:@"CheckFBLogin" sender:self];
+    [self performSegueWithIdentifier:@"CheckFBLogin" sender:self];
     [defaults setValue:@"Facebook" forKey:@"type"];
     [defaults synchronize];
 }

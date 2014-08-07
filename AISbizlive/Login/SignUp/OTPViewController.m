@@ -79,7 +79,7 @@
         [self alert:[AISString commonString:typePopup KeyOfValue  :@"ACTIVATECODE"]];
     }
     else {
-        [self alert:[AISString commonString:typePopup KeyOfValue  :@"ACTIVATEEMAIL"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue  :@"CONFIRMACTIVATE"]];
         [self performSegueWithIdentifier:@"otpToEmail" sender:self];
     }
 }

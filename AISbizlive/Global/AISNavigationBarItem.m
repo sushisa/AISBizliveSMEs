@@ -49,7 +49,7 @@
 }
 -(id)PeopleDeleteButtonWithAction:(SEL)actionbutton withTarget:(id)target{
     UIBarButtonItem *contactDeleteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_PEOPLE_DELETE] style:UIBarButtonItemStyleBordered target:target action:actionbutton];
-    contactDeleteButton.tintColor = [UIColor redColor];
+    contactDeleteButton.tintColor = [AISColor lightgreenColor];
     return contactDeleteButton;
 }
 -(id)GroupAddButtonWithAction:(SEL)actionbutton withTarget:(id)target{
@@ -59,7 +59,7 @@
 }
 -(id)GroupDeleteButtonWithAction:(SEL)actionbutton withTarget:(id)target{
     UIBarButtonItem *groupDeleteButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_GROUP_DELETE] style:UIBarButtonItemStyleBordered target:target action:actionbutton];
-    groupDeleteButton.tintColor = [UIColor redColor];
+    groupDeleteButton.tintColor = [AISColor lightgreenColor];
     return groupDeleteButton;
 }
 -(id)TemplateAddButtonWithAction:(SEL)actionbutton withTarget:(id)target{
