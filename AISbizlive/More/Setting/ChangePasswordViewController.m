@@ -31,9 +31,8 @@
 }
 -(void)setTextLangague{
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
-    
-    self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(backAction) withTarget:self];
     [self.navigationItem setTitle:[AISString commonString:typeButton KeyOfValue :@"CHANGE_PASS"]];
+    [doneButton setTitle:[AISString commonString:typeButton KeyOfValue:@"DONE"] forState:UIControlStateNormal];
     [oldPasswordTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"OLD_PASS"]];
     
     [newPasswordTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"NEW_PASS"]];
@@ -65,4 +64,7 @@
 }
 */
 
+- (IBAction)doneAction:(id)sender {
+    [self backAction];
+}
 @end

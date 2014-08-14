@@ -23,7 +23,7 @@
 -(void)setTextLangague{
     self.newsLabelTitle.text = self.titleItem;
     self.newsImage.image = [UIImage imageNamed:self.imageItem];
-    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"NEWS"]];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"DETAIL_NEWS"]];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     
 }

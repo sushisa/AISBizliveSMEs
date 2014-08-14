@@ -4,10 +4,10 @@
 <dict>
 	<key>TITLE</key>
 	<dict>
-		<key>SIGNIN</key>
+		<key>LOGIN</key>
 		<dict>
 			<key>EN</key>
-			<string>Sign In</string>
+			<string>Log In</string>
 			<key>TH</key>
 			<string>ล๊อคอิน</string>
 		</dict>
@@ -56,7 +56,7 @@
 		<key>FORGETPASSWORD</key>
 		<dict>
 			<key>EN</key>
-			<string>Forget Password</string>
+			<string>Forgot Password</string>
 			<key>TH</key>
 			<string>ลืมรหัสผ่าน</string>
 		</dict>
@@ -141,6 +141,13 @@
 		<dict>
 			<key>EN</key>
 			<string>News</string>
+			<key>TH</key>
+			<string>ข่าว</string>
+		</dict>
+		<key>DETAIL_NEWS</key>
+		<dict>
+			<key>EN</key>
+			<string>News Feed</string>
 			<key>TH</key>
 			<string>ข่าว</string>
 		</dict>
@@ -318,14 +325,14 @@
 		<key>SIGNIN</key>
 		<dict>
 			<key>EN</key>
-			<string>Sign In</string>
+			<string>Log In</string>
 			<key>TH</key>
 			<string>ล๊อคอิน</string>
 		</dict>
 		<key>FORGET_PASS</key>
 		<dict>
 			<key>EN</key>
-			<string>Forget Password</string>
+			<string>Forgot Password</string>
 			<key>TH</key>
 			<string>ลืมรหัสผ่าน</string>
 		</dict>
@@ -346,26 +353,26 @@
 	</dict>
 	<key>PLACEHODER</key>
 	<dict>
-		<key>FIRST_NAME</key>
+		<key>NAME</key>
 		<dict>
 			<key>EN</key>
-			<string>Input First Name</string>
+			<string>Input Name</string>
 			<key>TH</key>
-			<string>.....fistname</string>
+			<string>ชื่อ</string>
 		</dict>
 		<key>LAST_NAME</key>
 		<dict>
 			<key>EN</key>
 			<string>Input Last Name</string>
 			<key>TH</key>
-			<string>....lastname</string>
+			<string>นามสกุล</string>
 		</dict>
 		<key>TOPUP_SERIAL</key>
 		<dict>
 			<key>EN</key>
 			<string>Serial Code 16 digits</string>
 			<key>TH</key>
-			<string></string>
+			<string>Serial Code 16 digits</string>
 		</dict>
 		<key>EMAIL</key>
 		<dict>
@@ -461,10 +468,10 @@
 			<key>TH</key>
 			<string></string>
 		</dict>
-		<key>FIRST_NAME</key>
+		<key>NAME</key>
 		<dict>
 			<key>EN</key>
-			<string>First Name</string>
+			<string>Name</string>
 			<key>TH</key>
 			<string>ชื่อ</string>
 		</dict>
@@ -534,7 +541,7 @@
 		<key>SIGNUP_PHONE</key>
 		<dict>
 			<key>EN</key>
-			<string>Phone</string>
+			<string>Phone No.</string>
 			<key>TH</key>
 			<string>เบอร์โทรศัพท์</string>
 		</dict>
@@ -557,7 +564,7 @@
 			<key>EN</key>
 			<string>By signing up, you agree to the</string>
 			<key>TH</key>
-			<string></string>
+			<string>ในการลงทะเบียน,คุณต้องยอมรับ</string>
 		</dict>
 		<key>SETTING_BALANCE</key>
 		<dict>
@@ -697,14 +704,21 @@
 			<key>EN</key>
 			<string>Cash Card</string>
 			<key>TH</key>
-			<string></string>
+			<string>เติมเงิน</string>
+		</dict>
+		<key>TOPUP_CURRENT</key>
+		<dict>
+			<key>EN</key>
+			<string>You have money</string>
+			<key>TH</key>
+			<string>คุณมีเงิน</string>
 		</dict>
 		<key>TOPUP_SERIAL</key>
 		<dict>
 			<key>EN</key>
 			<string>Serial Code</string>
 			<key>TH</key>
-			<string></string>
+			<string>Serial Code</string>
 		</dict>
 		<key>SELECT_PACKAGE</key>
 		<dict>
@@ -737,14 +751,14 @@
 		<key>MESSAGE</key>
 		<dict>
 			<key>EN</key>
-			<string>Message</string>
+			<string>Messages</string>
 			<key>TH</key>
 			<string>ข้อความ</string>
 		</dict>
-		<key>BATH</key>
+		<key>BAHT</key>
 		<dict>
 			<key>EN</key>
-			<string>Bath</string>
+			<string>Baht</string>
 			<key>TH</key>
 			<string>บาท</string>
 		</dict>
@@ -866,72 +880,100 @@
 		<key>TEXTFIELDNIL</key>
 		<dict>
 			<key>EN</key>
-			<string></string>
+			<string>Please specify all required fields.</string>
 			<key>TH</key>
 			<string>กรุณาระบุข้อมูลที่จำเป็นให้ครบถ้วน</string>
 		</dict>
 		<key>TEXTFIELDEMAIL</key>
 		<dict>
 			<key>EN</key>
-			<string></string>
+			<string>Invalid Email, please try again.</string>
 			<key>TH</key>
-			<string>กรุณาระบุอีเมล์ให้ถูกต้อง</string>
+			<string>กรุณาระบุ Email ให้ถูกต้อง</string>
 		</dict>
 		<key>TEXTFIELDPHONE</key>
 		<dict>
 			<key>EN</key>
-			<string></string>
+			<string>Please specify phone number 10 digits.</string>
 			<key>TH</key>
 			<string>กรุณาระบุเบอร์โทรศัพท์ให้ครบ 10 ตำแหน่ง</string>
+		</dict>
+		<key>TEXTFIELDISNOPHONE</key>
+		<dict>
+			<key>EN</key>
+			<string>Invalid phone number, please try again.</string>
+			<key>TH</key>
+			<string>กรุณาระบุเบอร์โทรศัพท์ให้ถูกต้อง</string>
 		</dict>
 		<key>TEXTFIELDPASS</key>
 		<dict>
 			<key>EN</key>
-			<string></string>
+			<string>Please specify password</string>
 			<key>TH</key>
 			<string>กรุณาระบุรหัสผ่านให้ครบถ้วน</string>
+		</dict>
+		<key>TEXTFIELDPASSDIGIT</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify password at least 8 characters.</string>
+			<key>TH</key>
+			<string>กรุณาระบุรหัสผ่านอย่างน้อย 8 ตัวอักษร</string>
 		</dict>
 		<key>TEXTFIELDCONFIRM</key>
 		<dict>
 			<key>EN</key>
-			<string></string>
+			<string>Please specify confirm password</string>
 			<key>TH</key>
 			<string>กรุณาระบุยืนยันรหัสผ่านให้ครบถ้วน</string>
+		</dict>
+		<key>TEXTFIELDCONFIRMDIGIT</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify confirm password at least 8 characters.</string>
+			<key>TH</key>
+			<string>กรุณาระบุยืนยันรหัสผ่านอย่างน้อย 8 ตัวอักษร</string>
 		</dict>
 		<key>TEXTFIELDPASSANDCONFIRM</key>
 		<dict>
 			<key>EN</key>
-			<string>Password And Confirm Password is not match, plase try again</string>
+			<string>Please specify password and confirm password</string>
 			<key>TH</key>
-			<string></string>
+			<string>รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกันโปรดลองอีกครั้ง</string>
 		</dict>
 		<key>CONFIRMPHONE</key>
 		<dict>
 			<key>EN</key>
-			<string></string>
+			<string>ไม่มีข้อความ</string>
 			<key>TH</key>
-			<string>ระบบได้ส่งรหัสผ่านแบบใช้ครั้งเดียวไปที่เบอร์</string>
+			<string>ไม่มีข้อความ</string>
 		</dict>
 		<key>ACTIVATECODE</key>
 		<dict>
 			<key>EN</key>
-			<string></string>
+			<string>Please specify Activate Code.</string>
 			<key>TH</key>
-			<string>กรุณาระบุ Activate Code ให้ถูกต้อง</string>
+			<string>กรุณาระบุข้อมูล Activate Code</string>
 		</dict>
-		<key>ACTIVATEEMAIL</key>
+		<key>EMAILACTIVATECODE</key>
 		<dict>
 			<key>EN</key>
-			<string></string>
+			<string>Please specify Email Verification Code.</string>
 			<key>TH</key>
-			<string>ระบบได้ส่ง Email Verification ไปยัง Email ของท่าน</string>
+			<string>กรุณาระบุข้อมูล Email Verification Code</string>
+		</dict>
+		<key>CONFIRMACTIVATE</key>
+		<dict>
+			<key>EN</key>
+			<string>ไม่มีข้อความ</string>
+			<key>TH</key>
+			<string>ไม่มีข้อความ</string>
 		</dict>
 		<key>SUCCESSSIGNUP</key>
 		<dict>
 			<key>EN</key>
-			<string></string>
+			<string>ไม่มีข้อความ</string>
 			<key>TH</key>
-			<string>ระบบได้ทำการลงทะเบียนให้ท่านเรียบร้อยแล้ว กรุณา Log in เพื่อเข้าใช้งานระบบ</string>
+			<string>ไม่มีข้อความ</string>
 		</dict>
 	</dict>
 	<key>WEEK_DETAIL</key>

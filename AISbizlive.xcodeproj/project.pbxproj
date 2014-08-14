@@ -24,6 +24,9 @@
 		7124223A193590F900BAD376 /* MoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71242239193590F900BAD376 /* MoresViewController.m */; };
 		7124223D1935995B00BAD376 /* AISMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7124223C1935995B00BAD376 /* AISMoreView.m */; };
 		71243ADB18F3E9D900500372 /* AddPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71243AD918F3E9D900500372 /* AddPeopleViewController.m */; };
+		71287D3F1990DAC0007BF8CF /* CheckBox_True@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71287D3C1990DAC0007BF8CF /* CheckBox_True@2x.png */; };
+		71287D401990DAC0007BF8CF /* CheckBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71287D3D1990DAC0007BF8CF /* CheckBox@2x.png */; };
+		71287D411990DAC0007BF8CF /* Pen_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71287D3E1990DAC0007BF8CF /* Pen_Icon@2x.png */; };
 		713DC1D41907616E00E34CB2 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC1D31907616E00E34CB2 /* ContactCell.m */; };
 		713DC1E21907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC1D61907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.m */; };
 		713DC1E31907628A00E34CB2 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC1D81907628A00E34CB2 /* SWCellScrollView.m */; };
@@ -165,6 +168,9 @@
 		7124223C1935995B00BAD376 /* AISMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISMoreView.m; path = Global/AISMoreView.m; sourceTree = "<group>"; };
 		71243AD918F3E9D900500372 /* AddPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddPeopleViewController.m; path = Contact/AddPeopleViewController.m; sourceTree = "<group>"; };
 		71243ADA18F3E9D900500372 /* AddPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddPeopleViewController.h; path = Contact/AddPeopleViewController.h; sourceTree = "<group>"; };
+		71287D3C1990DAC0007BF8CF /* CheckBox_True@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox_True@2x.png"; sourceTree = "<group>"; };
+		71287D3D1990DAC0007BF8CF /* CheckBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox@2x.png"; sourceTree = "<group>"; };
+		71287D3E1990DAC0007BF8CF /* Pen_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pen_Icon@2x.png"; sourceTree = "<group>"; };
 		713DC1D21907616E00E34CB2 /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactCell.h; path = Contact/ContactCell.h; sourceTree = "<group>"; };
 		713DC1D31907616E00E34CB2 /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactCell.m; path = Contact/ContactCell.m; sourceTree = "<group>"; };
 		713DC1D51907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
@@ -366,13 +372,13 @@
 			name = Signup;
 			sourceTree = "<group>";
 		};
-		710F347718DC2E30005CFA7F /* TopUp */ = {
+		710F347718DC2E30005CFA7F /* TopUp(LG) */ = {
 			isa = PBXGroup;
 			children = (
 				71FA02DD1904F8E90016FF57 /* TopUpViewController.h */,
 				71FA02DE1904F8E90016FF57 /* TopUpViewController.m */,
 			);
-			name = TopUp;
+			name = "TopUp(LG)";
 			sourceTree = "<group>";
 		};
 		711A9DA8195D13E500B52AEF /* Web */ = {
@@ -537,7 +543,7 @@
 				71EF928B18D6986F00A51C52 /* News */,
 				71F2043618D2C4F400EBE5BF /* History(LG) */,
 				71C3DDEC18D97174002B6E79 /* Schedule */,
-				710F347718DC2E30005CFA7F /* TopUp */,
+				710F347718DC2E30005CFA7F /* TopUp(LG) */,
 				71A4C31018E4091800BA120E /* Template(addLg) */,
 				7141C39618EEA66600AC6EC7 /* Information */,
 				71FA02E319051D2A0016FF57 /* ImportContact */,
@@ -628,6 +634,9 @@
 		71A4C31118E4157300BA120E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				71287D3C1990DAC0007BF8CF /* CheckBox_True@2x.png */,
+				71287D3D1990DAC0007BF8CF /* CheckBox@2x.png */,
+				71287D3E1990DAC0007BF8CF /* Pen_Icon@2x.png */,
 				715C201718FE680100CB046C /* Add_Icon@2x.png */,
 				717A9C2618F7AF4200993805 /* IconNavBar */,
 				717A9C3318F7AF4200993805 /* Icon */,
@@ -835,6 +844,7 @@
 				71A4C35218E4157300BA120E /* More_B@2x.png in Resources */,
 				71A4C34518E4157300BA120E /* Clock_Icon@2x.png in Resources */,
 				71A4C34218E4157300BA120E /* Avatar_Default@2x.png in Resources */,
+				71287D411990DAC0007BF8CF /* Pen_Icon@2x.png in Resources */,
 				717A9C3818F7AF4200993805 /* Back@2x.png in Resources */,
 				71A4C35818E4157300BA120E /* L_History_Icon@2x.png in Resources */,
 				717A9C3718F7AF4200993805 /* Add_Group@2x.png in Resources */,
@@ -842,6 +852,7 @@
 				71A4C35F18E4157300BA120E /* L_Template_Icon@2x.png in Resources */,
 				71A4C36418E4157300BA120E /* Search_Regular@2x.png in Resources */,
 				71A4C36218E4157300BA120E /* Ok_Grey@2x.png in Resources */,
+				71287D401990DAC0007BF8CF /* CheckBox@2x.png in Resources */,
 				71A4C35B18E4157300BA120E /* L_LogOut_Icon@2x.png in Resources */,
 				71A4C34C18E4157300BA120E /* KeyLock_Icon@2x.png in Resources */,
 				71A4C36718E4157300BA120E /* X_Icon@2x.png in Resources */,
@@ -867,6 +878,7 @@
 				717A9C4218F7AF4200993805 /* icon@2x.png in Resources */,
 				71A4C35E18E4157300BA120E /* L_Setting_Icon@2x.png in Resources */,
 				71CD62531959687A00692B4C /* TemplateList.plist in Resources */,
+				71287D3F1990DAC0007BF8CF /* CheckBox_True@2x.png in Resources */,
 				71A4C36318E4157300BA120E /* Search_Bold@2x.png in Resources */,
 				71E44157193DBB02004282AC /* Common.plist in Resources */,
 				7143D57F190E03D100A4DC10 /* Plus@2x.png in Resources */,
@@ -1062,6 +1074,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BEF89153-9C6E-48DC-BB77-4AE092F7E73C";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1086,6 +1099,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BEF89153-9C6E-48DC-BB77-4AE092F7E73C";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

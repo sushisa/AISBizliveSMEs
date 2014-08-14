@@ -30,7 +30,7 @@
     NSLog(@"Top Up Load");
     [self setTextLangague];
     currentLabel.text = @"1,000.00";
-    mobileLabel.text = @"0953285722";
+    mobileLabel.text = @"09-5328-5722";
 }
 -(void)backAction{
     if ([self.checkPackage isEqualToString:@"YES"]) {
@@ -45,6 +45,19 @@
     self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(DoneButton) withTarget:self];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
+//    __weak IBOutlet UILabel *topupLabel;
+//    __weak IBOutlet UILabel *mobileLabel;
+//    __weak IBOutlet UILabel *currentLabel;
+//    __weak IBOutlet UILabel *descriptionCurrent;
+//    __weak IBOutlet UILabel *currentBahtLabel;
+//    __weak IBOutlet UILabel *phoneLabel;
+//    __weak IBOutlet UILabel *serialLabel;
+//    __weak IBOutlet UITextField *serialTextfield;
+    topupLabel.text = [AISString commonString:typeLabel KeyOfValue :@"TOPUP_CASH"];
+    descriptionCurrent.text = [AISString commonString:typeLabel KeyOfValue :@"TOPUP_CURRENT"];
+    currentBahtLabel.text = [AISString commonString:typeLabel KeyOfValue :@"BAHT"];
+    serialLabel.text = [AISString commonString:typeLabel KeyOfValue :@"TOPUP_SERIAL"];
+    serialTextfield.placeholder = [AISString commonString:typePlacehoder KeyOfValue :@"TOPUP_SERIAL"];
     
 }
 -(void)DoneButton{

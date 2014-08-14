@@ -303,7 +303,7 @@
             }
             UIButton *weekButton = [UIButton buttonWithType:UIButtonTypeCustom];
             //    [dateMonth setTitle:@" TEST" forState:UIControlStateNormal];
-            UIImageView *checkBox = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Box1.png"]];
+            UIImageView *checkBox = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CheckBox.png"]];
             [checkBox setFrame:CGRectMake(0, 0, 20, 20)];
             [checkBox setTag:0];
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(22, 0, 70, 20)];
@@ -347,12 +347,12 @@
             im = (UIImageView *)[[sender subviews] objectAtIndex:1];
             l = (UILabel *) [[sender subviews] objectAtIndex:0];
         }
-        if (im.image == [UIImage imageNamed:@"Box1.png"]) {
-            [im setImage:[UIImage imageNamed:@"Info_Icon.png"]];
+        if (im.image == [UIImage imageNamed:@"CheckBox.png"]) {
+            [im setImage:[UIImage imageNamed:@"CheckBox_True.png"]];
             [l setTextColor:[AISColor lightgreenColor]];
         }
         else {
-            [im setImage:[UIImage imageNamed:@"Box1.png"]];
+            [im setImage:[UIImage imageNamed:@"CheckBox.png"]];
             [l setTextColor:[AISColor lightgrayColor]];
         }
 }
@@ -365,7 +365,7 @@
     for (int l = 1; l <= row; l ++) {
         for (int j = 1; j <= column; j ++) {
             UIButton *dateMonth = [UIButton buttonWithType:UIButtonTypeCustom];
-            UIImageView *checkBox = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Box1.png"]];
+            UIImageView *checkBox = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CheckBox.png"]];
             [checkBox setFrame:CGRectMake(0, 0, 20, 20)];
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(22, 0, 30, 20)];
             [label setTextAlignment:NSTextAlignmentLeft];
