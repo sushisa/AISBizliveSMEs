@@ -132,6 +132,46 @@
 		71F9030C18E2B723001E7663 /* DWTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9030518E2B723001E7663 /* DWTagList.m */; };
 		71FA02DF1904F8E90016FF57 /* TopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FA02DE1904F8E90016FF57 /* TopUpViewController.m */; };
 		71FA02E219051D220016FF57 /* ImportContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FA02E119051D220016FF57 /* ImportContactViewController.m */; };
+		E006149619B07839000346FE /* BizliveService.m in Sources */ = {isa = PBXBuildFile; fileRef = E006144B19B07839000346FE /* BizliveService.m */; };
+		E006149719B07839000346FE /* ResultStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = E006144E19B07839000346FE /* ResultStatus.m */; };
+		E006149819B07839000346FE /* Admin.m in Sources */ = {isa = PBXBuildFile; fileRef = E006145119B07839000346FE /* Admin.m */; };
+		E006149919B07839000346FE /* ContactDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = E006145419B07839000346FE /* ContactDetail.m */; };
+		E006149A19B07839000346FE /* ContactMessageHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = E006145619B07839000346FE /* ContactMessageHistory.m */; };
+		E006149B19B07839000346FE /* GroupContactDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = E006145819B07839000346FE /* GroupContactDetail.m */; };
+		E006149C19B07839000346FE /* ResponseContactMessageHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = E006145B19B07839000346FE /* ResponseContactMessageHistory.m */; };
+		E006149D19B07839000346FE /* ResponseGetGroupContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = E006145D19B07839000346FE /* ResponseGetGroupContactList.m */; };
+		E006149E19B07839000346FE /* ServiceCT02_AddContact.m in Sources */ = {isa = PBXBuildFile; fileRef = E006145F19B07839000346FE /* ServiceCT02_AddContact.m */; };
+		E006149F19B07839000346FE /* ServiceCT03_EditContact.m in Sources */ = {isa = PBXBuildFile; fileRef = E006146119B07839000346FE /* ServiceCT03_EditContact.m */; };
+		E00614A019B07839000346FE /* ServiceCT04_DeleteContact.m in Sources */ = {isa = PBXBuildFile; fileRef = E006146319B07839000346FE /* ServiceCT04_DeleteContact.m */; };
+		E00614A119B07839000346FE /* ServiceCT05_ContactMessageHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = E006146519B07839000346FE /* ServiceCT05_ContactMessageHistory.m */; };
+		E00614A219B07839000346FE /* ServiceCT06_GetGroupContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = E006146719B07839000346FE /* ServiceCT06_GetGroupContactList.m */; };
+		E00614A319B07839000346FE /* ServiceCT07_AddGroupContact.m in Sources */ = {isa = PBXBuildFile; fileRef = E006146919B07839000346FE /* ServiceCT07_AddGroupContact.m */; };
+		E00614A419B07839000346FE /* ServiceCT08_GroupMessageHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = E006146B19B07839000346FE /* ServiceCT08_GroupMessageHistory.m */; };
+		E00614A519B07839000346FE /* ServiceCT09_GetContactListToEditGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = E006146D19B07839000346FE /* ServiceCT09_GetContactListToEditGroup.m */; };
+		E00614A619B07839000346FE /* ServiceCT10_EditGroupContact.m in Sources */ = {isa = PBXBuildFile; fileRef = E006146F19B07839000346FE /* ServiceCT10_EditGroupContact.m */; };
+		E00614A719B07839000346FE /* ServiceCT11_DeleteGroupContact.m in Sources */ = {isa = PBXBuildFile; fileRef = E006147119B07839000346FE /* ServiceCT11_DeleteGroupContact.m */; };
+		E00614A819B07839000346FE /* ServiceCT12_ImportContact.m in Sources */ = {isa = PBXBuildFile; fileRef = E006147319B07839000346FE /* ServiceCT12_ImportContact.m */; };
+		E00614A919B07839000346FE /* LoginForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E006147619B07839000346FE /* LoginForm.m */; };
+		E00614AA19B07839000346FE /* ServiceLG01_ForgotPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = E006147819B07839000346FE /* ServiceLG01_ForgotPassword.m */; };
+		E00614AB19B07839000346FE /* ServiceLG02_SignUpWithEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = E006147A19B07839000346FE /* ServiceLG02_SignUpWithEmail.m */; };
+		E00614AC19B07839000346FE /* ServiceLG03_RequestOtpVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = E006147C19B07839000346FE /* ServiceLG03_RequestOtpVerification.m */; };
+		E00614AD19B07839000346FE /* ServiceLG04_RequestEmailVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = E006147E19B07839000346FE /* ServiceLG04_RequestEmailVerification.m */; };
+		E00614AE19B07839000346FE /* ServiceLG05_VerifyByOtp.m in Sources */ = {isa = PBXBuildFile; fileRef = E006148019B07839000346FE /* ServiceLG05_VerifyByOtp.m */; };
+		E00614AF19B07839000346FE /* ServiceLG06_VerifyByEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = E006148219B07839000346FE /* ServiceLG06_VerifyByEmail.m */; };
+		E00614B019B07839000346FE /* ServiceLG07_Login.m in Sources */ = {isa = PBXBuildFile; fileRef = E006148419B07839000346FE /* ServiceLG07_Login.m */; };
+		E00614B119B07839000346FE /* MessageForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E006148719B07839000346FE /* MessageForm.m */; };
+		E00614B219B07839000346FE /* ServiceMS01_SendMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E006148919B07839000346FE /* ServiceMS01_SendMessage.m */; };
+		E00614B319B07839000346FE /* ServiceMS02_SaveSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = E006148B19B07839000346FE /* ServiceMS02_SaveSchedule.m */; };
+		E00614B419B07839000346FE /* ServiceRC01_GetScheduleList.m in Sources */ = {isa = PBXBuildFile; fileRef = E006148E19B07839000346FE /* ServiceRC01_GetScheduleList.m */; };
+		E00614B519B07839000346FE /* ServiceRC02_DeleteSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = E006149019B07839000346FE /* ServiceRC02_DeleteSchedule.m */; };
+		E00614B619B07839000346FE /* ServiceRC03_UpdateSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = E006149219B07839000346FE /* ServiceRC03_UpdateSchedule.m */; };
+		E00614B719B07839000346FE /* TestRecurring.m in Sources */ = {isa = PBXBuildFile; fileRef = E006149519B07839000346FE /* TestRecurring.m */; };
+		E00614BA19B0787A000346FE /* ResponseGetContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = E00614B919B0787A000346FE /* ResponseGetContactList.m */; };
+		E00614BD19B078A0000346FE /* BizliveServiceCode.m in Sources */ = {isa = PBXBuildFile; fileRef = E00614BC19B078A0000346FE /* BizliveServiceCode.m */; };
+		E00614C019B0798D000346FE /* TestContact.m in Sources */ = {isa = PBXBuildFile; fileRef = E00614BF19B0798D000346FE /* TestContact.m */; };
+		E00614C319B079F8000346FE /* ServiceCT01_GetContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = E00614C219B079F8000346FE /* ServiceCT01_GetContactList.m */; };
+		E00614C619B07B32000346FE /* TestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E00614C519B07B32000346FE /* TestMessage.m */; };
+		E00614C919B07B4E000346FE /* TestLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = E00614C819B07B4E000346FE /* TestLogin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -326,6 +366,87 @@
 		71FA02DE1904F8E90016FF57 /* TopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopUpViewController.m; path = More/TopUp/TopUpViewController.m; sourceTree = "<group>"; };
 		71FA02E019051D220016FF57 /* ImportContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImportContactViewController.h; path = More/ImportContact/ImportContactViewController.h; sourceTree = "<group>"; };
 		71FA02E119051D220016FF57 /* ImportContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImportContactViewController.m; path = More/ImportContact/ImportContactViewController.m; sourceTree = "<group>"; };
+		E006144A19B07839000346FE /* BizliveService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BizliveService.h; sourceTree = "<group>"; };
+		E006144B19B07839000346FE /* BizliveService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BizliveService.m; sourceTree = "<group>"; };
+		E006144C19B07839000346FE /* BizliveServiceParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BizliveServiceParameter.h; sourceTree = "<group>"; };
+		E006144D19B07839000346FE /* ResultStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultStatus.h; sourceTree = "<group>"; };
+		E006144E19B07839000346FE /* ResultStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultStatus.m; sourceTree = "<group>"; };
+		E006145019B07839000346FE /* Admin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Admin.h; sourceTree = "<group>"; };
+		E006145119B07839000346FE /* Admin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Admin.m; sourceTree = "<group>"; };
+		E006145319B07839000346FE /* ContactDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDetail.h; sourceTree = "<group>"; };
+		E006145419B07839000346FE /* ContactDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDetail.m; sourceTree = "<group>"; };
+		E006145519B07839000346FE /* ContactMessageHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactMessageHistory.h; sourceTree = "<group>"; };
+		E006145619B07839000346FE /* ContactMessageHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactMessageHistory.m; sourceTree = "<group>"; };
+		E006145719B07839000346FE /* GroupContactDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupContactDetail.h; sourceTree = "<group>"; };
+		E006145819B07839000346FE /* GroupContactDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupContactDetail.m; sourceTree = "<group>"; };
+		E006145A19B07839000346FE /* ResponseContactMessageHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseContactMessageHistory.h; sourceTree = "<group>"; };
+		E006145B19B07839000346FE /* ResponseContactMessageHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseContactMessageHistory.m; sourceTree = "<group>"; };
+		E006145C19B07839000346FE /* ResponseGetGroupContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseGetGroupContactList.h; sourceTree = "<group>"; };
+		E006145D19B07839000346FE /* ResponseGetGroupContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseGetGroupContactList.m; sourceTree = "<group>"; };
+		E006145E19B07839000346FE /* ServiceCT02_AddContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT02_AddContact.h; sourceTree = "<group>"; };
+		E006145F19B07839000346FE /* ServiceCT02_AddContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT02_AddContact.m; sourceTree = "<group>"; };
+		E006146019B07839000346FE /* ServiceCT03_EditContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT03_EditContact.h; sourceTree = "<group>"; };
+		E006146119B07839000346FE /* ServiceCT03_EditContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT03_EditContact.m; sourceTree = "<group>"; };
+		E006146219B07839000346FE /* ServiceCT04_DeleteContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT04_DeleteContact.h; sourceTree = "<group>"; };
+		E006146319B07839000346FE /* ServiceCT04_DeleteContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT04_DeleteContact.m; sourceTree = "<group>"; };
+		E006146419B07839000346FE /* ServiceCT05_ContactMessageHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT05_ContactMessageHistory.h; sourceTree = "<group>"; };
+		E006146519B07839000346FE /* ServiceCT05_ContactMessageHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT05_ContactMessageHistory.m; sourceTree = "<group>"; };
+		E006146619B07839000346FE /* ServiceCT06_GetGroupContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT06_GetGroupContactList.h; sourceTree = "<group>"; };
+		E006146719B07839000346FE /* ServiceCT06_GetGroupContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT06_GetGroupContactList.m; sourceTree = "<group>"; };
+		E006146819B07839000346FE /* ServiceCT07_AddGroupContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT07_AddGroupContact.h; sourceTree = "<group>"; };
+		E006146919B07839000346FE /* ServiceCT07_AddGroupContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT07_AddGroupContact.m; sourceTree = "<group>"; };
+		E006146A19B07839000346FE /* ServiceCT08_GroupMessageHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT08_GroupMessageHistory.h; sourceTree = "<group>"; };
+		E006146B19B07839000346FE /* ServiceCT08_GroupMessageHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT08_GroupMessageHistory.m; sourceTree = "<group>"; };
+		E006146C19B07839000346FE /* ServiceCT09_GetContactListToEditGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT09_GetContactListToEditGroup.h; sourceTree = "<group>"; };
+		E006146D19B07839000346FE /* ServiceCT09_GetContactListToEditGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT09_GetContactListToEditGroup.m; sourceTree = "<group>"; };
+		E006146E19B07839000346FE /* ServiceCT10_EditGroupContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT10_EditGroupContact.h; sourceTree = "<group>"; };
+		E006146F19B07839000346FE /* ServiceCT10_EditGroupContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT10_EditGroupContact.m; sourceTree = "<group>"; };
+		E006147019B07839000346FE /* ServiceCT11_DeleteGroupContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT11_DeleteGroupContact.h; sourceTree = "<group>"; };
+		E006147119B07839000346FE /* ServiceCT11_DeleteGroupContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT11_DeleteGroupContact.m; sourceTree = "<group>"; };
+		E006147219B07839000346FE /* ServiceCT12_ImportContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT12_ImportContact.h; sourceTree = "<group>"; };
+		E006147319B07839000346FE /* ServiceCT12_ImportContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT12_ImportContact.m; sourceTree = "<group>"; };
+		E006147519B07839000346FE /* LoginForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginForm.h; sourceTree = "<group>"; };
+		E006147619B07839000346FE /* LoginForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginForm.m; sourceTree = "<group>"; };
+		E006147719B07839000346FE /* ServiceLG01_ForgotPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceLG01_ForgotPassword.h; sourceTree = "<group>"; };
+		E006147819B07839000346FE /* ServiceLG01_ForgotPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceLG01_ForgotPassword.m; sourceTree = "<group>"; };
+		E006147919B07839000346FE /* ServiceLG02_SignUpWithEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceLG02_SignUpWithEmail.h; sourceTree = "<group>"; };
+		E006147A19B07839000346FE /* ServiceLG02_SignUpWithEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceLG02_SignUpWithEmail.m; sourceTree = "<group>"; };
+		E006147B19B07839000346FE /* ServiceLG03_RequestOtpVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceLG03_RequestOtpVerification.h; sourceTree = "<group>"; };
+		E006147C19B07839000346FE /* ServiceLG03_RequestOtpVerification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceLG03_RequestOtpVerification.m; sourceTree = "<group>"; };
+		E006147D19B07839000346FE /* ServiceLG04_RequestEmailVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceLG04_RequestEmailVerification.h; sourceTree = "<group>"; };
+		E006147E19B07839000346FE /* ServiceLG04_RequestEmailVerification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceLG04_RequestEmailVerification.m; sourceTree = "<group>"; };
+		E006147F19B07839000346FE /* ServiceLG05_VerifyByOtp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceLG05_VerifyByOtp.h; sourceTree = "<group>"; };
+		E006148019B07839000346FE /* ServiceLG05_VerifyByOtp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceLG05_VerifyByOtp.m; sourceTree = "<group>"; };
+		E006148119B07839000346FE /* ServiceLG06_VerifyByEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceLG06_VerifyByEmail.h; sourceTree = "<group>"; };
+		E006148219B07839000346FE /* ServiceLG06_VerifyByEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceLG06_VerifyByEmail.m; sourceTree = "<group>"; };
+		E006148319B07839000346FE /* ServiceLG07_Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceLG07_Login.h; sourceTree = "<group>"; };
+		E006148419B07839000346FE /* ServiceLG07_Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceLG07_Login.m; sourceTree = "<group>"; };
+		E006148619B07839000346FE /* MessageForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageForm.h; sourceTree = "<group>"; };
+		E006148719B07839000346FE /* MessageForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageForm.m; sourceTree = "<group>"; };
+		E006148819B07839000346FE /* ServiceMS01_SendMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceMS01_SendMessage.h; sourceTree = "<group>"; };
+		E006148919B07839000346FE /* ServiceMS01_SendMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceMS01_SendMessage.m; sourceTree = "<group>"; };
+		E006148A19B07839000346FE /* ServiceMS02_SaveSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceMS02_SaveSchedule.h; sourceTree = "<group>"; };
+		E006148B19B07839000346FE /* ServiceMS02_SaveSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceMS02_SaveSchedule.m; sourceTree = "<group>"; };
+		E006148D19B07839000346FE /* ServiceRC01_GetScheduleList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceRC01_GetScheduleList.h; sourceTree = "<group>"; };
+		E006148E19B07839000346FE /* ServiceRC01_GetScheduleList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceRC01_GetScheduleList.m; sourceTree = "<group>"; };
+		E006148F19B07839000346FE /* ServiceRC02_DeleteSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceRC02_DeleteSchedule.h; sourceTree = "<group>"; };
+		E006149019B07839000346FE /* ServiceRC02_DeleteSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceRC02_DeleteSchedule.m; sourceTree = "<group>"; };
+		E006149119B07839000346FE /* ServiceRC03_UpdateSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceRC03_UpdateSchedule.h; sourceTree = "<group>"; };
+		E006149219B07839000346FE /* ServiceRC03_UpdateSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceRC03_UpdateSchedule.m; sourceTree = "<group>"; };
+		E006149419B07839000346FE /* TestRecurring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecurring.h; sourceTree = "<group>"; };
+		E006149519B07839000346FE /* TestRecurring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecurring.m; sourceTree = "<group>"; };
+		E00614B819B0787A000346FE /* ResponseGetContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseGetContactList.h; sourceTree = "<group>"; };
+		E00614B919B0787A000346FE /* ResponseGetContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseGetContactList.m; sourceTree = "<group>"; };
+		E00614BB19B078A0000346FE /* BizliveServiceCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BizliveServiceCode.h; sourceTree = "<group>"; };
+		E00614BC19B078A0000346FE /* BizliveServiceCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BizliveServiceCode.m; sourceTree = "<group>"; };
+		E00614BE19B0798D000346FE /* TestContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestContact.h; sourceTree = "<group>"; };
+		E00614BF19B0798D000346FE /* TestContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestContact.m; sourceTree = "<group>"; };
+		E00614C119B079F8000346FE /* ServiceCT01_GetContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCT01_GetContactList.h; sourceTree = "<group>"; };
+		E00614C219B079F8000346FE /* ServiceCT01_GetContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCT01_GetContactList.m; sourceTree = "<group>"; };
+		E00614C419B07B32000346FE /* TestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMessage.h; sourceTree = "<group>"; };
+		E00614C519B07B32000346FE /* TestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMessage.m; sourceTree = "<group>"; };
+		E00614C719B07B4E000346FE /* TestLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLogin.h; sourceTree = "<group>"; };
+		E00614C819B07B4E000346FE /* TestLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLogin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +566,7 @@
 		716120CC18A4DB24004077D9 /* AISbizlive */ = {
 			isa = PBXGroup;
 			children = (
+				E006144819B07839000346FE /* AISBizliveService */,
 				717A9C3418F7AF4200993805 /* icon@2x.png */,
 				715C200F18FE572C00CB046C /* Logo@2x.png */,
 				71A4C31118E4157300BA120E /* images */,
@@ -777,6 +899,158 @@
 			name = ImportContact;
 			sourceTree = "<group>";
 		};
+		E006144819B07839000346FE /* AISBizliveService */ = {
+			isa = PBXGroup;
+			children = (
+				E006144919B07839000346FE /* Common */,
+				E006144F19B07839000346FE /* Config */,
+				E006145219B07839000346FE /* Contact */,
+				E006147419B07839000346FE /* Login */,
+				E006148519B07839000346FE /* Message */,
+				E006148C19B07839000346FE /* Recurring */,
+				E006149319B07839000346FE /* TestRequestService */,
+			);
+			path = AISBizliveService;
+			sourceTree = "<group>";
+		};
+		E006144919B07839000346FE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E00614BB19B078A0000346FE /* BizliveServiceCode.h */,
+				E00614BC19B078A0000346FE /* BizliveServiceCode.m */,
+				E006144A19B07839000346FE /* BizliveService.h */,
+				E006144B19B07839000346FE /* BizliveService.m */,
+				E006144C19B07839000346FE /* BizliveServiceParameter.h */,
+				E006144D19B07839000346FE /* ResultStatus.h */,
+				E006144E19B07839000346FE /* ResultStatus.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E006144F19B07839000346FE /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				E006145019B07839000346FE /* Admin.h */,
+				E006145119B07839000346FE /* Admin.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		E006145219B07839000346FE /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				E006145319B07839000346FE /* ContactDetail.h */,
+				E006145419B07839000346FE /* ContactDetail.m */,
+				E006145519B07839000346FE /* ContactMessageHistory.h */,
+				E006145619B07839000346FE /* ContactMessageHistory.m */,
+				E006145719B07839000346FE /* GroupContactDetail.h */,
+				E006145819B07839000346FE /* GroupContactDetail.m */,
+				E006145919B07839000346FE /* Response */,
+				E00614C119B079F8000346FE /* ServiceCT01_GetContactList.h */,
+				E00614C219B079F8000346FE /* ServiceCT01_GetContactList.m */,
+				E006145E19B07839000346FE /* ServiceCT02_AddContact.h */,
+				E006145F19B07839000346FE /* ServiceCT02_AddContact.m */,
+				E006146019B07839000346FE /* ServiceCT03_EditContact.h */,
+				E006146119B07839000346FE /* ServiceCT03_EditContact.m */,
+				E006146219B07839000346FE /* ServiceCT04_DeleteContact.h */,
+				E006146319B07839000346FE /* ServiceCT04_DeleteContact.m */,
+				E006146419B07839000346FE /* ServiceCT05_ContactMessageHistory.h */,
+				E006146519B07839000346FE /* ServiceCT05_ContactMessageHistory.m */,
+				E006146619B07839000346FE /* ServiceCT06_GetGroupContactList.h */,
+				E006146719B07839000346FE /* ServiceCT06_GetGroupContactList.m */,
+				E006146819B07839000346FE /* ServiceCT07_AddGroupContact.h */,
+				E006146919B07839000346FE /* ServiceCT07_AddGroupContact.m */,
+				E006146A19B07839000346FE /* ServiceCT08_GroupMessageHistory.h */,
+				E006146B19B07839000346FE /* ServiceCT08_GroupMessageHistory.m */,
+				E006146C19B07839000346FE /* ServiceCT09_GetContactListToEditGroup.h */,
+				E006146D19B07839000346FE /* ServiceCT09_GetContactListToEditGroup.m */,
+				E006146E19B07839000346FE /* ServiceCT10_EditGroupContact.h */,
+				E006146F19B07839000346FE /* ServiceCT10_EditGroupContact.m */,
+				E006147019B07839000346FE /* ServiceCT11_DeleteGroupContact.h */,
+				E006147119B07839000346FE /* ServiceCT11_DeleteGroupContact.m */,
+				E006147219B07839000346FE /* ServiceCT12_ImportContact.h */,
+				E006147319B07839000346FE /* ServiceCT12_ImportContact.m */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		E006145919B07839000346FE /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				E00614B819B0787A000346FE /* ResponseGetContactList.h */,
+				E00614B919B0787A000346FE /* ResponseGetContactList.m */,
+				E006145A19B07839000346FE /* ResponseContactMessageHistory.h */,
+				E006145B19B07839000346FE /* ResponseContactMessageHistory.m */,
+				E006145C19B07839000346FE /* ResponseGetGroupContactList.h */,
+				E006145D19B07839000346FE /* ResponseGetGroupContactList.m */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		E006147419B07839000346FE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E006147519B07839000346FE /* LoginForm.h */,
+				E006147619B07839000346FE /* LoginForm.m */,
+				E006147719B07839000346FE /* ServiceLG01_ForgotPassword.h */,
+				E006147819B07839000346FE /* ServiceLG01_ForgotPassword.m */,
+				E006147919B07839000346FE /* ServiceLG02_SignUpWithEmail.h */,
+				E006147A19B07839000346FE /* ServiceLG02_SignUpWithEmail.m */,
+				E006147B19B07839000346FE /* ServiceLG03_RequestOtpVerification.h */,
+				E006147C19B07839000346FE /* ServiceLG03_RequestOtpVerification.m */,
+				E006147D19B07839000346FE /* ServiceLG04_RequestEmailVerification.h */,
+				E006147E19B07839000346FE /* ServiceLG04_RequestEmailVerification.m */,
+				E006147F19B07839000346FE /* ServiceLG05_VerifyByOtp.h */,
+				E006148019B07839000346FE /* ServiceLG05_VerifyByOtp.m */,
+				E006148119B07839000346FE /* ServiceLG06_VerifyByEmail.h */,
+				E006148219B07839000346FE /* ServiceLG06_VerifyByEmail.m */,
+				E006148319B07839000346FE /* ServiceLG07_Login.h */,
+				E006148419B07839000346FE /* ServiceLG07_Login.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E006148519B07839000346FE /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				E006148619B07839000346FE /* MessageForm.h */,
+				E006148719B07839000346FE /* MessageForm.m */,
+				E006148819B07839000346FE /* ServiceMS01_SendMessage.h */,
+				E006148919B07839000346FE /* ServiceMS01_SendMessage.m */,
+				E006148A19B07839000346FE /* ServiceMS02_SaveSchedule.h */,
+				E006148B19B07839000346FE /* ServiceMS02_SaveSchedule.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		E006148C19B07839000346FE /* Recurring */ = {
+			isa = PBXGroup;
+			children = (
+				E006148D19B07839000346FE /* ServiceRC01_GetScheduleList.h */,
+				E006148E19B07839000346FE /* ServiceRC01_GetScheduleList.m */,
+				E006148F19B07839000346FE /* ServiceRC02_DeleteSchedule.h */,
+				E006149019B07839000346FE /* ServiceRC02_DeleteSchedule.m */,
+				E006149119B07839000346FE /* ServiceRC03_UpdateSchedule.h */,
+				E006149219B07839000346FE /* ServiceRC03_UpdateSchedule.m */,
+			);
+			path = Recurring;
+			sourceTree = "<group>";
+		};
+		E006149319B07839000346FE /* TestRequestService */ = {
+			isa = PBXGroup;
+			children = (
+				E006149419B07839000346FE /* TestRecurring.h */,
+				E006149519B07839000346FE /* TestRecurring.m */,
+				E00614BE19B0798D000346FE /* TestContact.h */,
+				E00614BF19B0798D000346FE /* TestContact.m */,
+				E00614C419B07B32000346FE /* TestMessage.h */,
+				E00614C519B07B32000346FE /* TestMessage.m */,
+				E00614C719B07B4E000346FE /* TestLogin.h */,
+				E00614C819B07B4E000346FE /* TestLogin.m */,
+			);
+			path = TestRequestService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -895,66 +1169,106 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E00614A519B07839000346FE /* ServiceCT09_GetContactListToEditGroup.m in Sources */,
 				710E59CC18AC7FAD006F4CB2 /* EmailViewController.m in Sources */,
+				E00614B519B07839000346FE /* ServiceRC02_DeleteSchedule.m in Sources */,
+				E006149A19B07839000346FE /* ContactMessageHistory.m in Sources */,
+				E00614AA19B07839000346FE /* ServiceLG01_ForgotPassword.m in Sources */,
 				711E0D9D195C23CD00423448 /* mPayViewController.m in Sources */,
 				71996D611924B28300AC1EDF /* MessageTableViewController.m in Sources */,
 				71A15ECC1919E6E8001D1B56 /* SplashScreenViewController.m in Sources */,
 				71A15ECF191A2F00001D1B56 /* MessageHistoryViewController.m in Sources */,
 				7169DE12196E968800039AE0 /* TemplateCell.m in Sources */,
+				E00614B619B07839000346FE /* ServiceRC03_UpdateSchedule.m in Sources */,
 				711C685B18EBE3D40009C3B4 /* AISColor.m in Sources */,
 				71A15ED2191A3FBD001D1B56 /* TopupHistoryViewController.m in Sources */,
 				718FE71619346B4200E9C9E2 /* AISNavigationBarItem.m in Sources */,
+				E006149919B07839000346FE /* ContactDetail.m in Sources */,
+				E00614A419B07839000346FE /* ServiceCT08_GroupMessageHistory.m in Sources */,
+				E00614BD19B078A0000346FE /* BizliveServiceCode.m in Sources */,
 				71FA02E219051D220016FF57 /* ImportContactViewController.m in Sources */,
 				713DC92518F7DA37005D1E2F /* AISTableViewCell.m in Sources */,
 				71F2043518D2C4F100EBE5BF /* HistoryViewController.m in Sources */,
+				E006149819B07839000346FE /* Admin.m in Sources */,
 				713DC1E51907628A00E34CB2 /* SWTableViewCell.m in Sources */,
 				711A9DA7195D13DA00B52AEF /* WebViewController.m in Sources */,
+				E006149B19B07839000346FE /* GroupContactDetail.m in Sources */,
 				71FA02DF1904F8E90016FF57 /* TopUpViewController.m in Sources */,
 				7124223D1935995B00BAD376 /* AISMoreView.m in Sources */,
+				E006149719B07839000346FE /* ResultStatus.m in Sources */,
+				E00614C019B0798D000346FE /* TestContact.m in Sources */,
+				E00614A119B07839000346FE /* ServiceCT05_ContactMessageHistory.m in Sources */,
+				E00614A219B07839000346FE /* ServiceCT06_GetGroupContactList.m in Sources */,
+				E00614BA19B0787A000346FE /* ResponseGetContactList.m in Sources */,
 				7141C39518EEA66300AC6EC7 /* InformationViewController.m in Sources */,
 				71B023CB1941A3460031AA3F /* DetailPeopleViewController.m in Sources */,
 				71A4C30F18E4091300BA120E /* TemplateViewController.m in Sources */,
+				E006149E19B07839000346FE /* ServiceCT02_AddContact.m in Sources */,
+				E00614A019B07839000346FE /* ServiceCT04_DeleteContact.m in Sources */,
 				71BD0B10196261EC00ECC0F0 /* DetailGroupViewController.m in Sources */,
+				E00614A819B07839000346FE /* ServiceCT12_ImportContact.m in Sources */,
 				715C201B18FE696D00CB046C /* AddGroupViewController.m in Sources */,
 				713DC1D41907616E00E34CB2 /* ContactCell.m in Sources */,
 				713F2455192AFBEC003C4822 /* ShareViewController.m in Sources */,
+				E00614A919B07839000346FE /* LoginForm.m in Sources */,
 				71EF928A18D6986B00A51C52 /* NewsViewController.m in Sources */,
+				E006149619B07839000346FE /* BizliveService.m in Sources */,
 				710E59CF18ACC96A006F4CB2 /* FogetPasswordViewController.m in Sources */,
+				E006149F19B07839000346FE /* ServiceCT03_EditContact.m in Sources */,
+				E00614B119B07839000346FE /* MessageForm.m in Sources */,
+				E00614C919B07B4E000346FE /* TestLogin.m in Sources */,
 				71602615196BEF2B005B3193 /* PackageCell.m in Sources */,
+				E00614B719B07839000346FE /* TestRecurring.m in Sources */,
 				719E0243193F0293004A043A /* AISString.m in Sources */,
 				718FE71019344B1F00E9C9E2 /* ForgetEmailViewController.m in Sources */,
 				7124223A193590F900BAD376 /* MoresViewController.m in Sources */,
 				71C3DDEB18D97170002B6E79 /* ScheduleViewController.m in Sources */,
 				7181430E19581A4B00871B3D /* AISMessageHead.m in Sources */,
+				E00614A719B07839000346FE /* ServiceCT11_DeleteGroupContact.m in Sources */,
 				7161210F18A4EA5C004077D9 /* ContactViewController.m in Sources */,
 				71A15ED5191A4358001D1B56 /* QuotaBalanceViewController.m in Sources */,
 				71AC4DC71932F38F002D9387 /* AISAlertView.m in Sources */,
 				7189FE161908F9D400B636FB /* AISView.m in Sources */,
+				E00614AC19B07839000346FE /* ServiceLG03_RequestOtpVerification.m in Sources */,
 				7115E09D18F5220E0030AF26 /* AddTemplateViewController.m in Sources */,
 				713DC1E61907628A00E34CB2 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
+				E00614B219B07839000346FE /* ServiceMS01_SendMessage.m in Sources */,
+				E006149C19B07839000346FE /* ResponseContactMessageHistory.m in Sources */,
 				7122EE7B1900F610002B9181 /* PaymentViewController.m in Sources */,
 				710E59C518AC7F72006F4CB2 /* SignupViewController.m in Sources */,
 				711A9DAB195D481700B52AEF /* FontUtil.m in Sources */,
 				713F245C192B0E9B003C4822 /* ChangePasswordViewController.m in Sources */,
+				E006149D19B07839000346FE /* ResponseGetGroupContactList.m in Sources */,
 				713DC1E31907628A00E34CB2 /* SWCellScrollView.m in Sources */,
+				E00614AB19B07839000346FE /* ServiceLG02_SignUpWithEmail.m in Sources */,
 				71B023C819417BBD0031AA3F /* AISLoading.m in Sources */,
+				E00614AD19B07839000346FE /* ServiceLG04_RequestEmailVerification.m in Sources */,
 				71F9030C18E2B723001E7663 /* DWTagList.m in Sources */,
+				E00614B019B07839000346FE /* ServiceLG07_Login.m in Sources */,
+				E00614A619B07839000346FE /* ServiceCT10_EditGroupContact.m in Sources */,
 				71243ADB18F3E9D900500372 /* AddPeopleViewController.m in Sources */,
+				E00614A319B07839000346FE /* ServiceCT07_AddGroupContact.m in Sources */,
 				710E59C118AB568E006F4CB2 /* LoginViewController.m in Sources */,
+				E00614C619B07B32000346FE /* TestMessage.m in Sources */,
+				E00614C319B079F8000346FE /* ServiceCT01_GetContactList.m in Sources */,
 				71008B0D1949A66400FA8DE9 /* AISSMSCharacter.m in Sources */,
 				716120DD18A4DB25004077D9 /* StartViewController.m in Sources */,
 				711E0D9A195C19EE00423448 /* ImportCell.m in Sources */,
+				E00614AE19B07839000346FE /* ServiceLG05_VerifyByOtp.m in Sources */,
 				7161210418A4E600004077D9 /* PageContentViewController.m in Sources */,
 				71B6FC3C18F64B27000930F4 /* DetailNewsViewController.m in Sources */,
 				713F2459192B076D003C4822 /* SettingViewController.m in Sources */,
 				71996D641924C96F00AC1EDF /* AISButton.m in Sources */,
 				710E59C918AC7F9E006F4CB2 /* OTPViewController.m in Sources */,
+				E00614AF19B07839000346FE /* ServiceLG06_VerifyByEmail.m in Sources */,
 				713DC1E21907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				716120D718A4DB25004077D9 /* AppDelegate.m in Sources */,
 				716120D318A4DB24004077D9 /* main.m in Sources */,
+				E00614B419B07839000346FE /* ServiceRC01_GetScheduleList.m in Sources */,
 				713DC1E71907628A00E34CB2 /* SWUtilityButtonView.m in Sources */,
 				7161211718A4EACA004077D9 /* PackageViewController.m in Sources */,
 				713DC1E41907628A00E34CB2 /* SWLongPressGestureRecognizer.m in Sources */,
+				E00614B319B07839000346FE /* ServiceMS02_SaveSchedule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
