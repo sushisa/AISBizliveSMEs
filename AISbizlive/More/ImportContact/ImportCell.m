@@ -20,6 +20,13 @@
     self.layer.masksToBounds = YES;
     self.layer.borderColor = [[AISColor lightgrayColor] CGColor];
     self.layer.borderWidth = 1.0f;
+    self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width, 0, 40, self.contentView.frame.size.height)];
+    self.editButton.backgroundColor = [AISColor grayColor];
+    self.editButton.titleLabel.text = @"Edit";
+    
+    self.deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width+40, 0, 40, self.contentView.frame.size.height)];
+    self.deleteButton.backgroundColor = [UIColor redColor];
+    self.deleteButton.titleLabel.text = @"Delete";
     return self;
 }
 - (void)awakeFromNib
@@ -50,4 +57,5 @@
     frame.size.width -= 20;
     [super setFrame:frame];
 }
+
 @end

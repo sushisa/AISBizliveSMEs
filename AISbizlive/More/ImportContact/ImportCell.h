@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameContact;
 @property (weak, nonatomic) IBOutlet UILabel *telContact;
 
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
+@property (strong, nonatomic) IBOutlet UIButton *deleteButton;
 @end

@@ -60,16 +60,34 @@
     checkLineTo = 0.0f;
     fixHeight = 0.0f;
     tagTag = 1000;
-    addTagView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 263, 40)];
     hour = [[NSMutableArray alloc] initWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24", nil];
     checkHeightCell = [[NSMutableArray alloc] initWithObjects:@"60",@"80",@"237",@"40",@"120",@"56",@"56",@"56",@"56",@"50", nil];
     weekDetail = [[NSMutableArray alloc] initWithArray:[AISString commonArray:@"WEEK_DETAIL"]];
-    self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:nil  withTarget:self];
+    self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(sendMessage)  withTarget:self];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] ClearButtonWithAction:@selector(clearAction)  withTarget:self];
-    toText = [[UITextView alloc] initWithFrame:CGRectMake(10, 7, addTagView.frame.size.width-10, 30)];
-    toText.delegate = self;
+   
+////    [addTagView ]
+    NSArray *viewsToRemove = [addTagView subviews];
+    for (UIView *v in viewsToRemove) {
+        
+        [v removeFromSuperview];
+    }
     
+    if (!addTagView) {
+        addTagView = [[UIView alloc] initWithFrame:CGRectMake(30, 0, 180, 40)];
+    }
+//    addTagView.backgroundColor = [UIColor redColor];
+//    NSLog(@"%@",addTagView);
+    toText = [[UITextView alloc] initWithFrame:CGRectMake(10, 5, addTagView.frame.size.width-10, 30)];
+    toText.delegate = self;
+//    NSLog(@"%@",toText);
+//    toText.backgroundColor = [AISColor  grayColor];
+//    toText.text = @"testdsfdsf";
+    [toLabel setText:[AISString commonString:typeLabel KeyOfValue:@"TO"]];
+    [messageTextField setText:[AISString commonString:typePlacehoder KeyOfValue:@"MESSAGE"]];
+    [messageTextField setTextColor:[AISColor lightgrayColor]];
     [addTagView addSubview:toText];
+    [scrollContactView addSubview:addTagView];
     [bytesLabel setText:@"0/160"];
     [messageNoLabel setText:@"0"];
     [characterLabel setText:@"0"];
@@ -149,6 +167,8 @@
     }
 }
 -(void)viewWillDisappear:(BOOL)animated{
+    
+    self.arrayContact = nil;
     checkHeightCell = [[NSMutableArray alloc] initWithObjects:@"60",@"80",@"237",@"40",@"120",@"56",@"56",@"56",@"56",@"50", nil];
 }
 - (void)didReceiveMemoryWarning
@@ -205,6 +225,7 @@
     }
         self.title = [AISString commonString:typeTitle KeyOfValue :@"MESSAGE"];
         [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"MESSAGE"]];
+//    [messageTextField]
     [selectTemplate setTitle:[AISString commonString:typeButton KeyOfValue :@"SELECT_TEMPLATE"] forState:UIControlStateNormal];
     [saveTemplate setTitle:[AISString commonString:typeButton KeyOfValue :@"SAVE_TEMPLATE"] forState:UIControlStateNormal];
     [variableSMS setTitle:[AISString commonString:typeButton KeyOfValue :@"VARIABLE_SMS"] forState:UIControlStateNormal];
@@ -488,6 +509,27 @@
     [messageNoLabel setText:[AISSMSCharacter messageNumber]];
     [characterLabel setText:[NSString stringWithFormat:@"%ld",(unsigned long)[messageTextField.text length]]];
 }
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+    if ([textView isEqual:messageTextField]) {
+     
+    if ([textView.text isEqualToString:[AISString commonString:typePlacehoder KeyOfValue:@"MESSAGE"]]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor]; //optional
+    }
+        [textView becomeFirstResponder];
+    }
+}
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView isEqual:messageTextField]) {
+        
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = [AISString commonString:typePlacehoder KeyOfValue:@"MESSAGE"];
+        textView.textColor = [AISColor lightgrayColor]; //optional
+    }
+    [textView resignFirstResponder];
+    }
+}
 #pragma mark - Open Picker View
 - (void)startDateSelect:(UITapGestureRecognizer *)sender {
     [self openPicker:@"startDate":102];
@@ -646,6 +688,15 @@
 -(void)clearAction{
     [self setDataDefault];
 }
+-(void)sendMessage{
+    if(tagTag == 1000){
+        AISAlertView *ss = [[AISAlertView alloc]  withActionLeft:@selector(leftAction:) withActionRight:nil withTarget:self message:[AISString commonString:typePopup KeyOfValue:@"TONO"] LeftString:@"Done" RightString:nil];
+        [ss showAlertView];
+    }else if ([messageTextField.text isEqualToString:[AISString commonString:typePlacehoder KeyOfValue:@"MESSAGE"]]) {
+        AISAlertView *ss = [[AISAlertView alloc]  withActionLeft:@selector(leftAction:) withActionRight:nil withTarget:self message:[AISString commonString:typePopup KeyOfValue:@"MESSAGENO"] LeftString:@"Done" RightString:nil];
+        [ss showAlertView];
+    }
+}
 #pragma mark - Table view data source
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    NSLog(@"%@",[checkHeightCell objectAtIndex:indexPath.row]);
@@ -708,7 +759,6 @@
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    self.arrayContact = nil;
     if ([[segue identifier] isEqualToString:@"messageToAddTemplate"]) {
         AddTemplateViewController *add =[segue destinationViewController];
         add.descritionItem = messageTextField.text;

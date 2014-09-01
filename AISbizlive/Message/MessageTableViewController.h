@@ -50,6 +50,7 @@
     __weak IBOutlet UITextView *messageTextField;
     __weak IBOutlet UIView *messageView;
     __weak IBOutlet UIView *contactView;
+    __weak IBOutlet UILabel *toLabel;
     
 //    __weak IBOutlet UIView *addTagView;
     __weak IBOutlet UIScrollView *scrollContactView;

@@ -22,6 +22,7 @@
     if(self){
         offset=34.0;
         self.checkContact = [[UIImageView alloc] init];
+        
         [self.checkContact setFrame:CGRectMake(-(offset),  (self.contentView.frame.size.height/2.0)-(25/2.0), 25  , 25)];
         
         [self.checkContact setImage:[UIImage imageNamed:@"Ok_Grey.png"]];
@@ -38,10 +39,12 @@
     if(self.isEditing){
         self.checkContact.frame=CGRectMake((offset/2.0)-(25.0/3.0),  (self.contentView.frame.size.height/2.0)-(25/2.0), 25  , 25);
         [self.checkContact setAlpha:1.0f];
+        [self.discriptionImage setAlpha:0.0f];
         
     }else{
         self.checkContact.frame=CGRectMake(-(offset),  (self.contentView.frame.size.height/2.0)-(25/2.0), 25  , 25);
         [self.checkContact setAlpha:0.0f];
+        [self.discriptionImage setAlpha:1.0f];
     }
 }
 -(void) buttonSelected:(UIButton*) sender{
@@ -70,13 +73,8 @@
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
-//-(void)setImageContact:(UIImageView *)imageContact{
-//    
-//}
 - (void)setFrame:(CGRect)frame {
-//    NSLog(@"Frame");
     frame.origin.x += 10;
-    //    frame.origin.y += 10;
     frame.size.height -= 2*2;
     frame.size.width -= 2 * 10;
     [super setFrame:frame];

@@ -29,7 +29,7 @@
     // Do any additional setup after loading the view.
 }
 -(void)viewDidAppear:(BOOL)animated{
-//    sleep(3);
+    sleep(3);
     NSLog(@"Load");
     [self performSegueWithIdentifier: @"mainPage" sender: self];
     

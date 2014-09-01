@@ -21,7 +21,6 @@
     UILabel *sample;
     UILabel *full;
 //    UITableViewCell *cell ;
-    TemplateCell  *cell;
     int currentSelect;
     float currentHeight;
     float newHeight;
@@ -132,75 +131,64 @@
      if ([self.templeSelected isEqualToString:@"YES"]) {
         self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(selectTemplate) withTarget:self];
      }
-//    cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-//    UILabel *subtitle = (UILabel *)[[tableView cellForRowAtIndexPath:indexPath] viewWithTag:2];
-//    UILabel *fulltitle = (UILabel *)[[tableView cellForRowAtIndexPath:indexPath] viewWithTag:42];
-    CGFloat width = 280;
-    CGFloat height = 0;
-    CGRect r = [[[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"]boundingRectWithSize:CGSizeMake(width, height)
-                                                                        options:NSStringDrawingUsesLineFragmentOrigin
-                                                                     attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]}
-                                                                        context:nil];
+    TemplateCell *cell = (TemplateCell *)[messageTable cellForRowAtIndexPath:indexPath];
+    for (int k = 0; k < [myObject count]; k++) {
+        if ([[[myObject objectAtIndex:k] objectForKey:heightTemplateCell] floatValue] != 65) {
+//            [UIView animateWithDuration:.3f animations:^{
+                cell.descriptionTemplate.alpha = 0.0f;
+                cell.sampleDescriptionTemplate.alpha = 1.0f;
+            //            }];
+//            [messageTable cellForRowAtIndexPath:(NSIndexPath *)k];
+            
+            [tableView beginUpdates];
+            [tableView endUpdates];
+        }
 
-    [[myObject objectAtIndex:indexPath.row] setValue:[NSString stringWithFormat:@"%f",currentHeight+r.size.height+30] forKey:heightTemplateCell];
-    fullReturn = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
-    [UIView animateWithDuration:.3f animations:^{
-        cell.descriptionTemplate.alpha = 1.0f;
-        cell.sampleDescriptionTemplate.alpha = 0.0f;
-    }];
-    NSLog(@"%@",cell.descriptionTemplate.text);
-    [tableView beginUpdates];
-    [tableView endUpdates];
+        [[myObject objectAtIndex:k] setValue:@"65" forKey:heightTemplateCell];
+    }  NSLog(@"%d - : -",[messageTable indexPathForCell:cell].row);
+        CGFloat width = 280;
+        CGFloat height = 0;
+        CGRect r = [[[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"]boundingRectWithSize:CGSizeMake(width, height)
+                                                                                                                      options:NSStringDrawingUsesLineFragmentOrigin
+                                                                                                                   attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]}
+                                                                                                                      context:nil];
+        
+        [[myObject objectAtIndex:indexPath.row] setValue:[NSString stringWithFormat:@"%f",currentHeight+r.size.height+30] forKey:heightTemplateCell];
+        
+        fullReturn = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
+        
+        [cell setCellHeight:[[[myObject objectAtIndex:indexPath.row] objectForKey:heightTemplateCell] floatValue]];
+        
+        [UIView animateWithDuration:.3f animations:^{
+            cell.descriptionTemplate.alpha = 1.0f;
+            cell.sampleDescriptionTemplate.alpha = 0.0f;
+        }];
+        
+        [tableView beginUpdates];
+        [tableView endUpdates];
+    
     
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-//    cell = ;
-//    UILabel *subtitle = (UILabel *)[[tableView cellForRowAtIndexPath:indexPath] viewWithTag:2];
-//    UILabel *fulltitle = (UILabel *)[[tableView cellForRowAtIndexPath:indexPath] viewWithTag:42];
-      [[myObject objectAtIndex:indexPath.row] setValue:@"65" forKey:heightTemplateCell];
-    [UIView animateWithDuration:.3f animations:^{
-        cell.descriptionTemplate.alpha = 0.0f;
-        cell.sampleDescriptionTemplate.alpha = 1.0f;
-    }];
-    
-    [tableView beginUpdates];
-    [tableView endUpdates];
-}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     static NSString *CellIdentifier = @"TemplateCell";
-    cell = [messageTable dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    // Configure the cell...
-    if (cell == nil) {
-        cell = [[TemplateCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-//        cell.userInteractionEnabled = NO;
-    }
     
+    TemplateCell  *cell = (TemplateCell *)[messageTable dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     TemplateCell  __weak *weakCell = cell;
     [cell setAppearanceWithBlock:^{
-        weakCell.leftUtilityButtons =  nil;
-        weakCell.rightUtilityButtons = nil;
+        weakCell.rightUtilityButtons = [self rightButtons];
         weakCell.delegate = self;
         weakCell.containingTableView = messageTable;
-    } force:YES];
-    
-//    [cell setCellHeight:cell.frame.size.height];
+    } force:NO];
     cell.nameTemplate.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"TITLE"];
     cell.sampleDescriptionTemplate.text =  [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
     cell.descriptionTemplate.alpha = 0.0f;
     cell.descriptionTemplate.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
     return cell;
 
-}
--(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return UITableViewCellEditingStyleNone;
 }
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     
@@ -222,19 +210,17 @@
     }
 }
 
-- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
-    return YES;
-}
 
 - (NSArray *)rightButtons
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor grayColor]
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
                                                 title:@"Edit"];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor redColor]
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
                                                 title:@"Delete"];
+    
     
     return rightUtilityButtons;
 }

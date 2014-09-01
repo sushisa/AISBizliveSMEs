@@ -451,6 +451,13 @@
 			<key>TH</key>
 			<string>ยืนยันรหัสผ่านใหม่</string>
 		</dict>
+		<key>MESSAGE</key>
+		<dict>
+			<key>EN</key>
+			<string>Message</string>
+			<key>TH</key>
+			<string>ข้อความ</string>
+		</dict>
 	</dict>
 	<key>LABEL</key>
 	<dict>
@@ -755,6 +762,13 @@
 			<key>TH</key>
 			<string>ข้อความ</string>
 		</dict>
+		<key>TO</key>
+		<dict>
+			<key>EN</key>
+			<string>To :</string>
+			<key>TH</key>
+			<string>ถึง :</string>
+		</dict>
 		<key>BAHT</key>
 		<dict>
 			<key>EN</key>
@@ -974,6 +988,20 @@
 			<string>ไม่มีข้อความ</string>
 			<key>TH</key>
 			<string>ไม่มีข้อความ</string>
+		</dict>
+		<key>MESSAGENO</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify message.</string>
+			<key>TH</key>
+			<string>กรุณาระบุข้อความ</string>
+		</dict>
+		<key>TONO</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify contact.</string>
+			<key>TH</key>
+			<string>กรุณาระบุผู้ติดต่อ</string>
 		</dict>
 	</dict>
 	<key>WEEK_DETAIL</key>

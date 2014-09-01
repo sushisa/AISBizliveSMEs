@@ -14,4 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *telContact;
 
 @property (strong, nonatomic) IBOutlet UIImageView *checkContact;
+@property (weak, nonatomic) IBOutlet UIImageView *discriptionImage;
+
+
 @end

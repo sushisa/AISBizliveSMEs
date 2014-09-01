@@ -61,6 +61,7 @@
                      }
                  }];
             }
+            ////////facebook no connect
         }];
     }
 }
@@ -120,16 +121,32 @@
     [fullNameField resignFirstResponder];
     [confirmPassField resignFirstResponder];
 }
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if ([textField isEqual:phoneField]) {
+        if ([textField isEqual:phoneField]) {
+            if (phoneField.text.length == 12) {
+                phoneField.text = [NSString stringWithFormat:@"%@%@%@",[phoneField.text substringToIndex:2] ,[[phoneField.text substringFromIndex:3] substringToIndex:4],[phoneField.text substringFromIndex:8] ];
+            }
+        }
+    }
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if ([textField isEqual:phoneField]) {
+        if ([textField isEqual:phoneField]) {
+            if (phoneField.text.length == 10 && [phoneField.text rangeOfString:@"-"].location == NSNotFound) {
+                phoneField.text = [NSString stringWithFormat:@"%@-%@-%@",[phoneField.text substringToIndex:2] ,[[phoneField.text substringFromIndex:2] substringToIndex:4],[phoneField.text substringFromIndex:6] ];
+            }
+        }
+    }
+}
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     NSInteger locationAndStringLengthSum = range.location + [string length];
     if ([textField isEqual:phoneField]) {
-//        if (locationAndStringLengthSum == 3 || locationAndStringLengthSum == 8) {
-//            phoneField.text = [NSString stringWithFormat:@"%@-",phoneField.text];
-//        }
         if (locationAndStringLengthSum > 10) {
-            phoneField.text = [NSString stringWithFormat:@"%@-%@-%@",[phoneField.text substringToIndex:2] ,phoneField.text];
+            
             return NO;
         }
+        
     }
     else if ([textField isEqual:passField] || [textField isEqual:confirmPassField]) {
         if (locationAndStringLengthSum > 20) {
