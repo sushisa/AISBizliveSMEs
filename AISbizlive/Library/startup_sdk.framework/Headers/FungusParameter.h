@@ -25,6 +25,9 @@
 +(void) setApplicationID:(NSString *) appID;
 +(NSString *) getApplicationID;
 
++(void) setApplicationName:(NSString *) appName;
++(NSString *) getApplicationName;
+
 +(void) setApplicationVersion:(NSString *) appVersion;
 +(NSString *) getApplicationVersion;
 
@@ -35,11 +38,18 @@
 +(NSString *) getFungusCerticicateFileName;
 
 +(void) clearSessionID;
-//+(void) setSessionID:(NSString *) ssID;
-//+(NSString *) getSessionID;
+
 + (void)setSessionID:(NSString *)sessionID;
 + (NSString *)getSessionID;
 
++ (void)setCookie:(NSString *)cookie;
++ (NSString *)getCookie;
+
++ (void)setUserID:(NSString *)userID;
++ (NSString *)getUserID;
+
++ (void)setApp:(NSString *)app;
++ (NSString *)getApp;
 
 +(void) setTokenID:(NSString *)token;
 +(NSString *) getTokenID;

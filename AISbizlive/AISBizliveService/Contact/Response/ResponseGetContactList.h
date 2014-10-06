@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ContactDetail.h"
 @interface ResponseGetContactList : NSObject
 
 - (id)initWithResponseData:(NSDictionary *)responseData;

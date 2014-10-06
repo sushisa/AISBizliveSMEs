@@ -10,7 +10,8 @@
 #import "AISGlobal.h"
 @interface DetailPeopleViewController ()
 {
-    NSMutableArray *myobject;
+    NSMutableArray *messageObject;
+    NSMutableArray *timeObject;
 }
 @end
 
@@ -29,7 +30,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    myobject = [[NSMutableArray alloc] initWithObjects:@"100 SMS/Package",@"200 SMS/Package",@"300 SMS/Package",@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" , nil];
+    
+    timeObject = [[NSMutableArray alloc] init];
+    messageObject = [[NSMutableArray alloc] init];
+    ServiceCT05_ContactMessageHistory *call = [[ServiceCT05_ContactMessageHistory alloc] init];
+    [call setDelegate:self];
+    [call setParameterWithID:@"1"];
+    [call requestService];
+    
     [self setTextLangague];
 }
 -(void)setTextLangague{
@@ -39,13 +47,13 @@
     
     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DeleteButtonWithAction:@selector(doneAction) withTarget:self];
     self.navigationItem.title = self.firstName;
-    [nameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"FIRST_NAME"]];
+    [nameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"NAME"]];
     [firstNameField setText:self.firstName];
     
     [lastNameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"LAST_NAME"]];
     [lastNameField setText:self.lastName];
     
-    [mobileLabel setText:[AISString commonString:typeLabel KeyOfValue :@"MOBILE"]];
+    [mobileLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_PHONE"]];
     [phoneNumberField setText:self.phoneNumber];
     [profileImage setImage:[UIImage imageNamed:self.profile]];
     [deleteButton setTitle:[AISString commonString:typeButton KeyOfValue :@"DELETE_CONTACT"] forState:UIControlStateNormal];
@@ -81,12 +89,12 @@
     return 1;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80.0f;
+    return 100.0f;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [myobject count];
+    return [timeObject count];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -96,12 +104,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier ;
-    if (indexPath.row % 2 == 0) {
         CellIdentifier = @"toMessage";
-    }
-    else{
-        CellIdentifier = @"sendMessage";
-    }
     UITableViewCell *cell = [messageTable dequeueReusableCellWithIdentifier:CellIdentifier];
     // Configure the cell...
     if (cell == nil) {
@@ -109,13 +112,26 @@
         
     }
     UILabel  *head = (UILabel *)[cell viewWithTag:201];
-    head.text = [myobject objectAtIndex:indexPath.row];
+    head.text = [AISString timeFormat:[timeObject objectAtIndex:indexPath.row]];
     UILabel *sample = (UILabel *)[cell viewWithTag:202];
-    sample.text =   [myobject objectAtIndex:indexPath.row];
+    sample.text =   [messageObject objectAtIndex:indexPath.row];
     return cell;
     
 }
-
+- (void)contactMessageHistorySuccess:(ResponseContactMessageHistory *)responseContactMessageHistory{
+    for (ContactMessageHistory *history in [responseContactMessageHistory historyList]) {
+        [timeObject addObject:[history sendDate]];
+        [messageObject addObject:[history message]];
+//        NSLog(@"%@\n",[history sendDate]);
+//        NSLog(@"%@\n",[history message]);
+    }
+//    NSLog(@"%@",responseContactMessageHistory);
+}
+- (void)contactMessageHistoryError:(ResultStatus *)status{
+    NSLog(@"%@",status);
+}
+//- (void)contactMessageHistorySuccess:(ResponseContactMessageHistory *)responseContactMessageHistory;
+//- (void)contactMessageHistoryError:(ResultStatus *)status;
 /*
 #pragma mark - Navigation
 

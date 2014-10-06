@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <startup_sdk/ServiceBizLive.h>
+
 #import "SWTableViewCell.h"
-@interface ContactViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,SWTableViewCellDelegate,ServiceBizLiveDelegate>
+
+#import "ServiceCT01_GetContactList.h"
+#import "ServiceCT06_GetGroupContactList.h"
+@interface ContactViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,SWTableViewCellDelegate,GetContactListDelegate,GetGroupContactListDelegate>
 {
     
     __weak IBOutlet UITextField *seachTextField;

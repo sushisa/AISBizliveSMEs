@@ -22,13 +22,13 @@
         NSDictionary *contact1 = @{RES_KEY_ID           : @"01234",
                                    RES_KEY_NAME         : @"Woravit",
                                    RES_KEY_LASTNAME     : @"Poang",
-                                   RES_KEY_PHONE_NUMBER : @"089xxxxxxx",
+                                   RES_KEY_MOBILE_NO    : @"089xxxxxxx",
                                    RES_KEY_LAST_UPDATE  : @"1403777666666",
                                    RES_KEY_IMAGE_URL    : @"www.hotmail.co.th"};
         NSDictionary *contact2 =@{RES_KEY_ID            : @"01235",
                                   RES_KEY_NAME          : @"Pluem",
                                   RES_KEY_LASTNAME      : @"Limrattanakan",
-                                  RES_KEY_PHONE_NUMBER  : @"089xxxxxxx",
+                                  RES_KEY_MOBILE_NO     : @"089xxxxxxx",
                                   RES_KEY_LAST_UPDATE   : @"1403777666666",
                                   RES_KEY_IMAGE_URL     : @"www.google.co.th"};
         

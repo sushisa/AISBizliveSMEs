@@ -36,7 +36,7 @@
 @property (nonatomic, retain) ConnectResponse *connResponse;
 @property (nonatomic, retain) NSURLConnection *currentConnection;
 
-- (void) httpRequest:(NSString *) serviceName withXMLString:(NSData *) xmlString;
+- (void) httpRequest:(NSString *) serviceURL withJSONString:(NSData *)jsonString withRequestHeader:(NSMutableURLRequest *)requestHeader;
 - (void) cancelRequest;
 
 @end

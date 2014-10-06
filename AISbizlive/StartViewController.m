@@ -13,7 +13,6 @@
 @interface StartViewController ()
 {
     NSUserDefaults *defaults;
-    NSDictionary *facebookData;
 }
 @end
 
@@ -25,7 +24,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     defaults = [NSUserDefaults standardUserDefaults];
-    facebookData = [[NSDictionary alloc] init];
     if ([[defaults objectForKey:@"lang"] isEqualToString:@"EN"]) {
         [BtnchangeLanguage setOn:YES];
     }
@@ -57,38 +55,7 @@
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     pageControl.currentPageIndicatorTintColor = [AISColor  lightgreenColor];
     [self setTextLangage];
-//    [self updateView];
-    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-//    [FBSession.activeSession closeAndClearTokenInformation];
-//    [FBSession.activeSession close];
-//    [FBSession setActiveSession:nil];
-    if (!appDelegate.session.isOpen) {
-        // create a fresh session object
-        appDelegate.session = [[FBSession alloc] init];
-        
-        // if we don't have a cached token, a call to open here would cause UX for login to
-        // occur; we don't want that to happen unless the user clicks the login button, and so
-        // we check here to make sure we have a token before calling open
-        if (appDelegate.session.state == FBSessionStateCreatedTokenLoaded) {
-            // even though we had a cached token, we need to login to make the session usable
-            [appDelegate.session openWithBehavior:FBSessionLoginBehaviorWithNoFallbackToWebView completionHandler:^(FBSession *session,
-                                                                                                           FBSessionState status,
-                                                                                                           NSError *error) {
-                // we recurse here, in order to update buttons and labels
-                [self updateView];
-            }];
-        }
-    }
     
-}
-- (void)updateView {
-    // get the app delegate, so that we can reference the session property
-    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    if (appDelegate.session.isOpen) {
-        NSLog(@"OPEN");
-    } else {
-        NSLog(@"Not Open");
-    }
 }
 -(void)setTextLangage{
     btnSignIn.layer.cornerRadius = 5.0f;
@@ -98,8 +65,6 @@
     [btnSignIn setTitle:[AISString commonString:typeButton KeyOfValue:@"SIGNIN"]forState:UIControlStateNormal];
     [btnSignUpEmail setTitle:[AISString commonString:typeButton KeyOfValue:@"SIGNUP_EMAIL"] forState:UIControlStateNormal];
     btnSignUpEmail.titleLabel.font = [FontUtil fontWithFontSize:eFontSizeNormal];
-    [btnSignUpFacebook setTitle:[AISString commonString:typeButton KeyOfValue:@"SIGNUP_FACE"] forState:UIControlStateNormal];
-   btnSignUpFacebook.titleLabel.font = [FontUtil fontWithFontSize:eFontSizeNormal];
 }
 -(void)viewDidAppear:(BOOL)animated{
     
@@ -180,29 +145,6 @@
         [defaults synchronize];
         [self setTextLangage];
     }
-}
-- (IBAction)FacebookLogin:(id)sender {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    if (!appDelegate.session.isOpen) {
-        // create a fresh session object
-        appDelegate.session = [[FBSession alloc] init];
-        
-        // if we don't have a cached token, a call to open here would cause UX for login to
-        // occur; we don't want that to happen unless the user clicks the login button, and so
-        // we check here to make sure we have a token before calling open
-        if (appDelegate.session.state == FBSessionStateCreatedTokenLoaded) {
-            // even though we had a cached token, we need to login to make the session usable
-            [appDelegate.session openWithBehavior:FBSessionLoginBehaviorWithNoFallbackToWebView completionHandler:^(FBSession *session,
-                                                                                                                    FBSessionState status,
-                                                                                                                    NSError *error) {
-                // we recurse here, in order to update buttons and labels
-                [self updateView];
-            }];
-        }
-    }
-    [self performSegueWithIdentifier:@"CheckFBLogin" sender:self];
-    [defaults setValue:@"Facebook" forKey:@"type"];
-    [defaults synchronize];
 }
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 //{

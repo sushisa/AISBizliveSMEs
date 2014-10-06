@@ -7,11 +7,12 @@
 //
 
 //Service
-//#define SERVICE_REQ_KEY_EXCHANGE @"RequestKeyExchange.ashx"
+#pragma mark - Servvice Suffix
 #define SERVICE_REQ_KEY_EXCHANGE @"getPantryPublicKey.ashx"
 #define SERVICE_REQ_ORDER_ID @"RequestOrderId.ashx"
 #define SERVICE_REQ_AUTHENTICATATION @"RequestAuthenticate.ashx"
 #define SERVICE_REQ_LOGIN @"login.ashx"
+#define SERVICE_REQ_KEEPALIVE @"keepAlive.ashx"
 #define SERVICE_REQ_PAYMENT_LOGIN @"RequestPaymentLogin.ashx"
 #define SERVICE_REQ_CHARGING @"Charging.ashx"
 #define SERVICE_REQ_REGISTER_SUBSCRIBER_ID @"RegisterSubscriberIdentity.ashx"
@@ -20,6 +21,8 @@
 #define SERVICE_REQ_RESERVE_ADDITIONAL @"ReserveAdditionalAmount.ashx"
 #define SERVICE_REQ_CHARGE_RESERVE @"ChargeReservation.ashx"
 #define SERVICE_REQ_RELEASE_RESERVE @"ReleaseReservation.ashx"
+#define SERVICE_REQ_SUBSCRIBE_PUSH @"subscriber.ashx"
+#define SERVICE_REQ_UNSUBSCRIBE_PUSH @"unsubscriber.ashx"
 
 
 
@@ -104,20 +107,16 @@
 #define TAG_ITEM_ADS_REQUEST @"ServiceAdsInfo"
 
 //Tag Request
+
 #define TAG_PRIME @"Modulus"
 #define TAG_BASE @"Exponent"
-#define TAG_PUBLIC_KEY @"peeblickup"
-#define TAG_CLIENT_ID @"clientId"
 
-#define TAG_BEARER_ID @"bearerId"
-//#define TAG_ORDER_REF @"OrderRef"
-#define TAG_ORDER_REF @"orderRef"
+
 #define TAG_APP_ID @"AppID"
 #define TAG_TRANSACTION_TYPE @"TransactionType"
 #define TAG_APP_VERSION @"AppVersion"
 #define TAG_FUNGUS_VERSION @"FungusVersion"
 #define TAG_FINGER_PRINT @"FingerPrint"
-#define TAG_CLIENT_ID @"clientId"
 #define TAG_ACCESS_TOKEN @"accessToken"
 #define TAG_CERTIFICATE @"Certificate"
 #define TAG_ORDER_ID @"OrderID" //"TransactionID"
@@ -125,8 +124,6 @@
 #define TAG_CCSSID @"CCSSID"
 #define TAG_USERNAME @"Username"
 #define TAG_PASSWORD @"Password"
-#define TAG_SESSION_ID @"sessionID"
-//#define TAG_SESSION_ID @"sessionId"
 #define TAG_AUTH_CODE @"authCode"
 #define TAG_CC_SUBSESSION_ID @"CCSubSessionId"
 #define TAG_SUBSESSION_TYPE @"SubscriptionIdType"
@@ -146,8 +143,8 @@
 //***** Phase 2.0
 #define TAG_SERIAL_NUMBER @"SerialNumber"
 #define TAG_MODEL_DEVICE @"ModelDevice"
-#define TAG_MAC_ADDRESS @"MACAddress"
-#define TAG_MAC_IMEI @"IMEI"
+
+
 #define TAG_MSISDN @"MSISDN"
 #define TAG_GSSO_TRANSECTION_ID @"GssoTransactionId"
 #define TAG_OTP @"OTP"
@@ -186,7 +183,7 @@
 #define TAG_RES_ORDER_REF @"orderRef"
 #define TAG_RES_CODE @"resultCode"
 #define TAG_RES_DESCRIPTION @"resultDescription"
-#define TAG_RES_REDIRECT_URL @"redirectURL"
+
 #define TAG_RES_APP_ENVIRONMENT_TYPE @"appEnvironmentType"
 
 #define TAG_RES_ORDER_ID @"OrderID" //*** Change from TransactionID
@@ -207,8 +204,6 @@
 
 
 //***** Phase 2.0
-#define TAG_RES_SESSION_ID @"SessionID"
-//#define TAG_RES_SESSION_ID @"sessionId"
 #define TAG_RES_VM_URL @"VmUrl"
 #define TAG_RES_VM_IP @"VmIP"
 #define TAG_RES_MSISDN @"MSISDN"
@@ -264,6 +259,66 @@
 #define TAG_RES_LIST_OF_API @"listOfAPI"
 #define TAG_RES_OPEN_ID_FLAG @"openIDFlag"
 #define TAG_RES_REGISTRATION_LEVEL @"registrationLevel"
+
+
+
+
+
+
+
+
+#pragma mark - Key Header
+#define KEY_HEADER_ORDER_REF            @"x-orderRef"
+#define KEY_HEADER_COOKIE               @"cookie"
+#define KEY_HEADER_SESSION_ID           @"x-session-id"
+#define KEY_HEADER_APP                  @"x-app"
+#define KEY_HEADER_USER_ID              @"x-user-id"
+#define KEY_HEADER_ACCESS_TOKEN         @"x-access-token"
+
+#pragma mark - Key Request Body
+//Request ServiceKeyExchange
+#define KEY_REQ_PUBLIC_KEY              @"peeblickup"
+#define KEY_REQ_CLIENT_ID               @"ptsClientId"
+#define KEY_REQ_BEARER_ID               @"bearerID"
+//Request ServiceLogin
+#define KEY_REQ_IMEI                    @"imei"
+#define KEY_REQ_MAC_ADDRESS             @"mac"
+#define KEY_REQ_IMSI                    @"imsi"
+//Resuest PushNotification
+#define KEY_REQ_USER_ID                 @"userId"
+#define KEY_REQ_DEVICE_MODEL            @"deviceModel"
+#define KEY_REQ_DEVICE_TOKEN            @"deviceToken"
+#define KEY_REQ_APP_ID                  @"appID"
+#define KEY_REQ_APP_NAME                @"appName"
+#define KEY_REQ_APP_VERSION             @"appVersion"
+#define KEY_REQ_PLATFORM                @"platform"
+#define KEY_REQ_PLATFORM_VERSION        @"platformVersion"
+#define KEY_REQ_EVENT_NAME              @"eventName"
+#define KEY_REQ_SENDER                  @"sender"
+
+
+#pragma mark - Key Response Body
+//Response ServiceKeyExchange
+#define KEY_RES_PUBLIC_KEY              @"peeblickup"
+#define KEY_RES_INITIAL_VECTOR          @"ernitialVectee"
+#define KEY_RES_REDIRECT_URL            @"redirectURL"
+#define KEY_RES_APP_ENVIRONMENT_TYPE    @"ptsAppEnvironmentType"
+//Response ServiceLogin, ServcieKeepAlive
+#define KEY_RES_AUTH_CODE               @"authCode"
+
+
+
+
+#pragma mark - Key Request Common
+
+#pragma mark - Key Response Common
+#define KEY_RES_ORDER_REF               @"orderRef"
+#define KEY_RES_DEV_MESSAGE             @"developerMessage"
+#define KEY_RES_USER_MESSAGE            @"userMessage"
+#define KEY_RES_RESULT_CODE             @"resultCode"
+#define KEY_RES_MORE_INFO               @"moreInfo"
+
+
 
 
 

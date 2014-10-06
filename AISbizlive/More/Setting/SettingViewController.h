@@ -26,6 +26,5 @@
     //Button
     
     __weak IBOutlet UIButton *changPasswordButton;
-    __weak IBOutlet UIButton *linkFacebookButton;
 }
 @end

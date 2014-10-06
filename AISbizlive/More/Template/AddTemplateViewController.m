@@ -14,6 +14,7 @@
     bool checkFomatThai;
     NSString *format;
     int checkShots;
+    AISAlertView *alertView;
 }
 @end
 
@@ -33,8 +34,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"Add Template Load");
+    alertView = [[AISAlertView alloc] init];
    
-    self.navigationItem.title = @"Add Template";
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
                                              initWithTarget: self
                                              action: @selector(hideKeyboard:)];
@@ -45,16 +46,39 @@
         [textLength setText:[AISSMSCharacter bytesString:descritionTemplate.text]];
         self.tabBarController.tabBar.hidden = YES;
     }
-//    else{
-        self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] AddButtonWithAction:@selector(templateAdd) withTarget:self];
-//    }
+    
+    [self setTextLangague];
+    
+}
+-(void)setTextLangague{
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"ADDTEMPLATE"]];
+    
+    
+    self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] AddButtonWithAction:@selector(templateAdd) withTarget:self];
+    
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
+    [nameTemplateLabel setText:[AISString commonString:typeLabel KeyOfValue:@"ADDTEMPLATE_NAME"]];
+    
+    [descriptionTemplateLabel setText:[AISString commonString:typeLabel KeyOfValue:@"ADDTEMPLATE_DESCRIPTION"]];
+    
 }
 -(void)templateAdd{
-    NSLog(@"Template ADD");
+
     if (![nameTemplate.text isEqualToString:@""] && ![descritionTemplate.text isEqualToString:@""]) {
+       
+        NSError *error;
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
+        NSString *documentsDirectory = [paths objectAtIndex:0]; //2
+        NSString *path = [documentsDirectory stringByAppendingPathComponent:@"TemplateList.plist"]; //3
         
-        NSString *path = [[NSBundle mainBundle] pathForResource: @"TemplateList" ofType:@"plist"];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        if (![fileManager fileExistsAtPath: path]) //4
+        {
+            NSString *bundle = [[NSBundle mainBundle] pathForResource:@"TemplateList" ofType:@"plist"]; //5
+            
+            [fileManager copyItemAtPath:bundle toPath: path error:&error]; //6
+        }
         NSMutableArray *favs = [[NSMutableArray alloc] initWithContentsOfFile: path];
         NSDictionary *test = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                               nameTemplate.text, @"TITLE",
@@ -63,6 +87,17 @@
         [favs addObject:test];
         [favs writeToFile:path atomically:YES];
         [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        if([nameTemplate.text isEqualToString:@""] && [descritionTemplate.text isEqualToString:@""]){
+            [self alert:[AISString commonString:typePopup KeyOfValue :@"TEMPLATENO"]];
+        }
+        else if ([nameTemplate.text isEqualToString:@""]) {
+            [self alert:[AISString commonString:typePopup KeyOfValue :@"TEMPLATENAME"]];
+        }
+        else if ([descritionTemplate.text isEqualToString:@""]){
+            [self alert:[AISString commonString:typePopup KeyOfValue :@"TEMPLATEDESCRIPTION"]];
+            
+        }
     }
 }
 -(void)backAction{
@@ -74,7 +109,7 @@
     [descritionTemplate resignFirstResponder];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationItem.title = @"Add Template";
+    [self setTextLangague];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -83,6 +118,20 @@
 }
 -(void)textViewDidChange:(UITextView *)textView{
     [textLength setText:[AISSMSCharacter bytesString:descritionTemplate.text]];
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if ([textField isEqual:nameTemplate]) {
+        [descritionTemplate becomeFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+-(void)doneAction:(id)sender{
+    [alertView dismissAlertView];
+}
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
+    [alertView showAlertView];
 }
 /*
 #pragma mark - Navigation

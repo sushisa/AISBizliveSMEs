@@ -24,12 +24,12 @@
 }
 -(id)AddButtonWithAction:(SEL)actionbutton withTarget:(id)target{
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:typeButton KeyOfValue:@"ADD"] style:UIBarButtonItemStyleBordered target:target action:actionbutton];
-    [cancelButton setTintColor:[AISColor lightgrayColor]];
+    [cancelButton setTintColor:[AISColor grayColor]];
     return cancelButton;
 }
 -(id)CancelButtonWithAction:(SEL)actionbutton withTarget:(id)target{
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:[AISString commonString:typeButton KeyOfValue:@"CANCEL"] style:UIBarButtonItemStyleBordered target:target action:actionbutton];
-    [cancelButton setTintColor:[AISColor lightgrayColor]];
+    [cancelButton setTintColor:[AISColor grayColor]];
     return cancelButton;
 }
 -(id)ClearButtonWithAction:(SEL)actionbutton withTarget:(id)target{
@@ -64,6 +64,7 @@
 }
 -(id)TemplateAddButtonWithAction:(SEL)actionbutton withTarget:(id)target{
     UIBarButtonItem *templateRightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:BUTTON_ADD_DEFAULT] style:UIBarButtonItemStyleBordered target:target action:actionbutton];
+    [templateRightButton setTintColor:[AISColor grayColor]];
     return templateRightButton;
 }
 @end

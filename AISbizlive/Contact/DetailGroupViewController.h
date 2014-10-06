@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface DetailGroupViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+#import "ServiceCT08_GroupMessageHistory.h"
+@interface DetailGroupViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,GroupMessageHistoryDelegate>
 {
     
     __weak IBOutlet UIImageView *ProfilePicture;
@@ -18,4 +18,5 @@
 @property (strong, nonatomic) NSString *nameGroup;
 @property (strong, nonatomic) NSString *profileGroup;
 @property (strong, nonatomic) NSString *idGroup;
+@property (strong, nonatomic) NSMutableArray *GroupContact;
 @end

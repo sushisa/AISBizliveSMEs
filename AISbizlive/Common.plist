@@ -7,16 +7,16 @@
 		<key>LOGIN</key>
 		<dict>
 			<key>EN</key>
-			<string>Log In</string>
+			<string>Sign In</string>
 			<key>TH</key>
-			<string>ล๊อคอิน</string>
+			<string>เข้าสู่ระบบ</string>
 		</dict>
 		<key>SIGNUP</key>
 		<dict>
 			<key>EN</key>
-			<string>Sign Up With Email</string>
+			<string>Sign Up</string>
 			<key>TH</key>
-			<string>ลงทะเบียนด้วยอีเมล์</string>
+			<string>ลงทะเบียน</string>
 		</dict>
 		<key>SIGNUPFACEBOOK</key>
 		<dict>
@@ -87,6 +87,13 @@
 			<string>Payment</string>
 			<key>TH</key>
 			<string>การจ่ายเงิน</string>
+		</dict>
+		<key>CASHCARD</key>
+		<dict>
+			<key>EN</key>
+			<string>Cash Card</string>
+			<key>TH</key>
+			<string>บัตรเติมเงิน</string>
 		</dict>
 		<key>MPAY</key>
 		<dict>
@@ -179,6 +186,13 @@
 			<key>TH</key>
 			<string>แบบข้อความ</string>
 		</dict>
+		<key>ADDTEMPLATE</key>
+		<dict>
+			<key>EN</key>
+			<string>Add Template</string>
+			<key>TH</key>
+			<string>เพิ่มแบบข้อความ</string>
+		</dict>
 		<key>INFORMATION</key>
 		<dict>
 			<key>EN</key>
@@ -216,6 +230,20 @@
 			<string>Add</string>
 			<key>TH</key>
 			<string>เพิ่ม</string>
+		</dict>
+		<key>PERSON</key>
+		<dict>
+			<key>EN</key>
+			<string>Person</string>
+			<key>TH</key>
+			<string>บุคคลธรรมดา</string>
+		</dict>
+		<key>JURISTIC_PERSON</key>
+		<dict>
+			<key>EN</key>
+			<string>Juristic Person</string>
+			<key>TH</key>
+			<string>นิติบุคคล</string>
 		</dict>
 		<key>IMMEDIATELY</key>
 		<dict>
@@ -318,16 +346,16 @@
 		<key>SIGNUP_EMAIL</key>
 		<dict>
 			<key>EN</key>
-			<string>Sign Up With Email</string>
+			<string>Sign Up</string>
 			<key>TH</key>
-			<string>สมัครด้วยอีเมล์</string>
+			<string>ลงทะเบียน</string>
 		</dict>
 		<key>SIGNIN</key>
 		<dict>
 			<key>EN</key>
-			<string>Log In</string>
+			<string>Sign In</string>
 			<key>TH</key>
-			<string>ล๊อคอิน</string>
+			<string>เข้าสู่ระบบ</string>
 		</dict>
 		<key>FORGET_PASS</key>
 		<dict>
@@ -381,13 +409,6 @@
 			<key>TH</key>
 			<string>อีเมล์</string>
 		</dict>
-		<key>PASSWORD</key>
-		<dict>
-			<key>EN</key>
-			<string>Password</string>
-			<key>TH</key>
-			<string>รหัสผ่าน</string>
-		</dict>
 		<key>SIGNUP_PASSWORD</key>
 		<dict>
 			<key>EN</key>
@@ -398,9 +419,9 @@
 		<key>SIGNUP_PHONE</key>
 		<dict>
 			<key>EN</key>
-			<string>Required</string>
+			<string>0x-xxxx-xxxx</string>
 			<key>TH</key>
-			<string>ต้องการ</string>
+			<string>0x-xxxx-xxxx</string>
 		</dict>
 		<key>SIGNUP_EMAIL</key>
 		<dict>
@@ -412,9 +433,30 @@
 		<key>SIGNUP_NAME</key>
 		<dict>
 			<key>EN</key>
-			<string>Input Full Name</string>
+			<string>Input Name</string>
 			<key>TH</key>
-			<string>ชื่อ - นามสกุล</string>
+			<string>ชื่อ</string>
+		</dict>
+		<key>SIGNUP_LASTNAME</key>
+		<dict>
+			<key>EN</key>
+			<string>Input  Last Name</string>
+			<key>TH</key>
+			<string>นามสกุล</string>
+		</dict>
+		<key>SIGNUP_IDCARD</key>
+		<dict>
+			<key>EN</key>
+			<string>x-xxxx-xxxxx-xx-x</string>
+			<key>TH</key>
+			<string>x-xxxx-xxxxx-xx-x</string>
+		</dict>
+		<key>SIGNUP_TAXID</key>
+		<dict>
+			<key>EN</key>
+			<string>x-xxxx-xxxxx-xx-x</string>
+			<key>TH</key>
+			<string>x-xxxx-xxxxx-xx-x</string>
 		</dict>
 		<key>ACTIVATION_OTP</key>
 		<dict>
@@ -489,13 +531,6 @@
 			<key>TH</key>
 			<string>นามสกุล</string>
 		</dict>
-		<key>MOBILE</key>
-		<dict>
-			<key>EN</key>
-			<string>Mobile No.</string>
-			<key>TH</key>
-			<string>หมายเลขโทรศัพท์</string>
-		</dict>
 		<key>EMAIL</key>
 		<dict>
 			<key>EN</key>
@@ -538,12 +573,26 @@
 			<key>TH</key>
 			<string>อีเมล์</string>
 		</dict>
-		<key>SIGNUP_IDFACEBOOK</key>
+		<key>SIGNUP_TAXID</key>
 		<dict>
 			<key>EN</key>
-			<string>ID Facebook</string>
+			<string>Tax Id</string>
 			<key>TH</key>
-			<string>ไอดีเฟสบุ๊ค</string>
+			<string>รหัสประจำตัวผู้เสียภาษี</string>
+		</dict>
+		<key>SIGNUP_IDCARD</key>
+		<dict>
+			<key>EN</key>
+			<string>Id Card</string>
+			<key>TH</key>
+			<string>รหัสประจำตัวประชาชน</string>
+		</dict>
+		<key>SIGNUP_COMPANY</key>
+		<dict>
+			<key>EN</key>
+			<string>Company</string>
+			<key>TH</key>
+			<string>ชื่อบริษัท</string>
 		</dict>
 		<key>SIGNUP_PHONE</key>
 		<dict>
@@ -751,9 +800,16 @@
 		<key>ADDTEMPLATE_NAME</key>
 		<dict>
 			<key>EN</key>
-			<string>Serial Code</string>
+			<string>Template Name</string>
 			<key>TH</key>
-			<string></string>
+			<string>ชื่อแบบข้อความ</string>
+		</dict>
+		<key>ADDTEMPLATE_DESCRIPTION</key>
+		<dict>
+			<key>EN</key>
+			<string>Message</string>
+			<key>TH</key>
+			<string>ข้อความ</string>
 		</dict>
 		<key>MESSAGE</key>
 		<dict>
@@ -761,6 +817,13 @@
 			<string>Messages</string>
 			<key>TH</key>
 			<string>ข้อความ</string>
+		</dict>
+		<key>CONTACT</key>
+		<dict>
+			<key>EN</key>
+			<string>Contact</string>
+			<key>TH</key>
+			<string>รายชื่อ</string>
 		</dict>
 		<key>TO</key>
 		<dict>
@@ -905,6 +968,27 @@
 			<key>TH</key>
 			<string>กรุณาระบุ Email ให้ถูกต้อง</string>
 		</dict>
+		<key>TEXTFIELDTAXID</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify TAX ID 13 digits.</string>
+			<key>TH</key>
+			<string>กรุณาระบุรหัสประจำตัวผู้เสียภาษี 13 หลัก</string>
+		</dict>
+		<key>TEXTFIELDIDCARD</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify ID card 13 digits.</string>
+			<key>TH</key>
+			<string>กรุณาระบุเบอร์รหัสประจำตัวประชาชนให้ครบ 13 ตำแหน่ง</string>
+		</dict>
+		<key>TEXTFIELDCOMPANY</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify company name.</string>
+			<key>TH</key>
+			<string>กรุณาระบุชื่อบริษัท</string>
+		</dict>
 		<key>TEXTFIELDPHONE</key>
 		<dict>
 			<key>EN</key>
@@ -925,6 +1009,13 @@
 			<string>Please specify password</string>
 			<key>TH</key>
 			<string>กรุณาระบุรหัสผ่านให้ครบถ้วน</string>
+		</dict>
+		<key>TEXTFIELDPASSVALIDATE</key>
+		<dict>
+			<key>EN</key>
+			<string>Password / Confirm Password incorrect format, please try again.</string>
+			<key>TH</key>
+			<string>รหัสผ่าน / ยืนยันรหัสผ่านรูปแบบที่ไม่ถูกต้องโปรดลองอีกครั้ง</string>
 		</dict>
 		<key>TEXTFIELDPASSDIGIT</key>
 		<dict>
@@ -950,44 +1041,65 @@
 		<key>TEXTFIELDPASSANDCONFIRM</key>
 		<dict>
 			<key>EN</key>
-			<string>Please specify password and confirm password</string>
+			<string>Password / Confirm Password is not match, please try again.</string>
 			<key>TH</key>
-			<string>รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกันโปรดลองอีกครั้ง</string>
+			<string>กรุณาระบุรหัสผ่าน / ยืนยันรหัสผ่านให้ตรงกัน</string>
 		</dict>
-		<key>CONFIRMPHONE</key>
+		<key>CONFIRMTOSIGNIN</key>
 		<dict>
 			<key>EN</key>
-			<string>ไม่มีข้อความ</string>
+			<string>Registation success, Please Log in.</string>
 			<key>TH</key>
-			<string>ไม่มีข้อความ</string>
+			<string>ระบบได้ทำการลงทะเบียนให้ท่านเรียบร้อยแล้ว กรุณา Log in เพื่อเข้าใช้ระบบงาน</string>
 		</dict>
 		<key>ACTIVATECODE</key>
 		<dict>
 			<key>EN</key>
-			<string>Please specify Activate Code.</string>
+			<string>Please specify OTP at least 4 characters.</string>
 			<key>TH</key>
-			<string>กรุณาระบุข้อมูล Activate Code</string>
+			<string>กรุณาระบุ OTP อย่างน้อย 4 ตัวอักษร</string>
 		</dict>
 		<key>EMAILACTIVATECODE</key>
 		<dict>
 			<key>EN</key>
-			<string>Please specify Email Verification Code.</string>
+			<string>Please specify Email Verification Code at least 4 characters.</string>
 			<key>TH</key>
-			<string>กรุณาระบุข้อมูล Email Verification Code</string>
+			<string>กรุณาระบุ Email Verification Code อย่างน้อย 4 ตัวอักษร</string>
 		</dict>
 		<key>CONFIRMACTIVATE</key>
 		<dict>
 			<key>EN</key>
-			<string>ไม่มีข้อความ</string>
+			<string>Please wait for Verification Code via email.</string>
 			<key>TH</key>
-			<string>ไม่มีข้อความ</string>
+			<string>ระบบได้ส่ง Email Verification ไปยัง Email ของท่าน</string>
 		</dict>
 		<key>SUCCESSSIGNUP</key>
 		<dict>
 			<key>EN</key>
-			<string>ไม่มีข้อความ</string>
+			<string>Please wait for OTP via SMS to phone number </string>
 			<key>TH</key>
-			<string>ไม่มีข้อความ</string>
+			<string>ระบบได้ส่งรหัสผ่านแบบใช้ครั้งเดียวไปที่เบอร์</string>
+		</dict>
+		<key>DELETEPEOPLE</key>
+		<dict>
+			<key>EN</key>
+			<string>Do you want to delete contact</string>
+			<key>TH</key>
+			<string>คุณต้องการที่จะลบรายชื่อ</string>
+		</dict>
+		<key>DELETEGROUP</key>
+		<dict>
+			<key>EN</key>
+			<string>Do you want to delete group</string>
+			<key>TH</key>
+			<string>คุณต้องการที่จะลบกลุ่ม</string>
+		</dict>
+		<key>DELETEDESCIPTION</key>
+		<dict>
+			<key>EN</key>
+			<string> ?</string>
+			<key>TH</key>
+			<string> ใช่ไหม</string>
 		</dict>
 		<key>MESSAGENO</key>
 		<dict>
@@ -996,12 +1108,40 @@
 			<key>TH</key>
 			<string>กรุณาระบุข้อความ</string>
 		</dict>
+		<key>TOPUPNO</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify serial code 16 digits.</string>
+			<key>TH</key>
+			<string>กรุณาระบุ Serial Code 16 หลัก</string>
+		</dict>
 		<key>TONO</key>
 		<dict>
 			<key>EN</key>
 			<string>Please specify contact.</string>
 			<key>TH</key>
 			<string>กรุณาระบุผู้ติดต่อ</string>
+		</dict>
+		<key>TEMPLATENO</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify all required fields.</string>
+			<key>TH</key>
+			<string>กรุณาระบุแบบข้อความให้ครบถ้วน</string>
+		</dict>
+		<key>TEMPLATENAME</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify template name.</string>
+			<key>TH</key>
+			<string>กรุณาระบุแบบข้อความให้ครบถ้วน</string>
+		</dict>
+		<key>TEMPLATEDESCRIPTION</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify message.</string>
+			<key>TH</key>
+			<string>กรุณาระบุข้อความให้ครบถ้วน</string>
 		</dict>
 	</dict>
 	<key>WEEK_DETAIL</key>

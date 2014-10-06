@@ -58,8 +58,27 @@
 }
 +(NSMutableArray*)TemplateArray
 {
-    path = [[NSBundle mainBundle] pathForResource:@"TemplateList" ofType:@"plist"];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
+    NSString *documentsDirectory = [paths objectAtIndex:0]; //2
+    path = [documentsDirectory stringByAppendingPathComponent:@"TemplateList.plist"];
     NSMutableArray *templateRoot = [[NSMutableArray alloc]initWithContentsOfFile:path];
     return templateRoot;
+}
++(NSString *)timeFormat :(NSString *)stringWithFormat{
+//    NSString * dateString = [NSString stringWithFormat: @"%@",stringWithFormat];
+    
+//    NSLog(@"%@", stringWithFormat);
+
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"ddMMyyyyhhmmss"];
+    NSDate* myDate = [dateFormatter dateFromString:stringWithFormat];
+    
+    NSLog(@"%@", myDate);
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd/MM/yyyy hh:mm:ss"];
+    NSString *stringFromDate = [formatter stringFromDate:myDate];
+    
+    NSLog(@"%@", stringFromDate);
+    return stringFromDate;
 }
 @end

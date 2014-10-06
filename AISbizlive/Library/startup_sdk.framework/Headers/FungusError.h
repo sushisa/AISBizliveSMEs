@@ -46,7 +46,10 @@ static const int ERROR_CODE_599 = 599;
 
 static const int ERROR_CODE_999 = 999;
 
-
+#pragma mark - FUNGUS NEW
+//HTTP Status 400
+#define ERROR_CODE_40000 40000
+#define ERROR_CODE_40001 40001
 
 
 

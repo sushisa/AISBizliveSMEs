@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailPeopleViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+#import "ServiceCT05_ContactMessageHistory.h"
+@interface DetailPeopleViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ContactMessageHistoryDelegate>
 {
     //Field
     __weak IBOutlet UIImageView *profileImage;

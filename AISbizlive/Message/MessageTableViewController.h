@@ -57,7 +57,6 @@
     //Label
     __weak IBOutlet UILabel *scheduleLabel;
     __weak IBOutlet UILabel *immediatelyLabel;
-    __weak IBOutlet UILabel *totalSMS;
     __weak IBOutlet UILabel *totalSMSSchedule;
     
     //Open Picker

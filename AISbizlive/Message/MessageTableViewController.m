@@ -61,7 +61,7 @@
     fixHeight = 0.0f;
     tagTag = 1000;
     hour = [[NSMutableArray alloc] initWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24", nil];
-    checkHeightCell = [[NSMutableArray alloc] initWithObjects:@"60",@"80",@"237",@"40",@"120",@"56",@"56",@"56",@"56",@"50", nil];
+    checkHeightCell = [[NSMutableArray alloc] initWithObjects:@"60",@"80",@"237",@"50",@"50",@"50",@"56",@"56",@"56",@"56",@"50", nil];
     weekDetail = [[NSMutableArray alloc] initWithArray:[AISString commonArray:@"WEEK_DETAIL"]];
     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(sendMessage)  withTarget:self];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] ClearButtonWithAction:@selector(clearAction)  withTarget:self];
@@ -74,11 +74,11 @@
     }
     
     if (!addTagView) {
-        addTagView = [[UIView alloc] initWithFrame:CGRectMake(30, 0, 180, 40)];
+        addTagView = [[UIView alloc] initWithFrame:CGRectMake(30, 0, 220, 40)];
     }
 //    addTagView.backgroundColor = [UIColor redColor];
 //    NSLog(@"%@",addTagView);
-    toText = [[UITextView alloc] initWithFrame:CGRectMake(10, 5, addTagView.frame.size.width-10, 30)];
+    toText = [[UITextView alloc] initWithFrame:CGRectMake(10, 5, addTagView.frame.size.width-20, 30)];
     toText.delegate = self;
 //    NSLog(@"%@",toText);
 //    toText.backgroundColor = [AISColor  grayColor];
@@ -87,6 +87,7 @@
     [messageTextField setText:[AISString commonString:typePlacehoder KeyOfValue:@"MESSAGE"]];
     [messageTextField setTextColor:[AISColor lightgrayColor]];
     [addTagView addSubview:toText];
+//    [addTagView setBackgroundColor:[UIColor redColor]];
     [scrollContactView addSubview:addTagView];
     [bytesLabel setText:@"0/160"];
     [messageNoLabel setText:@"0"];
@@ -117,8 +118,16 @@
                                                                      options:NSStringDrawingUsesLineFragmentOrigin
                                                                   attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]}
                                                                      context:nil];
-        tagView = [[UIView alloc] initWithFrame:CGRectMake(toText.frame.origin.x, toText.frame.origin.y,r.size.width , 30)];
-        UILabel *tagLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0,r.size.width , 30)];
+        UILabel *tagLabel = [[UILabel alloc] init];
+        if (r.size.width > 100) {
+            tagView = [[UIView alloc] initWithFrame:CGRectMake(toText.frame.origin.x, toText.frame.origin.y,100 , 30)];
+            
+            [tagLabel setFrame:CGRectMake(0, 0,100 , 30)];
+        }
+        else {
+            tagView = [[UIView alloc] initWithFrame:CGRectMake(toText.frame.origin.x, toText.frame.origin.y,r.size.width , 30)];
+            [tagLabel setFrame:CGRectMake(0, 0,r.size.width , 30)];
+        }
         tagLabel.text = [self.arrayContact objectAtIndex:l];
         tagView.backgroundColor = [UIColor whiteColor];
         tagLabel.textColor = [AISColor lightgreenColor];
@@ -130,14 +139,20 @@
         tagTag += 1;
         
         checkLineTo += tagView.frame.size.width;
-        if (checkLineTo >= 200) {
+        NSLog(@"%f",checkLineTo);
+        if (checkLineTo >= 150) {
             lineTo += 1;
-            [toText setFrame:CGRectMake(10, toText.frame.origin.y + 35,contactView.frame.size.width , 30)];
+            [toText setFrame:CGRectMake(10, toText.frame.origin.y + 35,addTagView.frame.size.width-30 , 30)];
             checkLineTo = 0;
             [addTagView setFrame:CGRectMake(addTagView.frame.origin.x, addTagView.frame.origin.y, addTagView.frame.size.width, toText.frame.origin.y +105)];
         }
         else{
-            [toText setFrame:CGRectMake(toText.frame.origin.x + r.size.width + 10, toText.frame.origin.y, toText.frame.size.width-r.size.width-10, toText.frame.size.height)];
+            
+            if (r.size.width > 100) {
+                [toText setFrame:CGRectMake(toText.frame.origin.x + 110, toText.frame.origin.y, toText.frame.size.width-110, toText.frame.size.height)];
+            }else{
+                [toText setFrame:CGRectMake(toText.frame.origin.x + r.size.width + 10, toText.frame.origin.y, toText.frame.size.width-r.size.width-10, toText.frame.size.height)];
+            }
         }
         float old = toText.frame.origin.y;
         [checkHeightCell replaceObjectAtIndex:0 withObject:[NSString stringWithFormat:@"%f",old+55]];
@@ -157,7 +172,7 @@
         NSUInteger numLines = r.size.height/20;
         [messageView setFrame:CGRectMake(messageView.frame.origin.x, messageView.frame.origin.y, messageView.frame.size.width, messageView.frame.size.height+(20*numLines))];
         int old = [[checkHeightCell objectAtIndex:1] intValue];
-        [checkHeightCell replaceObjectAtIndex:1 withObject:[NSString stringWithFormat:@"%lu",old+(20*numLines)]];
+        [checkHeightCell replaceObjectAtIndex:1 withObject:[NSString stringWithFormat:@"%u",old+(20*numLines)]];
         [myTableView beginUpdates];
         [myTableView endUpdates];
         [bytesLabel setText:[AISSMSCharacter bytesString:messageTextField.text]];
@@ -169,7 +184,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     
     self.arrayContact = nil;
-    checkHeightCell = [[NSMutableArray alloc] initWithObjects:@"60",@"80",@"237",@"40",@"120",@"56",@"56",@"56",@"56",@"50", nil];
+    checkHeightCell = [[NSMutableArray alloc] initWithObjects:@"60",@"80",@"237",@"50",@"50",@"50",@"56",@"56",@"56",@"56",@"50", nil];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -246,7 +261,6 @@
     [weekLabel setText:[AISString commonString:typeLabel KeyOfValue :@"WEEK"]];
     
     [monthLabel setText:[AISString commonString:typeLabel KeyOfValue :@"MONTH"]];
-    [totalSMS setText:[AISString commonString:typeLabel KeyOfValue :@"TOTALSMS"]];
     [totalSMSSchedule setText:[AISString commonString:typeLabel KeyOfValue :@"TOTALSMS"]];
 }
 
@@ -268,15 +282,19 @@
     [everydayCell setHidden:YES];
     [weekCell setHidden:YES];
     [monthCell setHidden:YES];
-    [totalCell setHidden:YES];
+    oneTimeImage.image = [UIImage imageNamed:OK_GREY];
+    everydayImage.image = [UIImage imageNamed:OK_GREY];
+    weekImage.image = [UIImage imageNamed:OK_GREY];
+    monthImage.image = [UIImage imageNamed:OK_GREY];
     
-    [checkHeightCell replaceObjectAtIndex:3 withObject:@"50"];
+    [checkHeightCell replaceObjectAtIndex:3 withObject:@"0"];
     [checkHeightCell replaceObjectAtIndex:4 withObject:@"0"];
     [checkHeightCell replaceObjectAtIndex:5 withObject:@"0"];
     [checkHeightCell replaceObjectAtIndex:6 withObject:@"0"];
     [checkHeightCell replaceObjectAtIndex:7 withObject:@"0"];
     [checkHeightCell replaceObjectAtIndex:8 withObject:@"0"];
     [checkHeightCell replaceObjectAtIndex:9 withObject:@"0"];
+    [checkHeightCell replaceObjectAtIndex:10 withObject:@"50"];
     [myTableView reloadData];
 }
 #pragma mark - Schedule
@@ -284,8 +302,8 @@
 - (void)ScheduleSelected:(UITapGestureRecognizer *)sender{
     [self showScheduleCell];
 //    [myTableView setContentSize:CGSizeMake(myTableView.frame.size.width, 771)];
-    [self loadMonthView];
-    [self loadWeekView];
+//    [self loadMonthView];
+//    [self loadWeekView];
 }
 -(void)showScheduleCell{
     immediatelyImage.image = [UIImage imageNamed:OK_GREY];
@@ -299,15 +317,17 @@
     [everydayCell setHidden:NO];
     [weekCell setHidden:NO];
     [monthCell setHidden:NO];
-    [totalCell setHidden:NO];
     
-    [checkHeightCell replaceObjectAtIndex:3 withObject:@"0"];
-    [checkHeightCell replaceObjectAtIndex:4 withObject:@"120"];
-    [checkHeightCell replaceObjectAtIndex:5 withObject:@"56"];
+    [checkHeightCell replaceObjectAtIndex:3 withObject:@"50"];
+    [checkHeightCell replaceObjectAtIndex:4 withObject:@"50"];
+    [checkHeightCell replaceObjectAtIndex:5 withObject:@"50"];
     [checkHeightCell replaceObjectAtIndex:6 withObject:@"56"];
     [checkHeightCell replaceObjectAtIndex:7 withObject:@"56"];
     [checkHeightCell replaceObjectAtIndex:8 withObject:@"56"];
-    [checkHeightCell replaceObjectAtIndex:9 withObject:@"50"];
+    [checkHeightCell replaceObjectAtIndex:9 withObject:@"56"];
+    [checkHeightCell replaceObjectAtIndex:10 withObject:@"50"];
+    
+//    oneTimeImage.image = [UIImage imageNamed:OK_GREEN];
     [myTableView reloadData];
 }
 -(void)loadWeekView{
@@ -317,6 +337,10 @@
     float originHeight = 25.0f;
     int valueOfWeek = 0;
     int weekTag = 10001;
+    NSArray *viewsToRemove = [weekView subviews];
+    for (UIView *v in viewsToRemove) {
+        [v removeFromSuperview];
+    }
     for (int l = 1; l <= row; l ++) {
         for (int j = 1; j <= column; j ++) {
             if (valueOfWeek == 7) {
@@ -383,6 +407,10 @@
     int day = 1;
     float originWidth = 50.0f;
     float originHeight = 20.0f;
+    NSArray *viewsToRemove = [monthView subviews];
+    for (UIView *v in viewsToRemove) {
+        [v removeFromSuperview];
+    }
     for (int l = 1; l <= row; l ++) {
         for (int j = 1; j <= column; j ++) {
             UIButton *dateMonth = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -708,20 +736,22 @@
     [toText resignFirstResponder];
     [messageTextField resignFirstResponder];
     switch (indexPath.row) {
-        case 5:
+        case 6:
             oneTimeImage.image = [UIImage imageNamed:OK_GREEN];
             break;
-        case 6:
+        case 7:
             everydayImage.image = [UIImage imageNamed:OK_GREEN];
             break;
-        case 7:
+        case 8:
             weekImage.image = [UIImage imageNamed:OK_GREEN];
+            [self loadWeekView];
             [checkHeightCell replaceObjectAtIndex:indexPath.row withObject:@"152"];
             [tableView beginUpdates];
             [tableView endUpdates];
             break;
-        case 8:
+        case 9:
             monthImage.image = [UIImage imageNamed:OK_GREEN];
+            [self loadMonthView];
             [checkHeightCell replaceObjectAtIndex:indexPath.row withObject:@"260"];
             [tableView beginUpdates];
             [tableView endUpdates];
@@ -732,19 +762,19 @@
 }
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
-        case 5:
+        case 6:
             oneTimeImage.image = [UIImage imageNamed:OK_GREY];
             break;
-        case 6:
+        case 7:
             everydayImage.image = [UIImage imageNamed:OK_GREY];
             break;
-        case 7:
+        case 8:
             weekImage.image = [UIImage imageNamed:OK_GREY];
             [checkHeightCell replaceObjectAtIndex:indexPath.row withObject:@"56"];
             [tableView beginUpdates];
             [tableView endUpdates];
             break;
-        case 8:
+        case 9:
             monthImage.image = [UIImage imageNamed:OK_GREY];
             [checkHeightCell replaceObjectAtIndex:indexPath.row withObject:@"56"];
             [tableView beginUpdates];

@@ -1,18 +1,20 @@
 //
-//  SettingViewController.m
+//  BizliveAccountViewController.m
 //  AISbizlive
 //
-//  Created by Wachirawit on 5/20/2557 BE.
+//  Created by Wachirawit on 9/25/2557 BE.
 //  Copyright (c) 2557 promptnow. All rights reserved.
 //
 
-#import "SettingViewController.h"
+#import "BizliveAccountViewController.h"
 #import "AISGlobal.h"
-@interface SettingViewController ()
-
+@interface BizliveAccountViewController ()
+{
+    NSMutableArray *checkHeightCell;
+}
 @end
 
-@implementation SettingViewController
+@implementation BizliveAccountViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,53 +29,45 @@
 {
     [super viewDidLoad];
     
+    checkHeightCell = [[NSMutableArray alloc] initWithObjects:@"130",@"130",@"0",@"0",@"70", nil];
     [self setTextLangague];
-}
--(void)backAction{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)setTextLangague{
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
-    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"SETTING"]];
-    [bathLabel setText:[AISString commonString:typeLabel KeyOfValue :@"BAHT"]];
-    [message1Label setText:[AISString commonString:typeLabel KeyOfValue :@"MESSAGE"]];
-    [message2Label setText:[AISString commonString:typeLabel KeyOfValue :@"MESSAGE"]];
-    [message3Label setText:[AISString commonString:typeLabel KeyOfValue :@"MESSAGE"]];
-    [yourBalanceLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_BALANCE"]];
-     [numberSMSLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_NUMBER"]];
-     [usedSMSLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_USED"]];
-     [smsBalanceLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_SMS"]];
-    [yourPackageLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_PACKAGE"]];
-    [changPasswordButton setTitle:[AISString commonString:typeButton KeyOfValue :@"CHANGE_PASS"] forState:UIControlStateNormal];
-    
+    self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(doneAction) withTarget:self];
+    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"CASHCARD"]];
     
 }
--(void)viewWillAppear:(BOOL)animated{
-    [self setTextLangague];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)backAction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)doneAction{
+    
+}
 
-//#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
+#pragma mark - Table view data source
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //    NSLog(@"%@",[checkHeightCell objectAtIndex:indexPath.row]);
+    return [[checkHeightCell objectAtIndex:indexPath.row] floatValue];
+}
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *oneHeaderView = [[UIView alloc] initWithFrame:
+                             CGRectMake(0, 0, tableView.frame.size.width, 10.0)];
+    
+    oneHeaderView.backgroundColor = [UIColor whiteColor];
+    return oneHeaderView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10.0f;
+}
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

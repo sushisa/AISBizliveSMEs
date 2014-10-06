@@ -27,8 +27,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"%@",self.nameGroup);
+    UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
+                                             initWithTarget: self
+                                             action: @selector(hideKeyboard:)];
+    [oneTapGesture setNumberOfTouchesRequired:1];
+    [[self view] addGestureRecognizer:oneTapGesture];
     [self setTextLangague];
+}
+- (void)hideKeyboard:(UITapGestureRecognizer *)sender {
+    [nameGroupTextField resignFirstResponder];
 }
 -(void)setTextLangague{
     [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"ADDGROUP"]];
@@ -36,6 +43,8 @@
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(doneAction) withTarget:self];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
+    [nameGroupTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue:@"NAME"]];
+    [contactLabel setText:[AISString commonString:typeLabel KeyOfValue:@"CONTACT"]];
     
 }
 -(void)viewWillAppear:(BOOL)animated {

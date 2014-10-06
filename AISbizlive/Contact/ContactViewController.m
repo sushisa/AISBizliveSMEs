@@ -15,15 +15,20 @@
 #import "DetailPeopleViewController.h"
 #import "DetailGroupViewController.h"
 #import "MessageTableViewController.h"
+
 @interface ContactViewController ()
 {
     NSMutableArray *Checkcontact;
     
     NSMutableArray *Namecontact;
+    NSMutableArray *LastNamecontact;
     NSMutableArray *Telcontact;
     NSMutableArray *Imagecontact;
-    NSMutableData *jsonData;
-    UIAlertView *loading;
+    
+    NSDictionary *dictToDetail;
+    NSMutableArray *Groupcontact;
+    
+    AISAlertView *alertView;
     int selectIndex;
 }
 
@@ -43,12 +48,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    ServiceBizLive *service = [[ServiceBizLive alloc] init];
-    [service setBizLiveURL:@"https://www.google.com"];
-    NSDictionary *newdict = [[NSDictionary alloc] init];
-    [service setRequestDict:newdict];
-    service.delegate = self;
-    [service fungusRequest];
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
                                              initWithTarget: self
                                              action: @selector(hideKeyboard:)];
@@ -69,6 +68,7 @@
     [selectPeopleAndGroup setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName ,[UIFont systemFontOfSize:18.0f],NSFontAttributeName, nil] forState:UIControlStateHighlighted];
     [selectPeopleAndGroup setTitle:[AISString commonString:typeLabel KeyOfValue:@"TABPEOPLE"] forSegmentAtIndex:0];
     [selectPeopleAndGroup setTitle:[AISString commonString:typeLabel KeyOfValue:@"TABGROUP"] forSegmentAtIndex:1];
+    alertView = [[AISAlertView alloc] init];
     if (selectPeopleAndGroup.selectedSegmentIndex == 0) {
         [self loadPeopleView];
     }else{
@@ -129,10 +129,14 @@
         [testTable setEditing:NO animated:NO];
         self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] PeopleDeleteButtonWithAction:@selector(peopleDelete) withTarget:self];
     }
-    Checkcontact = [[NSMutableArray alloc] initWithObjects:@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png", nil];
-    Namecontact = [[NSMutableArray alloc] initWithObjects:@"Testcdsfdsfdsfdsfdsfdsfdsfdsf1",@"Test2",@"Test3",@"Test4",@"Test5",@"Test1",@"Test2",@"Test3",@"Test4",@"Test5",@"Test1",@"Test2",@"Test3",@"Test4",@"Test5",@"Test1",@"Test2",@"Test3",@"Test4",@"Test5",nil];
-    Telcontact = [[NSMutableArray alloc] initWithObjects:@"tdsfeffffffdsvvdfgfsfewfdsvdsvsdvdsfsdfsdfdsfdsfl1",@"tel2",@"tel3",@"tel4",@"tel5",@"tel1",@"tel2",@"tel3",@"tel4",@"tel5",@"tel1",@"tel2",@"tel3",@"tel4",@"tel5",@"tel1",@"tel2",@"tel3",@"tel4",@"tel5",nil];
-    Imagecontact = [[NSMutableArray alloc] initWithObjects:@"Logo.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",nil];
+    Checkcontact = [[NSMutableArray alloc] init];
+    Namecontact = [[NSMutableArray alloc] init];
+    LastNamecontact = [[NSMutableArray alloc] init];
+    Telcontact = [[NSMutableArray alloc] init];
+    Imagecontact = [[NSMutableArray alloc] init];
+    ServiceCT01_GetContactList *call = [[ServiceCT01_GetContactList alloc] init];
+    [call setDelegate:self];
+    [call requestService];
     [testTable reloadData];
 }
 -(void)loadGroupView{
@@ -151,10 +155,13 @@
 
         [testTable setEditing:NO animated:NO];
     }
-    Checkcontact = [[NSMutableArray alloc] initWithObjects:@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png",@"Ok_Grey.png", nil];
-    Namecontact = [[NSMutableArray alloc] initWithObjects:@"Group1",@"Group2",@"Group3",@"Group4",@"Group5",nil];
-    Telcontact = [[NSMutableArray alloc] initWithObjects:@"tel1",@"tel2",@"tel3",@"tel4",@"tel5",nil];
-    Imagecontact = [[NSMutableArray alloc] initWithObjects:@"icon.png",@"icon.png",@"icon.png",@"icon.png",@"icon.png",nil];
+    Checkcontact = [[NSMutableArray alloc] init];
+    Namecontact = [[NSMutableArray alloc] init];
+    Imagecontact = [[NSMutableArray alloc] init];
+    Groupcontact = [[NSMutableArray alloc] init];
+    ServiceCT06_GetGroupContactList *call = [[ServiceCT06_GetGroupContactList alloc] init];
+    [call setDelegate:self];
+    [call requestService];
     [testTable reloadData];
 }
 -(void)peopleAdd{
@@ -203,7 +210,12 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellIdentifier = @"PeopleCell";
+    static NSString *CellIdentifier;
+    if (selectPeopleAndGroup.selectedSegmentIndex == 0) {
+        CellIdentifier = @"PeopleCell";
+    }else{
+        CellIdentifier = @"GroupCell";
+    }
     ContactCell *cell = (ContactCell *)[testTable dequeueReusableCellWithIdentifier:CellIdentifier];
     ContactCell __weak * weakCell = cell;
     
@@ -221,8 +233,15 @@
     
         cell.checkContact.image = [UIImage imageNamed:[Checkcontact objectAtIndex:indexPath.row]];
         cell.imageContact.image = [UIImage imageNamed:[Imagecontact objectAtIndex:indexPath.row]];
+    
+    if (selectPeopleAndGroup.selectedSegmentIndex == 0) {
+        cell.nameContact.text = [NSString stringWithFormat:@"%@ %@",[Namecontact objectAtIndex:indexPath.row],[LastNamecontact objectAtIndex:indexPath.row]];
+        cell.telContact.text = [Telcontact objectAtIndex:indexPath.row];
+    }
+    else{
         cell.nameContact.text = [Namecontact objectAtIndex:indexPath.row];
-    cell.telContact.text = [Telcontact objectAtIndex:indexPath.row];
+        
+    }
     [cell setCellHeight:cell.frame.size.height];
         return cell;
 }
@@ -261,6 +280,7 @@
     if ([[segue identifier] isEqualToString:@"cellToPeople"]) {
         DetailPeopleViewController *detailPeople = [segue destinationViewController];
         detailPeople.firstName = [Namecontact objectAtIndex:selectIndex];
+        detailPeople.lastName = [LastNamecontact objectAtIndex:selectIndex];
         detailPeople.phoneNumber = [Telcontact objectAtIndex:selectIndex];
         detailPeople.profile = [Imagecontact objectAtIndex:selectIndex];
     }
@@ -268,6 +288,7 @@
         AddPeopleViewController *editPeople = [segue destinationViewController];
         editPeople.checkPush = @"YES";
         editPeople.firstName = [Namecontact objectAtIndex:selectIndex];
+        editPeople.lastName = [LastNamecontact objectAtIndex:selectIndex];
         editPeople.phoneNumber = [Telcontact objectAtIndex:selectIndex];
         editPeople.profile = [Imagecontact objectAtIndex:selectIndex];
     } else if([[segue identifier] isEqualToString:@"AddPeople"]) {
@@ -284,7 +305,7 @@
         DetailGroupViewController *addGroup = [segue destinationViewController];
         addGroup.nameGroup = [Namecontact objectAtIndex:selectIndex];
         addGroup.profileGroup = [Imagecontact objectAtIndex:selectIndex];
-        NSLog(@"cellToGroup");
+        addGroup.GroupContact = Groupcontact;
     }
 }
 - (NSArray *)rightButtons
@@ -299,7 +320,9 @@
     
     return rightUtilityButtons;
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 85.0f;
+}
 -(UITableViewCellEditingStyle) tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewCellEditingStyleNone;
 }
@@ -307,9 +330,11 @@
     return YES;
 }
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    
+    selectIndex = (int) [testTable indexPathForCell:cell].row;
     switch (index) {
         case 0:
-            selectIndex = (int) [testTable indexPathForCell:cell].row;
+            //Edit
             if ([selectPeopleAndGroup selectedSegmentIndex] == 0) {
                 [self performSegueWithIdentifier:@"EditPeople" sender:self];
             }
@@ -320,18 +345,74 @@
             break;
         case 1:
         {
-            // Delete button was pressed
-            NSLog(@"Delete");
+            // Delete
+            if ([selectPeopleAndGroup selectedSegmentIndex] == 0) {
+                [self alert:[NSString stringWithFormat:@"%@ %@ %@",[AISString commonString:typePopup KeyOfValue :@"DELETEPEOPLE"],[Namecontact objectAtIndex:selectIndex],[AISString commonString:typePopup KeyOfValue :@"DELETEDESCIPTION"]]];
+            }
+            else{
+                [self alert:[NSString stringWithFormat:@"%@ %@ %@",[AISString commonString:typePopup KeyOfValue :@"DELETEGROUP"],[Namecontact objectAtIndex:selectIndex],[AISString commonString:typePopup KeyOfValue :@"DELETEDESCIPTION"]]];
+            }
             break;
         }
         default:
             break;
     }
 }
-- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict{
+- (void)getContactListSuccess:(ResponseGetContactList *)responseGetContactList{
+    
+    for (ContactDetail *contact in [responseGetContactList contactList]) {
+        [Namecontact addObject:[contact name]];
+        [LastNamecontact addObject:[contact lastname]];
+        [Telcontact addObject:[contact phoneNumber]];
+        [Imagecontact addObject:[contact imageURL]];
+        [Checkcontact addObject:@"Ok_Grey.png"];
+    }
+}
+- (void)getcontactListError:(ResultStatus *)status
+{
     
 }
-- (void)serviceBizLiveError:(ResponseStatus *)status{
+- (void)getGroupContactListSuccess:(ResponseGetGroupContactList *)responseData{
+    for (GroupContactDetail *groupContact in [responseData groupContactList]) {
+//        NSLog(@"Group ID         : %@\n", [groupContact ID]);
+//        NSLog(@"Group name       : %@\n", [groupContact name]);
+//        NSLog(@"Group imageURL   : %@\n", [groupContact imageURL]);
+//        NSLog(@"Group lastUpdate : %@\n", [groupContact lastUpdate]);
+        [Namecontact addObject:[groupContact name]];
+        [Imagecontact addObject:[groupContact imageURL]];
+        [Checkcontact addObject:@"Ok_Grey.png"];
+        for (ContactDetail *contact in [groupContact contactList]) {
+//            NSLog(@"  Contact ID          : %@\n", [contact ID]);
+//            NSLog(@"  Contact name        : %@\n", [contact name]);
+//            NSLog(@"  Contact lastname    : %@\n", [contact lastname]);
+//            NSLog(@"  Contact phonenumber : %@\n", [contact phoneNumber]);
+//            NSLog(@"  Contact lastUpdate  : %@\n", [contact lastUpdate]);
+//            NSLog(@"  Contact imageURL    : %@\n", [contact imageURL]);
+            
+            dictToDetail = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [contact name],@"Name",
+                            [contact lastname], @"LastName",
+                            [contact phoneNumber],@"Tel",
+                            [contact imageURL],@"Image", nil] ;
+            [Groupcontact addObject:dictToDetail];
+        }
+        
+    }
+}
+- (void)getGroupContactListError:(ResultStatus *)status{
     
+}
+
+-(void)doneAction:(id)sender{
+    [alertView dismissAlertView];
+}
+-(void)deleteAction:(id)sender{
+    [alertView dismissAlertView];
+}
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:@selector(deleteAction:) withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"CANCEL"] RightString:[AISString commonString:typeButton KeyOfValue :@"DELETE"]];
+    [alertView showAlertView];
+    
+    [seachTextField resignFirstResponder];
 }
 @end

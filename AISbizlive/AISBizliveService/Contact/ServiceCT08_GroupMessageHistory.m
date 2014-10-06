@@ -28,7 +28,7 @@
 - (void)bizliveServiceSuccess:(NSDictionary *)responseData
 {
     if (![Admin isOnline]) {
-        NSDictionary *history = @{RES_KEY_SEND_TIME : @"1403773133605",
+        NSDictionary *history = @{RES_KEY_SEND_TIME : @"14032014102051",
                                    RES_KEY_MESSAGE   : @"Hello World!"};
         
         NSArray *arrHistory = @[history];

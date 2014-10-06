@@ -86,12 +86,13 @@
 -(void)alert:(NSString *)message{
     [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue  :@"DONE"] RightString:nil];
     [alertView showAlertView];
+    [otpTextField resignFirstResponder];
 }
 -(IBAction)resendOTP:(id)sender{
     [otpTextField setText:@""];
     [otpTextField resignFirstResponder];
     [AISView changeLayerNomal:otpView];
-    [self alert:[NSString stringWithFormat:@"%@ %@",[AISString commonString:typePopup KeyOfValue  :@"CONFIRMPHONE"] ,self.phoneNumber]];
+    [self alert:[NSString stringWithFormat:@"%@ %@",[AISString commonString:typePopup KeyOfValue  :@"SUCCESSSIGNUP"] ,self.phoneNumber]];
 }
 -(void)doneAction:(id)sender{
     [alertView dismissAlertView];

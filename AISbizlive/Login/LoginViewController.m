@@ -52,12 +52,12 @@
     [emailField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     
     [passwordLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_PASS"]];
-    [passwordField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PHONE"]];
+    [passwordField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PASSWORD"]];
     [passwordField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     //Button
     [forgetPassButton setTitle:[AISString commonString:typeButton KeyOfValue :@"FORGET_PASS"] forState:UIControlStateNormal];
     [forgetPassButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
-    [signinButton setTitle:[AISString commonString:typeButton KeyOfValue :@"SIGNIN"] forState:UIControlStateNormal];
+    [signinButton setTitle:[AISString commonString:typeButton KeyOfValue :@"DONE"] forState:UIControlStateNormal];
     [signinButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
 }
 
@@ -71,6 +71,17 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if ([textField isEqual:emailField]) {
+        [passwordField becomeFirstResponder];
+        return NO;
+    }
+    else if ([textField isEqual:passwordField]) {
+        [self signIn:self];
+        return NO;
+    }
+    return YES;
+}
 - (IBAction)signIn:(id)sender {
     if ([emailField.text isEqualToString:@""] && [passwordField.text isEqualToString:@""] ){
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
@@ -99,6 +110,9 @@
 -(void)alert:(NSString *)message{
     [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
     [alertView showAlertView];
+    
+    [emailField resignFirstResponder];
+    [passwordField resignFirstResponder];
 }
 
 @end

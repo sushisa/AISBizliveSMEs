@@ -69,7 +69,7 @@ int messageNo = 1;
         while (characterString.length > [format intValue]) {
             format = [NSString stringWithFormat:@"%d",[format intValue]+checkShots];
         }
-        formatReturn = [NSString stringWithFormat:@"%lu / %@",characterString.length+checkSpecial,format];
+        formatReturn = [NSString stringWithFormat:@"%u / %@",characterString.length+checkSpecial,format];
     }
     else{
         while (characterString.length > [format intValue]) {

@@ -18,6 +18,7 @@
 - (NSDictionary *)getRequestData;
 
 @property (nonatomic, strong)NSDictionary *requestDict;
+@property (nonatomic, strong)NSString *requestUrl;
 
 
 @end

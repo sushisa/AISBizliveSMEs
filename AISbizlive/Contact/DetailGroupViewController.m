@@ -8,9 +8,11 @@
 
 #import "DetailGroupViewController.h"
 #import "AISGlobal.h"
+#import "DetailPeopleGroupViewController.h"
 @interface DetailGroupViewController ()
 {
-    NSMutableArray *myobject;
+    NSMutableArray *timeObject;
+    NSMutableArray *messageObject;
 }
 @end
 
@@ -30,11 +32,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    myobject = [[NSMutableArray alloc] initWithObjects:@"100 SMS/Package",@"200 SMS/Package",@"300 SMS/Package",@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" , nil];
+    timeObject = [[NSMutableArray alloc] init];
+    messageObject = [[NSMutableArray alloc] init];
+    [self callService];
     [self setTextLangague];
 }
+-(void)callService{
+    ServiceCT08_GroupMessageHistory *service = [[ServiceCT08_GroupMessageHistory alloc] init];
+    [service setDelegate:self];
+    [service setParameterWithID:@"111"];
+    [service requestService];
+}
 -(void)setTextLangague{
-    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"ADDGROUP"]];
+    [self.navigationItem setTitle:self.nameGroup];
     self.tabBarController.tabBar.hidden = YES;
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DeleteButtonWithAction:@selector(doneAction) withTarget:self];
@@ -50,13 +60,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)doneAction{
-    AISAlertView *ss = [[AISAlertView alloc]  withActionLeft:@selector(leftAction:) withActionRight:@selector(rightAction:) withTarget:self message:@"Delete Contact" LeftString:@"Cancel" RightString:@"OK"];
+    AISAlertView *ss = [[AISAlertView alloc]  withActionLeft:@selector(doneAction:) withActionRight:@selector(deleteAction:) withTarget:self message:[NSString stringWithFormat:@"%@ %@ %@",[AISString commonString:typePopup KeyOfValue :@"DELETEGROUP"],self.nameGroup,[AISString commonString:typePopup KeyOfValue :@"DELETEDESCIPTION"]] LeftString:[AISString commonString:typeButton KeyOfValue :@"CANCEL"] RightString:[AISString commonString:typeButton KeyOfValue :@"DELETE"]];
     [ss showAlertView];
 }
--(void)leftAction:(id)sender{
+-(void)doneAction:(id)sender{
     [[AISAlertView alloc] dismissAlertView];
 }
--(void)rightAction:(id)sender{
+-(void)deleteAction:(id)sender{
     [[AISAlertView alloc] dismissAlertView];
 }
 
@@ -74,27 +84,17 @@
     return 1;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80.0f;
+    return 100.0f;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [myobject count];
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    
+    return [timeObject count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier ;
-    if (indexPath.row % 2 == 0) {
         CellIdentifier = @"toMessage";
-    }
-    else{
-        CellIdentifier = @"sendMessage";
-    }
     UITableViewCell *cell = [messageTable dequeueReusableCellWithIdentifier:CellIdentifier];
     // Configure the cell...
     if (cell == nil) {
@@ -102,23 +102,32 @@
         
     }
     UILabel  *head = (UILabel *)[cell viewWithTag:201];
-    head.text = [myobject objectAtIndex:indexPath.row];
+    head.text = [AISString timeFormat:[timeObject objectAtIndex:indexPath.row]];
     UILabel *sample = (UILabel *)[cell viewWithTag:202];
-    sample.text =   [myobject objectAtIndex:indexPath.row];
+    sample.text =   [messageObject objectAtIndex:indexPath.row];
     return cell;
     
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)groupMessageHistorySuccess:(ResponseContactMessageHistory *)responseContactMessageHistory{
+    for (ContactMessageHistory *history in [responseContactMessageHistory historyList]) {
+        [messageObject addObject:[history message]];
+        [timeObject addObject:[history sendDate]];
+//        NSLog(@"%@\n",[history sendDate]);
+//        NSLog(@"%@\n",[history message]);
+    }
+}
+- (void)groupMessageHistoryError:(ResultStatus *)status{
+    
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"detailPeopleGroup"]) {
+        DetailPeopleGroupViewController *detailPeople = [segue destinationViewController];
+        detailPeople.GroupContact = self.GroupContact;
+        detailPeople.GroupName = self.nameGroup;
+//        detailPeople.IdGroup = [Namecontact objectAtIndex:selectIndex];
+    }
 }
-*/
 
 - (IBAction)deleteGroupButton:(id)sender {
 }

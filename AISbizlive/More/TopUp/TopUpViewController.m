@@ -9,7 +9,9 @@
 #import "TopUpViewController.h"
 #import "AISGlobal.h"
 @interface TopUpViewController ()
-
+{
+    AISAlertView *alertView;
+}
 @end
 
 @implementation TopUpViewController
@@ -28,6 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"Top Up Load");
+    alertView = [[AISAlertView alloc] init];
     [self setTextLangague];
     currentLabel.text = @"1,000.00";
     mobileLabel.text = @"09-5328-5722";
@@ -45,14 +48,6 @@
     self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(DoneButton) withTarget:self];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
-//    __weak IBOutlet UILabel *topupLabel;
-//    __weak IBOutlet UILabel *mobileLabel;
-//    __weak IBOutlet UILabel *currentLabel;
-//    __weak IBOutlet UILabel *descriptionCurrent;
-//    __weak IBOutlet UILabel *currentBahtLabel;
-//    __weak IBOutlet UILabel *phoneLabel;
-//    __weak IBOutlet UILabel *serialLabel;
-//    __weak IBOutlet UITextField *serialTextfield;
     topupLabel.text = [AISString commonString:typeLabel KeyOfValue :@"TOPUP_CASH"];
     descriptionCurrent.text = [AISString commonString:typeLabel KeyOfValue :@"TOPUP_CURRENT"];
     currentBahtLabel.text = [AISString commonString:typeLabel KeyOfValue :@"BAHT"];
@@ -60,8 +55,15 @@
     serialTextfield.placeholder = [AISString commonString:typePlacehoder KeyOfValue :@"TOPUP_SERIAL"];
     
 }
+-(void)doneAction:(id)sender{
+    [alertView dismissAlertView];
+}
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
+    [alertView showAlertView];
+}
 -(void)DoneButton{
-    NSLog(@"Done");
+    [self alert:[AISString commonString:typePopup KeyOfValue :@"TOPUPNO"]];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self setTextLangague];

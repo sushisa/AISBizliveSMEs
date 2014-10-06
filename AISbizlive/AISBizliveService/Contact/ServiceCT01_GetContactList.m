@@ -13,25 +13,26 @@
 
 - (void)requestService
 {
+    self.requestUrl = @"http://www.google.com";
     [super requestService];
 }
 
 - (void)bizliveServiceSuccess:(NSDictionary *)responseDict
 {
     //------------------------------- Test -------------------------------
-    NSDictionary *contact1 = @{RES_KEY_ID           : @"01234",
+    NSDictionary *contact1 = @{RES_KEY_CONTACT_ID           : @"01234",
                                RES_KEY_NAME         : @"vasin",
                                RES_KEY_LASTNAME     : @"north",
-                               RES_KEY_PHONE_NUMBER : @"087xxxxxxx",
+                               RES_KEY_MOBILE_NO : @"087xxxxxxx",
                                RES_KEY_LAST_UPDATE  : @"1403773133605",
-                               RES_KEY_IMAGE_URL    : @"www.google.co.th"};
+                               RES_KEY_IMAGE_URL    : @"www.google.com"};
     
-    NSDictionary *contact2 = @{RES_KEY_ID           : @"01234",
+    NSDictionary *contact2 = @{RES_KEY_CONTACT_ID           : @"01234",
                                RES_KEY_NAME         : @"Pluem",
                                RES_KEY_LASTNAME     : @"Limrattanakan",
-                               RES_KEY_PHONE_NUMBER : @"089xxxxxxx",
+                               RES_KEY_MOBILE_NO : @"089xxxxxxx",
                                RES_KEY_LAST_UPDATE  : @"1403773133605",
-                               RES_KEY_IMAGE_URL    : @"www.google.co.th"};
+                               RES_KEY_IMAGE_URL    : @"www.google.com"};
     
     NSArray *arrContact = @[contact1,contact2];
     responseDict = @{RES_KEY_CONTACT_LIST : arrContact};

@@ -55,7 +55,18 @@
     // Return the number of sections.
     return 1;
 }
-
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *oneHeaderView = [[UIView alloc] initWithFrame:
+                             CGRectMake(0, 0, tableView.frame.size.width, 10.0)];
+    
+    oneHeaderView.backgroundColor = [UIColor whiteColor];
+    return oneHeaderView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10.0f;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.

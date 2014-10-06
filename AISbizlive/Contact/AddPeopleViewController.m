@@ -11,6 +11,7 @@
 @interface AddPeopleViewController ()
 {
     UIActionSheet *choosePhoto;
+    AISAlertView *alertView;
 }
 @end
 
@@ -29,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    alertView = [[AISAlertView alloc] init];
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
                                              initWithTarget: self
                                              action: @selector(hideKeyboard:)];
@@ -54,9 +56,10 @@
     [nameTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"NAME"]];
     
     [lastNameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"LAST_NAME"]];
+     [lastNameTextField setText:self.lastName];
     [lastNameTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"LAST_NAME"]];
     
-    [mobileLabel setText:[AISString commonString:typeLabel KeyOfValue :@"MOBILE"]];
+    [mobileLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_PHONE"]];
     [mobileNoTextField setText:self.phoneNumber];
     [mobileNoTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PHONE"]];
 
@@ -66,6 +69,33 @@
     [lastNameTextField resignFirstResponder];
     [mobileNoTextField resignFirstResponder];
 }
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if ([textField isEqual:mobileNoTextField]) {
+        if (mobileNoTextField.text.length == 12) {
+            mobileNoTextField.text = [NSString stringWithFormat:@"%@%@%@",[mobileNoTextField.text substringToIndex:2] ,[[mobileNoTextField.text substringFromIndex:3] substringToIndex:4],[mobileNoTextField.text substringFromIndex:8] ];
+        }
+    }
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if ([textField isEqual:mobileNoTextField]) {
+        if (mobileNoTextField.text.length == 10 && [mobileNoTextField.text rangeOfString:@"-"].location == NSNotFound) {
+            mobileNoTextField.text = [NSString stringWithFormat:@"%@-%@-%@",[mobileNoTextField.text substringToIndex:2] ,[[mobileNoTextField.text substringFromIndex:2] substringToIndex:4],[mobileNoTextField.text substringFromIndex:6] ];
+        }
+    }
+}
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSInteger locationAndStringLengthSum = range.location + [string length];
+    if ([textField isEqual:mobileNoTextField]) {
+        if (locationAndStringLengthSum > 10) {
+            
+            return NO;
+        }
+        
+    }
+    return YES;
+}
+
 -(void)viewDidDisappear:(BOOL)animated{
     [self clearAllData];
 }
@@ -90,7 +120,19 @@
     }
 }
 -(void)doneAction{
-    NSLog(@"Done");
+    if ([nameTextField.text isEqualToString:@""] && [lastNameTextField.text isEqualToString:@""]&& [mobileNoTextField.text isEqualToString:@""] ){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
+    }
+    else if (mobileNoTextField.text.length != 12){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPHONE"]];
+    }
+    else if (![[mobileNoTextField.text substringToIndex:2]  isEqual: @"08"] && ![[mobileNoTextField.text substringToIndex:2]  isEqual: @"09"] ){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDISNOPHONE"]];
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+//        [self performSegueWithIdentifier: @"tabEN" sender: self];
+    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -147,5 +189,13 @@
     [imagePeople setBackgroundImage:chosenImage forState:UIControlStateNormal];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
+}
+
+-(void)doneAction:(id)sender{
+    [alertView dismissAlertView];
+}
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
+    [alertView showAlertView];
 }
 @end

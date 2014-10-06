@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddPeopleViewController : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+@interface AddPeopleViewController : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>{
     //Field
     __weak IBOutlet UITextField *mobileNoTextField;
     __weak IBOutlet UITextField *lastNameTextField;

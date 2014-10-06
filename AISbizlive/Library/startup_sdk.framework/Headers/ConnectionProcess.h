@@ -32,6 +32,6 @@
 
 @property (nonatomic, assign) id<ConnectProcessDelegate> connectProcessDelegate;
 
--(void)connect:(NSString *)urlService withData:(NSData *)postData;
+-(void)connect:(NSString *)urlService withData:(NSData *)postData requestHeader:(NSMutableURLRequest *)requestHeader;
 
 @end

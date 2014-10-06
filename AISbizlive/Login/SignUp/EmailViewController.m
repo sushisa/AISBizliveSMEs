@@ -68,7 +68,7 @@
     [emailTextField setText:@""];
     [emailTextField resignFirstResponder];
     [AISView changeLayerNomal:emailView];
-    [self alert:[AISString commonString:typePopup KeyOfValue :@"ACTIVATEEMAIL"]];
+    [self alert:[AISString commonString:typePopup KeyOfValue :@"CONFIRMACTIVATE"]];
     
 }
 - (IBAction)Donebtn:(id)sender {
@@ -85,7 +85,7 @@
         [self alert:[AISString commonString:typePopup KeyOfValue :@"EMAILACTIVATECODE"]];
     }
     else{
-        [self alert:[AISString commonString:typePopup KeyOfValue :@"SUCCESSSIGNUP"]];
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"CONFIRMTOSIGNIN"]];
         [self performSegueWithIdentifier:@"emailToSignIn" sender:self];
     }
 //    [self.navigationController dismissViewControllerAnimated:YES completion:Nil];
@@ -93,6 +93,7 @@
 -(void)alert:(NSString *)message{
     [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
     [alertView showAlertView];
+    [emailTextField resignFirstResponder];
 }
 -(void)doneAction:(id)sender{
     [alertView dismissAlertView];

@@ -11,6 +11,9 @@
 
 @interface FungusSecurity : NSObject
 
++(void)setDecryptKeyData:(NSData *)decryptKeyData;
++(void)setEncryptKeyData:(NSData *)encryptKeyData;
+
 +(void) setEncryptKey: (unsigned char *) key;
 +(void) setDecryptKey: (unsigned char *) key;
 +(void) setInitialVector: (unsigned char *) iv;

@@ -27,7 +27,7 @@
     
     @try {
         [service setDelegate:self];
-        [service setBizLiveURL:@""];
+        [service setBizLiveURL:self.requestUrl];
         [service setRequestDict:[self getRequestData]];
         [service fungusRequest];
     }

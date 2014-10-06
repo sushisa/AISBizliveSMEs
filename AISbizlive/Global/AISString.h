@@ -24,4 +24,5 @@ typedef enum
 +(NSString*)commonString:(typeText) commonType KeyOfValue:(NSString *)key;
 +(NSMutableArray*)commonArray :(NSString *)key;
 +(NSMutableArray*)TemplateArray;
++(NSString *)timeFormat :(NSString *)stringWithFormat;
 @end

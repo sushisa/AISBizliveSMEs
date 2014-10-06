@@ -21,6 +21,7 @@
         self.name = responseData[RES_KEY_NAME];
         self.lastname = responseData[RES_KEY_LASTNAME];
         self.phoneNumber = responseData[RES_KEY_MOBILE_NO];
+        self.lastUpdate = responseData[RES_KEY_LAST_UPDATE];
         self.imageURL = responseData[RES_KEY_IMAGE_URL];
     }
     return self;

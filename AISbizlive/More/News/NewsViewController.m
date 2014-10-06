@@ -64,6 +64,18 @@
     // Return the number of rows in the section.
     return news.count;
 }
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *oneHeaderView = [[UIView alloc] initWithFrame:
+                             CGRectMake(0, 0, tableView.frame.size.width, 10.0)];
+    
+    oneHeaderView.backgroundColor = [UIColor whiteColor];
+    return oneHeaderView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10.0f;
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"NewsCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

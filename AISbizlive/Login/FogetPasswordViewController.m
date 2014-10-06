@@ -87,6 +87,7 @@
 -(void)alert:(NSString *)message{
     [alertView withActionLeft:@selector(doneBTN:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
     [alertView showAlertView];
+    [emailField resignFirstResponder];
 }
 -(void)doneBTN:(id)sender{
     [alertView dismissAlertView];

@@ -27,6 +27,7 @@
 		71287D3F1990DAC0007BF8CF /* CheckBox_True@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71287D3C1990DAC0007BF8CF /* CheckBox_True@2x.png */; };
 		71287D401990DAC0007BF8CF /* CheckBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71287D3D1990DAC0007BF8CF /* CheckBox@2x.png */; };
 		71287D411990DAC0007BF8CF /* Pen_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71287D3E1990DAC0007BF8CF /* Pen_Icon@2x.png */; };
+		713ACDFA19D427CB00CD331F /* BizliveAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713ACDF919D427CB00CD331F /* BizliveAccountViewController.m */; };
 		713DC1D41907616E00E34CB2 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC1D31907616E00E34CB2 /* ContactCell.m */; };
 		713DC1E21907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC1D61907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.m */; };
 		713DC1E31907628A00E34CB2 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC1D81907628A00E34CB2 /* SWCellScrollView.m */; };
@@ -35,7 +36,6 @@
 		713DC1E61907628A00E34CB2 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC1DF1907628A00E34CB2 /* SWUtilityButtonTapGestureRecognizer.m */; };
 		713DC1E71907628A00E34CB2 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC1E11907628A00E34CB2 /* SWUtilityButtonView.m */; };
 		713DC92518F7DA37005D1E2F /* AISTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC92418F7DA37005D1E2F /* AISTableViewCell.m */; };
-		713F2455192AFBEC003C4822 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713F2454192AFBEC003C4822 /* ShareViewController.m */; };
 		713F2459192B076D003C4822 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713F2458192B076D003C4822 /* SettingViewController.m */; };
 		713F245C192B0E9B003C4822 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713F245B192B0E9B003C4822 /* ChangePasswordViewController.m */; };
 		7141C39518EEA66300AC6EC7 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7141C39418EEA66300AC6EC7 /* InformationViewController.m */; };
@@ -43,7 +43,6 @@
 		715C201218FE572C00CB046C /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 715C200F18FE572C00CB046C /* Logo@2x.png */; };
 		715C201818FE680100CB046C /* Add_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 715C201718FE680100CB046C /* Add_Icon@2x.png */; };
 		715C201B18FE696D00CB046C /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 715C201A18FE696D00CB046C /* AddGroupViewController.m */; };
-		71602610196BC82C005B3193 /* startup_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7160260F196BC82C005B3193 /* startup_sdk.framework */; };
 		71602612196BCAC2005B3193 /* StartUp_20018.crt in Resources */ = {isa = PBXBuildFile; fileRef = 71602611196BCAC2005B3193 /* StartUp_20018.crt */; };
 		71602615196BEF2B005B3193 /* PackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71602614196BEF2B005B3193 /* PackageCell.m */; };
 		716120C718A4DB24004077D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716120C618A4DB24004077D9 /* Foundation.framework */; };
@@ -75,6 +74,8 @@
 		7189FE161908F9D400B636FB /* AISView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7189FE151908F9D400B636FB /* AISView.m */; };
 		718FE71019344B1F00E9C9E2 /* ForgetEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718FE70F19344B1F00E9C9E2 /* ForgetEmailViewController.m */; };
 		718FE71619346B4200E9C9E2 /* AISNavigationBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 718FE71519346B4200E9C9E2 /* AISNavigationBarItem.m */; };
+		7198029219B5BDDC00E2FAAB /* startup_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198029119B5BDDC00E2FAAB /* startup_sdk.framework */; };
+		7198029819B6FA3700E2FAAB /* Signup2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7198029719B6FA3700E2FAAB /* Signup2ViewController.m */; };
 		71996D611924B28300AC1EDF /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71996D601924B28300AC1EDF /* MessageTableViewController.m */; };
 		71996D641924C96F00AC1EDF /* AISButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 71996D631924C96F00AC1EDF /* AISButton.m */; };
 		719E0243193F0293004A043A /* AISString.m in Sources */ = {isa = PBXBuildFile; fileRef = 719E0242193F0293004A043A /* AISString.m */; };
@@ -126,6 +127,7 @@
 		71BD0B10196261EC00ECC0F0 /* DetailGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BD0B0F196261EC00ECC0F0 /* DetailGroupViewController.m */; };
 		71C3DDEB18D97170002B6E79 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C3DDEA18D97170002B6E79 /* ScheduleViewController.m */; };
 		71CD62531959687A00692B4C /* TemplateList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71CD62521959687A00692B4C /* TemplateList.plist */; };
+		71E394BD19D9309E00224673 /* DetailPeopleGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E394BC19D9309E00224673 /* DetailPeopleGroupViewController.m */; };
 		71E44157193DBB02004282AC /* Common.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71E44156193DBB02004282AC /* Common.plist */; };
 		71EF928A18D6986B00A51C52 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EF928918D6986B00A51C52 /* NewsViewController.m */; };
 		71F2043518D2C4F100EBE5BF /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F2043418D2C4F100EBE5BF /* HistoryViewController.m */; };
@@ -211,6 +213,8 @@
 		71287D3C1990DAC0007BF8CF /* CheckBox_True@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox_True@2x.png"; sourceTree = "<group>"; };
 		71287D3D1990DAC0007BF8CF /* CheckBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox@2x.png"; sourceTree = "<group>"; };
 		71287D3E1990DAC0007BF8CF /* Pen_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pen_Icon@2x.png"; sourceTree = "<group>"; };
+		713ACDF819D427CB00CD331F /* BizliveAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BizliveAccountViewController.h; path = Package/BizliveAccountViewController.h; sourceTree = "<group>"; };
+		713ACDF919D427CB00CD331F /* BizliveAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BizliveAccountViewController.m; path = Package/BizliveAccountViewController.m; sourceTree = "<group>"; };
 		713DC1D21907616E00E34CB2 /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactCell.h; path = Contact/ContactCell.h; sourceTree = "<group>"; };
 		713DC1D31907616E00E34CB2 /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactCell.m; path = Contact/ContactCell.m; sourceTree = "<group>"; };
 		713DC1D51907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
@@ -228,8 +232,6 @@
 		713DC1E11907628A00E34CB2 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 		713DC92318F7DA37005D1E2F /* AISTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISTableViewCell.h; path = Global/AISTableViewCell.h; sourceTree = "<group>"; };
 		713DC92418F7DA37005D1E2F /* AISTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISTableViewCell.m; path = Global/AISTableViewCell.m; sourceTree = "<group>"; };
-		713F2453192AFBEC003C4822 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareViewController.h; path = Share/ShareViewController.h; sourceTree = "<group>"; };
-		713F2454192AFBEC003C4822 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareViewController.m; path = Share/ShareViewController.m; sourceTree = "<group>"; };
 		713F2457192B076D003C4822 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = More/Setting/SettingViewController.h; sourceTree = "<group>"; };
 		713F2458192B076D003C4822 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = More/Setting/SettingViewController.m; sourceTree = "<group>"; };
 		713F245A192B0E9B003C4822 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangePasswordViewController.h; path = More/Setting/ChangePasswordViewController.h; sourceTree = "<group>"; };
@@ -241,7 +243,6 @@
 		715C201718FE680100CB046C /* Add_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add_Icon@2x.png"; sourceTree = "<group>"; };
 		715C201918FE696D00CB046C /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddGroupViewController.h; path = Contact/AddGroupViewController.h; sourceTree = "<group>"; };
 		715C201A18FE696D00CB046C /* AddGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddGroupViewController.m; path = Contact/AddGroupViewController.m; sourceTree = "<group>"; };
-		7160260F196BC82C005B3193 /* startup_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = startup_sdk.framework; path = AISbizlive/Library/startup_sdk.framework; sourceTree = "<group>"; };
 		71602611196BCAC2005B3193 /* StartUp_20018.crt */ = {isa = PBXFileReference; lastKnownFileType = file; name = StartUp_20018.crt; path = Library/StartUp_20018.crt; sourceTree = "<group>"; };
 		71602613196BEF2B005B3193 /* PackageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PackageCell.h; path = Package/PackageCell.h; sourceTree = "<group>"; };
 		71602614196BEF2B005B3193 /* PackageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PackageCell.m; path = Package/PackageCell.m; sourceTree = "<group>"; };
@@ -288,6 +289,9 @@
 		718FE70F19344B1F00E9C9E2 /* ForgetEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgetEmailViewController.m; path = Login/Forget/ForgetEmailViewController.m; sourceTree = "<group>"; };
 		718FE71419346B4200E9C9E2 /* AISNavigationBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISNavigationBarItem.h; path = Global/AISNavigationBarItem.h; sourceTree = "<group>"; };
 		718FE71519346B4200E9C9E2 /* AISNavigationBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISNavigationBarItem.m; path = Global/AISNavigationBarItem.m; sourceTree = "<group>"; };
+		7198029119B5BDDC00E2FAAB /* startup_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = startup_sdk.framework; path = ../AISBizlive/AISbizlive/Library/startup_sdk.framework; sourceTree = "<group>"; };
+		7198029619B6FA3700E2FAAB /* Signup2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Signup2ViewController.h; path = Login/SignUp/Signup2ViewController.h; sourceTree = "<group>"; };
+		7198029719B6FA3700E2FAAB /* Signup2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Signup2ViewController.m; path = Login/SignUp/Signup2ViewController.m; sourceTree = "<group>"; };
 		71996D5F1924B28300AC1EDF /* MessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageTableViewController.h; path = Message/MessageTableViewController.h; sourceTree = "<group>"; };
 		71996D601924B28300AC1EDF /* MessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageTableViewController.m; path = Message/MessageTableViewController.m; sourceTree = "<group>"; };
 		71996D621924C96F00AC1EDF /* AISButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISButton.h; path = Global/AISButton.h; sourceTree = "<group>"; };
@@ -355,6 +359,8 @@
 		71C3DDE918D97170002B6E79 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewController.h; path = More/Schedule/ScheduleViewController.h; sourceTree = "<group>"; };
 		71C3DDEA18D97170002B6E79 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleViewController.m; path = More/Schedule/ScheduleViewController.m; sourceTree = "<group>"; };
 		71CD62521959687A00692B4C /* TemplateList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateList.plist; sourceTree = "<group>"; };
+		71E394BB19D9309E00224673 /* DetailPeopleGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailPeopleGroupViewController.h; path = Contact/DetailPeopleGroupViewController.h; sourceTree = "<group>"; };
+		71E394BC19D9309E00224673 /* DetailPeopleGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailPeopleGroupViewController.m; path = Contact/DetailPeopleGroupViewController.m; sourceTree = "<group>"; };
 		71E44156193DBB02004282AC /* Common.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Common.plist; sourceTree = "<group>"; };
 		71EF928818D6986B00A51C52 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsViewController.h; path = More/News/NewsViewController.h; sourceTree = "<group>"; };
 		71EF928918D6986B00A51C52 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsViewController.m; path = More/News/NewsViewController.m; sourceTree = "<group>"; };
@@ -454,7 +460,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71602610196BC82C005B3193 /* startup_sdk.framework in Frameworks */,
+				7198029219B5BDDC00E2FAAB /* startup_sdk.framework in Frameworks */,
 				717A9C2318F7953C00993805 /* QuartzCore.framework in Frameworks */,
 				717A9C2118F7952E00993805 /* CoreData.framework in Frameworks */,
 				7176D6E818AA2AF2004D849C /* Social.framework in Frameworks */,
@@ -489,6 +495,8 @@
 				710E59C818AC7F9E006F4CB2 /* OTPViewController.m */,
 				710E59CA18AC7FAD006F4CB2 /* EmailViewController.h */,
 				710E59CB18AC7FAD006F4CB2 /* EmailViewController.m */,
+				7198029619B6FA3700E2FAAB /* Signup2ViewController.h */,
+				7198029719B6FA3700E2FAAB /* Signup2ViewController.m */,
 			);
 			name = Signup;
 			sourceTree = "<group>";
@@ -509,15 +517,6 @@
 				711A9DA6195D13DA00B52AEF /* WebViewController.m */,
 			);
 			name = Web;
-			sourceTree = "<group>";
-		};
-		713F2456192AFBF2003C4822 /* Share */ = {
-			isa = PBXGroup;
-			children = (
-				713F2453192AFBEC003C4822 /* ShareViewController.h */,
-				713F2454192AFBEC003C4822 /* ShareViewController.m */,
-			);
-			name = Share;
 			sourceTree = "<group>";
 		};
 		7141C39618EEA66600AC6EC7 /* Information */ = {
@@ -549,7 +548,7 @@
 		716120C518A4DB24004077D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7160260F196BC82C005B3193 /* startup_sdk.framework */,
+				7198029119B5BDDC00E2FAAB /* startup_sdk.framework */,
 				71198E0A193C874E006C05CE /* FacebookSDK.framework */,
 				717A9C2218F7953C00993805 /* QuartzCore.framework */,
 				717A9C2018F7952E00993805 /* CoreData.framework */,
@@ -583,7 +582,6 @@
 				7161211018A4EA5F004077D9 /* Contact */,
 				7161211418A4EAB8004077D9 /* Message */,
 				7161211818A4EAD0004077D9 /* Package */,
-				713F2456192AFBF2003C4822 /* Share */,
 				7161211C18A4EAE5004077D9 /* More */,
 				711A9DA8195D13E500B52AEF /* Web */,
 				710E59C218AB5693006F4CB2 /* Login */,
@@ -628,6 +626,8 @@
 				71B023CA1941A3460031AA3F /* DetailPeopleViewController.m */,
 				71BD0B0E196261EC00ECC0F0 /* DetailGroupViewController.h */,
 				71BD0B0F196261EC00ECC0F0 /* DetailGroupViewController.m */,
+				71E394BB19D9309E00224673 /* DetailPeopleGroupViewController.h */,
+				71E394BC19D9309E00224673 /* DetailPeopleGroupViewController.m */,
 			);
 			name = Contact;
 			sourceTree = "<group>";
@@ -652,6 +652,8 @@
 				711E0D9C195C23CD00423448 /* mPayViewController.m */,
 				71602613196BEF2B005B3193 /* PackageCell.h */,
 				71602614196BEF2B005B3193 /* PackageCell.m */,
+				713ACDF819D427CB00CD331F /* BizliveAccountViewController.h */,
+				713ACDF919D427CB00CD331F /* BizliveAccountViewController.m */,
 			);
 			name = Package;
 			sourceTree = "<group>";
@@ -1209,7 +1211,6 @@
 				E00614A819B07839000346FE /* ServiceCT12_ImportContact.m in Sources */,
 				715C201B18FE696D00CB046C /* AddGroupViewController.m in Sources */,
 				713DC1D41907616E00E34CB2 /* ContactCell.m in Sources */,
-				713F2455192AFBEC003C4822 /* ShareViewController.m in Sources */,
 				E00614A919B07839000346FE /* LoginForm.m in Sources */,
 				71EF928A18D6986B00A51C52 /* NewsViewController.m in Sources */,
 				E006149619B07839000346FE /* BizliveService.m in Sources */,
@@ -1231,8 +1232,10 @@
 				7189FE161908F9D400B636FB /* AISView.m in Sources */,
 				E00614AC19B07839000346FE /* ServiceLG03_RequestOtpVerification.m in Sources */,
 				7115E09D18F5220E0030AF26 /* AddTemplateViewController.m in Sources */,
+				7198029819B6FA3700E2FAAB /* Signup2ViewController.m in Sources */,
 				713DC1E61907628A00E34CB2 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				E00614B219B07839000346FE /* ServiceMS01_SendMessage.m in Sources */,
+				713ACDFA19D427CB00CD331F /* BizliveAccountViewController.m in Sources */,
 				E006149C19B07839000346FE /* ResponseContactMessageHistory.m in Sources */,
 				7122EE7B1900F610002B9181 /* PaymentViewController.m in Sources */,
 				710E59C518AC7F72006F4CB2 /* SignupViewController.m in Sources */,
@@ -1242,6 +1245,7 @@
 				713DC1E31907628A00E34CB2 /* SWCellScrollView.m in Sources */,
 				E00614AB19B07839000346FE /* ServiceLG02_SignUpWithEmail.m in Sources */,
 				71B023C819417BBD0031AA3F /* AISLoading.m in Sources */,
+				71E394BD19D9309E00224673 /* DetailPeopleGroupViewController.m in Sources */,
 				E00614AD19B07839000346FE /* ServiceLG04_RequestEmailVerification.m in Sources */,
 				71F9030C18E2B723001E7663 /* DWTagList.m in Sources */,
 				E00614B019B07839000346FE /* ServiceLG07_Login.m in Sources */,
@@ -1310,8 +1314,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Narong Pomankul (6L2GK3R483)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Narong Pomankul (6L2GK3R483)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pratthana Leelapanang (XDG5J37849)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pratthana Leelapanang (XDG5J37849)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1329,7 +1333,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "D5B788D2-A1AF-46A9-9A09-77A871223512";
+				PROVISIONING_PROFILE = "4a18853a-6f8a-485a-b81f-3e840c225b0d";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1350,8 +1354,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Narong Pomankul (6L2GK3R483)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Narong Pomankul (6L2GK3R483)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pratthana Leelapanang (XDG5J37849)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pratthana Leelapanang (XDG5J37849)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1362,7 +1366,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "D5B788D2-A1AF-46A9-9A09-77A871223512";
+				PROVISIONING_PROFILE = "4a18853a-6f8a-485a-b81f-3e840c225b0d";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1373,22 +1377,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pratthana Leelapanang (XDG5J37849)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/North/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/AISbizlive/Library",
+					/Users/North/Documents/AISBizlive/AISbizlive/Library,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AISbizlive/AISbizlive-Prefix.pch";
 				INFOPLIST_FILE = "AISbizlive/AISbizlive-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BEF89153-9C6E-48DC-BB77-4AE092F7E73C";
+				PROVISIONING_PROFILE = "4a18853a-6f8a-485a-b81f-3e840c225b0d";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1398,22 +1404,24 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pratthana Leelapanang (XDG5J37849)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/North/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/AISbizlive/Library",
+					/Users/North/Documents/AISBizlive/AISbizlive/Library,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AISbizlive/AISbizlive-Prefix.pch";
 				INFOPLIST_FILE = "AISbizlive/AISbizlive-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BEF89153-9C6E-48DC-BB77-4AE092F7E73C";
+				PROVISIONING_PROFILE = "4a18853a-6f8a-485a-b81f-3e840c225b0d";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

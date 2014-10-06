@@ -8,7 +8,6 @@
 
 #import "ResponseGetContactList.h"
 #import "BizliveServiceParameter.h"
-#import "ContactDetail.h"
 
 @implementation ResponseGetContactList
 

@@ -29,10 +29,6 @@
     if(self){
         self.layer.cornerRadius = 5.0f;
         self.layer.masksToBounds = NO;
-        self.layer.shadowColor = [AISColor lightgrayColor].CGColor;
-        self.layer.shadowOffset =  CGSizeMake(0, 7);
-        self.layer.shadowOpacity = 0.3f;
-        self.layer.shadowRadius = 5.0f;
     }
     return self;
 }
@@ -52,7 +48,6 @@
 }
 - (void)setFrame:(CGRect)frame {
     frame.origin.x += 10;
-    frame.origin.y += 5;
     frame.size.height -= 10;
     frame.size.width -= 20;
     [super setFrame:frame];
