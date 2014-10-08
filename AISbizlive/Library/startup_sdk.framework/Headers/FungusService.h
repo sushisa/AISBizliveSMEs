@@ -181,8 +181,8 @@
 //#define TAG_RES_PUBLIC_KEY @"Identify"
 #define TAG_RES_PUBLIC_KEY @"peeblickup"
 #define TAG_RES_ORDER_REF @"orderRef"
-#define TAG_RES_CODE @"resultCode"
-#define TAG_RES_DESCRIPTION @"resultDescription"
+#define TAG_RES_CODE @"code"
+#define TAG_RES_DESCRIPTION @"description"
 
 #define TAG_RES_APP_ENVIRONMENT_TYPE @"appEnvironmentType"
 
@@ -288,7 +288,7 @@
 #define KEY_REQ_USER_ID                 @"userId"
 #define KEY_REQ_DEVICE_MODEL            @"deviceModel"
 #define KEY_REQ_DEVICE_TOKEN            @"deviceToken"
-#define KEY_REQ_APP_ID                  @"appID"
+#define KEY_REQ_APP_ID                  @"appId"
 #define KEY_REQ_APP_NAME                @"appName"
 #define KEY_REQ_APP_VERSION             @"appVersion"
 #define KEY_REQ_PLATFORM                @"platform"

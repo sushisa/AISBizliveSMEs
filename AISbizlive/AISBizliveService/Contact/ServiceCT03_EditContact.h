@@ -19,12 +19,12 @@
 @interface ServiceCT03_EditContact : BizliveService
 
 - (void)setParameterWithID:(NSString *)ID
-                      name:(NSString *)name
+                 firstname:(NSString *)firstname
                   lastname:(NSString *)lastname
-               phoneNumber:(NSString *)phoneNumber
+                  mobileNO:(NSString *)mobileNO
                    image64:(NSString *)image64;
 
-@property (nonatomic, strong) NSString *ID, *name, *lastname, *phoneNumber, *image64;
+@property (nonatomic, strong) NSString *ID, *firstname, *lastname, *mobileNO, *image64;
 @property (nonatomic, assign)id<EditContactDelegate> delegate;
 
 @end

@@ -15,7 +15,7 @@
 }
 
 -(void)initialWithResponse:(NSDictionary *)response orderRef:(NSString *)orderRef;
-//-(void)initial:(NSDictionary *)response;
+-(void)initWithResponse:(NSDictionary *)response;
 -(void)setStatusCode:(int)code;
 -(void)setDescription:(NSString *)description;
 

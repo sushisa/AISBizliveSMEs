@@ -95,14 +95,22 @@
     [[self view] addGestureRecognizer:oneTapGesture];
     //TextField
     [nameTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_NAME"]];
+    [nameTextField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     [lastNameTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_LASTNAME"]];
+    [lastNameTextField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     
     [taxIdField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_IDCARD"]];
+    [taxIdField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     [idCardField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_IDCARD"]];
+    [idCardField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     [emailField setPlaceholder:[AISString commonString :typePlacehoder KeyOfValue :@"SIGNUP_EMAIL"]];
+    [emailField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     [phoneField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PHONE"]];
+    [phoneField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     [passField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PASSWORD"]];
+    [passField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     [confirmPassField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PASSWORD"]];
+    [confirmPassField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     //Label
     
     [companyLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_COMPANY"]];
@@ -120,10 +128,12 @@
     [confirmPassLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_CONFIRM"]];
     [confirmPassLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     [termandpolicyLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_TERM"]];
-    [termandpolicyLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
+    [termandpolicyLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     //Button
     [personLabel setText:[AISString commonString:typeButton KeyOfValue :@"PERSON"]];
+    [personLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     [juristicLabel setText:[AISString commonString:typeButton KeyOfValue :@"JURISTIC_PERSON"]];
+    [juristicLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     [termButton setTitle:[AISString commonString:typeTitle KeyOfValue :@"TERM"] forState:UIControlStateNormal];
     [termButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     [policyButton setTitle:[AISString commonString:typeTitle KeyOfValue :@"POLICY"] forState:UIControlStateNormal];

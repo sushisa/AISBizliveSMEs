@@ -160,6 +160,7 @@
     Imagecontact = [[NSMutableArray alloc] init];
     Groupcontact = [[NSMutableArray alloc] init];
     ServiceCT06_GetGroupContactList *call = [[ServiceCT06_GetGroupContactList alloc] init];
+    
     [call setDelegate:self];
     [call requestService];
     [testTable reloadData];
@@ -381,21 +382,21 @@
         [Namecontact addObject:[groupContact name]];
         [Imagecontact addObject:[groupContact imageURL]];
         [Checkcontact addObject:@"Ok_Grey.png"];
-        for (ContactDetail *contact in [groupContact contactList]) {
-//            NSLog(@"  Contact ID          : %@\n", [contact ID]);
-//            NSLog(@"  Contact name        : %@\n", [contact name]);
-//            NSLog(@"  Contact lastname    : %@\n", [contact lastname]);
-//            NSLog(@"  Contact phonenumber : %@\n", [contact phoneNumber]);
-//            NSLog(@"  Contact lastUpdate  : %@\n", [contact lastUpdate]);
-//            NSLog(@"  Contact imageURL    : %@\n", [contact imageURL]);
-            
-            dictToDetail = [NSDictionary dictionaryWithObjectsAndKeys:
-                            [contact name],@"Name",
-                            [contact lastname], @"LastName",
-                            [contact phoneNumber],@"Tel",
-                            [contact imageURL],@"Image", nil] ;
-            [Groupcontact addObject:dictToDetail];
-        }
+//        for (ContactDetail *contact in [groupContact contactList]) {
+////            NSLog(@"  Contact ID          : %@\n", [contact ID]);
+////            NSLog(@"  Contact name        : %@\n", [contact name]);
+////            NSLog(@"  Contact lastname    : %@\n", [contact lastname]);
+////            NSLog(@"  Contact phonenumber : %@\n", [contact phoneNumber]);
+////            NSLog(@"  Contact lastUpdate  : %@\n", [contact lastUpdate]);
+////            NSLog(@"  Contact imageURL    : %@\n", [contact imageURL]);
+//            
+//            dictToDetail = [NSDictionary dictionaryWithObjectsAndKeys:
+//                            [contact name],@"Name",
+//                            [contact lastname], @"LastName",
+//                            [contact phoneNumber],@"Tel",
+//                            [contact imageURL],@"Image", nil] ;
+//            [Groupcontact addObject:dictToDetail];
+//        }
         
     }
 }

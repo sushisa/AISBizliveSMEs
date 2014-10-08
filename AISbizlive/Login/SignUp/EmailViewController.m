@@ -44,11 +44,15 @@
     [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"EMAIL"]];
     //Textfield
     [emailTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"ACTIVATION_EMAIL"]];
+    [emailTextField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     //Label
     [emailLabel setText:[AISString commonString:typeLabel KeyOfValue :@"EMAIL"]];
+    [emailLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     //Button
     [resendEmailButton setTitle:[AISString commonString:typeButton KeyOfValue :@"RESEND_EMAIL"] forState:UIControlStateNormal];
+    [resendEmailButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     [Donebtn setTitle:[AISString commonString:typeButton KeyOfValue :@"DONE"] forState:UIControlStateNormal];
+    [Donebtn.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
 }
 -(void)backAction{
     [self.navigationController popViewControllerAnimated:YES];

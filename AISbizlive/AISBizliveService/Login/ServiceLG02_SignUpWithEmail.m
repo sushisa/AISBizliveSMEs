@@ -18,21 +18,21 @@
 
 - (void)requestService
 {
-    NSDictionary *requestDict = @{REQ_KEY_FIRSTNAME : [self.loginForm firstname],
-                                  REQ_KEY_LASTNAME  : [self.loginForm lastname],
-                                  REQ_KEY_MSISDN    : [self.loginForm phoneNumber],
-                                  REQ_KEY_EMAIL     : [self.loginForm email],
-                                  REQ_KEY_PASSWORD  : [self.loginForm password],
-                                  REQ_KEY_PHOTO     : [self.loginForm photoBase64]};
+    NSDictionary *requestDict = @{REQ_KEY_LOGIN_FIRSTNAME : [self.loginForm firstname],
+                                  REQ_KEY_LOGIN_LASTNAME  : [self.loginForm lastname],
+                                  REQ_KEY_LOGIN_MSISDN    : [self.loginForm phoneNumber],
+                                  REQ_KEY_LOGIN_EMAIL     : [self.loginForm email],
+                                  REQ_KEY_LOGIN_PASSWORD  : [self.loginForm password],
+                                  REQ_KEY_LOGIN_PHOTO: [self.loginForm photoBase64]};
     
-    [super setRequestDict:requestDict];
+    [super setRequestData:requestDict];
     [super requestService];
 }
 
 - (void)bizliveServiceSuccess:(NSDictionary *)responseData
 {
     if (![Admin isOnline]) {
-        responseData = @{RES_KEY_USER_ID: @"1xx3234"};
+        responseData = @{RES_KEY_LOGIN_USER_ID: @"1xx3234"};
     }
     
     [delegate signUpWithEmailSuccess];

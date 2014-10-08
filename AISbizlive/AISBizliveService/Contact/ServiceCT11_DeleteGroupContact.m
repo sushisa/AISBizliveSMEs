@@ -27,7 +27,7 @@
     }
     
     NSDictionary *requestDict = @{REQ_KEY_GROUP_LIST: groupList};
-    [super setRequestDict:requestDict];
+    [super setRequestData:requestDict];
     [super requestService];
 }
 

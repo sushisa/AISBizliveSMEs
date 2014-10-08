@@ -59,7 +59,10 @@
     [forgetPassButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     [signinButton setTitle:[AISString commonString:typeButton KeyOfValue :@"DONE"] forState:UIControlStateNormal];
     [signinButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
+    
+    DLog(@"%@",forgetPassButton.titleLabel);
 }
+
 
 - (void)didReceiveMemoryWarning
 {

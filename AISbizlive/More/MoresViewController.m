@@ -40,15 +40,25 @@
     self.title = [AISString commonString:typeTitle KeyOfValue :@"MORE"];
     [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"MORE"]];
     settingLabel.text =[AISString commonString:typeTitle KeyOfValue :@"SETTING"];
+    [settingLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     addContactLabel.text =[AISString commonString:typeTitle KeyOfValue :@"ADDCONTACT"];
+    [addContactLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     newsLabel.text =[AISString commonString:typeTitle KeyOfValue :@"NEWS"];
+    [newsLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     scheduleLabel.text =[AISString commonString:typeTitle KeyOfValue :@"SCHEDULE"];
+    [scheduleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     historyLabel.text =[AISString commonString:typeTitle KeyOfValue :@"HISTORY"];
+    [historyLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     topupLabel.text =[AISString commonString:typeTitle KeyOfValue :@"TOPUP"];
+    [topupLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     importLabel.text =[AISString commonString:typeTitle KeyOfValue :@"IMPORTCONTACT"];
+    [importLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     informationLabel.text =[AISString commonString:typeTitle KeyOfValue :@"INFORMATION"];
+    [informationLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     templateLabel.text =[AISString commonString:typeTitle KeyOfValue :@"TEMPLATE"];
+    [templateLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     logoutLabel.text =[AISString commonString:typeTitle KeyOfValue :@"LOGOUT"];
+    [logoutLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
 }
 -(void)selectMoreCell{
     //Setting

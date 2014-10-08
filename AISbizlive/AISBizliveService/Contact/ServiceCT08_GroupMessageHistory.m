@@ -21,14 +21,14 @@
 {
     NSDictionary *requestDict  = @{REQ_KEY_CONTACT_ID: self.ID};
     
-    [super setRequestDict:requestDict];
+    [super setRequestData:requestDict];
     [super requestService];
 }
 
 - (void)bizliveServiceSuccess:(NSDictionary *)responseData
 {
     if (![Admin isOnline]) {
-        NSDictionary *history = @{RES_KEY_SEND_TIME : @"14032014102051",
+        NSDictionary *history = @{RES_KEY_SEND_TIME : @"1403773133605",
                                    RES_KEY_MESSAGE   : @"Hello World!"};
         
         NSArray *arrHistory = @[history];

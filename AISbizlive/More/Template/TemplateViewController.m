@@ -57,9 +57,17 @@
     [super viewDidLoad];
     NSLog(@"%@",[AISString TemplateArray]);
     currentSelect = -1;
-    currentHeight = 65;
+    currentHeight = 60;
     heightTemplateCell = @"heightTemplateCell";
     
+    myObject = [[NSMutableArray alloc] init];
+    for (int k = 0; k<[AISString TemplateArray].count; k++) {
+        dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                @"65", heightTemplateCell,
+                nil];
+        [myObject addObject:dict];
+    }
+    DLog(@"%lu",(unsigned long)myObject.count);
     [self setTextLangague];
     
 }
@@ -75,14 +83,7 @@
         self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] TemplateAddButtonWithAction:@selector(templateAdd) withTarget:self];
        
     }
-    myObject = [[NSMutableArray alloc] init];
-    for (int k = 0; k<[AISString TemplateArray].count; k++) {
-        dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                @"65", heightTemplateCell,
-                nil];
-        [myObject addObject:dict];
-    }
-    [messageTable reloadData];
+//    [messageTable reloadData];
     
 }
 -(void)backAction{
@@ -118,7 +119,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSLog(@"%f",[[[myObject objectAtIndex:indexPath.row] objectForKey:heightTemplateCell] floatValue]);
     return [[[myObject objectAtIndex:indexPath.row] objectForKey:heightTemplateCell] floatValue];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -133,6 +134,7 @@
      }
     TemplateCell *cell = (TemplateCell *)[messageTable cellForRowAtIndexPath:indexPath];
     for (int k = 0; k < [myObject count]; k++) {
+        NSLog(@"%d",k);
         if ([[[myObject objectAtIndex:k] objectForKey:heightTemplateCell] floatValue] != 65) {
 //            [UIView animateWithDuration:.3f animations:^{
                 cell.descriptionTemplate.alpha = 0.0f;
@@ -145,7 +147,8 @@
         }
 
         [[myObject objectAtIndex:k] setValue:@"65" forKey:heightTemplateCell];
-    }  NSLog(@"%d - : -",[messageTable indexPathForCell:cell].row);
+    }
+//        NSLog(@"%d - : -",[messageTable indexPathForCell:cell].row);
         CGFloat width = 280;
         CGFloat height = 0;
         CGRect r = [[[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"]boundingRectWithSize:CGSizeMake(width, height)
@@ -175,7 +178,7 @@
     
     static NSString *CellIdentifier = @"TemplateCell";
     
-    TemplateCell  *cell = (TemplateCell *)[messageTable dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    TemplateCell  *cell = (TemplateCell *)[messageTable dequeueReusableCellWithIdentifier:CellIdentifier];
     
     TemplateCell  __weak *weakCell = cell;
     [cell setAppearanceWithBlock:^{
@@ -184,9 +187,11 @@
         weakCell.containingTableView = messageTable;
     } force:NO];
     cell.nameTemplate.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"TITLE"];
+    cell.viewTemplate.layer.borderColor = [AISColor lightgrayColor].CGColor;
     cell.sampleDescriptionTemplate.text =  [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
     cell.descriptionTemplate.alpha = 0.0f;
     cell.descriptionTemplate.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
+    [cell setCellHeight:[[[myObject objectAtIndex:indexPath.row] objectForKey:heightTemplateCell] floatValue]];
     return cell;
 
 }

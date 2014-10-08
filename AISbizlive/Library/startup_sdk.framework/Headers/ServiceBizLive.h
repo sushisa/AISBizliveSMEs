@@ -15,7 +15,7 @@
 - (void)serviceBizLiveError:(ResponseStatus *)status;
 @end
 
-@interface ServiceBizLive : RequestService
+@interface ServiceBizLive : RequestService <ConnectDelegate>
 
 @property (nonatomic, assign) id<ServiceBizLiveDelegate> delegate;
 @property (nonatomic, strong) NSString *BizLiveURL;

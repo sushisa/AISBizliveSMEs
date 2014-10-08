@@ -18,7 +18,7 @@
 
 - (void)requestService
 {
-    [super setRequestDict:[self.messageForm getForm]];
+    [super setRequestData:[self.messageForm getForm]];
     [super requestService];
 }
 

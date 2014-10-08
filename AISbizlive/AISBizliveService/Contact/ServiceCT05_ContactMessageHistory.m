@@ -18,37 +18,50 @@
 
 - (void)requestService
 {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_05_CONTACT_MESSAGE_HISTORY];
+    
     if (!self.ID) {
         ResultStatus *resultStatus = [[ResultStatus alloc] init];
         [delegate contactMessageHistoryError:resultStatus];
         return;
     }
-    [super setRequestDict:@{REQ_KEY_CONTACT_ID : self.ID}];
+    NSDictionary *requestData = @{REQ_KEY_CONTACT_ID : self.ID};
+    [super setRequestURL:requestURL];
+    [super setRequestData:requestData];
     [super requestService];
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
     if (![Admin isOnline]) {
-        NSDictionary *history1 = @{RES_KEY_SEND_TIME : @"14032014102051",
+        NSDictionary *history1 = @{RES_KEY_MESSAGE_SEND_DATE : @"1403773133605",
                                    RES_KEY_MESSAGE   : @"Hello World!"};
-        NSDictionary *history2 = @{RES_KEY_SEND_TIME : @"14032014102051",
+        NSDictionary *history2 = @{RES_KEY_MESSAGE_SEND_DATE : @"1403773133605",
                                    RES_KEY_MESSAGE   : @"Hello Promptnow!"};
-        NSDictionary *history3 = @{RES_KEY_SEND_TIME : @"14032014102051",
+        NSDictionary *history3 = @{RES_KEY_MESSAGE_SEND_DATE : @"1403773133605",
                                    RES_KEY_MESSAGE   : @"Hello AIS!"};
         
         NSArray *arrHistory = @[history1, history2, history3];
         
-        responseData = @{RES_KEY_CONTACT_HISTORY_LIST: arrHistory};
+        NSDictionary *contactHistoryList = @{RES_KEY_CONTACT_HISTORY_LIST: arrHistory};
+        responseDict = @{RES_KEY_RESPONSE_DATA: contactHistoryList};
+        
     }
     
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate contactMessageHistoryError:resultStatus];
+        return;
+    }
+    
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
     ResponseContactMessageHistory *historyList = [[ResponseContactMessageHistory alloc] initWithResponseData:responseData];
     [delegate contactMessageHistorySuccess:historyList];
 }
 
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate contactMessageHistoryError:result];
+    [delegate contactMessageHistoryError:nil];
 }
 
 

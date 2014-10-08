@@ -12,6 +12,8 @@
 
 @interface Admin : NSObject
 
+
+
 + (BOOL)isOnline;
 
 @end

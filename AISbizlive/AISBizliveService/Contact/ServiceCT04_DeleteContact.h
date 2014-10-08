@@ -10,7 +10,7 @@
 
 @protocol DeleteContactDelegate <NSObject>
 
-- (void)deleteContactSuccess:(NSDictionary *)responseData;
+- (void)deleteContactSuccess;
 - (void)deleteContactError:(ResultStatus *)status;
 
 @end

@@ -18,11 +18,11 @@
     self = [super init];
     if (self) {
         self.ID = responseData[RES_KEY_CONTACT_ID];
-        self.name = responseData[RES_KEY_NAME];
-        self.lastname = responseData[RES_KEY_LASTNAME];
-        self.phoneNumber = responseData[RES_KEY_MOBILE_NO];
-        self.lastUpdate = responseData[RES_KEY_LAST_UPDATE];
-        self.imageURL = responseData[RES_KEY_IMAGE_URL];
+        self.name = responseData[RES_KEY_CONTACT_FIRSTNAME];
+        self.lastname = responseData[RES_KEY_CONTACT_LASTNAME];
+        self.lastUpdate = responseData[RES_KEY_CONTACT_LAST_UPDATE];
+        self.phoneNumber = responseData[RES_KEY_CONTACT_MOBILE_NO];
+        self.imageURL = responseData[RES_KEY_CONTACT_PHOTO_PATH];
     }
     return self;
 }

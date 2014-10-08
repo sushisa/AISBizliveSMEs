@@ -51,9 +51,8 @@
 }
 - (void)setFrame:(CGRect)frame {
     frame.origin.x += 10;
-//    frame.origin.y += 5;
     frame.size.height -= 10;
-    frame.size.width -= 20;
+    frame.size.width =  [[UIScreen mainScreen] bounds].size.width-20;
     [super setFrame:frame];
 }
 @end

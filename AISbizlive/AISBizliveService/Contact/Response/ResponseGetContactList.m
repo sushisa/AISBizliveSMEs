@@ -16,8 +16,10 @@
     self = [super init];
     if (self) {
         self.contactList = [[NSMutableArray alloc] init];
-        NSArray *arrContactList = responseData[RES_KEY_CONTACT_LIST];
         
+        NSDictionary *responseDict = responseData[RES_KEY_RESPONSE_DATA];
+        NSArray *arrContactList = responseDict[RES_KEY_CONTACT_LIST];
+
         for (NSInteger i = 0; i < [arrContactList count]; i++) {
             ContactDetail *contact = [[ContactDetail alloc] initWithResponseData:arrContactList[i]];
             [self.contactList addObject:contact];

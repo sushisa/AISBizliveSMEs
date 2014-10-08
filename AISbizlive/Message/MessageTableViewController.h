@@ -15,19 +15,26 @@
     
     //Cell
     
+    __weak IBOutlet UITableViewCell *startDateCell;
+    __weak IBOutlet UITableViewCell *endDateCell;
+    __weak IBOutlet UITableViewCell *sendTimeCell;
     __weak IBOutlet UITableViewCell *detailImmediatelyCell;
     
     __weak IBOutlet UITableViewCell *dateCell;
     __weak IBOutlet UITableViewCell *onetimeCell;
     __weak IBOutlet UILabel *onetimeLabel;
+    __weak IBOutlet UIView *onetimeViewCell;
     
     __weak IBOutlet UITableViewCell *everydayCell;
     __weak IBOutlet UILabel *everydayLabel;
+    __weak IBOutlet UIView *everydayViewCell;
     __weak IBOutlet UITableViewCell *weekCell;
     __weak IBOutlet UILabel *weekLabel;
     __weak IBOutlet UIView *weekView;
     __weak IBOutlet UITableViewCell *monthCell;
+    __weak IBOutlet UIView *weekViewCell;
     __weak IBOutlet UILabel *monthLabel;
+    __weak IBOutlet UIView *monthViewCell;
     __weak IBOutlet UIView *monthView;
     __weak IBOutlet UITableViewCell *totalCell;
     

@@ -8,6 +8,7 @@
 
 #import "ResponseContactMessageHistory.h"
 #import "BizliveServiceParameter.h"
+#import "ContactMessageHistory.h"
 
 @implementation ResponseContactMessageHistory
 

@@ -19,10 +19,10 @@
 {
     self = [super init];
     if (self) {
-        self.ID = responseData[RES_KEY_ID];
-        self.name = responseData[RES_KEY_NAME];
-        self.imageURL = responseData[RES_KEY_IMAGE_URL];
-        self.lastUpdate = responseData[RES_KEY_LAST_UPDATE];
+        self.ID = responseData[RES_KEY_GROUP_ID];
+        self.name = responseData[RES_KEY_GROUP_NAME];
+        self.imageURL = responseData[RES_KEY_GROUP_PHOTO_PATH];
+        self.lastUpdate = responseData[RES_KEY_GROUP_LAST_UPDATE];
         
         ResponseGetContactList *responseGetContactList = [[ResponseGetContactList alloc] initWithResponseData:responseData];
         self.contactList = [responseGetContactList contactList];

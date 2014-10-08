@@ -20,10 +20,10 @@
 
 - (void)requestService
 {
-    NSDictionary *requestDict = @{REQ_KEY_EMAIL      : self.email,
-                                  REQ_KEY_FORGOT_TYPE: self.forgotType};
+    NSDictionary *requestDict = @{REQ_KEY_LOGIN_EMAIL      : self.email,
+                                  REQ_KEY_LOGIN_FORGOT_TYPE: self.forgotType};
     
-    [super setRequestDict:requestDict];
+    [super setRequestData:requestDict];
     [super requestService];
 }
 

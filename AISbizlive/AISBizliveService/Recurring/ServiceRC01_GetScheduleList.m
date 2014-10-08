@@ -13,6 +13,7 @@
 
 - (void)requestService
 {
+    [self setRequestURL:@"http://10.252.224.6:8081/bizlive/msgSetting/getAllSchedule"];
     [super requestService];
     
 }
@@ -50,8 +51,8 @@
                                                                              @{RES_KEY_GROUP_ID: @"2"}],
                                                     RES_KEY_CONTACT_LIST : @[@{RES_KEY_CONTACT_ID: @"111"},
                                                                                @{RES_KEY_CONTACT_ID: @"222"}],
-                                                    RES_KEY_MOBILE_LIST  : @[@{RES_KEY_MOBILE_NO:@"089XXXXXXX"},
-                                                                               @{RES_KEY_MOBILE_NO:@"08XXXXXXXX"}]},
+                                                    RES_KEY_MOBILE_LIST  : @[@{RES_KEY_CONTACT_MOBILE_NO:@"089XXXXXXX"},
+                                                                            @{RES_KEY_CONTACT_MOBILE_NO:@"08XXXXXXXX"}]},
                          RES_KEY_SCHEDULE       : @{RES_KEY_START_DATE : @"",
                                                     RES_KEY_END_DATE   : @"",
                                                     RES_KEY_SEND_TIME  : @"23.30"},

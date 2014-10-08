@@ -16,7 +16,7 @@
 {
     switch (errorCode) {
         case SUCCESS:
-            return @"0";
+            return @"0000";
         case ERROR_101:
             return @"101";
         case ERROR_102:

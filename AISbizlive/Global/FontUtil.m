@@ -31,6 +31,6 @@
 +(UIFont *)fontWithFontSize:(eFontSize)fontSize
 {
     float fSize = [FontUtil getPointFontSize:fontSize];
-    return [UIFont fontWithName:AISFontName size:fSize];
+    return [UIFont systemFontOfSize:fSize];
 }
 @end

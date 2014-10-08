@@ -29,7 +29,7 @@
     
     NSDictionary *requestData = @{REQ_KEY_RECURRING_LIST: messageIDArray};
     
-    [super setRequestDict:requestData];
+    [super setRequestData:requestData];
     [super requestService];
 }
 

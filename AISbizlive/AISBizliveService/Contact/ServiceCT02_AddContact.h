@@ -19,13 +19,14 @@
 
 @interface ServiceCT02_AddContact : BizliveService
 
-- (void)setParameterWithName:(NSString *)name
-                    lastname:(NSString *)lastname
-                 phoneNumber:(NSString *)phoneNumber
-                     image64:(NSString *)image64;
+- (void)setParameterWithFirstname:(NSString *)firstname
+                         lastname:(NSString *)lastname
+                      mobileNO:(NSString *)mobileNO
+                          image64:(NSString *)image64
+                    contactSource:(NSString *)contactSource;
 
 
-@property (nonatomic, strong) NSString *name, *lastname, *phoneNumber, *image64;
+@property (nonatomic, strong) NSString *firstname, *lastname, *mobileNO, *image64, *contactSource;
 @property (nonatomic, assign)id<AddContactListDelegate> delegate;
 
 @end

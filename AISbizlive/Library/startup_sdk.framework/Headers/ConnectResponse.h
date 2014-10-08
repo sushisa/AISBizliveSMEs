@@ -23,5 +23,6 @@
 @property (nonatomic, retain) NSDictionary *responseHeader;
 //@property (nonatomic, retain) NSString *responseData;
 @property (nonatomic, retain) NSMutableData *responseData;
+@property (nonatomic) NSInteger *statusCode;
 
 @end

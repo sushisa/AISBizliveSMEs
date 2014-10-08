@@ -95,10 +95,6 @@
     [sendTimeLabel setText:@""];
     [startDateLabel setText:@""];
     [endDateLabel setText:@""];
-    [oneTimeImage setImage:[UIImage imageNamed:OK_GREY]];
-    [everydayImage setImage:[UIImage imageNamed:OK_GREY]];
-    [weekImage setImage:[UIImage imageNamed:OK_GREY]];
-    [monthImage setImage:[UIImage imageNamed:OK_GREY]];
     
     [self showImmediately];
     [self setViewGesture];
@@ -262,6 +258,8 @@
     
     [monthLabel setText:[AISString commonString:typeLabel KeyOfValue :@"MONTH"]];
     [totalSMSSchedule setText:[AISString commonString:typeLabel KeyOfValue :@"TOTALSMS"]];
+    myTableView.rowHeight = UITableViewAutomaticDimension;
+
 }
 
 #pragma mark - Immediately
@@ -277,16 +275,23 @@
     scheduleView.layer.borderColor = [AISColor lightgrayColor].CGColor;
     [detailImmediatelyCell setHidden:NO];
     [myTableView setContentOffset:CGPointMake(myTableView.contentOffset.x, 0) animated:NO];
+    [startDateCell setHidden:YES];
+    [endDateCell setHidden:YES];
+    [sendTimeCell setHidden:YES];
     [dateCell setHidden:YES];
     [onetimeCell setHidden:YES];
     [everydayCell setHidden:YES];
     [weekCell setHidden:YES];
     [monthCell setHidden:YES];
     oneTimeImage.image = [UIImage imageNamed:OK_GREY];
+    onetimeViewCell.layer.borderColor = [AISColor lightgrayColor].CGColor;
     everydayImage.image = [UIImage imageNamed:OK_GREY];
+    everydayViewCell.layer.borderColor = [AISColor lightgrayColor].CGColor;
     weekImage.image = [UIImage imageNamed:OK_GREY];
+    weekViewCell.layer.borderColor = [AISColor lightgrayColor].CGColor;
     monthImage.image = [UIImage imageNamed:OK_GREY];
-    
+    monthViewCell.layer.borderColor = [AISColor lightgrayColor].CGColor;
+    [myTableView beginUpdates];
     [checkHeightCell replaceObjectAtIndex:3 withObject:@"0"];
     [checkHeightCell replaceObjectAtIndex:4 withObject:@"0"];
     [checkHeightCell replaceObjectAtIndex:5 withObject:@"0"];
@@ -295,7 +300,7 @@
     [checkHeightCell replaceObjectAtIndex:8 withObject:@"0"];
     [checkHeightCell replaceObjectAtIndex:9 withObject:@"0"];
     [checkHeightCell replaceObjectAtIndex:10 withObject:@"50"];
-    [myTableView reloadData];
+    [myTableView endUpdates];
 }
 #pragma mark - Schedule
 
@@ -310,25 +315,22 @@
     scheduleImage.image = [UIImage imageNamed:OK_GREEN];
     scheduleView.layer.borderColor = [AISColor lightgreenColor].CGColor;
     immediatelyView.layer.borderColor = [AISColor lightgrayColor].CGColor;
-    [detailImmediatelyCell setHidden:YES];
     [myTableView setScrollEnabled:YES];
     [dateCell setHidden:NO];
     [onetimeCell setHidden:NO];
     [everydayCell setHidden:NO];
     [weekCell setHidden:NO];
     [monthCell setHidden:NO];
-    
-    [checkHeightCell replaceObjectAtIndex:3 withObject:@"50"];
-    [checkHeightCell replaceObjectAtIndex:4 withObject:@"50"];
-    [checkHeightCell replaceObjectAtIndex:5 withObject:@"50"];
+    [myTableView beginUpdates];
+    [checkHeightCell replaceObjectAtIndex:3 withObject:@"0"];
+    [checkHeightCell replaceObjectAtIndex:4 withObject:@"0"];
+    [checkHeightCell replaceObjectAtIndex:5 withObject:@"0"];
     [checkHeightCell replaceObjectAtIndex:6 withObject:@"56"];
     [checkHeightCell replaceObjectAtIndex:7 withObject:@"56"];
     [checkHeightCell replaceObjectAtIndex:8 withObject:@"56"];
     [checkHeightCell replaceObjectAtIndex:9 withObject:@"56"];
     [checkHeightCell replaceObjectAtIndex:10 withObject:@"50"];
-    
-//    oneTimeImage.image = [UIImage imageNamed:OK_GREEN];
-    [myTableView reloadData];
+    [myTableView endUpdates];
 }
 -(void)loadWeekView{
     int row = 3;
@@ -727,34 +729,70 @@
 }
 #pragma mark - Table view data source
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"%@",[checkHeightCell objectAtIndex:indexPath.row]);
+    NSLog(@"%@",[checkHeightCell objectAtIndex:indexPath.row]);
+    
    return [[checkHeightCell objectAtIndex:indexPath.row] floatValue];
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    tstCell = [myTableView cellForRowAtIndexPath:indexPath];
     
     [toText resignFirstResponder];
     [messageTextField resignFirstResponder];
+    
     switch (indexPath.row) {
         case 6:
             oneTimeImage.image = [UIImage imageNamed:OK_GREEN];
+            onetimeViewCell.layer.borderColor = [AISColor lightgreenColor].CGColor;
+            [checkHeightCell replaceObjectAtIndex:3 withObject:@"44"];
+            [checkHeightCell replaceObjectAtIndex:4 withObject:@"0"];
+            [checkHeightCell replaceObjectAtIndex:5 withObject:@"0"];
+            [tableView beginUpdates];
+            [tableView endUpdates];
+            [startDateCell setHidden:NO];
+            [endDateCell setHidden:YES];
+            [sendTimeCell setHidden:YES];
             break;
         case 7:
             everydayImage.image = [UIImage imageNamed:OK_GREEN];
+            everydayViewCell.layer.borderColor = [AISColor lightgreenColor].CGColor;
+            [checkHeightCell replaceObjectAtIndex:3 withObject:@"44"];
+            [checkHeightCell replaceObjectAtIndex:4 withObject:@"44"];
+            [checkHeightCell replaceObjectAtIndex:5 withObject:@"44"];
+            [tableView beginUpdates];
+            [tableView endUpdates];
+            [startDateCell setHidden:NO];
+            [endDateCell setHidden:NO];
+            [sendTimeCell setHidden:NO];
             break;
         case 8:
             weekImage.image = [UIImage imageNamed:OK_GREEN];
             [self loadWeekView];
             [checkHeightCell replaceObjectAtIndex:indexPath.row withObject:@"152"];
+            [checkHeightCell replaceObjectAtIndex:3 withObject:@"44"];
+            [checkHeightCell replaceObjectAtIndex:4 withObject:@"44"];
+            [checkHeightCell replaceObjectAtIndex:5 withObject:@"44"];
+            
+            weekViewCell.layer.borderColor = [AISColor lightgreenColor].CGColor;
             [tableView beginUpdates];
             [tableView endUpdates];
+            [startDateCell setHidden:NO];
+            [endDateCell setHidden:NO];
+            [sendTimeCell setHidden:NO];
             break;
         case 9:
             monthImage.image = [UIImage imageNamed:OK_GREEN];
             [self loadMonthView];
             [checkHeightCell replaceObjectAtIndex:indexPath.row withObject:@"260"];
+            [checkHeightCell replaceObjectAtIndex:3 withObject:@"44"];
+            [checkHeightCell replaceObjectAtIndex:4 withObject:@"44"];
+            [checkHeightCell replaceObjectAtIndex:5 withObject:@"44"];
+            monthViewCell.layer.borderColor = [AISColor lightgreenColor].CGColor;
             [tableView beginUpdates];
             [tableView endUpdates];
+            [startDateCell setHidden:NO];
+            [endDateCell setHidden:NO];
+            [sendTimeCell setHidden:NO];
             break;
         default:
             break;
@@ -764,19 +802,23 @@
     switch (indexPath.row) {
         case 6:
             oneTimeImage.image = [UIImage imageNamed:OK_GREY];
+            onetimeViewCell.layer.borderColor = [AISColor lightgrayColor].CGColor;
             break;
         case 7:
             everydayImage.image = [UIImage imageNamed:OK_GREY];
+            everydayViewCell.layer.borderColor = [AISColor lightgrayColor].CGColor;
             break;
         case 8:
             weekImage.image = [UIImage imageNamed:OK_GREY];
             [checkHeightCell replaceObjectAtIndex:indexPath.row withObject:@"56"];
+            weekViewCell.layer.borderColor = [AISColor lightgrayColor].CGColor;
             [tableView beginUpdates];
             [tableView endUpdates];
             break;
         case 9:
             monthImage.image = [UIImage imageNamed:OK_GREY];
             [checkHeightCell replaceObjectAtIndex:indexPath.row withObject:@"56"];
+            monthViewCell.layer.borderColor = [AISColor lightgrayColor].CGColor;
             [tableView beginUpdates];
             [tableView endUpdates];
             break;

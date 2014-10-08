@@ -19,8 +19,8 @@
 
 - (void)requestService
 {
-    NSDictionary *requestDict = @{REQ_KEY_MSISDN: self.MSISDN};
-    [super setRequestDict:requestDict];
+    NSDictionary *requestDict = @{REQ_KEY_LOGIN_MSISDN: self.MSISDN};
+    [super setRequestData:requestDict];
     [super requestService];
 }
 

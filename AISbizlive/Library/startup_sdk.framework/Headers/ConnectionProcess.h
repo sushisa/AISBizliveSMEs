@@ -9,19 +9,26 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "ConnectServer.h"
+#import "ResponseStatus.h"
 
 @class ConnectionProcess;
 @protocol ConnectProcessDelegate <NSObject>
 
 //-(void)callbackRespond;
--(void)callbackRespond:(NSDictionary *)response;
+- (void)callbackRespond:(NSDictionary *)response;
 //-(void)connectionStart:(ConnectProcess *)sender;
 //-(void)connectionProgress:(ConnectProcess *)sender;
 //-(void)connectionSuccess:(ConnectProcess *)sender;
 //-(void)connectionFail:(ConnectProcess *)sender;
+//- (void)connectionError:(ResponseStatus *)responseStatus;
 
 @end
 
+@protocol ConnectDelegate <NSObject>
+
+- (void)callbackRespond:(NSDictionary *)response;
+
+@end
 @interface ConnectionProcess : NSObject<ConnectServerDelegate>
 {
     ConnectServer *connServer;
@@ -30,6 +37,8 @@
     UIAlertView *av;
 }
 
+@property (nonatomic, strong) NSObject *test;
+@property (assign) id<ConnectDelegate> delegate;
 @property (nonatomic, assign) id<ConnectProcessDelegate> connectProcessDelegate;
 
 -(void)connect:(NSString *)urlService withData:(NSData *)postData requestHeader:(NSMutableURLRequest *)requestHeader;

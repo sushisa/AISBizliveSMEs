@@ -14,48 +14,58 @@
 
 - (void)requestService
 {
-    NSDictionary *requestDict = @{REQ_KEY_CONTACT_ID   : self.ID,
-                                  REQ_KEY_NAME         : self.name,
-                                  REQ_KEY_LASTNAME     : self.lastname,
-                                  REQ_KEY_PHONE_NUMBER : self.phoneNumber,
-                                  REQ_KEY_PHOTO        : self.image64};
-    [super setRequestDict:requestDict];
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_03_EDIT_CONTACT];
+    NSDictionary *requestDict = @{REQ_KEY_CONTACT_ID        : self.ID,
+                                  REQ_KEY_CONTACT_FIRSTNAME : self.firstname,
+                                  REQ_KEY_CONTACT_LASTNAME  : self.lastname,
+                                  REQ_KEY_CONTACT_MOBILE_NO : self.mobileNO,
+                                  REQ_KEY_CONTACT_PHOTO     : self.image64};
+    [super setRequestURL:requestURL];
+    [super setRequestData:requestDict];
     [super requestService];
 }
 
 - (void)setParameterWithID:(NSString *)ID
-                      name:(NSString *)name
+                 firstname:(NSString *)firstname
                   lastname:(NSString *)lastname
-               phoneNumber:(NSString *)phoneNumber
+                  mobileNO:(NSString *)mobileNO
                    image64:(NSString *)image64
 {
     self.ID = ID;
-    self.name = name;
+    self.firstname = firstname;
     self.lastname = lastname;
-    self.phoneNumber = phoneNumber;
+    self.mobileNO = mobileNO;
     self.image64 = image64;
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
     //------------------------ Test ------------------------
     if (![Admin isOnline]) {
-        responseData = @{RES_KEY_CONTACT_ID  : @"01234",
-                         RES_KEY_NAME        : @"Woravit",
-                         RES_KEY_LASTNAME    : @"Poang",
-                         RES_KEY_MOBILE_NO   : @"089xxxxxxx",
-                         RES_KEY_LAST_UPDATE : @"1403777666666",
-                         RES_KEY_IMAGE_URL   : @"www.hotmail.co.th"};
+        NSDictionary *contact = @{RES_KEY_CONTACT_ID             : @"01234",
+                                  RES_KEY_CONTACT_FIRSTNAME      : @"Woravit",
+                                  RES_KEY_CONTACT_LASTNAME       : @"Poang",
+                                  RES_KEY_CONTACT_MOBILE_NO      : @"089xxxxxxx",
+                                  RES_KEY_CONTACT_LAST_UPDATE    : @"1403777666666",
+                                  RES_KEY_CONTACT_PHOTO_PATH     : @"www.hotmail.co.th"};
+        responseDict = @{RES_KEY_RESPONSE_DATA: contact};
     }
     //------------------------ Test ------------------------
     
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate editContactError:resultStatus];
+        return;
+    }
+    
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
     ContactDetail *contactDetail = [[ContactDetail alloc] initWithResponseData:responseData];
     [delegate editContactSuccess:contactDetail];
 }
 
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate editContactError:result];
+    [delegate editContactError:nil];
 }
 
 

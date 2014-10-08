@@ -18,8 +18,8 @@
 
 - (void)requestService
 {
-    NSDictionary *requestDict = @{REQ_KEY_EMAIL: self.email};
-    [super setRequestDict:requestDict];
+    NSDictionary *requestDict = @{REQ_KEY_LOGIN_EMAIL: self.email};
+    [super setRequestData:requestDict];
     [super requestService];
 }
 

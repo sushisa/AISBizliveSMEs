@@ -8,6 +8,7 @@
 
 #import "BizliveService.h"
 #import "ResponseGetContactList.h"
+#import <startup_sdk/ServiceBizLive.h>
 
 @protocol GetContactListDelegate <NSObject>
 
@@ -16,8 +17,8 @@
 
 @end
 
-@interface ServiceCT01_GetContactList : BizliveService
+@interface ServiceCT01_GetContactList : BizliveService <ServiceBizLiveDelegate>
 
-@property (nonatomic, assign)id<GetContactListDelegate> delegate;
+@property (nonatomic, assign)id<GetContactListDelegate> getContactListDelegate;
 
 @end

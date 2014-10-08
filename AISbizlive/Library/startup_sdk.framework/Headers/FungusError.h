@@ -18,6 +18,7 @@ static const int ERROR_CODE_107 = 107;
 static const int ERROR_CODE_108 = 108;
 static const int ERROR_CODE_199 = 199;
 
+
 static const int ERROR_CODE_201 = 201;
 static const int ERROR_CODE_202 = 202;
 static const int ERROR_CODE_203 = 203;
@@ -27,6 +28,7 @@ static const int ERROR_CODE_205 = 205;
 static const int ERROR_CODE_301 = 301;
 static const int ERROR_CODE_302 = 302;
 static const int ERROR_CODE_304 = 304;
+
 
 static const int ERROR_CODE_403 = 403;
 static const int ERROR_CODE_406 = 406;
@@ -47,6 +49,13 @@ static const int ERROR_CODE_599 = 599;
 static const int ERROR_CODE_999 = 999;
 
 #pragma mark - FUNGUS NEW
+
+//HTTP Status Code
+static const int ERROR_CODE_200 = 200; //OK
+static const int ERROR_CODE_400 = 400; //Bad Request
+static const int ERROR_CODE_404 = 404; //Not Found
+static const int ERROR_CODE_500 = 500; //Internal Server Error
+
 //HTTP Status 400
 #define ERROR_CODE_40000 40000
 #define ERROR_CODE_40001 40001

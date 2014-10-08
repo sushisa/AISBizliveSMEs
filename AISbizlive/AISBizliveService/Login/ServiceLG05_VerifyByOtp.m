@@ -22,10 +22,10 @@
 
 - (void)requestService
 {
-    NSDictionary *requestDict = @{REQ_KEY_MSISDN         : self.MSISDN,
-                                  REQ_KEY_EMAIL          : self.email,
-                                  REQ_KEY_OTP_VERIFY_CODE: self.otp};
-    [super setRequestDict:requestDict];
+    NSDictionary *requestDict = @{REQ_KEY_LOGIN_MSISDN         : self.MSISDN,
+                                  REQ_KEY_LOGIN_EMAIL          : self.email,
+                                  REQ_KEY_LOGIN_OTP_VERIFY_CODE: self.otp};
+    [super setRequestData:requestDict];
     [super requestService];
 }
 

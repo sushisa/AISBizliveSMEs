@@ -21,27 +21,34 @@
 #define REQ_KEY_OPERATOR_TYPE           @"operatorType"
 
 //Login
-#define REQ_KEY_FIRSTNAME               @"firstName"
-#define REQ_KEY_LASTNAME                @"lastName"
-#define REQ_KEY_EMAIL                   @"email"
-#define REQ_KEY_MSISDN                  @"msisdn"
-#define REQ_KEY_OTP_VERIFY_CODE         @"otpVerifyCode"
-#define REQ_KEY_EMAIL_VERIFY_CODE        @"emailVerifyCode"
-#define REQ_KEY_USER                    @"user"
-#define REQ_KEY_PASSWORD                @"password"
-#define REQ_KEY_FACEBOOK_TOKEN          @"facebookToken"
-#define REQ_KEY_FORGOT_TYPE             @"forgotType"
+#define REQ_KEY_LOGIN_FIRSTNAME         @"firstName"
+#define REQ_KEY_LOGIN_LASTNAME          @"lastName"
+#define REQ_KEY_LOGIN_EMAIL             @"email"
+#define REQ_KEY_LOGIN_MSISDN            @"msisdn"
+#define REQ_KEY_LOGIN_OTP_VERIFY_CODE   @"otpVerifyCode"
+#define REQ_KEY_LOGIN_EMAIL_VERIFY_CODE @"emailVerifyCode"
+#define REQ_KEY_LOGIN_USER              @"user"
+#define REQ_KEY_LOGIN_PASSWORD          @"password"
+#define REQ_KEY_LOGIN_FACEBOOK_TOKEN    @"facebookToken"
+#define REQ_KEY_LOGIN_FORGOT_TYPE       @"forgotType"
+#define REQ_KEY_LOGIN_PHOTO             @"photo"
 
-//Contact
-#define REQ_KEY_CONTACT_LIST            @"contactList"
-#define REQ_KEY_CONTACT_ID              @"contactId"
-#define REQ_KEY_NAME                    @"name"
-#define REQ_KEY_PHONE_NUMBER            @"phoneNumber"
-#define REQ_KEY_PHOTO                   @"photo"
-#define REQ_KEY_CONTACT_SOURCE          @"contactSource"
+//Group
 #define REQ_KEY_GROUP_CONTACT_LIST      @"groupContactList"
 #define REQ_KEY_GROUP_NAME              @"groupName"
 #define REQ_KEY_GROUP_ID                @"groupId"
+#define REQ_KEY_GROUP_PHOTO             @"photo"
+
+
+//Contact
+#define REQ_KEY_CONTACT_LIST            @"contactIdList"
+#define REQ_KEY_CONTACT_ID              @"contactId"
+#define REQ_KEY_CONTACT_FIRSTNAME       @"firstName"
+#define REQ_KEY_CONTACT_LASTNAME        @"lastName"
+#define REQ_KEY_CONTACT_MOBILE_NO       @"mobileNo"
+#define REQ_KEY_CONTACT_PHOTO           @"photo"
+#define REQ_KEY_CONTACT_SOURCE          @"contactSource"
+
 
 //Message
 #define REQ_KEY_RECEIVER_LIST           @"receiverList"
@@ -64,26 +71,31 @@
 #define RES_KEY_RESPONSE_MESSAGE        @"responseMessage"
 
 //Login
-#define RES_KEY_USER_ID                 @"userId"
-#define RES_KEY_USER_ID_TOKEN           @"userTokenId"
-#define RES_KEY_USERNAME                @"userName"
-#define RES_KEY_CONTACT_QUOTA           @"contactQuota"
-#define RES_KEY_USER_MOBILE_NO          @"userMobileNo"
-#define RES_KEY_OPERATOR_TYPE           @"operatorType"
+#define RES_KEY_LOGIN_USER_ID           @"userId"
+#define RES_KEY_LOGIN_USER_ID_TOKEN     @"userTokenId"
+#define RES_KEY_LOGIN_USERNAME          @"userName"
+#define RES_KEY_LOGIN_CONTACT_QUOTA     @"contactQuota"
+#define RES_KEY_LOGIN_USER_MOBILE_NO    @"userMobileNo"
+#define RES_KEY_LOGIN_OPERATOR_TYPE     @"operatorType"
 #define RES_KEY_LOGIN_FLAG              @"loginFlag"
 
-//Contact
+//Group
 #define RES_KEY_CONTACT_LIST            @"contactList"
 #define RES_KEY_GROUP_LIST              @"groupList"
-#define RES_KEY_CONTACT_HISTORY_LIST    @"contactHistoryList"
+#define RES_KEY_GROUP_NAME              @"groupName"
+#define RES_KEY_GROUP_PHOTO_PATH        @"photoPath"
+#define RES_KEY_GROUP_LAST_UPDATE       @"lastUpdatedDate"
 #define RES_KEY_GROUP_HISTORY_LIST      @"groupHistoryList"
-#define RES_KEY_ID                      @"id"
-#define RES_KEY_NAME                    @"name"
-#define RES_KEY_LASTNAME                @"lastname"
-#define RES_KEY_PHONE_NUMBER            @"phoneNumber"
-#define RES_KEY_LAST_UPDATE             @"lastUpdate"
-#define RES_KEY_IMAGE_URL               @"imageUrl"
-#define RES_KEY_IS_EXIST                @"isExist"
+
+//Contact
+#define RES_KEY_CONTACT_ID              @"contactId"
+#define RES_KEY_CONTACT_FIRSTNAME       @"firstName"
+#define RES_KEY_CONTACT_LASTNAME        @"lastName"
+#define RES_KEY_CONTACT_MOBILE_NO       @"mobileNo"
+#define RES_KEY_CONTACT_LAST_UPDATE     @"lastUpdatedDate"
+#define RES_KEY_CONTACT_PHOTO_PATH      @"photoPath"
+#define RES_KEY_CONTACT_IS_EXIST        @"isExist"
+#define RES_KEY_CONTACT_HISTORY_LIST    @"contactHistoryList"
 
 //Message
 #define RES_KEY_RECEIVER_LIST           @"receiverList"
@@ -92,14 +104,13 @@
 #define RES_KEY_MESSAGE_ID              @"messageId"
 #define RES_KEY_MESSAGE                 @"message"
 #define RES_KEY_TIME_EXPIRE             @"timeExpire"
-#define RES_KEY_CONTACT_ID              @"contactId"
 #define RES_KEY_GROUP_ID                @"groupId"
-#define RES_KEY_MOBILE_NO               @"mobileNo"
 #define RES_KEY_SEND_TYPE               @"sendType"
 #define RES_KEY_SCHEDULE                @"schedule"
 #define RES_KEY_START_DATE              @"startDate"
 #define RES_KEY_END_DATE                @"endDate"
 #define RES_KEY_SEND_TIME               @"sendTime"
+#define RES_KEY_MESSAGE_SEND_DATE       @"sendDate"
 #define RES_KEY_RECURRING_TYPE          @"recurringType"
 #define RES_KEY_WEEKLY                  @"weekly"
 #define RES_KEY_DAY_OF_WEEK             @"day_of_week"

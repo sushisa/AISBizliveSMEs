@@ -24,35 +24,35 @@
 {
     NSDictionary *requestDict;
     if (self.isFacebook) {
-        requestDict = @{REQ_KEY_EMAIL          : self.user,
-                        REQ_KEY_FACEBOOK_TOKEN : self.password};
+        requestDict = @{REQ_KEY_LOGIN_EMAIL          : self.user,
+                        REQ_KEY_LOGIN_FACEBOOK_TOKEN : self.password};
     }
     else {
-        requestDict = @{REQ_KEY_USER     : self.user,
-                        REQ_KEY_PASSWORD : self.password};
+        requestDict = @{REQ_KEY_LOGIN_USER     : self.user,
+                        REQ_KEY_LOGIN_PASSWORD : self.password};
     }
     
-    [super setRequestDict:requestDict];
+    [super setRequestData:requestDict];
     [super requestService];
 }
 
 - (void)bizliveServiceSuccess:(NSDictionary *)responseData
 {
     if (![Admin isOnline]) {
-        responseData = @{RES_KEY_USER_ID_TOKEN  : @"xxxx1234",
-                         RES_KEY_USERNAME       : @"vasin1234",
-                         RES_KEY_USER_MOBILE_NO : @"087xxxxxxx",
-                         RES_KEY_CONTACT_QUOTA  : @"50",
-                         RES_KEY_OPERATOR_TYPE  : @"AIS",
+        responseData = @{RES_KEY_LOGIN_USER_ID_TOKEN  : @"xxxx1234",
+                         RES_KEY_LOGIN_USERNAME       : @"vasin1234",
+                         RES_KEY_LOGIN_USER_MOBILE_NO : @"087xxxxxxx",
+                         RES_KEY_LOGIN_CONTACT_QUOTA  : @"50",
+                         RES_KEY_LOGIN_OPERATOR_TYPE  : @"AIS",
                          RES_KEY_LOGIN_FLAG     : @"N",};
     }
     
     
-    NSLog(@"%@",responseData[RES_KEY_USER_ID_TOKEN]);
-    NSLog(@"%@",responseData[RES_KEY_USERNAME]);
-    NSLog(@"%@",responseData[RES_KEY_USER_MOBILE_NO]);
-    NSLog(@"%@",responseData[RES_KEY_CONTACT_QUOTA]);
-    NSLog(@"%@",responseData[RES_KEY_OPERATOR_TYPE]);
+    NSLog(@"%@",responseData[RES_KEY_LOGIN_USER_ID_TOKEN]);
+    NSLog(@"%@",responseData[RES_KEY_LOGIN_USERNAME]);
+    NSLog(@"%@",responseData[RES_KEY_LOGIN_USER_MOBILE_NO]);
+    NSLog(@"%@",responseData[RES_KEY_LOGIN_CONTACT_QUOTA]);
+    NSLog(@"%@",responseData[RES_KEY_LOGIN_OPERATOR_TYPE]);
     NSLog(@"%@",responseData[RES_KEY_LOGIN_FLAG]);
     
     [delegate loginSuccess];

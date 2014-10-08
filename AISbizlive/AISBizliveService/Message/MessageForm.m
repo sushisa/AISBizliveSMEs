@@ -76,7 +76,7 @@
             NSArray *mobileList = receiverList[RES_KEY_MOBILE_LIST];
             NSMutableArray *mobileNOArray = [NSMutableArray array];
             for (NSDictionary *mobile in mobileList) {
-                NSString *mobileNO = mobile[RES_KEY_MOBILE_NO];
+                NSString *mobileNO = mobile[RES_KEY_CONTACT_MOBILE_NO];
                 [mobileNOArray addObject:mobileNO];
             }
             self.mobileNOList = mobileNOArray;
@@ -138,7 +138,7 @@
             //Prepare Receiver Form
             requestData[RES_KEY_RECEIVER_LIST] = @{RES_KEY_CONTACT_LIST : self.contactIDList,
                                                    RES_KEY_GROUP_LIST   : self.groupIDList,
-                                                   RES_KEY_MOBILE_NO    : self.mobileNOList};
+                                                   RES_KEY_MOBILE_LIST    : self.mobileNOList};
             break;
         case SEND_TYPE_SCHEDULE:
             //Prepare Schedule Form

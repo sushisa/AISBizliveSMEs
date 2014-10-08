@@ -8,86 +8,47 @@
 
 #import "BizliveService.h"
 
-//#import <startup_sdk/ServiceBizLive.h>
-
-
 #import <startup_sdk/ResponseStatus.h>
-#import <startup_sdk/ServiceBizLive.h>
-@interface BizliveService()<ServiceBizLiveDelegate>
+
+@interface BizliveService()
+
 @end
 
 @implementation BizliveService
-@synthesize requestDict;
+@synthesize requestData;
 
 
 - (void)requestService
 {
-    
-    ServiceBizLive *service = [[ServiceBizLive alloc] init];
-    
-    @try {
-        [service setDelegate:self];
-        [service setBizLiveURL:self.requestUrl];
-        [service setRequestDict:[self getRequestData]];
-        [service fungusRequest];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception);
-    }
-}
-
-- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
-{
-    @try {
-        ResultStatus *result = [[ResultStatus alloc] initWithResponse:responseDict];
-        
-        if ([result isResponseSuccess]) {
-            @try {
-                [self bizliveServiceSuccess:[result responseData]];
-            }
-            @catch (NSException *exception) {
-                NSLog(@"%@",exception);
-            }
-        }
-        else
-            [self bizliveServiceError:result];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception);
-    }
+    serviceBizLive = [[ServiceBizLive alloc] init];
+    [serviceBizLive setServiceBizLiveDelegate:self];
+    [serviceBizLive setBizLiveURL:self.requestURL];
+    [serviceBizLive setRequestDict:[self getRequestData:self.requestData]];
+    [serviceBizLive fungusRequest];
     
 }
 
-- (void)serviceBizLiveError:(ResponseStatus *)status
-{
-    ResultStatus *result = [[ResultStatus alloc] initWithResponseStatus:status];
-    [self bizliveServiceError:result];
-}
 
 
-- (NSDictionary *)getRequestData
-{
-    return [self getRequestData:requestDict];
-}
-
-- (NSDictionary *)getRequestData:(NSDictionary *)requestData
+- (NSDictionary *)getRequestData:(NSDictionary *)request
 {
     NSMutableDictionary *requestParam = [[NSMutableDictionary alloc] init];
-    [requestParam setValue:nil forKey:REQ_KEY_USER_TOKEN_ID];
-    [requestParam setValue:nil forKey:REQ_KEY_USER_MOBILE_NO];
+    [requestParam setValue:@"1" forKey:REQ_KEY_USER_TOKEN_ID];
+    [requestParam setValue:@"0815678910" forKey:REQ_KEY_USER_MOBILE_NO];
     [requestParam setValue:@"TH" forKey:REQ_KEY_LANGUAGE];
     [requestParam setValue:@"AIS" forKey:REQ_KEY_OPERATOR_TYPE];
     
-    NSMutableDictionary *request = [[NSMutableDictionary alloc] init];
-    [request setObject:requestParam forKey:REQ_KEY_REQUEST_PARAM];
+    NSMutableDictionary *requestDict = [[NSMutableDictionary alloc] init];
+    [requestDict setObject:requestParam forKey:REQ_KEY_REQUEST_PARAM];
     
-    if (requestData) {
-        [request setValue:requestData forKey:REQ_KEY_REQUEST_DATA];
+    if (request) {
+        [requestDict setValue:request forKey:REQ_KEY_REQUEST_DATA];
     }
     
-    return request;
+    return requestDict;
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData{}
-- (void)bizliveServiceError:(ResultStatus *)result;{}
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict{};
+- (void)serviceBizLiveError:(ResponseStatus *)status{};
+
 @end

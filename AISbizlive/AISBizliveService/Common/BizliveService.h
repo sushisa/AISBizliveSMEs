@@ -7,18 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <startup_sdk/ServiceBizLive.h>
 #import "BizliveServiceParameter.h"
 #import "ResultStatus.h"
 #import "Admin.h"
+#import "BizliveServiceConfig.h"
 
-
-@interface BizliveService : NSObject
+@interface BizliveService : NSObject <ServiceBizLiveDelegate>
+{
+    ServiceBizLive *serviceBizLive;
+}
 
 - (void)requestService;
-- (NSDictionary *)getRequestData;
+- (NSDictionary *)getRequestData:(NSDictionary *)requestData;
 
-@property (nonatomic, strong)NSDictionary *requestDict;
-@property (nonatomic, strong)NSString *requestUrl;
+@property (nonatomic, strong)NSDictionary *requestData;
+@property (nonatomic, strong)NSString *requestURL;
 
 
 @end

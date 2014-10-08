@@ -50,7 +50,6 @@
 
 - (BOOL)isResponseSuccess
 {
-    return YES;
-    //return [self.responseCode isEqualToString:[BizliveServiceCode getCode:SUCCESS]] ;
+    return [self.responseCode isEqualToString:[BizliveServiceCode getCode:SUCCESS]] ;
 }
 @end

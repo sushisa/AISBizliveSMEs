@@ -17,28 +17,28 @@
 
 - (void)requestService
 {
-    NSMutableArray *contactList = [[NSMutableArray alloc]init];
-    for (NSString *contactID in self.contactIDList) {
-        NSDictionary *contactDict = @{REQ_KEY_CONTACT_ID: contactID};
-        [contactList addObject:contactDict];
-    }
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_04_DELETE_CONTACT];
     
-    NSDictionary *requestDict = @{REQ_KEY_CONTACT_LIST  : contactList};
+    NSDictionary *requestDict = @{REQ_KEY_CONTACT_LIST  : self.contactIDList};
 
-    NSLog(@"%@",requestDict);
-    
-    [super setRequestDict:requestDict];
+    [super setRequestURL:requestURL];
+    [super setRequestData:requestDict];
     [super requestService];
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
-    [delegate deleteContactSuccess:responseData];
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate deleteContactError:resultStatus];
+        return;
+    }
+    [delegate deleteContactSuccess];
 }
 
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate deleteContactError:result];
+    [delegate deleteContactError:nil];
 }
 
 

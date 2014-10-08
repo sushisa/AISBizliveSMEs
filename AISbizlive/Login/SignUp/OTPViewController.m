@@ -44,6 +44,7 @@
     [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"OTP"]];
     //TextField
     [otpTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"ACTIVATION_OTP"]];
+    [otpTextField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     //Label
     [OTPLabel setText:[AISString commonString:typeLabel KeyOfValue :@"OTP"]];
     [OTPLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
