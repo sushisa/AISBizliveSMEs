@@ -35,7 +35,7 @@
     messageObject = [[NSMutableArray alloc] init];
     ServiceCT05_ContactMessageHistory *call = [[ServiceCT05_ContactMessageHistory alloc] init];
     [call setDelegate:self];
-    [call setParameterWithID:@"1"];
+    [call setParameterWithID:self.ID];
     [call requestService];
     
     [self setTextLangague];
@@ -128,7 +128,7 @@
 //    NSLog(@"%@",responseContactMessageHistory);
 }
 - (void)contactMessageHistoryError:(ResultStatus *)status{
-    NSLog(@"%@",status);
+//    NSLog(@"%@",status);
 }
 //- (void)contactMessageHistorySuccess:(ResponseContactMessageHistory *)responseContactMessageHistory;
 //- (void)contactMessageHistoryError:(ResultStatus *)status;

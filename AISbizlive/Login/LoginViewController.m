@@ -99,7 +99,11 @@
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASSDIGIT"]];
     }
     else {
-        [self performSegueWithIdentifier: @"tabEN" sender: self];
+        ServiceLG07_Login *login = [[ServiceLG07_Login alloc] init];
+        [login setUser:[emailField text]];
+        [login setPassword:[passwordField text]];
+        [login setDelegate:self];
+        [login requestService];
     }
 }
 // Event Gesture for Hide Keyboard
@@ -118,4 +122,10 @@
     [passwordField resignFirstResponder];
 }
 
+- (void)loginSuccess{
+    [self performSegueWithIdentifier: @"tabEN" sender: self];
+}
+- (void)loginError:(ResultStatus *)resultStatus{
+    
+}
 @end

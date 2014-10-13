@@ -11,6 +11,7 @@
 @interface DetailPeopleGroupViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,GetContactListDelegate>
 {
 
+    IBOutlet UITableView *mytable;
 }
 @property (strong, nonatomic) NSMutableArray *GroupContact;
 @property (strong, nonatomic) NSString *GroupName;

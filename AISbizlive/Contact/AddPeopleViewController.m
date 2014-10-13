@@ -11,6 +11,7 @@
 @interface AddPeopleViewController ()
 {
     UIActionSheet *choosePhoto;
+    NSString *imageName;
     AISAlertView *alertView;
 }
 @end
@@ -36,7 +37,7 @@
                                              action: @selector(hideKeyboard:)];
     [oneTapGesture setNumberOfTouchesRequired:1];
     [[self view] addGestureRecognizer:oneTapGesture];
-    if (self.profile == nil) {
+    if (self.profile == nil || [self.profile isEqualToString: @""]) {
         [imagePeople setBackgroundImage:[UIImage imageNamed:PROFILE_DEFALUT] forState:UIControlStateNormal];
     }
     else {
@@ -130,7 +131,19 @@
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDISNOPHONE"]];
     }
     else {
-        [self.navigationController popViewControllerAnimated:YES];
+//        NSData *data = [imageName dataUsingEncoding: NSUnicodeStringEncoding];
+//        
+//        NSString *ret = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+
+        ServiceCT02_AddContact *callAddPeople = [[ServiceCT02_AddContact alloc] init];
+        [callAddPeople setFirstname:nameTextField.text];
+        [callAddPeople setLastname:lastNameTextField.text];
+        [callAddPeople setMobileNO:mobileNoTextField.text];
+        [callAddPeople setImage64:@""];
+        [callAddPeople setContactSource:@""];
+        [callAddPeople setDelegate:self];
+        [callAddPeople requestService];
+        
 //        [self performSegueWithIdentifier: @"tabEN" sender: self];
     }
 }
@@ -186,6 +199,9 @@
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     //imageVieq.image = chosenImage;
     NSLog(@"%@",chosenImage);
+    NSURL *imagePath = info[UIImagePickerControllerReferenceURL];
+    
+    imageName = [imagePath lastPathComponent];
     [imagePeople setBackgroundImage:chosenImage forState:UIControlStateNormal];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
@@ -197,5 +213,11 @@
 -(void)alert:(NSString *)message{
     [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
     [alertView showAlertView];
+}
+- (void)addContactSuccess:(ContactDetail *)contactDetail{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)addContactError:(ResultStatus *)status{
+    
 }
 @end

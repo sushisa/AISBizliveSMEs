@@ -29,6 +29,6 @@
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *phoneNumber;
 @property (strong, nonatomic) NSString *profile;
-
+@property (strong, nonatomic) NSString *ID;
 
 @end

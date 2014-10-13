@@ -8,7 +8,7 @@
 
 #import "Admin.h"
 
-static BOOL isOnline = YES;
+static BOOL isOnline = NO;
 
 @implementation Admin
 

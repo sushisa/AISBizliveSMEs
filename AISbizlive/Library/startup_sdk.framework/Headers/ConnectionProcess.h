@@ -20,15 +20,11 @@
 //-(void)connectionProgress:(ConnectProcess *)sender;
 //-(void)connectionSuccess:(ConnectProcess *)sender;
 //-(void)connectionFail:(ConnectProcess *)sender;
-//- (void)connectionError:(ResponseStatus *)responseStatus;
+- (void)connectionError:(ResponseStatus *)responseStatus;
 
 @end
 
-@protocol ConnectDelegate <NSObject>
 
-- (void)callbackRespond:(NSDictionary *)response;
-
-@end
 @interface ConnectionProcess : NSObject<ConnectServerDelegate>
 {
     ConnectServer *connServer;
@@ -37,9 +33,8 @@
     UIAlertView *av;
 }
 
-@property (nonatomic, strong) NSObject *test;
-@property (assign) id<ConnectDelegate> delegate;
-@property (nonatomic, assign) id<ConnectProcessDelegate> connectProcessDelegate;
+
+@property (nonatomic, strong) id<ConnectProcessDelegate> connectProcessDelegate;
 
 -(void)connect:(NSString *)urlService withData:(NSData *)postData requestHeader:(NSMutableURLRequest *)requestHeader;
 

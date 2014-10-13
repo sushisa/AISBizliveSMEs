@@ -9,10 +9,16 @@
 #import "DetailPeopleGroupViewController.h"
 #import "AISGlobal.h"
 #import "ContactCell.h"
+
 @interface DetailPeopleGroupViewController ()
 {
     NSDictionary *dict;
     NSMutableArray *detailContact;
+    NSString *FirstNamecontact;
+    NSString *LastNamecontact;
+    NSString *Mobilecontact;
+    NSString *Photocontact;
+    NSString *IDcontact;
 }
 @end
 
@@ -30,8 +36,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [myTable setDelegate:self];
-//    [myTable setDataSource:self];
+    FirstNamecontact = @"firstName";
+    LastNamecontact = @"lastName";
+    Mobilecontact = @"mobileNo";
+    Photocontact = @"photoPath";
+    IDcontact = @"contactId";
+    
     [self setTextLangague];
 }
 -(void)setTextLangague{
@@ -42,13 +52,13 @@
     if ([self GroupName] == nil) {
         [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"CONTACT"]];
         ServiceCT01_GetContactList *call = [[ServiceCT01_GetContactList alloc] init];
-        [call setDelegate:self];
+        [call setGetContactListDelegate:self];
         [call requestService];
 //        [myTable reloadData];
     }
     else{
         [self.navigationItem setTitle:[self GroupName]];
-        detailContact = self.GroupContact;
+        [detailContact addObject: self.GroupContact];
     }
 //    [myTable reloadData];
 }
@@ -81,10 +91,11 @@
 {
     static NSString *CellIdentifier = @"PeopleCell";
     ContactCell *cell = (ContactCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    NSDictionary *tmpDict = [detailContact objectAtIndex:indexPath.row];
-    cell.imageContact.image = [UIImage imageNamed:[tmpDict objectForKey:@"Image"]];
-    cell.nameContact.text = [NSString stringWithFormat:@"%@ %@",[tmpDict objectForKey:@"Name"],[tmpDict objectForKey:@"LastName"]];
-    cell.telContact.text = [tmpDict objectForKey:@"Tel"];
+//    NSDictionary *tmpDict = ;
+//    NSLog(@"%@",[detailContact objectAtIndex:indexPath.row]);
+    cell.imageContact.image = [UIImage imageNamed:[[detailContact objectAtIndex:indexPath.row] objectForKey:Photocontact]];
+    cell.nameContact.text = [NSString stringWithFormat:@"%@ %@",[[detailContact objectAtIndex:indexPath.row] objectForKey:FirstNamecontact],[[detailContact objectAtIndex:indexPath.row] objectForKey:LastNamecontact]];
+    cell.telContact.text = [[detailContact objectAtIndex:indexPath.row] objectForKey:Mobilecontact];
     [cell setCellHeight:cell.frame.size.height];
     return cell;
 }
@@ -105,19 +116,14 @@
     
     for (ContactDetail *contact in [responseGetContactList contactList]) {
         dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                [contact name],@"Name",
-                [contact lastname], @"LastName",
-                [contact phoneNumber],@"Tel",
-                [contact imageURL],@"Image", nil] ;
-        NSLog(@"  Contact ID          : %@\n", [contact ID]);
-        NSLog(@"  Contact name        : %@\n", [contact name]);
-        NSLog(@"  Contact lastname    : %@\n", [contact lastname]);
-        NSLog(@"  Contact phonenumber : %@\n", [contact phoneNumber]);
-        NSLog(@"  Contact lastUpdate  : %@\n", [contact lastUpdate]);
-        NSLog(@"  Contact imageURL    : %@\n", [contact imageURL]);
-
+                [contact ID],IDcontact,
+                [contact name],FirstNamecontact,
+                [contact lastname], LastNamecontact,
+                [contact phoneNumber],Mobilecontact,
+                [contact imageURL],Photocontact, nil] ;
         [detailContact addObject:dict];
     }
+    [mytable reloadData];
     
 }
 - (void)getcontactListError:(ResultStatus *)status

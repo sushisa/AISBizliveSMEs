@@ -15,8 +15,24 @@
 {
     self.ID = ID;
 }
+- (void)requestService
+{
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_09_GETCONTACTLIST_TOEDITGROUP_URL];
+    
+    if (!self.ID) {
+        ResultStatus *resultStatus = [[ResultStatus alloc] init];
+        [delegate getContactListToEditGroupError:resultStatus];
+        return;
+    }
+    
+    NSDictionary *requestDict  = @{REQ_KEY_GROUP_ID: self.ID};
+    
+    [super setRequestData:requestDict];
+    [super setRequestURL:requestURL];
+    [super requestService];
+}
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
     if (![Admin isOnline]) {
         NSDictionary *contact1 = @{RES_KEY_CONTACT_ID          : @"01234",
@@ -38,20 +54,24 @@
                                  RES_KEY_CONTACT_LIST   : @[contact1,
                                                             contact2]};
         
-        responseData = @{RES_KEY_GROUP_LIST    : @[group1]};
-        responseData = group1;
+        responseDict = @{RES_KEY_GROUP_LIST    : @[group1]};
+        responseDict = group1;
     }
-    
-    GroupContactDetail *groupContactDetail = [[GroupContactDetail alloc] initWithResponseData:responseData];
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate getContactListToEditGroupError:resultStatus];
+        return;
+    }
+    GroupContactDetail *groupContactDetail = [[GroupContactDetail alloc] initWithResponseData:responseDict];
     
     
     [delegate getContactListToEditGroupSuccess:groupContactDetail];
     
 }
 
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate getContactListToEditGroupError:result];
+    [delegate getContactListToEditGroupError:nil];
 }
 
 

@@ -105,8 +105,12 @@
                                    );
         };
     */
-    
-    ResponseGetContactList *serviceData = [[ResponseGetContactList alloc] initWithResponseData:responseDict];
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [getContactListDelegate getcontactListError:resultStatus];
+        return;
+    }
+    ResponseGetContactList *serviceData = [[ResponseGetContactList alloc] initWithResponseData:responseDict[RES_KEY_RESPONSE_DATA]];
     [getContactListDelegate getContactListSuccess:serviceData];
 }
 

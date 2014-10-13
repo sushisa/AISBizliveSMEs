@@ -20,6 +20,13 @@
 
 - (void)requestService
 {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_11_DELETE_GROUP_URL];
+    
+    if (!self.groupIDList) {
+        ResultStatus *resultStatus = [[ResultStatus alloc] init];
+        [delegate deleteGroupContactError:resultStatus];
+        return;
+    }
     NSMutableArray *groupList = [NSMutableArray new];
     for (NSString *groupID in self.groupIDList) {
         NSDictionary *groupDict = @{REQ_KEY_GROUP_ID: groupID};
@@ -27,18 +34,24 @@
     }
     
     NSDictionary *requestDict = @{REQ_KEY_GROUP_LIST: groupList};
+    [super setRequestURL:requestURL];
     [super setRequestData:requestDict];
     [super requestService];
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate deleteGroupContactError:resultStatus];
+        return;
+    }
     [delegate deleteGroupContactSuccess];
 }
 
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate deleteGroupContactError:result];
+    [delegate deleteGroupContactError:nil];
 }
 
 

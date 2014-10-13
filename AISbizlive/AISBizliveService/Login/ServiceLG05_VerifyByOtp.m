@@ -19,23 +19,34 @@
     self.email = email;
     self.otp = otp;
 }
-
 - (void)requestService
 {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_LG_05_VERIFY_OTP_URL];
+    
+    if (!self.email) {
+        ResultStatus *resultStatus = [[ResultStatus alloc] init];
+        [delegate verifyByOtpError:resultStatus];
+        return;
+    }
     NSDictionary *requestDict = @{REQ_KEY_LOGIN_MSISDN         : self.MSISDN,
                                   REQ_KEY_LOGIN_EMAIL          : self.email,
                                   REQ_KEY_LOGIN_OTP_VERIFY_CODE: self.otp};
+    [super setRequestURL:requestURL];
     [super setRequestData:requestDict];
     [super requestService];
 }
-
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate verifyByOtpError:resultStatus];
+        return;
+    }
     [delegate verifyByOtpSuccess];
 }
-- (void)bizliveServiceError:(ResultStatus *)result
-{
-    [delegate verifyByOtpError:result];
-}
 
+- (void)serviceBizLiveError:(ResponseStatus *)status
+{
+    [delegate verifyByOtpError:nil];
+}
 @end

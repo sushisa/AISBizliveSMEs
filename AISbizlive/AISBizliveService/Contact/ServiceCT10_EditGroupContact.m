@@ -25,6 +25,13 @@
 
 - (void)requestService
 {
+        NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_10_EDIT_GROUP_URL];
+        
+        if (!self.groupID) {
+            ResultStatus *resultStatus = [[ResultStatus alloc] init];
+            [delegate editGroupContactError:resultStatus];
+            return;
+        }
    NSMutableArray *contactList = [NSMutableArray new];
     for (NSString *contactID in self.contactID) {
         NSDictionary *contact = @{REQ_KEY_CONTACT_ID: contactID};
@@ -35,11 +42,13 @@
                                    REQ_KEY_GROUP_PHOTO     : self.image64,
                                    REQ_KEY_CONTACT_ID: contactList};
     
+    
     [super setRequestData:requestDict];
+    [super setRequestURL:requestURL];
     [super requestService];
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
     if (![Admin isOnline]) {
         NSDictionary *contact1 = @{RES_KEY_CONTACT_ID           : @"01234",
@@ -61,20 +70,24 @@
                                  RES_KEY_CONTACT_LIST   : @[contact1,
                                                             contact2]};
         
-        responseData = @{RES_KEY_GROUP_LIST    : @[group1]};
-        responseData = group1;
+        responseDict = @{RES_KEY_GROUP_LIST    : @[group1]};
+        responseDict = group1;
     }
-    
-    GroupContactDetail *groupContactDetail = [[GroupContactDetail alloc] initWithResponseData:responseData];
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate editGroupContactError:resultStatus];
+        return;
+    }
+    GroupContactDetail *groupContactDetail = [[GroupContactDetail alloc] initWithResponseData:responseDict];
     
     
     [delegate editGroupContactSuccess:groupContactDetail];
     
 }
 
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate editGroupContactError:result];
+    [delegate editGroupContactError:nil];
 }
 
 @end

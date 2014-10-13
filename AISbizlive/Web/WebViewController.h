@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServiceIN01_Help.h"
+#import "ServiceIN02_Privacy.h"
+#import "ServiceIN03_TermCondition.h"
+#import "ServiceIN04_About.h"
 
-@interface WebViewController : UIViewController
+@interface WebViewController : UIViewController<HelpDelegate,PrivacyDelegate,TermConditionDelegate,AboutDelegate>
 {
     __weak IBOutlet UIWebView *webView;
-    
 }
 @property(strong,nonatomic) NSString *Header;
 

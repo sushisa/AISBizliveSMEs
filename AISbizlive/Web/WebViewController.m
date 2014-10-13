@@ -47,15 +47,32 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)helpSuccess:(NSString *)reponseData{
+    
 }
-*/
+- (void)helpError:(ResultStatus *)resultStatus{
+    
+}
+
+- (void)aboutSuccess:(NSString *)reponseData{
+    
+}
+- (void)aboutError:(ResultStatus *)resultStatus{
+    
+}
+
+- (void)privacySuccess:(NSString *)reponseData{
+    
+}
+- (void)privacyError:(ResultStatus *)resultStatus{
+    
+}
+
+- (void)termConditionSuccess:(NSString *)reponseData{
+    
+}
+- (void)termConditionError:(ResultStatus *)resultStatus{
+    
+}
 
 @end

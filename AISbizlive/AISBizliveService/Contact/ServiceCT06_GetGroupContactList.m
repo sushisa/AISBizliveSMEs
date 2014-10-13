@@ -13,10 +13,12 @@
 @synthesize delegate;
 - (void)requestService
 {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL,SERVICE_CT_06_GETGROUPCONTACT_URL];
+    [super setRequestURL:requestURL];
     [super requestService];
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
     if (![Admin isOnline]) {
         NSDictionary *contact1 = @{RES_KEY_CONTACT_ID           : @"01234",
@@ -43,18 +45,23 @@
                                  RES_KEY_CONTACT_LIST   : @[contact1,
                                                             contact2]};
 
-        responseData = @{RES_KEY_GROUP_LIST    : @[group1,
+        responseDict = @{RES_KEY_GROUP_LIST    : @[group1,
                                                    group2]};
     }
-    
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate getGroupContactListError:resultStatus];
+        return;
+    }
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
     ResponseGetGroupContactList *serviceData = [[ResponseGetGroupContactList alloc] initWithResponseData:responseData];
     [delegate getGroupContactListSuccess:serviceData];
     
 }
 
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate getGroupContactListError:result];
+    [delegate getGroupContactListError:nil];
 }
 
 

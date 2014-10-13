@@ -20,6 +20,8 @@
         
         for (NSInteger i = 0; i < [groupContactList count]; i++) {
             NSDictionary *group = groupContactList[i];
+            
+//            group = group[res_key_contact_]
             GroupContactDetail *groupContact = [[GroupContactDetail alloc]initWithResponseData:group];
             [self.groupContactList addObject:groupContact];
         }

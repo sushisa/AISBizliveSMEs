@@ -53,6 +53,8 @@
         [defaults setValue:@"EN" forKey:@"lang"];
         [defaults synchronize];
     }
+    [defaults setObject:@"NO" forKey:@"login"];
+    [defaults synchronize];
     // Override point for customization after application launch.
     return YES;
 }

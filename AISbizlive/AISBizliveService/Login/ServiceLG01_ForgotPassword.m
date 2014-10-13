@@ -20,21 +20,28 @@
 
 - (void)requestService
 {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_LG_01_FORGET_PASSWORD_URL];
+    
     NSDictionary *requestDict = @{REQ_KEY_LOGIN_EMAIL      : self.email,
                                   REQ_KEY_LOGIN_FORGOT_TYPE: self.forgotType};
-    
+    [super setRequestURL:requestURL];
     [super setRequestData:requestDict];
     [super requestService];
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate forgotPasswordError:resultStatus];
+        return;
+    }
     [delegate forgotPasswordSuccess];
 }
 
-- (void)bizliveServiceError:(ResultStatus *)result;
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate forgotPasswordError:result];
+    [delegate forgotPasswordError:nil];
 }
 
 @end

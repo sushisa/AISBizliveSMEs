@@ -19,13 +19,22 @@
 
 - (void)requestService
 {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_08_GROUP_MESSAGE_HISTORY_URL];
+    
+    if (!self.ID) {
+        ResultStatus *resultStatus = [[ResultStatus alloc] init];
+        [delegate groupMessageHistoryError:resultStatus];
+        return;
+    }
+    
     NSDictionary *requestDict  = @{REQ_KEY_CONTACT_ID: self.ID};
     
     [super setRequestData:requestDict];
+    [super setRequestURL:requestURL];
     [super requestService];
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
     if (![Admin isOnline]) {
         NSDictionary *history = @{RES_KEY_SEND_TIME : @"1403773133605",
@@ -33,16 +42,20 @@
         
         NSArray *arrHistory = @[history];
         
-        responseData = @{RES_KEY_CONTACT_HISTORY_LIST: arrHistory};
+        responseDict = @{RES_KEY_CONTACT_HISTORY_LIST: arrHistory};
     }
-    
-    ResponseContactMessageHistory *historyList = [[ResponseContactMessageHistory alloc] initWithResponseData:responseData];
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate groupMessageHistoryError:resultStatus];
+        return;
+    }
+    ResponseContactMessageHistory *historyList = [[ResponseContactMessageHistory alloc] initWithResponseData:responseDict];
     [delegate groupMessageHistorySuccess:historyList];
 }
 
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate groupMessageHistoryError:result];
+    [delegate groupMessageHistoryError:nil];
 }
 
 

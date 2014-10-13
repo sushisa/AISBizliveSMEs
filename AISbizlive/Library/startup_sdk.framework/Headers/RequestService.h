@@ -26,7 +26,7 @@
 #define SERVICE_REQUEST_ORDERID @"RequestOrderID"
 
 
-@interface RequestService : NSObject <DelegateServiceOrderId>
+@interface RequestService : NSObject <DelegateServiceOrderId, ConnectProcessDelegate>
 {
     NSString *serviceName, *requestService;
     ConnectionProcess *connection;

@@ -14,7 +14,7 @@
 
 - (void)requestService
 {
-    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_03_EDIT_CONTACT];
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_03_EDIT_CONTACT_URL];
     NSDictionary *requestDict = @{REQ_KEY_CONTACT_ID        : self.ID,
                                   REQ_KEY_CONTACT_FIRSTNAME : self.firstname,
                                   REQ_KEY_CONTACT_LASTNAME  : self.lastname,

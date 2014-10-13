@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AddPeopleViewController : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>{
+#import "ServiceCT02_AddContact.h"
+@interface AddPeopleViewController : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,AddContactListDelegate>{
     //Field
     __weak IBOutlet UITextField *mobileNoTextField;
     __weak IBOutlet UITextField *lastNameTextField;

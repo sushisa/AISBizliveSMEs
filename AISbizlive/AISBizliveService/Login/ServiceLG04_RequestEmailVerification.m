@@ -15,21 +15,32 @@
 {
     self.email = email;
 }
-
 - (void)requestService
 {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_LG_04_REQUEST_EMAIL_URL];
+    
+    if (!self.email) {
+        ResultStatus *resultStatus = [[ResultStatus alloc] init];
+        [delegate requestEmailVerificationError:resultStatus];
+        return;
+    }
     NSDictionary *requestDict = @{REQ_KEY_LOGIN_EMAIL: self.email};
+    [super setRequestURL:requestURL];
     [super setRequestData:requestDict];
     [super requestService];
 }
-
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate requestEmailVerificationError:resultStatus];
+        return;
+    }
     [delegate requestEmailVerificationSuccess];
 }
-- (void)bizliveServiceError:(ResultStatus *)result
-{
-    [delegate requestEmailVerificationError:result];
-}
 
+- (void)serviceBizLiveError:(ResponseStatus *)status
+{
+    [delegate requestEmailVerificationError:nil];
+}
 @end

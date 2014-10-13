@@ -13,6 +13,8 @@
 
 - (void)requestService
 {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL,SERVICE_CT_07_ADDGROUP_URL];
+    
     NSMutableArray *contactList = [NSMutableArray new];
     for (NSString *contactID in self.contactID) {
         
@@ -22,8 +24,8 @@
     
     NSDictionary *requestDict = @{REQ_KEY_GROUP_NAME  : self.groupName,
                                   REQ_KEY_GROUP_PHOTO : self.image,
-                                  REQ_KEY_CONTACT_LIST: contactList};
-    
+                                  RES_KEY_CONTACT_ID_LIST: contactList};
+    [super setRequestURL:requestURL];
     [super setRequestData:requestDict];
     [super requestService];
 }
@@ -37,7 +39,7 @@
     self.contactID = contactID;
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
     if (![Admin isOnline]) {
         NSDictionary *contact1 = @{RES_KEY_CONTACT_ID           : @"01234",
@@ -59,20 +61,23 @@
                                  RES_KEY_CONTACT_LIST          : @[contact1,
                                                                    contact2]};
         
-        responseData = @{RES_KEY_GROUP_LIST    : @[group1]};
-        responseData = group1;
+        responseDict = @{RES_KEY_GROUP_LIST    : @[group1]};
+        responseDict = group1;
     }
-    
-    GroupContactDetail *groupContactDetail = [[GroupContactDetail alloc] initWithResponseData:responseData];
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate addGroupContactError:resultStatus];
+        return;
+    }
+    GroupContactDetail *groupContactDetail = [[GroupContactDetail alloc] initWithResponseData:responseDict];
     
     
     [delegate addGroupContactSuccess:groupContactDetail];
     
 }
-
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate addGroupContactError:result];
+    [delegate addGroupContactError:nil];
 }
 
 

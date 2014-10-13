@@ -20,6 +20,8 @@
 
 - (void)requestService
 {
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_12_IMPORT_CONTACT_URL];
+
     NSMutableArray *contactList = [NSMutableArray new];
     for (ContactDetail *contact in self.contactList) {
         NSDictionary *contactDict = @{REQ_KEY_CONTACT_FIRSTNAME     : [contact name],
@@ -31,11 +33,12 @@
     }
     
     NSDictionary *requestDict = @{REQ_KEY_CONTACT_LIST: contactList};
+    [super setRequestURL:requestURL];
     [super setRequestData:requestDict];
     [super requestService];
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
     //------------------------------- Test -------------------------------
     if (![Admin isOnline]) {
@@ -54,17 +57,21 @@
                                    RES_KEY_CONTACT_PHOTO_PATH   : @"www.google.co.th"};
         
         NSArray *arrContact = @[contact1,contact2];
-        responseData = @{RES_KEY_CONTACT_LIST : arrContact};
+        responseDict = @{RES_KEY_CONTACT_LIST : arrContact};
     }
     //------------------------------- Test -------------------------------
-    
-    ResponseGetContactList *serviceData = [[ResponseGetContactList alloc] initWithResponseData:responseData];
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate importContactError:resultStatus];
+        return;
+    }
+    ResponseGetContactList *serviceData = [[ResponseGetContactList alloc] initWithResponseData:responseDict];
     [delegate importContactSuccess:serviceData];
 }
 
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate importContactError:result];
+    [delegate importContactError:nil];
 }
 
 

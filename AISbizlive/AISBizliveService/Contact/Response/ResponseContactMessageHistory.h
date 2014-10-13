@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ContactMessageHistory.h"
 @interface ResponseContactMessageHistory : NSObject
 
 - (id)initWithResponseData:(NSDictionary *)responseData;

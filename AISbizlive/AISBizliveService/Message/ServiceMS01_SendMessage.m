@@ -28,14 +28,14 @@
     
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
     [delegate sendMessageSuccess];
     
 }
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate sendMessageError:result];
+    [delegate sendMessageError:nil];
 }
 
 @end

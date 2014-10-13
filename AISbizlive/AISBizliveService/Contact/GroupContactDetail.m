@@ -19,10 +19,11 @@
 {
     self = [super init];
     if (self) {
-        self.ID = responseData[RES_KEY_GROUP_ID];
-        self.name = responseData[RES_KEY_GROUP_NAME];
-        self.imageURL = responseData[RES_KEY_GROUP_PHOTO_PATH];
-        self.lastUpdate = responseData[RES_KEY_GROUP_LAST_UPDATE];
+        NSDictionary * contactGroup = responseData[RES_KEY_CONTACT_GROUP];
+        self.ID = contactGroup[RES_KEY_GROUP_ID];
+        self.name = contactGroup[RES_KEY_GROUP_NAME];
+        self.imageURL = contactGroup[RES_KEY_GROUP_PHOTO_PATH];
+        self.lastUpdate = contactGroup[RES_KEY_GROUP_LAST_UPDATE];
         
         ResponseGetContactList *responseGetContactList = [[ResponseGetContactList alloc] initWithResponseData:responseData];
         self.contactList = [responseGetContactList contactList];

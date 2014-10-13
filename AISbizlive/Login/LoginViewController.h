@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface LoginViewController : UIViewController{
+#import "ServiceLG07_Login.h"
+@interface LoginViewController : UIViewController<LoginDelegate>{
     
     __weak IBOutlet UIButton *forgetPassButton;
     __weak IBOutlet UILabel *emailLabel;

@@ -18,7 +18,7 @@
 
 - (void)requestService
 {
-    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_05_CONTACT_MESSAGE_HISTORY];
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_05_CONTACT_MESSAGE_HISTORY_URL];
     
     if (!self.ID) {
         ResultStatus *resultStatus = [[ResultStatus alloc] init];

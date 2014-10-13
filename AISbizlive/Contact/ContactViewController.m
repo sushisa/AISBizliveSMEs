@@ -18,15 +18,25 @@
 
 @interface ContactViewController ()
 {
-    NSMutableArray *Checkcontact;
+    NSDictionary *contactDict;
     
-    NSMutableArray *Namecontact;
-    NSMutableArray *LastNamecontact;
-    NSMutableArray *Telcontact;
-    NSMutableArray *Imagecontact;
+    //Contact People
+    NSMutableArray *contactArray;
     
-    NSDictionary *dictToDetail;
-    NSMutableArray *Groupcontact;
+    NSString *IDcontact;
+    NSString *FirstNamecontact;
+    NSString *LastNamecontact;
+    NSString *Mobilecontact;
+    NSString *Photocontact;
+    NSString *Checkcontact;
+    
+    //Contact Group
+    NSMutableArray *groupArray;
+    NSMutableArray *contactGroup;
+    NSString *IDgroup;
+    NSString *Namegroup;
+    NSString *Photogroup;
+    
     
     AISAlertView *alertView;
     int selectIndex;
@@ -55,6 +65,26 @@
     [[self view] addGestureRecognizer:oneTapGesture];
     [self setTextLangague];
     [self.tabBarController setSelectedIndex:1];
+    FirstNamecontact = @"firstName";
+    LastNamecontact = @"lastName";
+    Mobilecontact = @"mobileNo";
+    Photocontact = @"photoPath";
+    IDcontact = @"contactId";
+    
+    Checkcontact = @"check";
+    contactArray = [[NSMutableArray alloc] init];
+    ServiceCT01_GetContactList *callPeople = [[ServiceCT01_GetContactList alloc] init];
+    [callPeople setGetContactListDelegate:self];
+    [callPeople requestService];
+    
+    Namegroup = @"name";
+    IDgroup = @"groupId";
+    Photogroup = @"photoGroup";
+    groupArray = [[NSMutableArray alloc] init];
+    contactGroup = [[NSMutableArray alloc] init];
+    ServiceCT06_GetGroupContactList *callGroup = [[ServiceCT06_GetGroupContactList alloc] init];
+    [callGroup setDelegate:self];
+    [callGroup requestService];
 }
 - (void)hideKeyboard:(UITapGestureRecognizer *)sender {
     [seachTextField resignFirstResponder];
@@ -107,9 +137,9 @@
     NSArray *arr = [self.navigationController viewControllers];
     MessageTableViewController *rvc = (MessageTableViewController *)[arr objectAtIndex:[arr count]-2];
     NSMutableArray *returnContact = [[NSMutableArray alloc] init];
-    for (int i = 0; i < Checkcontact.count; i++) {
-        if ([[Checkcontact objectAtIndex:i] isEqualToString:@"Ok_Green.png"]) {
-            [returnContact addObject:[Namecontact objectAtIndex:i]];
+    for (int i = 0; i < contactArray.count; i++) {
+        if ([[[contactArray objectAtIndex:i] objectForKey:Checkcontact] isEqualToString:@"Ok_Green.png"]) {
+            [returnContact addObject:[[contactArray objectAtIndex:i] objectForKey:FirstNamecontact]];
         }
     }
     rvc.arrayContact = returnContact;
@@ -129,14 +159,6 @@
         [testTable setEditing:NO animated:NO];
         self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] PeopleDeleteButtonWithAction:@selector(peopleDelete) withTarget:self];
     }
-    Checkcontact = [[NSMutableArray alloc] init];
-    Namecontact = [[NSMutableArray alloc] init];
-    LastNamecontact = [[NSMutableArray alloc] init];
-    Telcontact = [[NSMutableArray alloc] init];
-    Imagecontact = [[NSMutableArray alloc] init];
-    ServiceCT01_GetContactList *call = [[ServiceCT01_GetContactList alloc] init];
-    [call setDelegate:self];
-    [call requestService];
     [testTable reloadData];
 }
 -(void)loadGroupView{
@@ -155,14 +177,7 @@
 
         [testTable setEditing:NO animated:NO];
     }
-    Checkcontact = [[NSMutableArray alloc] init];
-    Namecontact = [[NSMutableArray alloc] init];
-    Imagecontact = [[NSMutableArray alloc] init];
-    Groupcontact = [[NSMutableArray alloc] init];
-    ServiceCT06_GetGroupContactList *call = [[ServiceCT06_GetGroupContactList alloc] init];
     
-    [call setDelegate:self];
-    [call requestService];
     [testTable reloadData];
 }
 -(void)peopleAdd{
@@ -207,7 +222,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return Namecontact.count;
+    
+    if (selectPeopleAndGroup.selectedSegmentIndex == 0) {
+        return contactArray.count;
+    }
+    else{
+        return groupArray.count;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -232,15 +253,26 @@
     } force:NO];
     
     
-        cell.checkContact.image = [UIImage imageNamed:[Checkcontact objectAtIndex:indexPath.row]];
-        cell.imageContact.image = [UIImage imageNamed:[Imagecontact objectAtIndex:indexPath.row]];
-    
     if (selectPeopleAndGroup.selectedSegmentIndex == 0) {
-        cell.nameContact.text = [NSString stringWithFormat:@"%@ %@",[Namecontact objectAtIndex:indexPath.row],[LastNamecontact objectAtIndex:indexPath.row]];
-        cell.telContact.text = [Telcontact objectAtIndex:indexPath.row];
+        cell.nameContact.text = [NSString stringWithFormat:@"%@ %@",[[contactArray objectAtIndex:indexPath.row] objectForKey:FirstNamecontact],[[contactArray objectAtIndex:indexPath.row] objectForKey:LastNamecontact]];
+        cell.telContact.text = [[contactArray objectAtIndex:indexPath.row] objectForKey:Mobilecontact];
+        cell.checkContact.image = [UIImage imageNamed:[[contactArray objectAtIndex:indexPath.row] objectForKey:Checkcontact]];
+        if ([[[contactArray objectAtIndex:indexPath.row] objectForKey:Photocontact]isEqualToString:@""]) {
+            cell.imageContact.image = [UIImage imageNamed:PROFILE_DEFALUT];
+        }else{
+//        cell.imageContact.image = [UIImage imageNamed:[[contactArray objectAtIndex:indexPath.row] objectForKey:Photocontact]];
+            NSData * img1 = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",SERVER_PREFIX_URL,[[contactArray objectAtIndex:indexPath.row] objectForKey:Photocontact]]]];
+            cell.imageContact.image = [UIImage imageWithData:img1];
+        }
     }
     else{
-        cell.nameContact.text = [Namecontact objectAtIndex:indexPath.row];
+        cell.nameContact.text = [[groupArray objectAtIndex:indexPath.row] objectForKey:Namegroup];
+        cell.checkContact.image = [UIImage imageNamed:[[groupArray objectAtIndex:indexPath.row] objectForKey:Photogroup]];
+        if ([[[groupArray objectAtIndex:indexPath.row] objectForKey:Photogroup]isEqualToString:@""]) {
+            cell.imageContact.image = [UIImage imageNamed:PROFILE_DEFALUT];
+        }else{
+        cell.imageContact.image = [UIImage imageNamed:[[groupArray objectAtIndex:indexPath.row] objectForKey:Photogroup]];
+        }
         
     }
     [cell setCellHeight:cell.frame.size.height];
@@ -253,12 +285,12 @@
         ContactCell *checkCell = (ContactCell *)[testTable cellForRowAtIndexPath:indexPath];
         UIImage *check = [UIImage imageNamed:@"Ok_Grey.png"];
         if(checkCell.checkContact.image == check){
-            [Checkcontact replaceObjectAtIndex:indexPath.row withObject:@"Ok_Green.png"];
+            [contactArray replaceObjectAtIndex:indexPath.row withObject:@"Ok_Green.png"];
             checkCell.checkContact.image = [UIImage imageNamed:@"Ok_Green.png"];
         }
         else{
             
-            [Checkcontact replaceObjectAtIndex:indexPath.row withObject:@"Ok_Grey.png"];
+            [contactArray replaceObjectAtIndex:indexPath.row withObject:@"Ok_Grey.png"];
             checkCell.checkContact.image = [UIImage imageNamed:@"Ok_Grey.png"];
         }
         
@@ -280,18 +312,19 @@
 {
     if ([[segue identifier] isEqualToString:@"cellToPeople"]) {
         DetailPeopleViewController *detailPeople = [segue destinationViewController];
-        detailPeople.firstName = [Namecontact objectAtIndex:selectIndex];
-        detailPeople.lastName = [LastNamecontact objectAtIndex:selectIndex];
-        detailPeople.phoneNumber = [Telcontact objectAtIndex:selectIndex];
-        detailPeople.profile = [Imagecontact objectAtIndex:selectIndex];
+        detailPeople.firstName = [[contactArray objectAtIndex:selectIndex] objectForKey:FirstNamecontact];
+        detailPeople.lastName = [[contactArray objectAtIndex:selectIndex] objectForKey:LastNamecontact];
+        detailPeople.phoneNumber = [[contactArray objectAtIndex:selectIndex] objectForKey:Mobilecontact];
+        detailPeople.profile = [[contactArray objectAtIndex:selectIndex] objectForKey:Photocontact];
+        detailPeople.ID = [[contactArray objectAtIndex:selectIndex] objectForKey:IDcontact];
     }
     else if([[segue identifier] isEqualToString:@"EditPeople"]) {
         AddPeopleViewController *editPeople = [segue destinationViewController];
         editPeople.checkPush = @"YES";
-        editPeople.firstName = [Namecontact objectAtIndex:selectIndex];
-        editPeople.lastName = [LastNamecontact objectAtIndex:selectIndex];
-        editPeople.phoneNumber = [Telcontact objectAtIndex:selectIndex];
-        editPeople.profile = [Imagecontact objectAtIndex:selectIndex];
+        editPeople.firstName = [[contactArray objectAtIndex:selectIndex] objectForKey:FirstNamecontact];
+        editPeople.lastName = [[contactArray objectAtIndex:selectIndex] objectForKey:LastNamecontact];
+        editPeople.phoneNumber = [[contactArray objectAtIndex:selectIndex] objectForKey:Mobilecontact];
+        editPeople.profile = [[contactArray objectAtIndex:selectIndex] objectForKey:Photocontact];
     } else if([[segue identifier] isEqualToString:@"AddPeople"]) {
         AddPeopleViewController *editPeople = [segue destinationViewController];
         editPeople.checkPush = @"YES";
@@ -299,14 +332,14 @@
         
     }else if ([[segue identifier] isEqualToString:@"EditGroup"]) {
         AddGroupViewController *addGroup = [segue destinationViewController];
-        addGroup.nameGroup = [Namecontact objectAtIndex:selectIndex];
-        addGroup.profileGroup = [Imagecontact objectAtIndex:selectIndex];
+        addGroup.nameGroup = [[groupArray objectAtIndex:selectIndex] objectForKey:Namegroup];
+        addGroup.profileGroup = [[groupArray objectAtIndex:selectIndex] objectForKey:Photogroup];
 //        NSLog(@"EditGroup");
     }else if ([[segue identifier] isEqualToString:@"cellToGroup"]) {
         DetailGroupViewController *addGroup = [segue destinationViewController];
-        addGroup.nameGroup = [Namecontact objectAtIndex:selectIndex];
-        addGroup.profileGroup = [Imagecontact objectAtIndex:selectIndex];
-        addGroup.GroupContact = Groupcontact;
+        addGroup.nameGroup = [[groupArray objectAtIndex:selectIndex] objectForKey:Namegroup];
+        addGroup.profileGroup = [[groupArray objectAtIndex:selectIndex] objectForKey:Photogroup];
+        addGroup.GroupContact = [contactGroup objectAtIndex:selectIndex];
     }
 }
 - (NSArray *)rightButtons
@@ -348,10 +381,10 @@
         {
             // Delete
             if ([selectPeopleAndGroup selectedSegmentIndex] == 0) {
-                [self alert:[NSString stringWithFormat:@"%@ %@ %@",[AISString commonString:typePopup KeyOfValue :@"DELETEPEOPLE"],[Namecontact objectAtIndex:selectIndex],[AISString commonString:typePopup KeyOfValue :@"DELETEDESCIPTION"]]];
+                [self alert:[NSString stringWithFormat:@"%@ %@ %@",[AISString commonString:typePopup KeyOfValue :@"DELETEPEOPLE"],[[contactArray objectAtIndex:selectIndex] objectForKey:FirstNamecontact],[AISString commonString:typePopup KeyOfValue :@"DELETEDESCIPTION"]]];
             }
             else{
-                [self alert:[NSString stringWithFormat:@"%@ %@ %@",[AISString commonString:typePopup KeyOfValue :@"DELETEGROUP"],[Namecontact objectAtIndex:selectIndex],[AISString commonString:typePopup KeyOfValue :@"DELETEDESCIPTION"]]];
+                [self alert:[NSString stringWithFormat:@"%@ %@ %@",[AISString commonString:typePopup KeyOfValue :@"DELETEGROUP"],[[contactArray objectAtIndex:selectIndex] objectForKey:FirstNamecontact],[AISString commonString:typePopup KeyOfValue :@"DELETEDESCIPTION"]]];
             }
             break;
         }
@@ -362,12 +395,17 @@
 - (void)getContactListSuccess:(ResponseGetContactList *)responseGetContactList{
     
     for (ContactDetail *contact in [responseGetContactList contactList]) {
-        [Namecontact addObject:[contact name]];
-        [LastNamecontact addObject:[contact lastname]];
-        [Telcontact addObject:[contact phoneNumber]];
-        [Imagecontact addObject:[contact imageURL]];
-        [Checkcontact addObject:@"Ok_Grey.png"];
+        contactDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                       [contact ID],IDcontact,
+                       [contact name],FirstNamecontact,
+                       [contact lastname], LastNamecontact,
+                       [contact phoneNumber],Mobilecontact,
+                       [contact imageURL],Photocontact,
+                       @"Ok_Grey.png",Checkcontact,nil] ;
+        [contactArray addObject:contactDict];
     }
+    
+    [testTable reloadData];
 }
 - (void)getcontactListError:(ResultStatus *)status
 {
@@ -379,26 +417,25 @@
 //        NSLog(@"Group name       : %@\n", [groupContact name]);
 //        NSLog(@"Group imageURL   : %@\n", [groupContact imageURL]);
 //        NSLog(@"Group lastUpdate : %@\n", [groupContact lastUpdate]);
-        [Namecontact addObject:[groupContact name]];
-        [Imagecontact addObject:[groupContact imageURL]];
-        [Checkcontact addObject:@"Ok_Grey.png"];
-//        for (ContactDetail *contact in [groupContact contactList]) {
-////            NSLog(@"  Contact ID          : %@\n", [contact ID]);
-////            NSLog(@"  Contact name        : %@\n", [contact name]);
-////            NSLog(@"  Contact lastname    : %@\n", [contact lastname]);
-////            NSLog(@"  Contact phonenumber : %@\n", [contact phoneNumber]);
-////            NSLog(@"  Contact lastUpdate  : %@\n", [contact lastUpdate]);
-////            NSLog(@"  Contact imageURL    : %@\n", [contact imageURL]);
-//            
-//            dictToDetail = [NSDictionary dictionaryWithObjectsAndKeys:
-//                            [contact name],@"Name",
-//                            [contact lastname], @"LastName",
-//                            [contact phoneNumber],@"Tel",
-//                            [contact imageURL],@"Image", nil] ;
-//            [Groupcontact addObject:dictToDetail];
-//        }
+        contactDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                       [groupContact ID],IDgroup,
+                       [groupContact name],Namegroup,
+                       [groupContact imageURL],Photogroup,nil] ;
+        [groupArray addObject:contactDict];
+        for (ContactDetail *contact in [groupContact contactList]) {
+            
+            contactDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                           [contact ID],IDcontact,
+                           [contact name],FirstNamecontact,
+                           [contact lastname], LastNamecontact,
+                           [contact phoneNumber],Mobilecontact,
+                           [contact imageURL],Photocontact,nil] ;
+            [contactGroup addObject:contactDict];
+        }
         
     }
+    
+    [testTable reloadData];
 }
 - (void)getGroupContactListError:(ResultStatus *)status{
     
@@ -408,7 +445,17 @@
     [alertView dismissAlertView];
 }
 -(void)deleteAction:(id)sender{
+    ServiceCT04_DeleteContact *deletePeople = [[ServiceCT04_DeleteContact alloc] init];
+    [deletePeople setDelegate:self];
+    [deletePeople setParameterWithContactIDList:[NSArray arrayWithObjects:[[contactArray objectAtIndex:selectIndex] objectForKey:IDcontact], nil]];
+    [deletePeople requestService];
+    
+}
+- (void)deleteContactSuccess{
     [alertView dismissAlertView];
+}
+- (void)deleteContactError:(ResultStatus *)status{
+    
 }
 -(void)alert:(NSString *)message{
     [alertView withActionLeft:@selector(doneAction:) withActionRight:@selector(deleteAction:) withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"CANCEL"] RightString:[AISString commonString:typeButton KeyOfValue :@"DELETE"]];

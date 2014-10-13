@@ -164,6 +164,42 @@
 		71D6297B19E54EAE00CE9AF5 /* ServiceRC02_DeleteSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6295319E54EAE00CE9AF5 /* ServiceRC02_DeleteSchedule.m */; };
 		71D6297C19E54EAE00CE9AF5 /* ServiceRC03_UpdateSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6295519E54EAE00CE9AF5 /* ServiceRC03_UpdateSchedule.m */; };
 		71D6297D19E54EAE00CE9AF5 /* TestRecurring.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6295819E54EAE00CE9AF5 /* TestRecurring.m */; };
+		71D6F47519EB7EDD00DF95C0 /* ServicePK01_GetPackageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F47419EB7EDD00DF95C0 /* ServicePK01_GetPackageList.m */; };
+		71D6F47919EB7F0100DF95C0 /* ServicePK02_GetTopupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F47819EB7F0100DF95C0 /* ServicePK02_GetTopupList.m */; };
+		71D6F47C19EB7F1D00DF95C0 /* ServicePK03_Cashcard.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F47B19EB7F1D00DF95C0 /* ServicePK03_Cashcard.m */; };
+		71D6F47F19EB7F2F00DF95C0 /* ServicePK04_Billing.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F47E19EB7F2F00DF95C0 /* ServicePK04_Billing.m */; };
+		71D6F48219EB7F3F00DF95C0 /* ServicePK05_mPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F48119EB7F3F00DF95C0 /* ServicePK05_mPay.m */; };
+		71D6F48519EB7F6400DF95C0 /* ServicePK06_Creditcard.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F48419EB7F6400DF95C0 /* ServicePK06_Creditcard.m */; };
+		71D6F48819EB7FB000DF95C0 /* ServiceST01_SettingProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F48719EB7FB000DF95C0 /* ServiceST01_SettingProfile.m */; };
+		71D6F48C19EB7FDD00DF95C0 /* ServiceST02_ChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F48B19EB7FDD00DF95C0 /* ServiceST02_ChangePassword.m */; };
+		71D6F48F19EB7FFF00DF95C0 /* ServiceNW01_GetNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F48E19EB7FFF00DF95C0 /* ServiceNW01_GetNews.m */; };
+		71D6F49319EB806A00DF95C0 /* ServiceHT01_SendMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F49219EB806A00DF95C0 /* ServiceHT01_SendMessage.m */; };
+		71D6F49719EB807D00DF95C0 /* ServiceHT02_Topup.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F49619EB807D00DF95C0 /* ServiceHT02_Topup.m */; };
+		71D6F49A19EB808E00DF95C0 /* ServiceHT03_Balance.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F49919EB808E00DF95C0 /* ServiceHT03_Balance.m */; };
+		71D6F49D19EB80BD00DF95C0 /* ServiceIN01_Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F49C19EB80BD00DF95C0 /* ServiceIN01_Help.m */; };
+		71D6F4A119EB80FF00DF95C0 /* ServiceIN02_Privacy.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4A019EB80FF00DF95C0 /* ServiceIN02_Privacy.m */; };
+		71D6F4A419EB812000DF95C0 /* ServiceIN03_TermCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4A319EB812000DF95C0 /* ServiceIN03_TermCondition.m */; };
+		71D6F4A719EB813300DF95C0 /* ServiceIN04_About.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4A619EB813300DF95C0 /* ServiceIN04_About.m */; };
+		71D6F4AA19EB860300DF95C0 /* TemplateDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4A919EB860300DF95C0 /* TemplateDetail.m */; };
+		71D6F4AD19EB871400DF95C0 /* ResponseGetTemplateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4AC19EB871400DF95C0 /* ResponseGetTemplateList.m */; };
+		71D6F4B119EB89EA00DF95C0 /* PackageDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4B019EB89EA00DF95C0 /* PackageDetail.m */; };
+		71D6F4B419EB96CB00DF95C0 /* TopupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4B319EB96CB00DF95C0 /* TopupDetail.m */; };
+		71D6F4B719EB9D3600DF95C0 /* CashcardDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4B619EB9D3600DF95C0 /* CashcardDetail.m */; };
+		71D6F4BA19EBA32400DF95C0 /* ProfileDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4B919EBA32400DF95C0 /* ProfileDetail.m */; };
+		71D6F4C319EBA88900DF95C0 /* ListPackageDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4C219EBA88900DF95C0 /* ListPackageDetail.m */; };
+		71D6F4C619EBAB9600DF95C0 /* ResponseSettingProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4C519EBAB9600DF95C0 /* ResponseSettingProfile.m */; };
+		71D6F4C919EBB06800DF95C0 /* ResponseListPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4C819EBB06800DF95C0 /* ResponseListPackage.m */; };
+		71D6F4CC19EBB88E00DF95C0 /* ResponseGetNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4CB19EBB88E00DF95C0 /* ResponseGetNews.m */; };
+		71D6F4CF19EBB8E500DF95C0 /* NewsDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4CE19EBB8E500DF95C0 /* NewsDetail.m */; };
+		71D6F4D219EBBF9C00DF95C0 /* SendMessageDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4D119EBBF9C00DF95C0 /* SendMessageDetail.m */; };
+		71D6F4D519EBC19A00DF95C0 /* ResponseSendMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4D419EBC19A00DF95C0 /* ResponseSendMessage.m */; };
+		71D6F4D819EBC2CA00DF95C0 /* ResponseTopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4D719EBC2CA00DF95C0 /* ResponseTopup.m */; };
+		71D6F4DB19EBC2EE00DF95C0 /* TopupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4DA19EBC2EE00DF95C0 /* TopupDetail.m */; };
+		71DCFBAC19E7C7C2004D2895 /* TestServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBAB19E7C7C2004D2895 /* TestServiceViewController.m */; };
+		71DCFBB319E7CF09004D2895 /* ServiceTP02_GetTemplateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBB219E7CF09004D2895 /* ServiceTP02_GetTemplateList.m */; };
+		71DCFBB619E7CF3C004D2895 /* ServiceTP01_AddTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBB519E7CF3C004D2895 /* ServiceTP01_AddTemplate.m */; };
+		71DCFBB919E7CF56004D2895 /* ServiceTP03_EditTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBB819E7CF56004D2895 /* ServiceTP03_EditTemplate.m */; };
+		71DCFBBC19E7CF6D004D2895 /* ServiceTP04_DeleteTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBBB19E7CF6D004D2895 /* ServiceTP04_DeleteTemplate.m */; };
 		71E394BD19D9309E00224673 /* DetailPeopleGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E394BC19D9309E00224673 /* DetailPeopleGroupViewController.m */; };
 		71E44157193DBB02004282AC /* Common.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71E44156193DBB02004282AC /* Common.plist */; };
 		71EF928A18D6986B00A51C52 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EF928918D6986B00A51C52 /* NewsViewController.m */; };
@@ -432,6 +468,78 @@
 		71D6295519E54EAE00CE9AF5 /* ServiceRC03_UpdateSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceRC03_UpdateSchedule.m; sourceTree = "<group>"; };
 		71D6295719E54EAE00CE9AF5 /* TestRecurring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecurring.h; sourceTree = "<group>"; };
 		71D6295819E54EAE00CE9AF5 /* TestRecurring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecurring.m; sourceTree = "<group>"; };
+		71D6F47319EB7EDD00DF95C0 /* ServicePK01_GetPackageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServicePK01_GetPackageList.h; path = Package/ServicePK01_GetPackageList.h; sourceTree = "<group>"; };
+		71D6F47419EB7EDD00DF95C0 /* ServicePK01_GetPackageList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServicePK01_GetPackageList.m; path = Package/ServicePK01_GetPackageList.m; sourceTree = "<group>"; };
+		71D6F47719EB7F0100DF95C0 /* ServicePK02_GetTopupList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServicePK02_GetTopupList.h; path = Package/ServicePK02_GetTopupList.h; sourceTree = "<group>"; };
+		71D6F47819EB7F0100DF95C0 /* ServicePK02_GetTopupList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServicePK02_GetTopupList.m; path = Package/ServicePK02_GetTopupList.m; sourceTree = "<group>"; };
+		71D6F47A19EB7F1D00DF95C0 /* ServicePK03_Cashcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServicePK03_Cashcard.h; path = Package/ServicePK03_Cashcard.h; sourceTree = "<group>"; };
+		71D6F47B19EB7F1D00DF95C0 /* ServicePK03_Cashcard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServicePK03_Cashcard.m; path = Package/ServicePK03_Cashcard.m; sourceTree = "<group>"; };
+		71D6F47D19EB7F2F00DF95C0 /* ServicePK04_Billing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServicePK04_Billing.h; path = Package/ServicePK04_Billing.h; sourceTree = "<group>"; };
+		71D6F47E19EB7F2F00DF95C0 /* ServicePK04_Billing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServicePK04_Billing.m; path = Package/ServicePK04_Billing.m; sourceTree = "<group>"; };
+		71D6F48019EB7F3F00DF95C0 /* ServicePK05_mPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServicePK05_mPay.h; path = Package/ServicePK05_mPay.h; sourceTree = "<group>"; };
+		71D6F48119EB7F3F00DF95C0 /* ServicePK05_mPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServicePK05_mPay.m; path = Package/ServicePK05_mPay.m; sourceTree = "<group>"; };
+		71D6F48319EB7F6400DF95C0 /* ServicePK06_Creditcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServicePK06_Creditcard.h; path = Package/ServicePK06_Creditcard.h; sourceTree = "<group>"; };
+		71D6F48419EB7F6400DF95C0 /* ServicePK06_Creditcard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServicePK06_Creditcard.m; path = Package/ServicePK06_Creditcard.m; sourceTree = "<group>"; };
+		71D6F48619EB7FB000DF95C0 /* ServiceST01_SettingProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceST01_SettingProfile.h; path = Setting/ServiceST01_SettingProfile.h; sourceTree = "<group>"; };
+		71D6F48719EB7FB000DF95C0 /* ServiceST01_SettingProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceST01_SettingProfile.m; path = Setting/ServiceST01_SettingProfile.m; sourceTree = "<group>"; };
+		71D6F48A19EB7FDD00DF95C0 /* ServiceST02_ChangePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceST02_ChangePassword.h; path = Setting/ServiceST02_ChangePassword.h; sourceTree = "<group>"; };
+		71D6F48B19EB7FDD00DF95C0 /* ServiceST02_ChangePassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceST02_ChangePassword.m; path = Setting/ServiceST02_ChangePassword.m; sourceTree = "<group>"; };
+		71D6F48D19EB7FFF00DF95C0 /* ServiceNW01_GetNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceNW01_GetNews.h; path = News/ServiceNW01_GetNews.h; sourceTree = "<group>"; };
+		71D6F48E19EB7FFF00DF95C0 /* ServiceNW01_GetNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceNW01_GetNews.m; path = News/ServiceNW01_GetNews.m; sourceTree = "<group>"; };
+		71D6F49119EB806A00DF95C0 /* ServiceHT01_SendMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceHT01_SendMessage.h; path = History/ServiceHT01_SendMessage.h; sourceTree = "<group>"; };
+		71D6F49219EB806A00DF95C0 /* ServiceHT01_SendMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceHT01_SendMessage.m; path = History/ServiceHT01_SendMessage.m; sourceTree = "<group>"; };
+		71D6F49519EB807D00DF95C0 /* ServiceHT02_Topup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceHT02_Topup.h; path = History/ServiceHT02_Topup.h; sourceTree = "<group>"; };
+		71D6F49619EB807D00DF95C0 /* ServiceHT02_Topup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceHT02_Topup.m; path = History/ServiceHT02_Topup.m; sourceTree = "<group>"; };
+		71D6F49819EB808E00DF95C0 /* ServiceHT03_Balance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceHT03_Balance.h; path = History/ServiceHT03_Balance.h; sourceTree = "<group>"; };
+		71D6F49919EB808E00DF95C0 /* ServiceHT03_Balance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceHT03_Balance.m; path = History/ServiceHT03_Balance.m; sourceTree = "<group>"; };
+		71D6F49B19EB80BD00DF95C0 /* ServiceIN01_Help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceIN01_Help.h; path = Information/ServiceIN01_Help.h; sourceTree = "<group>"; };
+		71D6F49C19EB80BD00DF95C0 /* ServiceIN01_Help.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceIN01_Help.m; path = Information/ServiceIN01_Help.m; sourceTree = "<group>"; };
+		71D6F49F19EB80FF00DF95C0 /* ServiceIN02_Privacy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceIN02_Privacy.h; path = Information/ServiceIN02_Privacy.h; sourceTree = "<group>"; };
+		71D6F4A019EB80FF00DF95C0 /* ServiceIN02_Privacy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceIN02_Privacy.m; path = Information/ServiceIN02_Privacy.m; sourceTree = "<group>"; };
+		71D6F4A219EB812000DF95C0 /* ServiceIN03_TermCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceIN03_TermCondition.h; path = Information/ServiceIN03_TermCondition.h; sourceTree = "<group>"; };
+		71D6F4A319EB812000DF95C0 /* ServiceIN03_TermCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceIN03_TermCondition.m; path = Information/ServiceIN03_TermCondition.m; sourceTree = "<group>"; };
+		71D6F4A519EB813300DF95C0 /* ServiceIN04_About.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceIN04_About.h; path = Information/ServiceIN04_About.h; sourceTree = "<group>"; };
+		71D6F4A619EB813300DF95C0 /* ServiceIN04_About.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceIN04_About.m; path = Information/ServiceIN04_About.m; sourceTree = "<group>"; };
+		71D6F4A819EB860300DF95C0 /* TemplateDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateDetail.h; path = Template/TemplateDetail.h; sourceTree = "<group>"; };
+		71D6F4A919EB860300DF95C0 /* TemplateDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateDetail.m; path = Template/TemplateDetail.m; sourceTree = "<group>"; };
+		71D6F4AB19EB871400DF95C0 /* ResponseGetTemplateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseGetTemplateList.h; path = Template/Response/ResponseGetTemplateList.h; sourceTree = "<group>"; };
+		71D6F4AC19EB871400DF95C0 /* ResponseGetTemplateList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseGetTemplateList.m; path = Template/Response/ResponseGetTemplateList.m; sourceTree = "<group>"; };
+		71D6F4AF19EB89EA00DF95C0 /* PackageDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PackageDetail.h; path = Package/PackageDetail.h; sourceTree = "<group>"; };
+		71D6F4B019EB89EA00DF95C0 /* PackageDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PackageDetail.m; path = Package/PackageDetail.m; sourceTree = "<group>"; };
+		71D6F4B219EB96CB00DF95C0 /* TopupDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopupDetail.h; path = Package/TopupDetail.h; sourceTree = "<group>"; };
+		71D6F4B319EB96CB00DF95C0 /* TopupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopupDetail.m; path = Package/TopupDetail.m; sourceTree = "<group>"; };
+		71D6F4B519EB9D3600DF95C0 /* CashcardDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CashcardDetail.h; path = Package/CashcardDetail.h; sourceTree = "<group>"; };
+		71D6F4B619EB9D3600DF95C0 /* CashcardDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CashcardDetail.m; path = Package/CashcardDetail.m; sourceTree = "<group>"; };
+		71D6F4B819EBA32400DF95C0 /* ProfileDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileDetail.h; path = Setting/ProfileDetail.h; sourceTree = "<group>"; };
+		71D6F4B919EBA32400DF95C0 /* ProfileDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileDetail.m; path = Setting/ProfileDetail.m; sourceTree = "<group>"; };
+		71D6F4C119EBA88900DF95C0 /* ListPackageDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListPackageDetail.h; path = Setting/ListPackageDetail.h; sourceTree = "<group>"; };
+		71D6F4C219EBA88900DF95C0 /* ListPackageDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListPackageDetail.m; path = Setting/ListPackageDetail.m; sourceTree = "<group>"; };
+		71D6F4C419EBAB9600DF95C0 /* ResponseSettingProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseSettingProfile.h; path = Setting/ResponseSettingProfile.h; sourceTree = "<group>"; };
+		71D6F4C519EBAB9600DF95C0 /* ResponseSettingProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseSettingProfile.m; path = Setting/ResponseSettingProfile.m; sourceTree = "<group>"; };
+		71D6F4C719EBB06800DF95C0 /* ResponseListPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseListPackage.h; path = Setting/ResponseListPackage.h; sourceTree = "<group>"; };
+		71D6F4C819EBB06800DF95C0 /* ResponseListPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseListPackage.m; path = Setting/ResponseListPackage.m; sourceTree = "<group>"; };
+		71D6F4CA19EBB88E00DF95C0 /* ResponseGetNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseGetNews.h; path = News/ResponseGetNews.h; sourceTree = "<group>"; };
+		71D6F4CB19EBB88E00DF95C0 /* ResponseGetNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseGetNews.m; path = News/ResponseGetNews.m; sourceTree = "<group>"; };
+		71D6F4CD19EBB8E500DF95C0 /* NewsDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsDetail.h; path = News/NewsDetail.h; sourceTree = "<group>"; };
+		71D6F4CE19EBB8E500DF95C0 /* NewsDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsDetail.m; path = News/NewsDetail.m; sourceTree = "<group>"; };
+		71D6F4D019EBBF9C00DF95C0 /* SendMessageDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendMessageDetail.h; path = History/SendMessageDetail.h; sourceTree = "<group>"; };
+		71D6F4D119EBBF9C00DF95C0 /* SendMessageDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendMessageDetail.m; path = History/SendMessageDetail.m; sourceTree = "<group>"; };
+		71D6F4D319EBC19A00DF95C0 /* ResponseSendMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseSendMessage.h; path = History/ResponseSendMessage.h; sourceTree = "<group>"; };
+		71D6F4D419EBC19A00DF95C0 /* ResponseSendMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseSendMessage.m; path = History/ResponseSendMessage.m; sourceTree = "<group>"; };
+		71D6F4D619EBC2CA00DF95C0 /* ResponseTopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseTopup.h; path = History/ResponseTopup.h; sourceTree = "<group>"; };
+		71D6F4D719EBC2CA00DF95C0 /* ResponseTopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseTopup.m; path = History/ResponseTopup.m; sourceTree = "<group>"; };
+		71D6F4D919EBC2EE00DF95C0 /* TopupDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopupDetail.h; path = History/TopupDetail.h; sourceTree = "<group>"; };
+		71D6F4DA19EBC2EE00DF95C0 /* TopupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopupDetail.m; path = History/TopupDetail.m; sourceTree = "<group>"; };
+		71DCFBAA19E7C7C2004D2895 /* TestServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestServiceViewController.h; sourceTree = "<group>"; };
+		71DCFBAB19E7C7C2004D2895 /* TestServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestServiceViewController.m; sourceTree = "<group>"; };
+		71DCFBB119E7CF09004D2895 /* ServiceTP02_GetTemplateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceTP02_GetTemplateList.h; path = Template/ServiceTP02_GetTemplateList.h; sourceTree = "<group>"; };
+		71DCFBB219E7CF09004D2895 /* ServiceTP02_GetTemplateList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceTP02_GetTemplateList.m; path = Template/ServiceTP02_GetTemplateList.m; sourceTree = "<group>"; };
+		71DCFBB419E7CF3C004D2895 /* ServiceTP01_AddTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceTP01_AddTemplate.h; path = Template/ServiceTP01_AddTemplate.h; sourceTree = "<group>"; };
+		71DCFBB519E7CF3C004D2895 /* ServiceTP01_AddTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceTP01_AddTemplate.m; path = Template/ServiceTP01_AddTemplate.m; sourceTree = "<group>"; };
+		71DCFBB719E7CF56004D2895 /* ServiceTP03_EditTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceTP03_EditTemplate.h; path = Template/ServiceTP03_EditTemplate.h; sourceTree = "<group>"; };
+		71DCFBB819E7CF56004D2895 /* ServiceTP03_EditTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceTP03_EditTemplate.m; path = Template/ServiceTP03_EditTemplate.m; sourceTree = "<group>"; };
+		71DCFBBA19E7CF6D004D2895 /* ServiceTP04_DeleteTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceTP04_DeleteTemplate.h; path = Template/ServiceTP04_DeleteTemplate.h; sourceTree = "<group>"; };
+		71DCFBBB19E7CF6D004D2895 /* ServiceTP04_DeleteTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceTP04_DeleteTemplate.m; path = Template/ServiceTP04_DeleteTemplate.m; sourceTree = "<group>"; };
 		71E394BB19D9309E00224673 /* DetailPeopleGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailPeopleGroupViewController.h; path = Contact/DetailPeopleGroupViewController.h; sourceTree = "<group>"; };
 		71E394BC19D9309E00224673 /* DetailPeopleGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailPeopleGroupViewController.m; path = Contact/DetailPeopleGroupViewController.m; sourceTree = "<group>"; };
 		71E44156193DBB02004282AC /* Common.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Common.plist; sourceTree = "<group>"; };
@@ -579,6 +687,8 @@
 				710E59C218AB5693006F4CB2 /* Login */,
 				71A15ECA1919E6E8001D1B56 /* SplashScreenViewController.h */,
 				71A15ECB1919E6E8001D1B56 /* SplashScreenViewController.m */,
+				71DCFBAA19E7C7C2004D2895 /* TestServiceViewController.h */,
+				71DCFBAB19E7C7C2004D2895 /* TestServiceViewController.m */,
 			);
 			path = AISbizlive;
 			sourceTree = "<group>";
@@ -832,6 +942,12 @@
 				71D6294819E54EAE00CE9AF5 /* Message */,
 				71D6294F19E54EAE00CE9AF5 /* Recurring */,
 				71D6295619E54EAE00CE9AF5 /* TestRequestService */,
+				71DCFBB019E7CEE0004D2895 /* Template */,
+				71D6F47619EB7EE200DF95C0 /* Package */,
+				71D6F48919EB7FB400DF95C0 /* Setting */,
+				71D6F49019EB800300DF95C0 /* News */,
+				71D6F49419EB806E00DF95C0 /* History */,
+				71D6F49E19EB80C100DF95C0 /* Information */,
 			);
 			path = AISBizliveService;
 			sourceTree = "<group>";
@@ -967,6 +1083,126 @@
 				71D6295819E54EAE00CE9AF5 /* TestRecurring.m */,
 			);
 			path = TestRequestService;
+			sourceTree = "<group>";
+		};
+		71D6F47619EB7EE200DF95C0 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				71D6F47319EB7EDD00DF95C0 /* ServicePK01_GetPackageList.h */,
+				71D6F47419EB7EDD00DF95C0 /* ServicePK01_GetPackageList.m */,
+				71D6F47719EB7F0100DF95C0 /* ServicePK02_GetTopupList.h */,
+				71D6F47819EB7F0100DF95C0 /* ServicePK02_GetTopupList.m */,
+				71D6F47A19EB7F1D00DF95C0 /* ServicePK03_Cashcard.h */,
+				71D6F47B19EB7F1D00DF95C0 /* ServicePK03_Cashcard.m */,
+				71D6F47D19EB7F2F00DF95C0 /* ServicePK04_Billing.h */,
+				71D6F47E19EB7F2F00DF95C0 /* ServicePK04_Billing.m */,
+				71D6F48019EB7F3F00DF95C0 /* ServicePK05_mPay.h */,
+				71D6F48119EB7F3F00DF95C0 /* ServicePK05_mPay.m */,
+				71D6F48319EB7F6400DF95C0 /* ServicePK06_Creditcard.h */,
+				71D6F48419EB7F6400DF95C0 /* ServicePK06_Creditcard.m */,
+				71D6F4AF19EB89EA00DF95C0 /* PackageDetail.h */,
+				71D6F4B019EB89EA00DF95C0 /* PackageDetail.m */,
+				71D6F4B219EB96CB00DF95C0 /* TopupDetail.h */,
+				71D6F4B319EB96CB00DF95C0 /* TopupDetail.m */,
+				71D6F4B519EB9D3600DF95C0 /* CashcardDetail.h */,
+				71D6F4B619EB9D3600DF95C0 /* CashcardDetail.m */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		71D6F48919EB7FB400DF95C0 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				71D6F48619EB7FB000DF95C0 /* ServiceST01_SettingProfile.h */,
+				71D6F48719EB7FB000DF95C0 /* ServiceST01_SettingProfile.m */,
+				71D6F48A19EB7FDD00DF95C0 /* ServiceST02_ChangePassword.h */,
+				71D6F48B19EB7FDD00DF95C0 /* ServiceST02_ChangePassword.m */,
+				71D6F4B819EBA32400DF95C0 /* ProfileDetail.h */,
+				71D6F4B919EBA32400DF95C0 /* ProfileDetail.m */,
+				71D6F4C119EBA88900DF95C0 /* ListPackageDetail.h */,
+				71D6F4C219EBA88900DF95C0 /* ListPackageDetail.m */,
+				71D6F4C419EBAB9600DF95C0 /* ResponseSettingProfile.h */,
+				71D6F4C519EBAB9600DF95C0 /* ResponseSettingProfile.m */,
+				71D6F4C719EBB06800DF95C0 /* ResponseListPackage.h */,
+				71D6F4C819EBB06800DF95C0 /* ResponseListPackage.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		71D6F49019EB800300DF95C0 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				71D6F48D19EB7FFF00DF95C0 /* ServiceNW01_GetNews.h */,
+				71D6F48E19EB7FFF00DF95C0 /* ServiceNW01_GetNews.m */,
+				71D6F4CA19EBB88E00DF95C0 /* ResponseGetNews.h */,
+				71D6F4CB19EBB88E00DF95C0 /* ResponseGetNews.m */,
+				71D6F4CD19EBB8E500DF95C0 /* NewsDetail.h */,
+				71D6F4CE19EBB8E500DF95C0 /* NewsDetail.m */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
+		71D6F49419EB806E00DF95C0 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				71D6F49119EB806A00DF95C0 /* ServiceHT01_SendMessage.h */,
+				71D6F49219EB806A00DF95C0 /* ServiceHT01_SendMessage.m */,
+				71D6F49519EB807D00DF95C0 /* ServiceHT02_Topup.h */,
+				71D6F49619EB807D00DF95C0 /* ServiceHT02_Topup.m */,
+				71D6F49819EB808E00DF95C0 /* ServiceHT03_Balance.h */,
+				71D6F49919EB808E00DF95C0 /* ServiceHT03_Balance.m */,
+				71D6F4D019EBBF9C00DF95C0 /* SendMessageDetail.h */,
+				71D6F4D119EBBF9C00DF95C0 /* SendMessageDetail.m */,
+				71D6F4D319EBC19A00DF95C0 /* ResponseSendMessage.h */,
+				71D6F4D419EBC19A00DF95C0 /* ResponseSendMessage.m */,
+				71D6F4D619EBC2CA00DF95C0 /* ResponseTopup.h */,
+				71D6F4D719EBC2CA00DF95C0 /* ResponseTopup.m */,
+				71D6F4D919EBC2EE00DF95C0 /* TopupDetail.h */,
+				71D6F4DA19EBC2EE00DF95C0 /* TopupDetail.m */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		71D6F49E19EB80C100DF95C0 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				71D6F49B19EB80BD00DF95C0 /* ServiceIN01_Help.h */,
+				71D6F49C19EB80BD00DF95C0 /* ServiceIN01_Help.m */,
+				71D6F49F19EB80FF00DF95C0 /* ServiceIN02_Privacy.h */,
+				71D6F4A019EB80FF00DF95C0 /* ServiceIN02_Privacy.m */,
+				71D6F4A219EB812000DF95C0 /* ServiceIN03_TermCondition.h */,
+				71D6F4A319EB812000DF95C0 /* ServiceIN03_TermCondition.m */,
+				71D6F4A519EB813300DF95C0 /* ServiceIN04_About.h */,
+				71D6F4A619EB813300DF95C0 /* ServiceIN04_About.m */,
+			);
+			name = Information;
+			sourceTree = "<group>";
+		};
+		71D6F4AE19EB871E00DF95C0 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				71D6F4AB19EB871400DF95C0 /* ResponseGetTemplateList.h */,
+				71D6F4AC19EB871400DF95C0 /* ResponseGetTemplateList.m */,
+			);
+			name = Response;
+			sourceTree = "<group>";
+		};
+		71DCFBB019E7CEE0004D2895 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				71DCFBB419E7CF3C004D2895 /* ServiceTP01_AddTemplate.h */,
+				71DCFBB519E7CF3C004D2895 /* ServiceTP01_AddTemplate.m */,
+				71DCFBB119E7CF09004D2895 /* ServiceTP02_GetTemplateList.h */,
+				71DCFBB219E7CF09004D2895 /* ServiceTP02_GetTemplateList.m */,
+				71DCFBB719E7CF56004D2895 /* ServiceTP03_EditTemplate.h */,
+				71DCFBB819E7CF56004D2895 /* ServiceTP03_EditTemplate.m */,
+				71DCFBBA19E7CF6D004D2895 /* ServiceTP04_DeleteTemplate.h */,
+				71DCFBBB19E7CF6D004D2895 /* ServiceTP04_DeleteTemplate.m */,
+				71D6F4A819EB860300DF95C0 /* TemplateDetail.h */,
+				71D6F4A919EB860300DF95C0 /* TemplateDetail.m */,
+				71D6F4AE19EB871E00DF95C0 /* Response */,
+			);
+			name = Template;
 			sourceTree = "<group>";
 		};
 		71EF928B18D6986F00A51C52 /* News */ = {
@@ -1163,19 +1399,27 @@
 				711E0D9D195C23CD00423448 /* mPayViewController.m in Sources */,
 				71996D611924B28300AC1EDF /* MessageTableViewController.m in Sources */,
 				71A15ECC1919E6E8001D1B56 /* SplashScreenViewController.m in Sources */,
+				71D6F49A19EB808E00DF95C0 /* ServiceHT03_Balance.m in Sources */,
 				71D6297319E54EAE00CE9AF5 /* ServiceLG04_RequestEmailVerification.m in Sources */,
+				71D6F4C919EBB06800DF95C0 /* ResponseListPackage.m in Sources */,
 				71A15ECF191A2F00001D1B56 /* MessageHistoryViewController.m in Sources */,
 				7169DE12196E968800039AE0 /* TemplateCell.m in Sources */,
 				711C685B18EBE3D40009C3B4 /* AISColor.m in Sources */,
+				71D6F48C19EB7FDD00DF95C0 /* ServiceST02_ChangePassword.m in Sources */,
+				71D6F4CC19EBB88E00DF95C0 /* ResponseGetNews.m in Sources */,
+				71D6F4CF19EBB8E500DF95C0 /* NewsDetail.m in Sources */,
 				71D6295919E54EAE00CE9AF5 /* BizliveService.m in Sources */,
 				71A15ED2191A3FBD001D1B56 /* TopupHistoryViewController.m in Sources */,
 				718FE71619346B4200E9C9E2 /* AISNavigationBarItem.m in Sources */,
 				71FA02E219051D220016FF57 /* ImportContactViewController.m in Sources */,
+				71D6F4B719EB9D3600DF95C0 /* CashcardDetail.m in Sources */,
 				71D6295F19E54EAE00CE9AF5 /* GroupContactDetail.m in Sources */,
 				71D6297619E54EAE00CE9AF5 /* ServiceLG07_Login.m in Sources */,
 				713DC92518F7DA37005D1E2F /* AISTableViewCell.m in Sources */,
 				71F2043518D2C4F100EBE5BF /* HistoryViewController.m in Sources */,
 				713DC1E51907628A00E34CB2 /* SWTableViewCell.m in Sources */,
+				71D6F4D219EBBF9C00DF95C0 /* SendMessageDetail.m in Sources */,
+				71D6F47919EB7F0100DF95C0 /* ServicePK02_GetTopupList.m in Sources */,
 				711A9DA7195D13DA00B52AEF /* WebViewController.m in Sources */,
 				71FA02DF1904F8E90016FF57 /* TopUpViewController.m in Sources */,
 				71D6295A19E54EAE00CE9AF5 /* BizliveServiceCode.m in Sources */,
@@ -1183,12 +1427,17 @@
 				7124223D1935995B00BAD376 /* AISMoreView.m in Sources */,
 				7141C39518EEA66300AC6EC7 /* InformationViewController.m in Sources */,
 				71B023CB1941A3460031AA3F /* DetailPeopleViewController.m in Sources */,
+				71D6F48219EB7F3F00DF95C0 /* ServicePK05_mPay.m in Sources */,
 				71A4C30F18E4091300BA120E /* TemplateViewController.m in Sources */,
 				71D6296519E54EAE00CE9AF5 /* ServiceCT03_EditContact.m in Sources */,
 				71BD0B10196261EC00ECC0F0 /* DetailGroupViewController.m in Sources */,
 				715C201B18FE696D00CB046C /* AddGroupViewController.m in Sources */,
+				71D6F4AA19EB860300DF95C0 /* TemplateDetail.m in Sources */,
 				713DC1D41907616E00E34CB2 /* ContactCell.m in Sources */,
 				71D6297919E54EAE00CE9AF5 /* ServiceMS02_SaveSchedule.m in Sources */,
+				71D6F47F19EB7F2F00DF95C0 /* ServicePK04_Billing.m in Sources */,
+				71D6F4DB19EBC2EE00DF95C0 /* TopupDetail.m in Sources */,
+				71D6F48F19EB7FFF00DF95C0 /* ServiceNW01_GetNews.m in Sources */,
 				71EF928A18D6986B00A51C52 /* NewsViewController.m in Sources */,
 				71D6295E19E54EAE00CE9AF5 /* ContactMessageHistory.m in Sources */,
 				710E59CF18ACC96A006F4CB2 /* FogetPasswordViewController.m in Sources */,
@@ -1199,23 +1448,33 @@
 				71C3DDEB18D97170002B6E79 /* ScheduleViewController.m in Sources */,
 				71D6296F19E54EAE00CE9AF5 /* LoginForm.m in Sources */,
 				7181430E19581A4B00871B3D /* AISMessageHead.m in Sources */,
+				71D6F4C619EBAB9600DF95C0 /* ResponseSettingProfile.m in Sources */,
 				71D6297719E54EAE00CE9AF5 /* MessageForm.m in Sources */,
 				7161210F18A4EA5C004077D9 /* ContactViewController.m in Sources */,
 				71A15ED5191A4358001D1B56 /* QuotaBalanceViewController.m in Sources */,
 				71AC4DC71932F38F002D9387 /* AISAlertView.m in Sources */,
 				7189FE161908F9D400B636FB /* AISView.m in Sources */,
+				71D6F4A719EB813300DF95C0 /* ServiceIN04_About.m in Sources */,
 				7115E09D18F5220E0030AF26 /* AddTemplateViewController.m in Sources */,
+				71D6F49D19EB80BD00DF95C0 /* ServiceIN01_Help.m in Sources */,
 				7198029819B6FA3700E2FAAB /* Signup2ViewController.m in Sources */,
 				71D6297019E54EAE00CE9AF5 /* ServiceLG01_ForgotPassword.m in Sources */,
 				71D6295B19E54EAE00CE9AF5 /* ResultStatus.m in Sources */,
+				71D6F4AD19EB871400DF95C0 /* ResponseGetTemplateList.m in Sources */,
 				71D6296319E54EAE00CE9AF5 /* ServiceCT01_GetContactList.m in Sources */,
+				71DCFBB319E7CF09004D2895 /* ServiceTP02_GetTemplateList.m in Sources */,
 				713DC1E61907628A00E34CB2 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				713ACDFA19D427CB00CD331F /* BizliveAccountViewController.m in Sources */,
 				7122EE7B1900F610002B9181 /* PaymentViewController.m in Sources */,
 				710E59C518AC7F72006F4CB2 /* SignupViewController.m in Sources */,
 				71D6296C19E54EAE00CE9AF5 /* ServiceCT10_EditGroupContact.m in Sources */,
+				71D6F4B419EB96CB00DF95C0 /* TopupDetail.m in Sources */,
 				711A9DAB195D481700B52AEF /* FontUtil.m in Sources */,
+				71D6F4A119EB80FF00DF95C0 /* ServiceIN02_Privacy.m in Sources */,
+				71DCFBB619E7CF3C004D2895 /* ServiceTP01_AddTemplate.m in Sources */,
 				71D6296B19E54EAE00CE9AF5 /* ServiceCT09_GetContactListToEditGroup.m in Sources */,
+				71D6F4C319EBA88900DF95C0 /* ListPackageDetail.m in Sources */,
+				71D6F48819EB7FB000DF95C0 /* ServiceST01_SettingProfile.m in Sources */,
 				71D6296619E54EAE00CE9AF5 /* ServiceCT04_DeleteContact.m in Sources */,
 				71D6296919E54EAE00CE9AF5 /* ServiceCT07_AddGroupContact.m in Sources */,
 				71D6296119E54EAE00CE9AF5 /* ResponseGetContactList.m in Sources */,
@@ -1224,6 +1483,7 @@
 				713DC1E31907628A00E34CB2 /* SWCellScrollView.m in Sources */,
 				71B023C819417BBD0031AA3F /* AISLoading.m in Sources */,
 				71D6297D19E54EAE00CE9AF5 /* TestRecurring.m in Sources */,
+				71D6F4D519EBC19A00DF95C0 /* ResponseSendMessage.m in Sources */,
 				71D6297219E54EAE00CE9AF5 /* ServiceLG03_RequestOtpVerification.m in Sources */,
 				71E394BD19D9309E00224673 /* DetailPeopleGroupViewController.m in Sources */,
 				71F9030C18E2B723001E7663 /* DWTagList.m in Sources */,
@@ -1232,29 +1492,41 @@
 				710E59C118AB568E006F4CB2 /* LoginViewController.m in Sources */,
 				71D6296A19E54EAE00CE9AF5 /* ServiceCT08_GroupMessageHistory.m in Sources */,
 				71D6297A19E54EAE00CE9AF5 /* ServiceRC01_GetScheduleList.m in Sources */,
+				71DCFBAC19E7C7C2004D2895 /* TestServiceViewController.m in Sources */,
 				71D6297119E54EAE00CE9AF5 /* ServiceLG02_SignUpWithEmail.m in Sources */,
+				71DCFBBC19E7CF6D004D2895 /* ServiceTP04_DeleteTemplate.m in Sources */,
 				71D6296D19E54EAE00CE9AF5 /* ServiceCT11_DeleteGroupContact.m in Sources */,
+				71D6F49719EB807D00DF95C0 /* ServiceHT02_Topup.m in Sources */,
 				71008B0D1949A66400FA8DE9 /* AISSMSCharacter.m in Sources */,
 				716120DD18A4DB25004077D9 /* StartViewController.m in Sources */,
+				71D6F4A419EB812000DF95C0 /* ServiceIN03_TermCondition.m in Sources */,
+				71D6F48519EB7F6400DF95C0 /* ServicePK06_Creditcard.m in Sources */,
 				71D6296719E54EAE00CE9AF5 /* ServiceCT05_ContactMessageHistory.m in Sources */,
+				71D6F4BA19EBA32400DF95C0 /* ProfileDetail.m in Sources */,
 				71D6297419E54EAE00CE9AF5 /* ServiceLG05_VerifyByOtp.m in Sources */,
 				711E0D9A195C19EE00423448 /* ImportCell.m in Sources */,
 				7161210418A4E600004077D9 /* PageContentViewController.m in Sources */,
 				71D6296019E54EAE00CE9AF5 /* ResponseContactMessageHistory.m in Sources */,
 				71D6296219E54EAE00CE9AF5 /* ResponseGetGroupContactList.m in Sources */,
 				71D6297819E54EAE00CE9AF5 /* ServiceMS01_SendMessage.m in Sources */,
+				71D6F47C19EB7F1D00DF95C0 /* ServicePK03_Cashcard.m in Sources */,
 				71B6FC3C18F64B27000930F4 /* DetailNewsViewController.m in Sources */,
 				713F2459192B076D003C4822 /* SettingViewController.m in Sources */,
 				71D6295C19E54EAE00CE9AF5 /* Admin.m in Sources */,
 				71996D641924C96F00AC1EDF /* AISButton.m in Sources */,
 				710E59C918AC7F9E006F4CB2 /* OTPViewController.m in Sources */,
 				713DC1E21907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				71DCFBB919E7CF56004D2895 /* ServiceTP03_EditTemplate.m in Sources */,
 				71D6297519E54EAE00CE9AF5 /* ServiceLG06_VerifyByEmail.m in Sources */,
+				71D6F47519EB7EDD00DF95C0 /* ServicePK01_GetPackageList.m in Sources */,
 				716120D718A4DB25004077D9 /* AppDelegate.m in Sources */,
+				71D6F4B119EB89EA00DF95C0 /* PackageDetail.m in Sources */,
 				71D6296E19E54EAE00CE9AF5 /* ServiceCT12_ImportContact.m in Sources */,
 				716120D318A4DB24004077D9 /* main.m in Sources */,
 				713DC1E71907628A00E34CB2 /* SWUtilityButtonView.m in Sources */,
+				71D6F49319EB806A00DF95C0 /* ServiceHT01_SendMessage.m in Sources */,
 				71D6297B19E54EAE00CE9AF5 /* ServiceRC02_DeleteSchedule.m in Sources */,
+				71D6F4D819EBC2CA00DF95C0 /* ResponseTopup.m in Sources */,
 				7161211718A4EACA004077D9 /* PackageViewController.m in Sources */,
 				713DC1E41907628A00E34CB2 /* SWLongPressGestureRecognizer.m in Sources */,
 			);
@@ -1361,7 +1633,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pratthana Leelapanang (XDG5J37849)";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/North/Documents/FacebookSDK,
@@ -1373,12 +1645,12 @@
 				GCC_PREFIX_HEADER = "AISbizlive/AISbizlive-Prefix.pch";
 				INFOPLIST_FILE = "AISbizlive/AISbizlive-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4a18853a-6f8a-485a-b81f-3e840c225b0d";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1388,7 +1660,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pratthana Leelapanang (XDG5J37849)";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/North/Documents/FacebookSDK,
@@ -1400,12 +1672,12 @@
 				GCC_PREFIX_HEADER = "AISbizlive/AISbizlive-Prefix.pch";
 				INFOPLIST_FILE = "AISbizlive/AISbizlive-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4a18853a-6f8a-485a-b81f-3e840c225b0d";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

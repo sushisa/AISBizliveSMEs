@@ -17,9 +17,9 @@
 
 - (void)requestService
 {
-    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_04_DELETE_CONTACT];
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_04_DELETE_CONTACT_URL];
     
-    NSDictionary *requestDict = @{REQ_KEY_CONTACT_LIST  : self.contactIDList};
+    NSDictionary *requestDict = @{RES_KEY_CONTACT_ID_LIST  : self.contactIDList};
 
     [super setRequestURL:requestURL];
     [super setRequestData:requestDict];

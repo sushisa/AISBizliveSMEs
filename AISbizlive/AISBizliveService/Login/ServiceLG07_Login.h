@@ -18,12 +18,9 @@
 @interface ServiceLG07_Login : BizliveService
 
 - (void)setParameterWithUser:(NSString *)user
-                    password:(NSString *)password
-                  isFacebook:(BOOL)isFacebook;
+                    password:(NSString *)password;
 
 @property (nonatomic, assign)id<LoginDelegate> delegate;
 
 @property (nonatomic, strong)NSString *user, *password;
-@property (nonatomic)BOOL isFacebook;
-
 @end

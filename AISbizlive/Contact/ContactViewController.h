@@ -12,7 +12,8 @@
 
 #import "ServiceCT01_GetContactList.h"
 #import "ServiceCT06_GetGroupContactList.h"
-@interface ContactViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,SWTableViewCellDelegate,GetContactListDelegate,GetGroupContactListDelegate>
+#import "ServiceCT04_DeleteContact.h"
+@interface ContactViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,SWTableViewCellDelegate,GetContactListDelegate,DeleteContactDelegate,GetGroupContactListDelegate>
 {
     
     __weak IBOutlet UITextField *seachTextField;
