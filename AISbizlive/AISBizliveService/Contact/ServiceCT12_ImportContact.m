@@ -65,7 +65,9 @@
         [delegate importContactError:resultStatus];
         return;
     }
-    ResponseGetContactList *serviceData = [[ResponseGetContactList alloc] initWithResponseData:responseDict];
+    
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+    ResponseGetContactList *serviceData = [[ResponseGetContactList alloc] initWithResponseData:responseData];
     [delegate importContactSuccess:serviceData];
 }
 

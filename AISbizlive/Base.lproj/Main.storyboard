@@ -2481,7 +2481,7 @@
                                                     <rect key="frame" x="10" y="5" width="300" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="42" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ok_Grey.png" highlightedImage="36F0B5F2-FF37-407A-86C8-E552A6822500" translatesAutoresizingMaskIntoConstraints="NO" id="VLQ-Xa-bQo">
+                                                        <imageView userInteractionEnabled="NO" tag="42" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ok_Grey.png" highlightedImage="343C5A82-DB77-4616-AEFD-15B1D2955746" translatesAutoresizingMaskIntoConstraints="NO" id="VLQ-Xa-bQo">
                                                             <rect key="frame" x="10" y="8" width="30" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
@@ -2514,7 +2514,7 @@
                                                     <rect key="frame" x="10" y="5" width="300" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="52" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ok_Grey.png" highlightedImage="36F0B5F2-FF37-407A-86C8-E552A6822500" translatesAutoresizingMaskIntoConstraints="NO" id="oCk-KL-Vbi">
+                                                        <imageView userInteractionEnabled="NO" tag="52" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ok_Grey.png" highlightedImage="343C5A82-DB77-4616-AEFD-15B1D2955746" translatesAutoresizingMaskIntoConstraints="NO" id="oCk-KL-Vbi">
                                                             <rect key="frame" x="10" y="8" width="30" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
@@ -2547,7 +2547,7 @@
                                                     <rect key="frame" x="10" y="5" width="300" height="142"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="62" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ok_Grey.png" highlightedImage="36F0B5F2-FF37-407A-86C8-E552A6822500" translatesAutoresizingMaskIntoConstraints="NO" id="gCY-ZB-3TA">
+                                                        <imageView userInteractionEnabled="NO" tag="62" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ok_Grey.png" highlightedImage="343C5A82-DB77-4616-AEFD-15B1D2955746" translatesAutoresizingMaskIntoConstraints="NO" id="gCY-ZB-3TA">
                                                             <rect key="frame" x="10" y="8" width="30" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
@@ -2585,7 +2585,7 @@
                                                     <rect key="frame" x="10" y="5" width="300" height="250"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" tag="72" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ok_Grey.png" highlightedImage="36F0B5F2-FF37-407A-86C8-E552A6822500" translatesAutoresizingMaskIntoConstraints="NO" id="ivd-Ge-Daf">
+                                                        <imageView userInteractionEnabled="NO" tag="72" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ok_Grey.png" highlightedImage="343C5A82-DB77-4616-AEFD-15B1D2955746" translatesAutoresizingMaskIntoConstraints="NO" id="ivd-Ge-Daf">
                                                             <rect key="frame" x="10" y="8" width="30" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
@@ -5285,7 +5285,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="36F0B5F2-FF37-407A-86C8-E552A6822500" width="28" height="28">
+        <image name="343C5A82-DB77-4616-AEFD-15B1D2955746" width="28" height="28">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

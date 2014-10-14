@@ -7,7 +7,7 @@
 //
 
 //Service
-#pragma mark - Servvice Suffix
+#pragma mark - Service Suffix
 #define SERVICE_REQ_KEY_EXCHANGE @"getPantryPublicKey.ashx"
 #define SERVICE_REQ_ORDER_ID @"RequestOrderId.ashx"
 #define SERVICE_REQ_AUTHENTICATATION @"RequestAuthenticate.ashx"
@@ -315,8 +315,12 @@
 #define KEY_RES_ORDER_REF               @"orderRef"
 #define KEY_RES_DEV_MESSAGE             @"developerMessage"
 #define KEY_RES_USER_MESSAGE            @"userMessage"
-#define KEY_RES_RESULT_CODE             @"resultCode"
+#define KEY_RES_ERROR_CODE              @"errorCode"
 #define KEY_RES_MORE_INFO               @"moreInfo"
+//#define KEY_RES_RESULT_CODE             @"resultCode"
+//#define KEY_RES_RESULT_DESCRIPTION      @"resultDescription"
+#define KEY_RES_RESULT_CODE             @"code"
+#define KEY_RES_RESULT_DESCRIPTION      @"description"
 
 
 

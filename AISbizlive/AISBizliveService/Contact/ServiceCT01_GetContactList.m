@@ -116,6 +116,9 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [getContactListDelegate getcontactListError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [getContactListDelegate getcontactListError:resultStatus];
 }
 @end

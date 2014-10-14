@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BizliveService.h"
+#import "ResponseTopup.h"
 
-@interface ServiceHT03_Balance : NSObject
+@protocol BalanceDelegate <NSObject>
 
+- (void)balanceSuccess:(ResponseTopup *)responseTopup;
+- (void)balanceError:(ResultStatus *)resultStatus;
+
+@end
+
+@interface ServiceHT03_Balance : BizliveService
+@property (nonatomic, assign)id<BalanceDelegate> delegate;
 @end

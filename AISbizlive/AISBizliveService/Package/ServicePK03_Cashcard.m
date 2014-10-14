@@ -28,7 +28,8 @@
         return;
     }
     
-    CashcardDetail *serviceData = [[CashcardDetail alloc] initWithResponseData:responseDict];
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+    CashcardDetail *serviceData = [[CashcardDetail alloc] initWithResponseData:responseData];
     [delegate cashCardSuccess:serviceData];
     
 }

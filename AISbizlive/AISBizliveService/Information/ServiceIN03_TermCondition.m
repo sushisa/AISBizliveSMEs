@@ -23,7 +23,8 @@
         [delegate termConditionError:resultStatus];
         return;
     }
-    [delegate termConditionSuccess:responseDict[RES_KEY_INFORMATION]];
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+    [delegate termConditionSuccess:responseData[RES_KEY_INFORMATION]];
     
 }
 

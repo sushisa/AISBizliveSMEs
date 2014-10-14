@@ -24,7 +24,8 @@
         return;
     }
     
-    ResponseSendMessage *serviceData = [[ResponseSendMessage alloc] initWithResponseData:responseDict];
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+    ResponseSendMessage *serviceData = [[ResponseSendMessage alloc] initWithResponseData:responseData];
     [delegate sendMessageSuccess:serviceData];
     
 }

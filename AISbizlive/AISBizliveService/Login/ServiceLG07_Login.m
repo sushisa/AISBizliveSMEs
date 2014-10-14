@@ -22,7 +22,7 @@
 {
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_LG_07_LOGIN_URL];
 
-    NSDictionary *requestDict = @{REQ_KEY_LOGIN_USER     : self.user,
+    NSDictionary *requestDict = @{REQ_KEY_LOGIN_EMAIL     : self.user,
                         REQ_KEY_LOGIN_PASSWORD : self.password};
     [super setRequestURL:requestURL];
     [super setRequestData:requestDict];
@@ -41,6 +41,7 @@
     }
     
     NSDictionary* responseData = responseDict[RES_KEY_RESPONSE_DATA] ;
+//    NSLog(@"%@",responseDict);
     NSLog(@"%@",responseData[RES_KEY_LOGIN_USER_ID_TOKEN]);
 //    NSLog(@"%@",responseDict[RES_KEY_LOGIN_USERNAME]);
     NSLog(@"%@",responseData[RES_KEY_LOGIN_USER_MOBILE_NO]);
@@ -58,6 +59,7 @@
     [defaults setValue:responseData[RES_KEY_LOGIN_USER_MOBILE_NO] forKey:REQ_KEY_USER_MOBILE_NO];
     [defaults setValue:@"TH" forKey:REQ_KEY_LANGUAGE];
     [defaults setValue:responseData[RES_KEY_LOGIN_OPERATOR_TYPE] forKey:REQ_KEY_OPERATOR_TYPE];
+    [defaults setObject:@"YES" forKey:@"login"];
     [defaults synchronize];
     [delegate loginSuccess];
 }

@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TopupDetail : NSObject
+@interface HistoryTopupDetail : NSObject
 
 - (id)initWithResponseData:(NSDictionary *)responseData;
 
-@property (nonatomic, strong)NSString *channel,*date,*amount,*mobileno;
+@property (nonatomic, strong)NSString *channel, *date, *amount, *mobileno;
 @end

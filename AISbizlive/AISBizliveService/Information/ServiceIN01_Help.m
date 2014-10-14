@@ -23,7 +23,8 @@
         [delegate helpError:resultStatus];
         return;
     }
-    [delegate helpSuccess:responseDict[RES_KEY_INFORMATION]];
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+    [delegate helpSuccess:responseData[RES_KEY_INFORMATION]];
     
 }
 

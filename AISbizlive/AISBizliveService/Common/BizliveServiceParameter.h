@@ -182,11 +182,11 @@
 #define RES_KEY_SEND_MESSAGE_SUCCESSED  @"successed"
 #define RES_KEY_SEND_MESSAGE_FAILED     @"failed"
     //Topup
-#define RES_KEY_SEND_MESSAGE_LIST       @"sendMessageHistoryList"
-#define RES_KEY_SEND_MESSAGE_MESSAGE    @"message"
-#define RES_KEY_SEND_MESSAGE_DATE       @"sendDate"
-#define RES_KEY_SEND_MESSAGE_SUCCESSED  @"successed"
-#define RES_KEY_SEND_MESSAGE_FAILED     @"failed"
+#define RES_KEY_HISTORY_TOPUP_LIST              @"topupHistoryList"
+#define RES_KEY_HISTORY_TOPUP_CHANNEL           @"channel"
+#define RES_KEY_HISTORY_TOPUP_DATE              @"topupDate"
+#define RES_KEY_HISTORY_TOPUP_AMOUNT            @"amount"
+#define RES_KEY_HISTORY_TOPUP_MOBILENO          @"mobileNo"
 
 
 

@@ -128,4 +128,5 @@
 - (void)loginError:(ResultStatus *)resultStatus{
     
 }
+
 @end

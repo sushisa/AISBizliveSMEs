@@ -194,7 +194,7 @@
 		71D6F4D219EBBF9C00DF95C0 /* SendMessageDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4D119EBBF9C00DF95C0 /* SendMessageDetail.m */; };
 		71D6F4D519EBC19A00DF95C0 /* ResponseSendMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4D419EBC19A00DF95C0 /* ResponseSendMessage.m */; };
 		71D6F4D819EBC2CA00DF95C0 /* ResponseTopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4D719EBC2CA00DF95C0 /* ResponseTopup.m */; };
-		71D6F4DB19EBC2EE00DF95C0 /* TopupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4DA19EBC2EE00DF95C0 /* TopupDetail.m */; };
+		71D6F4DB19EBC2EE00DF95C0 /* HistoryTopupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4DA19EBC2EE00DF95C0 /* HistoryTopupDetail.m */; };
 		71DCFBAC19E7C7C2004D2895 /* TestServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBAB19E7C7C2004D2895 /* TestServiceViewController.m */; };
 		71DCFBB319E7CF09004D2895 /* ServiceTP02_GetTemplateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBB219E7CF09004D2895 /* ServiceTP02_GetTemplateList.m */; };
 		71DCFBB619E7CF3C004D2895 /* ServiceTP01_AddTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBB519E7CF3C004D2895 /* ServiceTP01_AddTemplate.m */; };
@@ -528,8 +528,8 @@
 		71D6F4D419EBC19A00DF95C0 /* ResponseSendMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseSendMessage.m; path = History/ResponseSendMessage.m; sourceTree = "<group>"; };
 		71D6F4D619EBC2CA00DF95C0 /* ResponseTopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseTopup.h; path = History/ResponseTopup.h; sourceTree = "<group>"; };
 		71D6F4D719EBC2CA00DF95C0 /* ResponseTopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseTopup.m; path = History/ResponseTopup.m; sourceTree = "<group>"; };
-		71D6F4D919EBC2EE00DF95C0 /* TopupDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopupDetail.h; path = History/TopupDetail.h; sourceTree = "<group>"; };
-		71D6F4DA19EBC2EE00DF95C0 /* TopupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopupDetail.m; path = History/TopupDetail.m; sourceTree = "<group>"; };
+		71D6F4D919EBC2EE00DF95C0 /* HistoryTopupDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTopupDetail.h; path = History/HistoryTopupDetail.h; sourceTree = "<group>"; };
+		71D6F4DA19EBC2EE00DF95C0 /* HistoryTopupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTopupDetail.m; path = History/HistoryTopupDetail.m; sourceTree = "<group>"; };
 		71DCFBAA19E7C7C2004D2895 /* TestServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestServiceViewController.h; sourceTree = "<group>"; };
 		71DCFBAB19E7C7C2004D2895 /* TestServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestServiceViewController.m; sourceTree = "<group>"; };
 		71DCFBB119E7CF09004D2895 /* ServiceTP02_GetTemplateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceTP02_GetTemplateList.h; path = Template/ServiceTP02_GetTemplateList.h; sourceTree = "<group>"; };
@@ -1157,8 +1157,8 @@
 				71D6F4D419EBC19A00DF95C0 /* ResponseSendMessage.m */,
 				71D6F4D619EBC2CA00DF95C0 /* ResponseTopup.h */,
 				71D6F4D719EBC2CA00DF95C0 /* ResponseTopup.m */,
-				71D6F4D919EBC2EE00DF95C0 /* TopupDetail.h */,
-				71D6F4DA19EBC2EE00DF95C0 /* TopupDetail.m */,
+				71D6F4D919EBC2EE00DF95C0 /* HistoryTopupDetail.h */,
+				71D6F4DA19EBC2EE00DF95C0 /* HistoryTopupDetail.m */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -1436,7 +1436,7 @@
 				713DC1D41907616E00E34CB2 /* ContactCell.m in Sources */,
 				71D6297919E54EAE00CE9AF5 /* ServiceMS02_SaveSchedule.m in Sources */,
 				71D6F47F19EB7F2F00DF95C0 /* ServicePK04_Billing.m in Sources */,
-				71D6F4DB19EBC2EE00DF95C0 /* TopupDetail.m in Sources */,
+				71D6F4DB19EBC2EE00DF95C0 /* HistoryTopupDetail.m in Sources */,
 				71D6F48F19EB7FFF00DF95C0 /* ServiceNW01_GetNews.m in Sources */,
 				71EF928A18D6986B00A51C52 /* NewsViewController.m in Sources */,
 				71D6295E19E54EAE00CE9AF5 /* ContactMessageHistory.m in Sources */,
@@ -1633,7 +1633,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pratthana Leelapanang (XDG5J37849)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/North/Documents/FacebookSDK,
@@ -1660,7 +1660,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pratthana Leelapanang (XDG5J37849)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/North/Documents/FacebookSDK,

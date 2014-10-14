@@ -9,21 +9,21 @@
 #ifndef FungusFramework_FungusMessage_h
 #define FungusFramework_FungusMessage_h
 
-#define MISSING_KEY_IDENTIFY @"Missing key identify"
+//#define MISSING_KEY_IDENTIFY @"Missing key identify"
 #define INCORRECT_KEY_IDENTIFY @"Incorrect key identify"
 #define REFERENCE_ERROR @"Reference error"
-#define MISSING_PARAMETER @"Missing parameter"
+//#define MISSING_PARAMETER @"Missing parameter"
 #define INCORRECT_PARAMETER @"Incorrect parameter"
 #define MSISDN_NOT_NULL @"msisdn not null"
 #define NOT_CALL_OTP_BEFORE @"not call otp before"
-#define UNKNOWN_ERROR @"Unknown error"
+//#define UNKNOWN_ERROR @"Unknown error"
 #define KEY_IDENTIFY_ERROR @"Key identify error"
-#define TECHNICAL_ERROR @"Technical error"
+//#define TECHNICAL_ERROR @"Technical error"
 #define PERMISSION_ERROR @"Permission error"
 
 #define CONNECTTION_FAILED @"Connection failed"
 #define CONNECTTION_TIMEOUT @"Timeout"
-#define CONNECTTION_ERROR @"Connection error"
+//#define CONNECTTION_ERROR @"Connection error"
 #define NOT_FOUND_MOBILE_NUMBER @"Not found mobile number"
 
 #define TERMINATE_BY_USER @"Terminated by user"
@@ -44,6 +44,14 @@
 
 #define INVALID_INPUT_LOGIN @"Please input username or password"
 
+//NEW FUNGUS
+#define MISSING_KEY_IDENTIFY    @"Missing key identify"
+#define MISSING_PARAMETER       @"Missing parameter"
+#define URL_NOT_FOUND           @"Url not found"
+
+#define CONNECTION_ERROR        @"Connection Error"
+#define TECHNICAL_ERROR         @"Technical Error"
+#define UNKNOWN_ERROR           @"Unknown error"
 
 
 

@@ -22,6 +22,7 @@
                         NewPassword:(NSString *)NewPassword;
 @property (nonatomic, assign)id<ChangePasswordDelegate> delegate;
 
-@property (nonatomic,strong)NSString *oldPassword,*newPassword;
+//@property (nonatomic, strong)NSString *oldPassword,*newPassword;
+//@property (nonatomic,strong)NSString *oldPassword,*newPassword;
 
 @end

@@ -26,6 +26,6 @@
 @property (nonatomic, strong)NSString *orderRef;
 @property (nonatomic, strong)NSString *orderID;
 
-- (void)callbackRespond:(NSDictionary *)response;
+- (void)callbackRespond:(ConnectResponse *)response;
 
 @end

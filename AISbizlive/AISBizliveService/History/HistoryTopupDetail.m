@@ -6,10 +6,10 @@
 //  Copyright (c) 2557 promptnow. All rights reserved.
 //
 
-#import "TopupDetail.h"
+#import "HistoryTopupDetail.h"
 #import "BizliveServiceParameter.h"
 
-@implementation TopupDetail
+@implementation HistoryTopupDetail
 @synthesize channel,date,amount,mobileno;
 
 - (id)initWithResponseData:(NSDictionary *)responseData
@@ -17,10 +17,10 @@
     self = [super init];
     if (self) {
         
-        self.channel = responseData[RES_KEY_SEND_MESSAGE_MESSAGE];
-        self.date = responseData[RES_KEY_SEND_MESSAGE_DATE];
-        self.amount = responseData[RES_KEY_SEND_MESSAGE_SUCCESSED];
-        self.mobileno = responseData[RES_KEY_SEND_MESSAGE_FAILED];
+        self.channel = responseData[RES_KEY_HISTORY_TOPUP_CHANNEL];
+        self.date = responseData[RES_KEY_HISTORY_TOPUP_DATE];
+        self.amount = responseData[RES_KEY_HISTORY_TOPUP_AMOUNT];
+        self.mobileno = responseData[RES_KEY_HISTORY_TOPUP_MOBILENO];
         
     }
     return self;

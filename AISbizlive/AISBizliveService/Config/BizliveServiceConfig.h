@@ -67,8 +67,8 @@
 
 //History
 #define SERVICE_HT_01_GET_SENDMESSAGE_HISTORY_URL       @"/bizlive/history/sendMessage"
-#define SERVICE_HT_03_GET_TOPUP_HISTORY_URL             @"/bizlive/history/topup"
-#define SERVICE_HT_02_GET_BALANCE_HISTORY_URL           @"/bizlive/history/balance"
+#define SERVICE_HT_02_GET_TOPUP_HISTORY_URL             @"/bizlive/history/topup"
+#define SERVICE_HT_03_GET_BALANCE_HISTORY_URL           @"/bizlive/history/balance"
 
 //Information
 #define SERVICE_IN_01_GET_HELP_URL                      @"/bizlive/info/help"

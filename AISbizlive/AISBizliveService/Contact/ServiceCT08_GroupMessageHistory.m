@@ -49,7 +49,9 @@
         [delegate groupMessageHistoryError:resultStatus];
         return;
     }
-    ResponseContactMessageHistory *historyList = [[ResponseContactMessageHistory alloc] initWithResponseData:responseDict];
+    
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+    ResponseContactMessageHistory *historyList = [[ResponseContactMessageHistory alloc] initWithResponseData:responseData];
     [delegate groupMessageHistorySuccess:historyList];
 }
 

@@ -15,12 +15,13 @@
 @protocol ConnectProcessDelegate <NSObject>
 
 //-(void)callbackRespond;
-- (void)callbackRespond:(NSDictionary *)response;
+//- (void)callbackRespond:(NSDictionary *)response;
 //-(void)connectionStart:(ConnectProcess *)sender;
 //-(void)connectionProgress:(ConnectProcess *)sender;
 //-(void)connectionSuccess:(ConnectProcess *)sender;
 //-(void)connectionFail:(ConnectProcess *)sender;
 - (void)connectionError:(ResponseStatus *)responseStatus;
+- (void)callbackRespond:(ConnectResponse *)connectResponse;
 
 @end
 

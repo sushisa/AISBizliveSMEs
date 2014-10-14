@@ -25,7 +25,8 @@
         return;
     }
     
-    ResponseSettingProfile *serviceData = [[ResponseSettingProfile alloc] initWithResponseData:responseDict];
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+    ResponseSettingProfile *serviceData = [[ResponseSettingProfile alloc] initWithResponseData:responseData];
     [delegate settingProfileSuccess:serviceData];
     
 }

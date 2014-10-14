@@ -25,7 +25,8 @@
         return;
     }
     
-    PackageDetail *serviceData = [[PackageDetail alloc] initWithResponseData:responseDict[RES_KEY_PACKAGE_LIST]];
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+    PackageDetail *serviceData = [[PackageDetail alloc] initWithResponseData:responseData[RES_KEY_PACKAGE_LIST]];
     [delegate getPackageSuccess:serviceData];
     
 }

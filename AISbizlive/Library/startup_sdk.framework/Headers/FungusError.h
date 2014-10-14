@@ -30,6 +30,7 @@ static const int ERROR_CODE_302 = 302;
 static const int ERROR_CODE_304 = 304;
 
 
+
 static const int ERROR_CODE_403 = 403;
 static const int ERROR_CODE_406 = 406;
 static const int ERROR_CODE_407 = 407;
@@ -59,6 +60,13 @@ static const int ERROR_CODE_500 = 500; //Internal Server Error
 //HTTP Status 400
 #define ERROR_CODE_40000 40000
 #define ERROR_CODE_40001 40001
+#define ERROR_CODE_40400 40400
+#define ERROR_CODE_90001 90001 //Missing key identify
+#define ERROR_CODE_90003 90003 //Missing parameter
+#define ERROR_CODE_90005 90005
+
+#define ERROR_COOE_90007 90007
+#define ERROR_CODE_90099 90099 //Unknown error
 
 
 

@@ -23,7 +23,8 @@
         [delegate privacyError:resultStatus];
         return;
     }
-    [delegate privacySuccess:responseDict[RES_KEY_INFORMATION]];
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+    [delegate privacySuccess:responseData[RES_KEY_INFORMATION]];
     
 }
 

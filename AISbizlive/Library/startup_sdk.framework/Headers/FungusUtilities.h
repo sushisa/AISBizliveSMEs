@@ -30,7 +30,9 @@
 +(NSData*)mergeNSData:(NSData*)first mergeWith:(NSData*)second;
 +(NSData*)divideData:(NSData*) fullPiece;
 
+
 +(NSData *)getJSONDataWithRequest:(NSDictionary *)requestDict;
++(NSDictionary *)getDictionaryWithJSONData:(NSData *)jsonData;
 
 + (NSString *)getCurrentDeviceLanguage;
 

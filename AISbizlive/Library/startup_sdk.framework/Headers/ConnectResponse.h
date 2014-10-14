@@ -24,5 +24,6 @@
 //@property (nonatomic, retain) NSString *responseData;
 @property (nonatomic, retain) NSMutableData *responseData;
 @property (nonatomic) NSInteger *statusCode;
+@property (nonatomic, strong) NSDictionary *responseDict;
 
 @end

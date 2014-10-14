@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HistoryTopupDetail.h"
 
 @interface ResponseTopup : NSObject
 
+- (id)initWithResponseData:(NSDictionary *)responseData;
+
+@property (nonatomic, strong)NSMutableArray *topup;
 @end

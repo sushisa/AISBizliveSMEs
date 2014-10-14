@@ -25,7 +25,8 @@
         return;
     }
     
-    TopupDetail *serviceData = [[TopupDetail alloc] initWithResponseData:responseDict[RES_KEY_TOPUP_LIST]];
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+    TopupDetail *serviceData = [[TopupDetail alloc] initWithResponseData:responseData[RES_KEY_TOPUP_LIST]];
     [delegate getTopupSuccess:serviceData];
     
 }

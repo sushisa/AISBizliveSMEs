@@ -7,21 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ConnectResponse.h"
+
 @interface ResponseStatus : NSObject
 {
-    int _statusCode;
-    NSString *_description;
     NSString *_orderRef;
+    BOOL responseSuccess;
 }
 
 -(void)initialWithResponse:(NSDictionary *)response orderRef:(NSString *)orderRef;
--(void)initWithResponse:(NSDictionary *)response;
--(void)setStatusCode:(int)code;
--(void)setDescription:(NSString *)description;
-
--(int)getStatusCode;
--(NSString *)getDescription;
+//-(void)initWithResponse:(NSDictionary *)response;
+//-(void)setStatusCode:(int)code;
+//-(void)setDescription:(NSString *)description;
 
 -(BOOL)isResponseSuccess;
 
+-(id)initWithConnectResponse:(ConnectResponse *)connectResponse;
+
+
+@property(nonatomic, strong)NSString *developerMessage, *userMessage, *moreInfo, *errorCode;
+@property(nonatomic)NSInteger resultCode;
+
+@property (nonatomic, strong)NSString *responseStatus;
 @end

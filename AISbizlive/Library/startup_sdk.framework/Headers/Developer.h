@@ -10,7 +10,7 @@
 
 @interface Developer : NSObject
 
-+(void) setFungusParameterWithServiceNumber:(NSString *)serviceNumber iCpId:(NSString *)iCpId  appVersion:(NSString *)version andCertificate:(NSString *)certificate;
++(void) setFungusParameterWithServiceNumber:(NSString *)serviceNumber iCpId:(NSString *)iCpId andCertificate:(NSString *)certificate;
 
 +(NSString *)getVmURL;
 +(NSString *)getVmIP;

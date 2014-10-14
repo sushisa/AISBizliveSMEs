@@ -62,7 +62,8 @@
         [delegate getContactListToEditGroupError:resultStatus];
         return;
     }
-    GroupContactDetail *groupContactDetail = [[GroupContactDetail alloc] initWithResponseData:responseDict];
+    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+    GroupContactDetail *groupContactDetail = [[GroupContactDetail alloc] initWithResponseData:responseData];
     
     
     [delegate getContactListToEditGroupSuccess:groupContactDetail];

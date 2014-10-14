@@ -138,9 +138,15 @@
         ServiceCT02_AddContact *callAddPeople = [[ServiceCT02_AddContact alloc] init];
         [callAddPeople setFirstname:nameTextField.text];
         [callAddPeople setLastname:lastNameTextField.text];
-        [callAddPeople setMobileNO:mobileNoTextField.text];
+        if (mobileNoTextField.text.length == 12) {
+            NSString *mobileText = [NSString stringWithFormat:@"%@%@%@",[mobileNoTextField.text substringToIndex:2] ,[[mobileNoTextField.text substringFromIndex:3] substringToIndex:4],[mobileNoTextField.text substringFromIndex:8] ];
+            [callAddPeople setMobileNO:mobileText];
+        }
+        else{
+            [callAddPeople setMobileNO:mobileNoTextField.text];
+        }
         [callAddPeople setImage64:@""];
-        [callAddPeople setContactSource:@""];
+        [callAddPeople setContactSource:@"IOS"];
         [callAddPeople setDelegate:self];
         [callAddPeople requestService];
         

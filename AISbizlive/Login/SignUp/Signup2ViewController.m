@@ -14,6 +14,7 @@
 {
     
     NSString *headerToWeb;
+    NSString *indexToWeb;
     NSMutableArray *checkHeightCell;
     AISAlertView *alertView;
     UIActionSheet *choosePhoto;
@@ -328,6 +329,7 @@
     else if ([[segue identifier] isEqualToString: @"signupToWeb"]) {
         WebViewController *web = [segue destinationViewController];
         web.Header = headerToWeb;
+        web.indexRow = indexToWeb;
     }
 }
 - (IBAction)confirmSignUp:(id)sender{
@@ -435,11 +437,13 @@
 - (IBAction)termClick:(id)sender {
     
     headerToWeb = termButton.titleLabel.text;
+    indexToWeb = @"2";
     [self performSegueWithIdentifier:@"signupToWeb" sender:self];
 }
 
 - (IBAction)policyClick:(id)sender {
     headerToWeb = policyButton.titleLabel.text;
+    indexToWeb = @"1";
     [self performSegueWithIdentifier:@"signupToWeb" sender:self];
 }
 

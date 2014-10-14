@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "BizliveService.h"
-#import "ResponseSendMessage.h"
+#import "ResponseTopup.h"
 
 @protocol TopupDelegate <NSObject>
 
-- (void)topupSuccess:(ResponseSendMessage *)responseSendMessage;
+- (void)topupSuccess:(ResponseTopup *)responseTopup;
 - (void)topupError:(ResultStatus *)resultStatus;
 
 @end

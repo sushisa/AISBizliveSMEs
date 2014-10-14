@@ -41,8 +41,8 @@
 {
     self = [super init];
     if (self) {
-        self.responseCode = [NSString stringWithFormat:@"%d",[responseStatus getStatusCode]];
-        self.responseMessage = [responseStatus getDescription];
+        self.responseCode = [NSString stringWithFormat:@"%d",[responseStatus resultCode]];
+        self.responseMessage = [responseStatus developerMessage];
     }
     return self;
 }

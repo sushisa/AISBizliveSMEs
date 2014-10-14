@@ -16,6 +16,6 @@
 {
     __weak IBOutlet UIWebView *webView;
 }
-@property(strong,nonatomic) NSString *Header;
+@property(strong,nonatomic) NSString *Header,*indexRow;
 
 @end

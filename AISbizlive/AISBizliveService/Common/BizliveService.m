@@ -20,6 +20,7 @@
 
 - (void)requestService
 {
+    
     serviceBizLive = [[ServiceBizLive alloc] init];
     [serviceBizLive setServiceBizLiveDelegate:self];
     [serviceBizLive setBizLiveURL:self.requestURL];
@@ -32,17 +33,17 @@
 
 - (NSDictionary *)getRequestData:(NSDictionary *)request
 {
-    NSMutableDictionary *requestParam = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *requestDict = [[NSMutableDictionary alloc] init];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([[defaults valueForKey:@"login"] isEqualToString:@"YES"]) {
+        NSMutableDictionary *requestParam = [[NSMutableDictionary alloc] init];
         [requestParam setValue:[defaults valueForKey:REQ_KEY_USER_TOKEN_ID] forKey:REQ_KEY_USER_TOKEN_ID];
         [requestParam setValue:[defaults valueForKey:REQ_KEY_USER_MOBILE_NO] forKey:REQ_KEY_USER_MOBILE_NO];
         [requestParam setValue:@"TH" forKey:REQ_KEY_LANGUAGE];
         [requestParam setValue:[defaults valueForKey:REQ_KEY_OPERATOR_TYPE] forKey:REQ_KEY_OPERATOR_TYPE];
+        [requestDict setObject:requestParam forKey:REQ_KEY_REQUEST_PARAM];
     }
     
-    NSMutableDictionary *requestDict = [[NSMutableDictionary alloc] init];
-    [requestDict setObject:requestParam forKey:REQ_KEY_REQUEST_PARAM];
     
     if (request) {
         [requestDict setValue:request forKey:REQ_KEY_REQUEST_DATA];

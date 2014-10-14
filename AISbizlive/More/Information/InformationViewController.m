@@ -101,6 +101,7 @@
         
         WebViewController *web = [segue destinationViewController];
         web.Header = [info objectAtIndex:selectIndex];
+        web.indexRow = [NSString stringWithFormat:@"%d",selectIndex];
     }
 }
 @end
