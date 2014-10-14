@@ -195,6 +195,7 @@
 		71D6F4D519EBC19A00DF95C0 /* ResponseSendMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4D419EBC19A00DF95C0 /* ResponseSendMessage.m */; };
 		71D6F4D819EBC2CA00DF95C0 /* ResponseTopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4D719EBC2CA00DF95C0 /* ResponseTopup.m */; };
 		71D6F4DB19EBC2EE00DF95C0 /* HistoryTopupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4DA19EBC2EE00DF95C0 /* HistoryTopupDetail.m */; };
+		71D6FA0819ED33810081A3D3 /* startup_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D6FA0719ED33810081A3D3 /* startup_sdk.framework */; };
 		71DCFBAC19E7C7C2004D2895 /* TestServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBAB19E7C7C2004D2895 /* TestServiceViewController.m */; };
 		71DCFBB319E7CF09004D2895 /* ServiceTP02_GetTemplateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBB219E7CF09004D2895 /* ServiceTP02_GetTemplateList.m */; };
 		71DCFBB619E7CF3C004D2895 /* ServiceTP01_AddTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBB519E7CF3C004D2895 /* ServiceTP01_AddTemplate.m */; };
@@ -530,6 +531,7 @@
 		71D6F4D719EBC2CA00DF95C0 /* ResponseTopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseTopup.m; path = History/ResponseTopup.m; sourceTree = "<group>"; };
 		71D6F4D919EBC2EE00DF95C0 /* HistoryTopupDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTopupDetail.h; path = History/HistoryTopupDetail.h; sourceTree = "<group>"; };
 		71D6F4DA19EBC2EE00DF95C0 /* HistoryTopupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTopupDetail.m; path = History/HistoryTopupDetail.m; sourceTree = "<group>"; };
+		71D6FA0719ED33810081A3D3 /* startup_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = startup_sdk.framework; path = Library/startup_sdk.framework; sourceTree = "<group>"; };
 		71DCFBAA19E7C7C2004D2895 /* TestServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestServiceViewController.h; sourceTree = "<group>"; };
 		71DCFBAB19E7C7C2004D2895 /* TestServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestServiceViewController.m; sourceTree = "<group>"; };
 		71DCFBB119E7CF09004D2895 /* ServiceTP02_GetTemplateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceTP02_GetTemplateList.h; path = Template/ServiceTP02_GetTemplateList.h; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 				716120C918A4DB24004077D9 /* CoreGraphics.framework in Frameworks */,
 				716120CB18A4DB24004077D9 /* UIKit.framework in Frameworks */,
 				716120C718A4DB24004077D9 /* Foundation.framework in Frameworks */,
+				71D6FA0819ED33810081A3D3 /* startup_sdk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1219,6 +1222,7 @@
 		71EF928C18D6AE2700A51C52 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				71D6FA0719ED33810081A3D3 /* startup_sdk.framework */,
 				71602611196BCAC2005B3193 /* StartUp_20018.crt */,
 				713DC1D51907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.h */,
 				713DC1D61907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.m */,
