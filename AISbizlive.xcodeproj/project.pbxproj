@@ -74,7 +74,6 @@
 		7189FE161908F9D400B636FB /* AISView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7189FE151908F9D400B636FB /* AISView.m */; };
 		718FE71019344B1F00E9C9E2 /* ForgetEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718FE70F19344B1F00E9C9E2 /* ForgetEmailViewController.m */; };
 		718FE71619346B4200E9C9E2 /* AISNavigationBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 718FE71519346B4200E9C9E2 /* AISNavigationBarItem.m */; };
-		7198029219B5BDDC00E2FAAB /* startup_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198029119B5BDDC00E2FAAB /* startup_sdk.framework */; };
 		7198029819B6FA3700E2FAAB /* Signup2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7198029719B6FA3700E2FAAB /* Signup2ViewController.m */; };
 		71996D611924B28300AC1EDF /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71996D601924B28300AC1EDF /* MessageTableViewController.m */; };
 		71996D641924C96F00AC1EDF /* AISButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 71996D631924C96F00AC1EDF /* AISButton.m */; };
@@ -323,7 +322,6 @@
 		718FE70F19344B1F00E9C9E2 /* ForgetEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgetEmailViewController.m; path = Login/Forget/ForgetEmailViewController.m; sourceTree = "<group>"; };
 		718FE71419346B4200E9C9E2 /* AISNavigationBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISNavigationBarItem.h; path = Global/AISNavigationBarItem.h; sourceTree = "<group>"; };
 		718FE71519346B4200E9C9E2 /* AISNavigationBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISNavigationBarItem.m; path = Global/AISNavigationBarItem.m; sourceTree = "<group>"; };
-		7198029119B5BDDC00E2FAAB /* startup_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = startup_sdk.framework; path = ../AISBizlive/AISbizlive/Library/startup_sdk.framework; sourceTree = "<group>"; };
 		7198029619B6FA3700E2FAAB /* Signup2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Signup2ViewController.h; path = Login/SignUp/Signup2ViewController.h; sourceTree = "<group>"; };
 		7198029719B6FA3700E2FAAB /* Signup2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Signup2ViewController.m; path = Login/SignUp/Signup2ViewController.m; sourceTree = "<group>"; };
 		71996D5F1924B28300AC1EDF /* MessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageTableViewController.h; path = Message/MessageTableViewController.h; sourceTree = "<group>"; };
@@ -562,7 +560,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7198029219B5BDDC00E2FAAB /* startup_sdk.framework in Frameworks */,
 				717A9C2318F7953C00993805 /* QuartzCore.framework in Frameworks */,
 				717A9C2118F7952E00993805 /* CoreData.framework in Frameworks */,
 				7176D6E818AA2AF2004D849C /* Social.framework in Frameworks */,
@@ -651,7 +648,6 @@
 		716120C518A4DB24004077D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7198029119B5BDDC00E2FAAB /* startup_sdk.framework */,
 				71198E0A193C874E006C05CE /* FacebookSDK.framework */,
 				717A9C2218F7953C00993805 /* QuartzCore.framework */,
 				717A9C2018F7952E00993805 /* CoreData.framework */,
