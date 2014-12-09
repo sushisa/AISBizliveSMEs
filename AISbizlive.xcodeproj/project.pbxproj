@@ -36,10 +36,13 @@
 		713DC1E61907628A00E34CB2 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC1DF1907628A00E34CB2 /* SWUtilityButtonTapGestureRecognizer.m */; };
 		713DC1E71907628A00E34CB2 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC1E11907628A00E34CB2 /* SWUtilityButtonView.m */; };
 		713DC92518F7DA37005D1E2F /* AISTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 713DC92418F7DA37005D1E2F /* AISTableViewCell.m */; };
-		713F2459192B076D003C4822 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713F2458192B076D003C4822 /* SettingViewController.m */; };
+		713E10841A07A58700974DD1 /* AISpList.m in Sources */ = {isa = PBXBuildFile; fileRef = 713E10831A07A58700974DD1 /* AISpList.m */; };
+		713F2459192B076D003C4822 /* Setting2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713F2458192B076D003C4822 /* Setting2ViewController.m */; };
 		713F245C192B0E9B003C4822 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713F245B192B0E9B003C4822 /* ChangePasswordViewController.m */; };
 		7141C39518EEA66300AC6EC7 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7141C39418EEA66300AC6EC7 /* InformationViewController.m */; };
 		7143D57F190E03D100A4DC10 /* Plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7143D57E190E03D100A4DC10 /* Plus@2x.png */; };
+		71486AE31A039500000954E9 /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71486AE11A039500000954E9 /* ScheduleCell.m */; };
+		714BF03919F4F42A00A51096 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 714BF03819F4F42A00A51096 /* SelectCell.m */; };
 		715C201218FE572C00CB046C /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 715C200F18FE572C00CB046C /* Logo@2x.png */; };
 		715C201818FE680100CB046C /* Add_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 715C201718FE680100CB046C /* Add_Icon@2x.png */; };
 		715C201B18FE696D00CB046C /* AddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 715C201A18FE696D00CB046C /* AddGroupViewController.m */; };
@@ -57,7 +60,10 @@
 		7161210418A4E600004077D9 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161210318A4E600004077D9 /* PageContentViewController.m */; };
 		7161210F18A4EA5C004077D9 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161210E18A4EA5C004077D9 /* ContactViewController.m */; };
 		7161211718A4EACA004077D9 /* PackageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7161211618A4EACA004077D9 /* PackageViewController.m */; };
+		7164E05319F7B7F200EE27B6 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7164E05219F7B7F200EE27B6 /* SettingViewController.m */; };
+		71685A481A0C901800FBDF1E /* RecurringForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 71685A461A0C901800FBDF1E /* RecurringForm.m */; };
 		7169DE12196E968800039AE0 /* TemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7169DE11196E968800039AE0 /* TemplateCell.m */; };
+		716D57D71A09DF3300BE6BF7 /* TITokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = 716D57D61A09DF3300BE6BF7 /* TITokenField.m */; };
 		7176D6E618AA2AEC004D849C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176D6E518AA2AEC004D849C /* AddressBookUI.framework */; };
 		7176D6E818AA2AF2004D849C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7176D6E718AA2AF2004D849C /* Social.framework */; };
 		717A9C2118F7952E00993805 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 717A9C2018F7952E00993805 /* CoreData.framework */; };
@@ -71,6 +77,7 @@
 		717A9C4218F7AF4200993805 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 717A9C3418F7AF4200993805 /* icon@2x.png */; };
 		717A9C4318F7AF4200993805 /* Iphone_120X120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 717A9C3518F7AF4200993805 /* Iphone_120X120@2x.png */; };
 		7181430E19581A4B00871B3D /* AISMessageHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7181430D19581A4B00871B3D /* AISMessageHead.m */; };
+		7187C2F81A0244FC0065D847 /* SortDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7187C2F71A0244FC0065D847 /* SortDate.m */; };
 		7189FE161908F9D400B636FB /* AISView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7189FE151908F9D400B636FB /* AISView.m */; };
 		718FE71019344B1F00E9C9E2 /* ForgetEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 718FE70F19344B1F00E9C9E2 /* ForgetEmailViewController.m */; };
 		718FE71619346B4200E9C9E2 /* AISNavigationBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 718FE71519346B4200E9C9E2 /* AISNavigationBarItem.m */; };
@@ -125,7 +132,15 @@
 		71B6FC3C18F64B27000930F4 /* DetailNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B6FC3B18F64B27000930F4 /* DetailNewsViewController.m */; };
 		71BD0B10196261EC00ECC0F0 /* DetailGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BD0B0F196261EC00ECC0F0 /* DetailGroupViewController.m */; };
 		71C3DDEB18D97170002B6E79 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C3DDEA18D97170002B6E79 /* ScheduleViewController.m */; };
+		71C5026B19FF993A0036EABC /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C5026A19FF993A0036EABC /* DetailCell.m */; };
+		71C65C3F19F0C76300BC499D /* SettingPackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71C65C3E19F0C76300BC499D /* SettingPackageCell.m */; };
 		71CD62531959687A00692B4C /* TemplateList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71CD62521959687A00692B4C /* TemplateList.plist */; };
+		71D1889219EF711200BBD27E /* AISActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D1889119EF711200BBD27E /* AISActivity.m */; };
+		71D1889519EFA4CB00BBD27E /* ResponseGroupMessageHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D1889419EFA4CB00BBD27E /* ResponseGroupMessageHistory.m */; };
+		71D1889819EFB28D00BBD27E /* messageHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D1889719EFB28D00BBD27E /* messageHistoryCell.m */; };
+		71D1889B19EFB73200BBD27E /* topupHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D1889A19EFB73200BBD27E /* topupHistoryCell.m */; };
+		71D1889E19EFD26500BBD27E /* ResponseBalance.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D1889D19EFD26500BBD27E /* ResponseBalance.m */; };
+		71D188A119EFD28800BBD27E /* BalanceDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D188A019EFD28800BBD27E /* BalanceDetail.m */; };
 		71D6295919E54EAE00CE9AF5 /* BizliveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6290719E54EAE00CE9AF5 /* BizliveService.m */; };
 		71D6295A19E54EAE00CE9AF5 /* BizliveServiceCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6290919E54EAE00CE9AF5 /* BizliveServiceCode.m */; };
 		71D6295B19E54EAE00CE9AF5 /* ResultStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6290C19E54EAE00CE9AF5 /* ResultStatus.m */; };
@@ -195,6 +210,7 @@
 		71D6F4D819EBC2CA00DF95C0 /* ResponseTopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4D719EBC2CA00DF95C0 /* ResponseTopup.m */; };
 		71D6F4DB19EBC2EE00DF95C0 /* HistoryTopupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D6F4DA19EBC2EE00DF95C0 /* HistoryTopupDetail.m */; };
 		71D6FA0819ED33810081A3D3 /* startup_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D6FA0719ED33810081A3D3 /* startup_sdk.framework */; };
+		71DB6E7B19EE8576005408E3 /* ResponseGetPackageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DB6E7A19EE8576005408E3 /* ResponseGetPackageList.m */; };
 		71DCFBAC19E7C7C2004D2895 /* TestServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBAB19E7C7C2004D2895 /* TestServiceViewController.m */; };
 		71DCFBB319E7CF09004D2895 /* ServiceTP02_GetTemplateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBB219E7CF09004D2895 /* ServiceTP02_GetTemplateList.m */; };
 		71DCFBB619E7CF3C004D2895 /* ServiceTP01_AddTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DCFBB519E7CF3C004D2895 /* ServiceTP01_AddTemplate.m */; };
@@ -203,6 +219,7 @@
 		71E394BD19D9309E00224673 /* DetailPeopleGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E394BC19D9309E00224673 /* DetailPeopleGroupViewController.m */; };
 		71E44157193DBB02004282AC /* Common.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71E44156193DBB02004282AC /* Common.plist */; };
 		71EF928A18D6986B00A51C52 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71EF928918D6986B00A51C52 /* NewsViewController.m */; };
+		71F117AE1A27640900A427A3 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F117AD1A27640900A427A3 /* MBProgressHUD.m */; };
 		71F2043518D2C4F100EBE5BF /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F2043418D2C4F100EBE5BF /* HistoryViewController.m */; };
 		71F9030C18E2B723001E7663 /* DWTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F9030518E2B723001E7663 /* DWTagList.m */; };
 		71FA02DF1904F8E90016FF57 /* TopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FA02DE1904F8E90016FF57 /* TopUpViewController.m */; };
@@ -265,13 +282,19 @@
 		713DC1E11907628A00E34CB2 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 		713DC92318F7DA37005D1E2F /* AISTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISTableViewCell.h; path = Global/AISTableViewCell.h; sourceTree = "<group>"; };
 		713DC92418F7DA37005D1E2F /* AISTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISTableViewCell.m; path = Global/AISTableViewCell.m; sourceTree = "<group>"; };
-		713F2457192B076D003C4822 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = More/Setting/SettingViewController.h; sourceTree = "<group>"; };
-		713F2458192B076D003C4822 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = More/Setting/SettingViewController.m; sourceTree = "<group>"; };
+		713E10821A07A58700974DD1 /* AISpList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISpList.h; path = Global/AISpList.h; sourceTree = "<group>"; };
+		713E10831A07A58700974DD1 /* AISpList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISpList.m; path = Global/AISpList.m; sourceTree = "<group>"; };
+		713F2457192B076D003C4822 /* Setting2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Setting2ViewController.h; path = More/Setting/Setting2ViewController.h; sourceTree = "<group>"; };
+		713F2458192B076D003C4822 /* Setting2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Setting2ViewController.m; path = More/Setting/Setting2ViewController.m; sourceTree = "<group>"; };
 		713F245A192B0E9B003C4822 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangePasswordViewController.h; path = More/Setting/ChangePasswordViewController.h; sourceTree = "<group>"; };
 		713F245B192B0E9B003C4822 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChangePasswordViewController.m; path = More/Setting/ChangePasswordViewController.m; sourceTree = "<group>"; };
 		7141C39318EEA66300AC6EC7 /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InformationViewController.h; path = More/Information/InformationViewController.h; sourceTree = "<group>"; };
 		7141C39418EEA66300AC6EC7 /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InformationViewController.m; path = More/Information/InformationViewController.m; sourceTree = "<group>"; };
 		7143D57E190E03D100A4DC10 /* Plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus@2x.png"; sourceTree = "<group>"; };
+		71486AE11A039500000954E9 /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleCell.m; path = More/Schedule/ScheduleCell.m; sourceTree = "<group>"; };
+		71486AE21A039500000954E9 /* ScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleCell.h; path = More/Schedule/ScheduleCell.h; sourceTree = "<group>"; };
+		714BF03719F4F42A00A51096 /* SelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectCell.h; path = Contact/SelectCell.h; sourceTree = "<group>"; };
+		714BF03819F4F42A00A51096 /* SelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCell.m; path = Contact/SelectCell.m; sourceTree = "<group>"; };
 		715C200F18FE572C00CB046C /* Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo@2x.png"; path = "images/SplashScreen/Logo@2x.png"; sourceTree = "<group>"; };
 		715C201718FE680100CB046C /* Add_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add_Icon@2x.png"; sourceTree = "<group>"; };
 		715C201918FE696D00CB046C /* AddGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddGroupViewController.h; path = Contact/AddGroupViewController.h; sourceTree = "<group>"; };
@@ -300,8 +323,14 @@
 		7161210E18A4EA5C004077D9 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactViewController.m; path = Contact/ContactViewController.m; sourceTree = "<group>"; };
 		7161211518A4EACA004077D9 /* PackageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PackageViewController.h; path = Package/PackageViewController.h; sourceTree = "<group>"; };
 		7161211618A4EACA004077D9 /* PackageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PackageViewController.m; path = Package/PackageViewController.m; sourceTree = "<group>"; };
+		7164E05119F7B7F200EE27B6 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = More/Setting/SettingViewController.h; sourceTree = "<group>"; };
+		7164E05219F7B7F200EE27B6 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = More/Setting/SettingViewController.m; sourceTree = "<group>"; };
+		71685A461A0C901800FBDF1E /* RecurringForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecurringForm.m; sourceTree = "<group>"; };
+		71685A471A0C901800FBDF1E /* RecurringForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecurringForm.h; sourceTree = "<group>"; };
 		7169DE10196E968800039AE0 /* TemplateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateCell.h; path = More/Template/TemplateCell.h; sourceTree = "<group>"; };
 		7169DE11196E968800039AE0 /* TemplateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateCell.m; path = More/Template/TemplateCell.m; sourceTree = "<group>"; };
+		716D57D51A09DF3300BE6BF7 /* TITokenField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TITokenField.h; sourceTree = "<group>"; };
+		716D57D61A09DF3300BE6BF7 /* TITokenField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TITokenField.m; sourceTree = "<group>"; };
 		7176D6E518AA2AEC004D849C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		7176D6E718AA2AF2004D849C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		717A9C2018F7952E00993805 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -316,6 +345,8 @@
 		717A9C3518F7AF4200993805 /* Iphone_120X120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Iphone_120X120@2x.png"; sourceTree = "<group>"; };
 		7181430C19581A4B00871B3D /* AISMessageHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISMessageHead.h; path = Global/AISMessageHead.h; sourceTree = "<group>"; };
 		7181430D19581A4B00871B3D /* AISMessageHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISMessageHead.m; path = Global/AISMessageHead.m; sourceTree = "<group>"; };
+		7187C2F61A0244FC0065D847 /* SortDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortDate.h; sourceTree = "<group>"; };
+		7187C2F71A0244FC0065D847 /* SortDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortDate.m; sourceTree = "<group>"; };
 		7189FE141908F9D400B636FB /* AISView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISView.h; path = Global/AISView.h; sourceTree = "<group>"; };
 		7189FE151908F9D400B636FB /* AISView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISView.m; path = Global/AISView.m; sourceTree = "<group>"; };
 		718FE70E19344B1F00E9C9E2 /* ForgetEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgetEmailViewController.h; path = Login/Forget/ForgetEmailViewController.h; sourceTree = "<group>"; };
@@ -390,7 +421,23 @@
 		71BD0B0F196261EC00ECC0F0 /* DetailGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailGroupViewController.m; path = Contact/DetailGroupViewController.m; sourceTree = "<group>"; };
 		71C3DDE918D97170002B6E79 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleViewController.h; path = More/Schedule/ScheduleViewController.h; sourceTree = "<group>"; };
 		71C3DDEA18D97170002B6E79 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleViewController.m; path = More/Schedule/ScheduleViewController.m; sourceTree = "<group>"; };
+		71C5026919FF99390036EABC /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailCell.h; path = Contact/DetailCell.h; sourceTree = "<group>"; };
+		71C5026A19FF993A0036EABC /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailCell.m; path = Contact/DetailCell.m; sourceTree = "<group>"; };
+		71C65C3D19F0C76200BC499D /* SettingPackageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingPackageCell.h; path = More/Setting/SettingPackageCell.h; sourceTree = "<group>"; };
+		71C65C3E19F0C76300BC499D /* SettingPackageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingPackageCell.m; path = More/Setting/SettingPackageCell.m; sourceTree = "<group>"; };
 		71CD62521959687A00692B4C /* TemplateList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TemplateList.plist; sourceTree = "<group>"; };
+		71D1889019EF711200BBD27E /* AISActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AISActivity.h; path = Global/AISActivity.h; sourceTree = "<group>"; };
+		71D1889119EF711200BBD27E /* AISActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AISActivity.m; path = Global/AISActivity.m; sourceTree = "<group>"; };
+		71D1889319EFA4CB00BBD27E /* ResponseGroupMessageHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseGroupMessageHistory.h; sourceTree = "<group>"; };
+		71D1889419EFA4CB00BBD27E /* ResponseGroupMessageHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseGroupMessageHistory.m; sourceTree = "<group>"; };
+		71D1889619EFB28D00BBD27E /* messageHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = messageHistoryCell.h; path = More/History/messageHistoryCell.h; sourceTree = "<group>"; };
+		71D1889719EFB28D00BBD27E /* messageHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = messageHistoryCell.m; path = More/History/messageHistoryCell.m; sourceTree = "<group>"; };
+		71D1889919EFB73200BBD27E /* topupHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = topupHistoryCell.h; path = More/History/topupHistoryCell.h; sourceTree = "<group>"; };
+		71D1889A19EFB73200BBD27E /* topupHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = topupHistoryCell.m; path = More/History/topupHistoryCell.m; sourceTree = "<group>"; };
+		71D1889C19EFD26400BBD27E /* ResponseBalance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseBalance.h; path = History/ResponseBalance.h; sourceTree = "<group>"; };
+		71D1889D19EFD26500BBD27E /* ResponseBalance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseBalance.m; path = History/ResponseBalance.m; sourceTree = "<group>"; };
+		71D1889F19EFD28800BBD27E /* BalanceDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BalanceDetail.h; path = History/BalanceDetail.h; sourceTree = "<group>"; };
+		71D188A019EFD28800BBD27E /* BalanceDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BalanceDetail.m; path = History/BalanceDetail.m; sourceTree = "<group>"; };
 		71D6290619E54EAE00CE9AF5 /* BizliveService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BizliveService.h; sourceTree = "<group>"; };
 		71D6290719E54EAE00CE9AF5 /* BizliveService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BizliveService.m; sourceTree = "<group>"; };
 		71D6290819E54EAE00CE9AF5 /* BizliveServiceCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BizliveServiceCode.h; sourceTree = "<group>"; };
@@ -530,6 +577,8 @@
 		71D6F4D919EBC2EE00DF95C0 /* HistoryTopupDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryTopupDetail.h; path = History/HistoryTopupDetail.h; sourceTree = "<group>"; };
 		71D6F4DA19EBC2EE00DF95C0 /* HistoryTopupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryTopupDetail.m; path = History/HistoryTopupDetail.m; sourceTree = "<group>"; };
 		71D6FA0719ED33810081A3D3 /* startup_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = startup_sdk.framework; path = Library/startup_sdk.framework; sourceTree = "<group>"; };
+		71DB6E7919EE8576005408E3 /* ResponseGetPackageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResponseGetPackageList.h; path = Package/ResponseGetPackageList.h; sourceTree = "<group>"; };
+		71DB6E7A19EE8576005408E3 /* ResponseGetPackageList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResponseGetPackageList.m; path = Package/ResponseGetPackageList.m; sourceTree = "<group>"; };
 		71DCFBAA19E7C7C2004D2895 /* TestServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestServiceViewController.h; sourceTree = "<group>"; };
 		71DCFBAB19E7C7C2004D2895 /* TestServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestServiceViewController.m; sourceTree = "<group>"; };
 		71DCFBB119E7CF09004D2895 /* ServiceTP02_GetTemplateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceTP02_GetTemplateList.h; path = Template/ServiceTP02_GetTemplateList.h; sourceTree = "<group>"; };
@@ -540,11 +589,14 @@
 		71DCFBB819E7CF56004D2895 /* ServiceTP03_EditTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceTP03_EditTemplate.m; path = Template/ServiceTP03_EditTemplate.m; sourceTree = "<group>"; };
 		71DCFBBA19E7CF6D004D2895 /* ServiceTP04_DeleteTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceTP04_DeleteTemplate.h; path = Template/ServiceTP04_DeleteTemplate.h; sourceTree = "<group>"; };
 		71DCFBBB19E7CF6D004D2895 /* ServiceTP04_DeleteTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceTP04_DeleteTemplate.m; path = Template/ServiceTP04_DeleteTemplate.m; sourceTree = "<group>"; };
+		71E00C381A0724CF005D675B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		71E394BB19D9309E00224673 /* DetailPeopleGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailPeopleGroupViewController.h; path = Contact/DetailPeopleGroupViewController.h; sourceTree = "<group>"; };
 		71E394BC19D9309E00224673 /* DetailPeopleGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailPeopleGroupViewController.m; path = Contact/DetailPeopleGroupViewController.m; sourceTree = "<group>"; };
 		71E44156193DBB02004282AC /* Common.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Common.plist; sourceTree = "<group>"; };
 		71EF928818D6986B00A51C52 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsViewController.h; path = More/News/NewsViewController.h; sourceTree = "<group>"; };
 		71EF928918D6986B00A51C52 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsViewController.m; path = More/News/NewsViewController.m; sourceTree = "<group>"; };
+		71F117AC1A27640900A427A3 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Library/MBProgressHUD.h; sourceTree = "<group>"; };
+		71F117AD1A27640900A427A3 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Library/MBProgressHUD.m; sourceTree = "<group>"; };
 		71F2043318D2C4F100EBE5BF /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryViewController.h; path = More/History/HistoryViewController.h; sourceTree = "<group>"; };
 		71F2043418D2C4F100EBE5BF /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryViewController.m; path = More/History/HistoryViewController.m; sourceTree = "<group>"; };
 		71F9030418E2B723001E7663 /* DWTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTagList.h; path = Library/DWTagList.h; sourceTree = "<group>"; };
@@ -648,6 +700,7 @@
 		716120C518A4DB24004077D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71E00C381A0724CF005D675B /* libsqlite3.dylib */,
 				71198E0A193C874E006C05CE /* FacebookSDK.framework */,
 				717A9C2218F7953C00993805 /* QuartzCore.framework */,
 				717A9C2018F7952E00993805 /* CoreData.framework */,
@@ -729,6 +782,10 @@
 				71BD0B0F196261EC00ECC0F0 /* DetailGroupViewController.m */,
 				71E394BB19D9309E00224673 /* DetailPeopleGroupViewController.h */,
 				71E394BC19D9309E00224673 /* DetailPeopleGroupViewController.m */,
+				714BF03719F4F42A00A51096 /* SelectCell.h */,
+				714BF03819F4F42A00A51096 /* SelectCell.m */,
+				71C5026919FF99390036EABC /* DetailCell.h */,
+				71C5026A19FF993A0036EABC /* DetailCell.m */,
 			);
 			name = Contact;
 			sourceTree = "<group>";
@@ -800,6 +857,8 @@
 		718B908D18B7560500488C48 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				713E10821A07A58700974DD1 /* AISpList.h */,
+				713E10831A07A58700974DD1 /* AISpList.m */,
 				71A4C30818E3D04400BA120E /* AISImageGlobal.h */,
 				71A4C30C18E3DA6500BA120E /* AISGlobal.h */,
 				711C685918EBE3D40009C3B4 /* AISColor.h */,
@@ -828,6 +887,8 @@
 				71CD62521959687A00692B4C /* TemplateList.plist */,
 				711A9DA9195D481700B52AEF /* FontUtil.h */,
 				711A9DAA195D481700B52AEF /* FontUtil.m */,
+				71D1889019EF711200BBD27E /* AISActivity.h */,
+				71D1889119EF711200BBD27E /* AISActivity.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -925,6 +986,8 @@
 		71C3DDEC18D97174002B6E79 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				71486AE21A039500000954E9 /* ScheduleCell.h */,
+				71486AE11A039500000954E9 /* ScheduleCell.m */,
 				71C3DDE918D97170002B6E79 /* ScheduleViewController.h */,
 				71C3DDEA18D97170002B6E79 /* ScheduleViewController.m */,
 			);
@@ -961,6 +1024,8 @@
 				71D6290A19E54EAE00CE9AF5 /* BizliveServiceParameter.h */,
 				71D6290B19E54EAE00CE9AF5 /* ResultStatus.h */,
 				71D6290C19E54EAE00CE9AF5 /* ResultStatus.m */,
+				7187C2F61A0244FC0065D847 /* SortDate.h */,
+				7187C2F71A0244FC0065D847 /* SortDate.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1022,6 +1087,8 @@
 				71D6291C19E54EAE00CE9AF5 /* ResponseGetContactList.m */,
 				71D6291D19E54EAE00CE9AF5 /* ResponseGetGroupContactList.h */,
 				71D6291E19E54EAE00CE9AF5 /* ResponseGetGroupContactList.m */,
+				71D1889319EFA4CB00BBD27E /* ResponseGroupMessageHistory.h */,
+				71D1889419EFA4CB00BBD27E /* ResponseGroupMessageHistory.m */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1065,6 +1132,8 @@
 		71D6294F19E54EAE00CE9AF5 /* Recurring */ = {
 			isa = PBXGroup;
 			children = (
+				71685A461A0C901800FBDF1E /* RecurringForm.m */,
+				71685A471A0C901800FBDF1E /* RecurringForm.h */,
 				71D6295019E54EAE00CE9AF5 /* ServiceRC01_GetScheduleList.h */,
 				71D6295119E54EAE00CE9AF5 /* ServiceRC01_GetScheduleList.m */,
 				71D6295219E54EAE00CE9AF5 /* ServiceRC02_DeleteSchedule.h */,
@@ -1105,6 +1174,8 @@
 				71D6F4B319EB96CB00DF95C0 /* TopupDetail.m */,
 				71D6F4B519EB9D3600DF95C0 /* CashcardDetail.h */,
 				71D6F4B619EB9D3600DF95C0 /* CashcardDetail.m */,
+				71DB6E7919EE8576005408E3 /* ResponseGetPackageList.h */,
+				71DB6E7A19EE8576005408E3 /* ResponseGetPackageList.m */,
 			);
 			name = Package;
 			sourceTree = "<group>";
@@ -1158,6 +1229,10 @@
 				71D6F4D719EBC2CA00DF95C0 /* ResponseTopup.m */,
 				71D6F4D919EBC2EE00DF95C0 /* HistoryTopupDetail.h */,
 				71D6F4DA19EBC2EE00DF95C0 /* HistoryTopupDetail.m */,
+				71D1889C19EFD26400BBD27E /* ResponseBalance.h */,
+				71D1889D19EFD26500BBD27E /* ResponseBalance.m */,
+				71D1889F19EFD28800BBD27E /* BalanceDetail.h */,
+				71D188A019EFD28800BBD27E /* BalanceDetail.m */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -1218,6 +1293,10 @@
 		71EF928C18D6AE2700A51C52 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				71F117AC1A27640900A427A3 /* MBProgressHUD.h */,
+				71F117AD1A27640900A427A3 /* MBProgressHUD.m */,
+				716D57D51A09DF3300BE6BF7 /* TITokenField.h */,
+				716D57D61A09DF3300BE6BF7 /* TITokenField.m */,
 				71D6FA0719ED33810081A3D3 /* startup_sdk.framework */,
 				71602611196BCAC2005B3193 /* StartUp_20018.crt */,
 				713DC1D51907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.h */,
@@ -1242,10 +1321,14 @@
 		71F2043218D2C48300EBE5BF /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				713F2457192B076D003C4822 /* SettingViewController.h */,
-				713F2458192B076D003C4822 /* SettingViewController.m */,
+				713F2457192B076D003C4822 /* Setting2ViewController.h */,
+				713F2458192B076D003C4822 /* Setting2ViewController.m */,
 				713F245A192B0E9B003C4822 /* ChangePasswordViewController.h */,
 				713F245B192B0E9B003C4822 /* ChangePasswordViewController.m */,
+				71C65C3D19F0C76200BC499D /* SettingPackageCell.h */,
+				71C65C3E19F0C76300BC499D /* SettingPackageCell.m */,
+				7164E05119F7B7F200EE27B6 /* SettingViewController.h */,
+				7164E05219F7B7F200EE27B6 /* SettingViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1261,6 +1344,10 @@
 				71A15ED1191A3FBD001D1B56 /* TopupHistoryViewController.m */,
 				71A15ED3191A4358001D1B56 /* QuotaBalanceViewController.h */,
 				71A15ED4191A4358001D1B56 /* QuotaBalanceViewController.m */,
+				71D1889619EFB28D00BBD27E /* messageHistoryCell.h */,
+				71D1889719EFB28D00BBD27E /* messageHistoryCell.m */,
+				71D1889919EFB73200BBD27E /* topupHistoryCell.h */,
+				71D1889A19EFB73200BBD27E /* topupHistoryCell.m */,
 			);
 			name = "History(LG)";
 			sourceTree = "<group>";
@@ -1401,6 +1488,7 @@
 				71A15ECC1919E6E8001D1B56 /* SplashScreenViewController.m in Sources */,
 				71D6F49A19EB808E00DF95C0 /* ServiceHT03_Balance.m in Sources */,
 				71D6297319E54EAE00CE9AF5 /* ServiceLG04_RequestEmailVerification.m in Sources */,
+				71F117AE1A27640900A427A3 /* MBProgressHUD.m in Sources */,
 				71D6F4C919EBB06800DF95C0 /* ResponseListPackage.m in Sources */,
 				71A15ECF191A2F00001D1B56 /* MessageHistoryViewController.m in Sources */,
 				7169DE12196E968800039AE0 /* TemplateCell.m in Sources */,
@@ -1444,6 +1532,7 @@
 				71602615196BEF2B005B3193 /* PackageCell.m in Sources */,
 				719E0243193F0293004A043A /* AISString.m in Sources */,
 				718FE71019344B1F00E9C9E2 /* ForgetEmailViewController.m in Sources */,
+				71685A481A0C901800FBDF1E /* RecurringForm.m in Sources */,
 				7124223A193590F900BAD376 /* MoresViewController.m in Sources */,
 				71C3DDEB18D97170002B6E79 /* ScheduleViewController.m in Sources */,
 				71D6296F19E54EAE00CE9AF5 /* LoginForm.m in Sources */,
@@ -1451,6 +1540,8 @@
 				71D6F4C619EBAB9600DF95C0 /* ResponseSettingProfile.m in Sources */,
 				71D6297719E54EAE00CE9AF5 /* MessageForm.m in Sources */,
 				7161210F18A4EA5C004077D9 /* ContactViewController.m in Sources */,
+				71D1889519EFA4CB00BBD27E /* ResponseGroupMessageHistory.m in Sources */,
+				71C5026B19FF993A0036EABC /* DetailCell.m in Sources */,
 				71A15ED5191A4358001D1B56 /* QuotaBalanceViewController.m in Sources */,
 				71AC4DC71932F38F002D9387 /* AISAlertView.m in Sources */,
 				7189FE161908F9D400B636FB /* AISView.m in Sources */,
@@ -1462,6 +1553,7 @@
 				71D6295B19E54EAE00CE9AF5 /* ResultStatus.m in Sources */,
 				71D6F4AD19EB871400DF95C0 /* ResponseGetTemplateList.m in Sources */,
 				71D6296319E54EAE00CE9AF5 /* ServiceCT01_GetContactList.m in Sources */,
+				71D1889819EFB28D00BBD27E /* messageHistoryCell.m in Sources */,
 				71DCFBB319E7CF09004D2895 /* ServiceTP02_GetTemplateList.m in Sources */,
 				713DC1E61907628A00E34CB2 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				713ACDFA19D427CB00CD331F /* BizliveAccountViewController.m in Sources */,
@@ -1472,7 +1564,9 @@
 				711A9DAB195D481700B52AEF /* FontUtil.m in Sources */,
 				71D6F4A119EB80FF00DF95C0 /* ServiceIN02_Privacy.m in Sources */,
 				71DCFBB619E7CF3C004D2895 /* ServiceTP01_AddTemplate.m in Sources */,
+				713E10841A07A58700974DD1 /* AISpList.m in Sources */,
 				71D6296B19E54EAE00CE9AF5 /* ServiceCT09_GetContactListToEditGroup.m in Sources */,
+				71D1889E19EFD26500BBD27E /* ResponseBalance.m in Sources */,
 				71D6F4C319EBA88900DF95C0 /* ListPackageDetail.m in Sources */,
 				71D6F48819EB7FB000DF95C0 /* ServiceST01_SettingProfile.m in Sources */,
 				71D6296619E54EAE00CE9AF5 /* ServiceCT04_DeleteContact.m in Sources */,
@@ -1485,9 +1579,12 @@
 				71D6297D19E54EAE00CE9AF5 /* TestRecurring.m in Sources */,
 				71D6F4D519EBC19A00DF95C0 /* ResponseSendMessage.m in Sources */,
 				71D6297219E54EAE00CE9AF5 /* ServiceLG03_RequestOtpVerification.m in Sources */,
+				7164E05319F7B7F200EE27B6 /* SettingViewController.m in Sources */,
 				71E394BD19D9309E00224673 /* DetailPeopleGroupViewController.m in Sources */,
+				71D188A119EFD28800BBD27E /* BalanceDetail.m in Sources */,
 				71F9030C18E2B723001E7663 /* DWTagList.m in Sources */,
 				71243ADB18F3E9D900500372 /* AddPeopleViewController.m in Sources */,
+				71486AE31A039500000954E9 /* ScheduleCell.m in Sources */,
 				71D6295D19E54EAE00CE9AF5 /* ContactDetail.m in Sources */,
 				710E59C118AB568E006F4CB2 /* LoginViewController.m in Sources */,
 				71D6296A19E54EAE00CE9AF5 /* ServiceCT08_GroupMessageHistory.m in Sources */,
@@ -1497,9 +1594,11 @@
 				71DCFBBC19E7CF6D004D2895 /* ServiceTP04_DeleteTemplate.m in Sources */,
 				71D6296D19E54EAE00CE9AF5 /* ServiceCT11_DeleteGroupContact.m in Sources */,
 				71D6F49719EB807D00DF95C0 /* ServiceHT02_Topup.m in Sources */,
+				71C65C3F19F0C76300BC499D /* SettingPackageCell.m in Sources */,
 				71008B0D1949A66400FA8DE9 /* AISSMSCharacter.m in Sources */,
 				716120DD18A4DB25004077D9 /* StartViewController.m in Sources */,
 				71D6F4A419EB812000DF95C0 /* ServiceIN03_TermCondition.m in Sources */,
+				71DB6E7B19EE8576005408E3 /* ResponseGetPackageList.m in Sources */,
 				71D6F48519EB7F6400DF95C0 /* ServicePK06_Creditcard.m in Sources */,
 				71D6296719E54EAE00CE9AF5 /* ServiceCT05_ContactMessageHistory.m in Sources */,
 				71D6F4BA19EBA32400DF95C0 /* ProfileDetail.m in Sources */,
@@ -1507,20 +1606,24 @@
 				711E0D9A195C19EE00423448 /* ImportCell.m in Sources */,
 				7161210418A4E600004077D9 /* PageContentViewController.m in Sources */,
 				71D6296019E54EAE00CE9AF5 /* ResponseContactMessageHistory.m in Sources */,
+				714BF03919F4F42A00A51096 /* SelectCell.m in Sources */,
 				71D6296219E54EAE00CE9AF5 /* ResponseGetGroupContactList.m in Sources */,
 				71D6297819E54EAE00CE9AF5 /* ServiceMS01_SendMessage.m in Sources */,
 				71D6F47C19EB7F1D00DF95C0 /* ServicePK03_Cashcard.m in Sources */,
 				71B6FC3C18F64B27000930F4 /* DetailNewsViewController.m in Sources */,
-				713F2459192B076D003C4822 /* SettingViewController.m in Sources */,
+				713F2459192B076D003C4822 /* Setting2ViewController.m in Sources */,
 				71D6295C19E54EAE00CE9AF5 /* Admin.m in Sources */,
 				71996D641924C96F00AC1EDF /* AISButton.m in Sources */,
 				710E59C918AC7F9E006F4CB2 /* OTPViewController.m in Sources */,
 				713DC1E21907628A00E34CB2 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				71DCFBB919E7CF56004D2895 /* ServiceTP03_EditTemplate.m in Sources */,
+				7187C2F81A0244FC0065D847 /* SortDate.m in Sources */,
 				71D6297519E54EAE00CE9AF5 /* ServiceLG06_VerifyByEmail.m in Sources */,
 				71D6F47519EB7EDD00DF95C0 /* ServicePK01_GetPackageList.m in Sources */,
+				716D57D71A09DF3300BE6BF7 /* TITokenField.m in Sources */,
 				716120D718A4DB25004077D9 /* AppDelegate.m in Sources */,
 				71D6F4B119EB89EA00DF95C0 /* PackageDetail.m in Sources */,
+				71D1889219EF711200BBD27E /* AISActivity.m in Sources */,
 				71D6296E19E54EAE00CE9AF5 /* ServiceCT12_ImportContact.m in Sources */,
 				716120D318A4DB24004077D9 /* main.m in Sources */,
 				713DC1E71907628A00E34CB2 /* SWUtilityButtonView.m in Sources */,
@@ -1529,6 +1632,7 @@
 				71D6F4D819EBC2CA00DF95C0 /* ResponseTopup.m in Sources */,
 				7161211718A4EACA004077D9 /* PackageViewController.m in Sources */,
 				713DC1E41907628A00E34CB2 /* SWLongPressGestureRecognizer.m in Sources */,
+				71D1889B19EFB73200BBD27E /* topupHistoryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

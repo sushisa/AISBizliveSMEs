@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ChangePasswordViewController : UIViewController
+#import "ServiceST02_ChangePassword.h"
+@interface ChangePasswordViewController : UIViewController<ChangePasswordDelegate>
 {
     __weak IBOutlet UILabel *newPasswordLabel;
     __weak IBOutlet UILabel *oldPasswordLabel;

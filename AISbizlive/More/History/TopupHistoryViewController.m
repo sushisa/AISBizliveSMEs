@@ -11,6 +11,8 @@
 @interface TopupHistoryViewController ()
 {
     NSMutableArray *topupHistory;
+    NSDictionary *topupHistoryList;
+    AISAlertView *alertView;
 }
 @end
 
@@ -29,8 +31,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    topupHistory = [[NSMutableArray alloc] initWithObjects:@"100 SMS/Package",@"200 SMS/Package",@"300 SMS/Package",@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" ,@"400 SMS/Package" , nil];
-    
+    topupHistory = [[NSMutableArray alloc] init];
+    alertView = [[AISAlertView alloc] init];
+    [self callTopupHistory];
     self.navigationItem.title = @"Topup History";
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
 }
@@ -110,20 +113,45 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"topuphistory";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    //    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:CELL_BACKGROUND_DEFAULT] stretchableImageWithLeftCapWidth:0.0 topCapHeight:15.0] ];
-    //
-    //    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:CELL_BACKGROUND_HIGHLIGHT] stretchableImageWithLeftCapWidth:0.0 topCapHeight:15.0] ];
-    // Configure the cell...
+    topupHistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[topupHistoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    UILabel *TextLabel = (UILabel *)[cell viewWithTag:10001];
-    [TextLabel setTextColor:[AISColor lightgrayColor]];
     
-    TextLabel.text = [topupHistory objectAtIndex:indexPath.row];
+    cell.date.text = [AISString timeFormat:[[topupHistory objectAtIndex:indexPath.row] objectForKey:RES_KEY_HISTORY_TOPUP_DATE]];
+    cell.channel.text = [[topupHistory objectAtIndex:indexPath.row] objectForKey:RES_KEY_HISTORY_TOPUP_CHANNEL];
+     cell.mobileNo.text = [[topupHistory objectAtIndex:indexPath.row] objectForKey:RES_KEY_HISTORY_TOPUP_MOBILENO];
+     cell.amount.text = [[topupHistory objectAtIndex:indexPath.row] objectForKey:RES_KEY_HISTORY_TOPUP_AMOUNT];
     return cell;
 }
+-(void)callTopupHistory{
+    ServiceHT02_Topup *call =[[ServiceHT02_Topup alloc] init];
+    [call setDelegate:self];
+    [call requestService];
+}
+- (void)topupSuccess:(ResponseTopup *)responseTopup{
+//    *channel, *date, *amount, *mobileno;
+    for (HistoryTopupDetail *history in [responseTopup topup]) {
+        topupHistoryList = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [history channel],RES_KEY_HISTORY_TOPUP_CHANNEL,
+                              [history date],RES_KEY_HISTORY_TOPUP_DATE,
+                              [history amount], RES_KEY_HISTORY_TOPUP_AMOUNT,
+                              [history mobileno], RES_KEY_HISTORY_TOPUP_MOBILENO,nil] ;
+        [topupHistory addObject:topupHistoryList];
+    }
+    [myTable reloadData];
+}
+- (void)topupError:(ResultStatus *)resultStatus{
+    [self alert:[resultStatus responseMessage]];
+}
 
+
+
+-(void)doneAction:(id)sender{
+    [alertView dismissAlertView];
+}
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
+    [alertView showAlertView];
+}
 @end

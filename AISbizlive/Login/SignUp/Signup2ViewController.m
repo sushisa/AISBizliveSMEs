@@ -18,6 +18,7 @@
     NSMutableArray *checkHeightCell;
     AISAlertView *alertView;
     UIActionSheet *choosePhoto;
+    NSString *userId;
     bool checkPeople;
     int checkPassword;
 }
@@ -39,7 +40,7 @@
     [super viewDidLoad];
     checkPeople = true;
     [self setTextLangage];
-    [self setViewGesture];
+//    [self setViewGesture];
 
 }
 -(void)setViewGesture{
@@ -66,8 +67,8 @@
     checkPeople = true;
     personView.layer.borderColor = [AISColor lightgreenColor].CGColor;
     juristicView.layer.borderColor = [AISColor lightgrayColor].CGColor;
-    [checkHeightCell replaceObjectAtIndex:2 withObject:@"0"];
-    [checkHeightCell replaceObjectAtIndex:3 withObject:@"0"];
+//    [checkHeightCell replaceObjectAtIndex:2 withObject:@"0"];
+//    [checkHeightCell replaceObjectAtIndex:3 withObject:@"0"];
     [myTableView reloadData];
 }
 - (void)juristicSelected:(UITapGestureRecognizer *)sender {
@@ -76,17 +77,20 @@
     checkPeople = false;
     juristicView.layer.borderColor = [AISColor lightgreenColor].CGColor;
     personView.layer.borderColor = [AISColor lightgrayColor].CGColor;
-    [checkHeightCell replaceObjectAtIndex:2 withObject:@"57"];
-    [checkHeightCell replaceObjectAtIndex:3 withObject:@"57"];
+//    [checkHeightCell replaceObjectAtIndex:2 withObject:@"57"];
+//    [checkHeightCell replaceObjectAtIndex:3 withObject:@"57"];
     [myTableView reloadData];
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)setTextLangage{
-     checkHeightCell = [[NSMutableArray alloc] initWithObjects:@"120",@"54",@"0",@"0",@"57",@"57",@"57",@"57",@"57",@"70",@"60", nil];
+     checkHeightCell = [[NSMutableArray alloc] initWithObjects:@"120",@"0",@"0",@"0",@"0",@"57",@"57",@"57",@"57",@"70",@"60", nil];
     alertView = [[AISAlertView alloc] init];
     //Title
+    [personView setHidden:YES];
+    [juristicView setHidden:YES];
+    
     [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"SIGNUP"]];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
@@ -141,6 +145,13 @@
     [policyButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
     [doneButton setTitle:[AISString commonString:typeButton KeyOfValue :@"DONE"] forState:UIControlStateNormal];
     [doneButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
+    
+    //No Mass
+    [selectCell setHidden:YES];
+    [taxCell setHidden:YES];
+    [companyCell setHidden:YES];
+    [idcardCell setHidden:YES];
+    [myTableView reloadData];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -323,8 +334,14 @@
 {
     if ([[segue identifier] isEqualToString: @"signUpToOTP"]) {
         OTPViewController *otp = segue.destinationViewController;
-        otp.phoneNumber = phoneField.text;
-//        otp.emailAddress = emailField.text;
+        if (phoneField.text.length == 10) {
+            otp.phoneNumber = phoneField.text;
+        }
+        else{
+            otp.phoneNumber = [NSString stringWithFormat:@"%@%@%@",[phoneField.text substringToIndex:2] ,[[phoneField.text substringFromIndex:3] substringToIndex:4],[phoneField.text substringFromIndex:8] ];
+        }
+        otp.userId = userId;
+        otp.emailAddress = emailField.text;
     }
     else if ([[segue identifier] isEqualToString: @"signupToWeb"]) {
         WebViewController *web = [segue destinationViewController];
@@ -339,21 +356,21 @@
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
     }
     
-    else if (!checkPeople){
-        if (taxIdField.text.length != 17){
-            [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDTAXID"]];
-        }
-        else if ([companyField.text isEqualToString:@""]){
-            [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDCOMPANY"]];
-        }else {
-            
-            [self alert:[NSString stringWithFormat:[AISString commonString:typePopup KeyOfValue :@"CONFIRMPHONE"], "%@",phoneField.text ]];
-            [self performSegueWithIdentifier:@"signUpToOTP" sender:self];
-        }
-    }
-    else if (idCardField.text.length != 17){
-        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDIDCARD"]];
-    }
+//    else if (!checkPeople){
+//        if (taxIdField.text.length != 17){
+//            [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDTAXID"]];
+//        }
+//        else if ([companyField.text isEqualToString:@""]){
+//            [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDCOMPANY"]];
+//        }else {
+//            
+//            [self alert:[NSString stringWithFormat:[AISString commonString:typePopup KeyOfValue :@"CONFIRMPHONE"], "%@",phoneField.text ]];
+//            [self performSegueWithIdentifier:@"signUpToOTP" sender:self];
+//        }
+//    }
+//    else if (idCardField.text.length != 17){
+//        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDIDCARD"]];
+//    }
     else if ([emailField.text rangeOfString:@"@"].location == NSNotFound || [emailField.text rangeOfString:@"."].location == NSNotFound){
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDEMAIL"]];
     }
@@ -374,7 +391,7 @@
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASSANDCONFIRM"]];
     }
     
-    else if (phoneField.text.length != 12){
+    else if (phoneField.text.length < 10){
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPHONE"]];
     }
     else if (![[phoneField.text substringToIndex:2]  isEqual: @"08"] && ![[phoneField.text substringToIndex:2]  isEqual: @"09"] ){
@@ -384,8 +401,7 @@
         [self passwordValidate];
         if (checkPassword >= 3) {
             NSLog(@"CheckPass : %d",checkPassword);
-            [self alert:[NSString stringWithFormat:@"%@ %@",[AISString commonString:typePopup KeyOfValue :@"SUCCESSSIGNUP"],phoneField.text ]];
-            [self performSegueWithIdentifier:@"signUpToOTP" sender:self];
+            [self callSignUpWithEmail];
         }
         else{
             [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASSVALIDATE"]];
@@ -446,5 +462,33 @@
     indexToWeb = @"1";
     [self performSegueWithIdentifier:@"signupToWeb" sender:self];
 }
-
+-(void)callSignUpWithEmail{
+    ServiceLG02_SignUpWithEmail *call =[[ServiceLG02_SignUpWithEmail alloc] init];
+    LoginForm *login = [LoginForm new];
+    login.firstname = nameTextField.text;
+    login.lastname = lastNameTextField.text;
+    login.email = emailField.text;
+    login.password = passField.text;
+    if (phoneField.text.length == 10) {
+        login.phoneNumber = phoneField.text;
+    }
+    else{
+         login.phoneNumber = [NSString stringWithFormat:@"%@%@%@",[phoneField.text substringToIndex:2] ,[[phoneField.text substringFromIndex:3] substringToIndex:4],[phoneField.text substringFromIndex:8] ];
+    }
+   
+    login.photoBase64 = @"";
+    [call setParameterWithLoginForm:login];
+    [call setDelegate:self];
+    [call requestService];
+    
+}
+- (void)signUpWithEmailSuccess:(NSDictionary *)resultSignUp{
+                [self alert:[NSString stringWithFormat:@"%@ %@",[AISString commonString:typePopup KeyOfValue :@"SUCCESSSIGNUP"],phoneField.text ]];
+    userId = resultSignUp[RES_KEY_LOGIN_USER_ID];
+                [self performSegueWithIdentifier:@"signUpToOTP" sender:self];
+}
+- (void)signUpWithEmailError:(ResultStatus *)resultStatus{
+    [self alert:[resultStatus responseMessage]];
+    
+}
 @end

@@ -9,7 +9,9 @@
 #import "ChangePasswordViewController.h"
 #import "AISGlobal.h"
 @interface ChangePasswordViewController ()
-
+{
+    AISAlertView *alertView;
+}
 @end
 
 @implementation ChangePasswordViewController
@@ -28,6 +30,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setTextLangague];
+    
+    alertView = [[AISAlertView alloc] init];
+    UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
+                                             initWithTarget: self
+                                             action: @selector(hideKeyboard:)];
+    [oneTapGesture setNumberOfTouchesRequired:1];
+    [[self view] addGestureRecognizer:oneTapGesture];
 }
 -(void)setTextLangague{
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
@@ -52,7 +61,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)hideKeyboard:(UITapGestureRecognizer *)sender {
+    [oldPasswordTextField resignFirstResponder];
+    [newPasswordTextField resignFirstResponder];
+    [reNewPasswordTextField resignFirstResponder];
+}
 /*
 #pragma mark - Navigation
 
@@ -65,6 +78,41 @@
 */
 
 - (IBAction)doneAction:(id)sender {
+    if ([oldPasswordTextField.text isEqualToString:@""] || [newPasswordTextField.text isEqualToString:@""] || [reNewPasswordTextField.text isEqualToString:@""]){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
+    }
+    else if(oldPasswordTextField.text.length < 8 || newPasswordTextField.text.length < 8 || reNewPasswordTextField.text.length < 8){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASSDIGIT"]];
+    }
+    else if(![newPasswordTextField.text isEqualToString:reNewPasswordTextField.text]){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASSDIGIT"]];
+    }
+    else {
+        [self callChangePassword];
+    }
+}
+-(void)dissAction:(id)sender{
+    [alertView dismissAlertView];
+}
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(dissAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
+    [alertView showAlertView];
+    
+    [oldPasswordTextField resignFirstResponder];
+    [newPasswordTextField resignFirstResponder];
+    [reNewPasswordTextField resignFirstResponder];
+}
+
+-(void)callChangePassword{
+    ServiceST02_ChangePassword *call = [[ServiceST02_ChangePassword alloc] init];
+    [call setDelegate:self];
+    [call setParameterWithOldPassword:oldPasswordTextField.text NewPassword:newPasswordTextField.text];
+    [call requestService];
+}
+- (void)changePasswordSuccess{
     [self backAction];
+}
+- (void)changePasswordError:(ResultStatus *)resultStatus{
+    
 }
 @end

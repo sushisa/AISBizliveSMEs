@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface FogetPasswordViewController : UIViewController{
     
     __weak IBOutlet UILabel *forgetPassLabel;

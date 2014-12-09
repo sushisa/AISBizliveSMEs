@@ -11,7 +11,7 @@
 
 @protocol SignUpWithEmailDelegate <NSObject>
 
-- (void)signUpWithEmailSuccess;
+- (void)signUpWithEmailSuccess:(NSDictionary *)resultSignUp;
 - (void)signUpWithEmailError:(ResultStatus *)resultStatus;
 
 @end

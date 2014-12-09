@@ -7,13 +7,17 @@
 //
 
 #import "ServiceCT03_EditContact.h"
-
-@implementation ServiceCT03_EditContact
+#import "AISActivity.h"
+@implementation ServiceCT03_EditContact{
+    AISActivity *activity;
+}
 
 @synthesize delegate;
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_03_EDIT_CONTACT_URL];
     NSDictionary *requestDict = @{REQ_KEY_CONTACT_ID        : self.ID,
                                   REQ_KEY_CONTACT_FIRSTNAME : self.firstname,
@@ -40,6 +44,8 @@
 
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    
+    [activity dismissActivity];
     //------------------------ Test ------------------------
     if (![Admin isOnline]) {
         NSDictionary *contact = @{RES_KEY_CONTACT_ID             : @"01234",
@@ -61,11 +67,13 @@
     NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
     ContactDetail *contactDetail = [[ContactDetail alloc] initWithResponseData:responseData];
     [delegate editContactSuccess:contactDetail];
+    
 }
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
     [delegate editContactError:nil];
+    [activity dismissActivity];
 }
 
 

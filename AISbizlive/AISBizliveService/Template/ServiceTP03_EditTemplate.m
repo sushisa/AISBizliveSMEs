@@ -7,8 +7,11 @@
 //
 
 #import "ServiceTP03_EditTemplate.h"
+#import "AISActivity.h"
 
-@implementation ServiceTP03_EditTemplate
+@implementation ServiceTP03_EditTemplate{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithID:(NSString *)ID
@@ -19,6 +22,8 @@
     self.message = message;
 }
 -(void)requestService{
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_TP_03_EDIT_TEMPLATE_URL];
     
     NSDictionary *requestDict = @{REQ_KEY_TEMPLATE_ID : self.ID,
@@ -30,6 +35,7 @@
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate editTemplateError:resultStatus];
@@ -45,6 +51,10 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate editTemplateError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [activity dismissActivity];
+    [delegate editTemplateError:resultStatus];
 }
 @end

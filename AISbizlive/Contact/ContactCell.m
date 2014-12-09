@@ -63,7 +63,6 @@
 {
     if(selected){
         self.layer.borderColor = [[AISColor lightgreenColor] CGColor];
-        
         self.layer.borderWidth = 1.5f;
     }
     else{

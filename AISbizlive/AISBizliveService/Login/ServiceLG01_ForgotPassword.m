@@ -7,8 +7,11 @@
 //
 
 #import "ServiceLG01_ForgotPassword.h"
+#import "AISActivity.h"
 
-@implementation ServiceLG01_ForgotPassword
+@implementation ServiceLG01_ForgotPassword{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithEmail:(NSString *)email
@@ -20,6 +23,8 @@
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc]init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_LG_01_FORGET_PASSWORD_URL];
     
     NSDictionary *requestDict = @{REQ_KEY_LOGIN_EMAIL      : self.email,
@@ -31,6 +36,7 @@
 
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate forgotPasswordError:resultStatus];
@@ -42,6 +48,7 @@
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
     [delegate forgotPasswordError:nil];
+    [activity dismissActivity];
 }
 
 @end

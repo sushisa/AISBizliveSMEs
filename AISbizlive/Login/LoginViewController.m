@@ -59,11 +59,14 @@
     [forgetPassButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
     [signinButton setTitle:[AISString commonString:typeButton KeyOfValue :@"DONE"] forState:UIControlStateNormal];
     [signinButton.titleLabel setFont:[FontUtil fontWithFontSize:eFontSizeNormal]];
-    
-    DLog(@"%@",forgetPassButton.titleLabel);
+//TestService
+    [emailField setText:@""];
+    [passwordField setText:@""];
 }
 
-
+-(void)viewDidAppear:(BOOL)animated{
+    [self setTextLangage];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -85,15 +88,25 @@
     }
     return YES;
 }
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([[[textField textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textField textInputMode] primaryLanguage]) { // In fact, in iOS7, '[[textField textInputMode] primaryLanguage]' is nil
+        return NO;
+    }
+    return YES;
+}
 - (IBAction)signIn:(id)sender {
-    if ([emailField.text isEqualToString:@""] && [passwordField.text isEqualToString:@""] ){
-        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
+    
+    [emailField resignFirstResponder];
+    [passwordField resignFirstResponder];
+    if ([emailField.text isEqualToString:@""] ){
+        
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNOEMAIL"]];
+    }
+    else if ([passwordField.text isEqualToString:@""] ){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASS"]];
     }
     else if([emailField.text rangeOfString:@"@"].location == NSNotFound || [emailField.text rangeOfString:@"."].location == NSNotFound){
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDEMAIL"]];
-    }
-    else if([passwordField.text isEqualToString:@""] ){
-        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASS"]];
     }
     else if(passwordField.text.length < 8){
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPASSDIGIT"]];
@@ -115,18 +128,25 @@
     [alertView dismissAlertView];
 }
 -(void)alert:(NSString *)message{
-    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"OK"] RightString:nil];
     [alertView showAlertView];
     
     [emailField resignFirstResponder];
     [passwordField resignFirstResponder];
 }
 
-- (void)loginSuccess{
+- (void)loginSuccess:(NSDictionary *)resultLogin{
+//    NSLog(@"%@",resultLogin);
+        NSUserDefaults *defaults;
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSString stringWithFormat:@"%@ %@",[resultLogin objectForKey:RES_KEY_CONTACT_FIRSTNAME],[resultLogin objectForKey:RES_KEY_CONTACT_LASTNAME]] forKey:@"userLogin"];
+    [defaults synchronize];
     [self performSegueWithIdentifier: @"tabEN" sender: self];
+    
 }
 - (void)loginError:(ResultStatus *)resultStatus{
     
+    [self alert:[resultStatus responseMessage]];
 }
 
 @end

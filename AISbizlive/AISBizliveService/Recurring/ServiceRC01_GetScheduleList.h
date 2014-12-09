@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "BizliveService.h"
-#import "MessageForm.h"
+#import "RecurringForm.h"
 
 @protocol GetScheduleListDelegate <NSObject>
 
-- (void)getScheduleListSuccess:(MessageForm *)messageForm;
+- (void)getScheduleListSuccess:(NSArray *)scheduleList;
 - (void)getScheduleListError:(ResultStatus *)resultStatus;
 
 @end

@@ -7,8 +7,12 @@
 //
 
 #import "ServiceMS01_SendMessage.h"
+#import "AISActivity.h"
 
-@implementation ServiceMS01_SendMessage
+@implementation ServiceMS01_SendMessage{
+    AISActivity *activity;
+}
+
 @synthesize delegate;
 
 - (void)setParameterWithMessageForm:(MessageForm *)messageForm
@@ -18,8 +22,12 @@
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc]init];
+    [activity showActivity];
+      NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_MS_01_SEND_MESSAGE_URL];
     @try {
         [super setRequestData:[self.messageForm getForm]];
+        [super setRequestURL:requestURL];
         [super requestService];
     }
     @catch (NSException *exception) {
@@ -30,12 +38,23 @@
 
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate sendMessageError:resultStatus];
+        return;
+    }
+    
     [delegate sendMessageSuccess];
     
 }
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate sendMessageError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [activity dismissActivity];
+    [delegate sendMessageError:resultStatus];
 }
 
 @end

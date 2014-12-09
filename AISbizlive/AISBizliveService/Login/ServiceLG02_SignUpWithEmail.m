@@ -7,8 +7,11 @@
 //
 
 #import "ServiceLG02_SignUpWithEmail.h"
+#import "AISActivity.h"
 
-@implementation ServiceLG02_SignUpWithEmail
+@implementation ServiceLG02_SignUpWithEmail{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithLoginForm:(LoginForm *)loginForm
@@ -18,6 +21,8 @@
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_LG_02_SIGNUP_EMAIL_URL];
     
     if (!self.loginForm) {
@@ -41,18 +46,23 @@
     if (![Admin isOnline]) {
         responseDict = @{RES_KEY_LOGIN_USER_ID: @"1xx3234"};
     }
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate signUpWithEmailError:resultStatus];
         return;
     }
-    [delegate signUpWithEmailSuccess];
+    [delegate signUpWithEmailSuccess:responseDict[RES_KEY_RESPONSE_DATA]];
 
 }
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate signUpWithEmailError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [delegate signUpWithEmailError:resultStatus];
+    [activity dismissActivity];
 }
 
 

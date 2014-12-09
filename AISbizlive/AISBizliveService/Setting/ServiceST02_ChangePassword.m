@@ -7,27 +7,33 @@
 //
 
 #import "ServiceST02_ChangePassword.h"
+#import "AISActivity.h"
 
-@implementation ServiceST02_ChangePassword
+@implementation ServiceST02_ChangePassword{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 
 - (void)setParameterWithOldPassword:(NSString *)OldPassword
                         NewPassword:(NSString *)NewPassword{
-//    self.oldPassword = OldPassword;
-//    self.newPassword = NewPassword;
+    self.old = OldPassword;
+    self.news = NewPassword;
 }
 
 -(void)requestService{
+    activity = [[AISActivity alloc]init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_ST_02_CHANGE_PASSWORD_URL];
-//    NSDictionary *requestDict = @{REQ_KEY_SETTING_OLDPASSWORD : self.oldPassword,
-//                                  REQ_KEY_SETTING_NEWPASSWORD : self.newPassword};
+    NSDictionary *requestDict = @{REQ_KEY_SETTING_OLDPASSWORD : self.old,
+                                  REQ_KEY_SETTING_NEWPASSWORD : self.news};
     [super setRequestURL:requestURL];
-//    [super setRequestData:requestDict];
+    [super setRequestData:requestDict];
     [super requestService];
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate changePasswordError:resultStatus];
@@ -39,6 +45,10 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate changePasswordError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [delegate changePasswordError:resultStatus];
+    [activity dismissActivity];
 }
 @end

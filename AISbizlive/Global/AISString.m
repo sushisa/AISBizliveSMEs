@@ -65,20 +65,36 @@
     return templateRoot;
 }
 +(NSString *)timeFormat :(NSString *)stringWithFormat{
-//    NSString * dateString = [NSString stringWithFormat: @"%@",stringWithFormat];
     
-//    NSLog(@"%@", stringWithFormat);
-
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"ddMMyyyyhhmmss"];
-    NSDate* myDate = [dateFormatter dateFromString:stringWithFormat];
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[stringWithFormat floatValue]/1000.0];
     
-    NSLog(@"%@", myDate);
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd/MM/yyyy hh:mm:ss"];
-    NSString *stringFromDate = [formatter stringFromDate:myDate];
-    
-    NSLog(@"%@", stringFromDate);
+    [formatter setDateFormat:@"dd/MM/yyyy HH:mm"];
+    NSString *stringFromDate = [formatter stringFromDate:date];
     return stringFromDate;
 }
++(NSString *)dateFormat :(NSString *)stringWithFormat{
+    
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[stringWithFormat floatValue]/1000.0];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd / MM / yyyy"];
+    NSString *stringFromDate = [formatter stringFromDate:date];
+    return stringFromDate;
+}
++(NSString *)numberFormat :(NSString *)stringWithFormat{
+    
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber * myNumber = [f numberFromString:stringWithFormat];
+     NSString *stringFromNumber  =  [NSNumberFormatter localizedStringFromNumber:myNumber numberStyle:NSNumberFormatterDecimalStyle];
+    
+    return stringFromNumber;
+}
++(NSString *)phoneFormat :(NSString *)stringWithFormat{
+    NSString *stringFromPhone  = [NSString stringWithFormat:@"%@-%@-%@",[stringWithFormat substringToIndex:2] ,[[stringWithFormat substringFromIndex:2] substringToIndex:4],[stringWithFormat substringFromIndex:6] ];
+    
+    return stringFromPhone;
+}
+
 @end

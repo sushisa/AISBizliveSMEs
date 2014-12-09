@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import <AddressBook/AddressBook.h>
-@interface ImportContactViewController : UITableViewController
+#import "ServiceCT12_ImportContact.h"
+
+//@class ImportContactViewController;
+//@protocol ImportContactViewControllerDelegate <NSObject>
+//- (void)didFinishImportContact:(NSMutableArray *)importsArray;
+//@end
+@interface ImportContactViewController : UITableViewController<ImportContactDelegate>
 {
     
+    IBOutlet UITableView *mytable;
 }
-
+//@property (nonatomic, weak) id <ImportContactViewControllerDelegate> delegate;
 @end

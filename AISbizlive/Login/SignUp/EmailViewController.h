@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface EmailViewController : UIViewController
+#import "ServiceLG06_VerifyByEmail.h"
+#import "ServiceLG04_RequestEmailVerification.h"
+@interface EmailViewController : UIViewController <VerifyByEmailDelegate,RequestEmailVerificationDelegate>
 {
     __weak IBOutlet UIView *emailView;
     __weak IBOutlet UIButton *Donebtn;
@@ -16,6 +17,8 @@
     __weak IBOutlet UIButton *resendEmailButton;
     __weak IBOutlet UITextField *emailTextField;
 }
+@property (strong, nonatomic) NSString *emailAddress;
+@property (strong, nonatomic) NSString *phoneNumber;
 - (IBAction)Donebtn:(id)sender;
 - (IBAction)resendEmail:(id)sender;
 @end

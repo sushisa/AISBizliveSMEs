@@ -7,8 +7,11 @@
 //
 
 #import "ServiceCT10_EditGroupContact.h"
+#import "AISActivity.h"
 
-@implementation ServiceCT10_EditGroupContact
+@implementation ServiceCT10_EditGroupContact{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithGroupID:(NSString *)groupID
@@ -25,6 +28,8 @@
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
         NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_10_EDIT_GROUP_URL];
         
         if (!self.groupID) {
@@ -32,15 +37,11 @@
             [delegate editGroupContactError:resultStatus];
             return;
         }
-   NSMutableArray *contactList = [NSMutableArray new];
-    for (NSString *contactID in self.contactID) {
-        NSDictionary *contact = @{REQ_KEY_CONTACT_ID: contactID};
-        [contactList addObject:contact];
-    }
+    
     NSDictionary *requestDict  = @{REQ_KEY_GROUP_ID  : self.groupID,
                                    REQ_KEY_GROUP_NAME: self.name,
                                    REQ_KEY_GROUP_PHOTO     : self.image64,
-                                   REQ_KEY_CONTACT_ID: contactList};
+                                   REQ_KEY_CONTACT_LIST: self.contactID};
     
     
     [super setRequestData:requestDict];
@@ -73,6 +74,7 @@
         responseDict = @{RES_KEY_GROUP_LIST    : @[group1]};
         responseDict = group1;
     }
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate editGroupContactError:resultStatus];
@@ -84,12 +86,12 @@
     
     
     [delegate editGroupContactSuccess:groupContactDetail];
-    
 }
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
     [delegate editGroupContactError:nil];
+    [activity dismissActivity];
 }
 
 @end

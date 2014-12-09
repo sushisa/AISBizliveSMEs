@@ -7,8 +7,10 @@
 //
 
 #import "ServiceCT04_DeleteContact.h"
-
-@implementation ServiceCT04_DeleteContact
+#import "AISActivity.h"
+@implementation ServiceCT04_DeleteContact{
+    AISActivity *activity;
+}
 @synthesize delegate;
 - (void)setParameterWithContactIDList:(NSArray *)contactIDList;
 {
@@ -17,6 +19,8 @@
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_04_DELETE_CONTACT_URL];
     
     NSDictionary *requestDict = @{RES_KEY_CONTACT_ID_LIST  : self.contactIDList};
@@ -28,6 +32,7 @@
 
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate deleteContactError:resultStatus];
@@ -38,6 +43,7 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
+    [activity dismissActivity];
     [delegate deleteContactError:nil];
 }
 

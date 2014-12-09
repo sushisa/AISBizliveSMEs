@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 
 #import "ServiceCT05_ContactMessageHistory.h"
-@interface DetailPeopleViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ContactMessageHistoryDelegate>
+#import "ServiceCT04_DeleteContact.h"
+
+@class DetailPeopleViewController;
+@protocol DetailPeopleViewControllerDelegate <NSObject>
+- (void)didFinishDeleteContact:(NSString *)contactsID;
+@end
+@interface DetailPeopleViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ContactMessageHistoryDelegate,DeleteContactDelegate>
 {
     //Field
     __weak IBOutlet UIImageView *profileImage;
@@ -25,6 +31,9 @@
     __weak IBOutlet UILabel *mobileLabel;
     __weak IBOutlet UIButton *deleteButton;
 }
+
+@property (nonatomic, weak) id <DetailPeopleViewControllerDelegate> delegate;
+
 @property (strong, nonatomic) NSString *firstName;
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *phoneNumber;

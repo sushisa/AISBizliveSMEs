@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface Signup2ViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UITextFieldDelegate>
+#import "ServiceLG02_SignUpWithEmail.h"
+@interface Signup2ViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UITextFieldDelegate,SignUpWithEmailDelegate>
 {
     IBOutlet UITableView *myTableView;
     __weak IBOutlet UIView *personView;
@@ -42,6 +42,12 @@
     __weak IBOutlet UITextField *companyField;
     __weak IBOutlet UILabel *taxIdLabel;
     __weak IBOutlet UITextField *taxIdField;
+    
+    //No Mass
+    IBOutlet UITableViewCell *selectCell;
+    IBOutlet UITableViewCell *taxCell;
+    IBOutlet UITableViewCell *companyCell;
+    IBOutlet UITableViewCell *idcardCell;
 }
 - (IBAction)termClick:(id)sender;
 

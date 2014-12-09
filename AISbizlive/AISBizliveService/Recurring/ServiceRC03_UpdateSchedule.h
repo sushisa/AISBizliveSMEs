@@ -7,7 +7,7 @@
 //
 
 #import "BizliveService.h"
-#import "MessageForm.h"
+#import "RecurringForm.h"
 
 @protocol UpdateScheduleDelegate <NSObject>
 
@@ -18,10 +18,10 @@
 
 @interface ServiceRC03_UpdateSchedule : BizliveService
 
-- (void)setParameter:(MessageForm *)messageForm;
+- (void)setParameter:(RecurringForm *)recurringForm;
 
 @property (nonatomic, assign)id<UpdateScheduleDelegate> delegate;
 
-@property (nonatomic, strong)MessageForm *messageForm;
+@property (nonatomic, strong)RecurringForm *recurringForm;
 
 @end

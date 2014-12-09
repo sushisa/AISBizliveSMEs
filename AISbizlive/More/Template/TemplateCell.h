@@ -11,9 +11,7 @@
 #import "SWTableViewCell.h"
 @interface TemplateCell : SWTableViewCell
 //@property (weak, nonatomic) IBOutlet UIImageView *imageContact;
-@property (weak, nonatomic) IBOutlet UIView *viewTemplate;
 @property (weak, nonatomic) IBOutlet UILabel *nameTemplate;
-@property (weak, nonatomic) IBOutlet UILabel *sampleDescriptionTemplate;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionTemplate;
 //@interface TemplateCell : SWTableViewCell
 

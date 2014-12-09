@@ -88,7 +88,7 @@ UIView* backGroundView;
         [newView addSubview:rightBtn];
     }
     // Set up some properties of the subview
-    backGroundView.backgroundColor = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:0.3f];
+    backGroundView.backgroundColor = [UIColor clearColor];
     
 //    [spinnerView addSubview:datePicker];
     [backGroundView addSubview:newView];

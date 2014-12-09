@@ -8,6 +8,7 @@
 
 #import "MoresViewController.h"
 #import "AISGlobal.h"
+#import "BizliveServiceParameter.h"
 @interface MoresViewController ()
 
 @end
@@ -156,6 +157,19 @@
     [self performSegueWithIdentifier:@"template" sender:self];
 }
 -(void)logoutSelect :(UITapGestureRecognizer *)sender {
+    [AISpList setContactListArray:nil];
+    [AISpList setGroupListArray:nil];
+    [AISpList setTemplateListArray:nil];
+    [AISpList setSheduleListArray:nil];
+    
+    //SetDefault
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:@"" forKey:REQ_KEY_USER_TOKEN_ID];
+    [defaults setValue:@"" forKey:REQ_KEY_USER_MOBILE_NO];
+    [defaults setValue:[defaults objectForKey:@"lang"] forKey:REQ_KEY_LANGUAGE];
+    [defaults setValue:@"" forKey:REQ_KEY_OPERATOR_TYPE];
+    [defaults setObject:@"NO" forKey:@"login"];
+    [defaults synchronize];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning

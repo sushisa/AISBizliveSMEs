@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface QuotaBalanceViewController : UITableViewController
+#import "ServiceHT03_Balance.h"
+@interface QuotaBalanceViewController : UITableViewController<BalanceDelegate>
 
 @end

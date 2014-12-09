@@ -16,8 +16,12 @@
     self = [super init];
     if (self) {
         self.listPackage = [[NSMutableArray alloc] init];
-        ListPackageDetail *list = [[ListPackageDetail alloc]initWithResponseData:responseData];
-        [self.listPackage addObject:list];
+        NSArray *arrPackageList = responseData[RES_KEY_SETTING_LISTPACKAGE];
+        
+        for (NSInteger i = 0; i < [arrPackageList count]; i++) {
+            ListPackageDetail *packages = [[ListPackageDetail alloc] initWithResponseData:arrPackageList[i]];
+            [self.listPackage addObject:packages];
+        }
     }
     return self;
 }

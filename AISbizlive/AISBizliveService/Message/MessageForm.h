@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 typedef enum RecurringType : NSInteger{
-    NONE,
-    DAILY,
-    WEEKLY,
-    MONTHLY
+    RecurringType_NONE,
+    RecurringType_DAILY,
+    RecurringType_WEEKLY,
+    RecurringType_MONTHLY
 }RecurringType;
 
 typedef enum  SendMessageType : NSInteger{
@@ -25,9 +25,12 @@ typedef enum  SendMessageType : NSInteger{
 @interface MessageForm : NSObject
 {
     SendMessageType _sendMessageType;
+    RecurringType _recurringType;
+
 }
 - (id)initWithResponseData:(NSDictionary *)responseData;
 - (void)setSendMessageType:(SendMessageType)sendMessageType;
+- (void)setRecurringType:(RecurringType)recurringType;
 - (NSDictionary *)getForm;
 
 //Message Object
@@ -47,7 +50,7 @@ typedef enum  SendMessageType : NSInteger{
 @property (nonatomic, strong)NSString *sendTime;
 
 //Recurring Object
-@property (nonatomic, strong)NSString *recurringType;
+//@property (nonatomic, strong)NSString *recurringType;
 @property (nonatomic, strong)NSArray *weeklyList;
 @property (nonatomic, strong)NSArray *monthlyList;
 

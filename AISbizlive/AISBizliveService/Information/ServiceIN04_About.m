@@ -8,16 +8,24 @@
 
 #import "ServiceIN04_About.h"
 
-@implementation ServiceIN04_About
+#import "AISActivity.h"
+@implementation ServiceIN04_About{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 -(void)requestService{
+    activity = [[AISActivity alloc]init];
+    [activity showActivity];
+    
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_IN_04_GET_ABOUT_URL];
     [super setRequestURL:requestURL];
     [super requestService];
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
+
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate aboutError:resultStatus];
@@ -25,11 +33,15 @@
     }
     NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
     [delegate aboutSuccess:responseData[RES_KEY_INFORMATION]];
-    
 }
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate aboutError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [delegate aboutError:resultStatus];
+    [activity dismissActivity];
+    
 }
 @end

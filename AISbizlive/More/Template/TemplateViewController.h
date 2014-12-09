@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "SWTableViewCell.h"
-
-@interface TemplateViewController : UITableViewController<SWTableViewCellDelegate>{
+#import "ServiceTP04_DeleteTemplate.h"
+#import "ServiceTP02_GetTemplateList.h"
+#import "AddTemplateViewController.h"
+@class TemplateViewController;
+@protocol TemplateViewControllerDelegate <NSObject>
+- (void)didFinishSelectedTemplate:(NSString *)templatesMessage;
+@end
+@interface TemplateViewController : UITableViewController<SWTableViewCellDelegate,DeleteTemplateDelegate,AddTemplateViewControllerDelegate,GetTemplateListDelegate>{
     
     IBOutlet UITableView *messageTable;
 }
+@property (nonatomic, weak) id <TemplateViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *templeSelected;
 @end

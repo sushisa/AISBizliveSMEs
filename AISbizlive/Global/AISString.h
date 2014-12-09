@@ -25,4 +25,7 @@ typedef enum
 +(NSMutableArray*)commonArray :(NSString *)key;
 +(NSMutableArray*)TemplateArray;
 +(NSString *)timeFormat :(NSString *)stringWithFormat;
++(NSString *)dateFormat :(NSString *)stringWithFormat;
++(NSString *)numberFormat :(NSString *)stringWithFormat;
++(NSString *)phoneFormat :(NSString *)stringWithFormat;
 @end

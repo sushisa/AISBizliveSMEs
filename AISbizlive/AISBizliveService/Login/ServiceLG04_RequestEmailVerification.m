@@ -7,8 +7,11 @@
 //
 
 #import "ServiceLG04_RequestEmailVerification.h"
+#import "AISActivity.h"
 
-@implementation ServiceLG04_RequestEmailVerification
+@implementation ServiceLG04_RequestEmailVerification{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithEmail:(NSString *)email
@@ -17,6 +20,8 @@
 }
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_LG_04_REQUEST_EMAIL_URL];
     
     if (!self.email) {
@@ -31,6 +36,7 @@
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate requestEmailVerificationError:resultStatus];
@@ -41,6 +47,10 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate requestEmailVerificationError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [delegate requestEmailVerificationError:resultStatus];
+    [activity dismissActivity];
 }
 @end

@@ -7,23 +7,29 @@
 //
 
 #import "ServiceTP04_DeleteTemplate.h"
+#import "AISActivity.h"
 
-@implementation ServiceTP04_DeleteTemplate
+@implementation ServiceTP04_DeleteTemplate{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithID:(NSString *)ID{
     self.ID = ID;
 }
 -(void)requestService{
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_TP_04_DELETE_TEMPLATE_URL];
-    
-    NSDictionary *requestDict = @{RES_KEY_TEMPLATE_ID : self.ID};
+    NSArray *templateID = [NSArray arrayWithObject:self.ID];
+    NSDictionary *requestDict = @{REQ_KEY_TEMPLATE_LIST : templateID};
     [super setRequestURL:requestURL];
     [super setRequestData:requestDict];
     [super requestService];
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate deleteTemplateError:resultStatus];
@@ -35,6 +41,10 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate deleteTemplateError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [activity dismissActivity];
+    [delegate deleteTemplateError:resultStatus];
 }
 @end

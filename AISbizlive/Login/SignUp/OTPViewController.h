@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface OTPViewController : UIViewController <UITextFieldDelegate>
+#import "ServiceLG05_VerifyByOtp.h"
+#import "ServiceLG03_RequestOtpVerification.h"
+@interface OTPViewController : UIViewController <UITextFieldDelegate,VerifyByOtpDelegate,RequestOtpVerificationDelegate>
 {
     
     __weak IBOutlet UIView *otpView;
@@ -20,6 +21,7 @@
 
 @property (strong, nonatomic) NSString *emailAddress;
 @property (strong, nonatomic) NSString *phoneNumber;
+@property (strong, nonatomic) NSString *userId;
 - (IBAction)confirmOTP:(id)sender;
 
 - (IBAction)resendOTP:(id)sender;

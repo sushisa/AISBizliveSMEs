@@ -7,42 +7,34 @@
 //
 
 #import "TemplateViewController.h"
-#import "AddTemplateViewController.h"
 #import "AISGlobal.h"
 #import "MessageTableViewController.h"
 #import "TemplateCell.h"
+#import "AISActivity.h"
 @interface TemplateViewController ()
 {
 //    NSMutableArray *headTemplate;
 //    NSMutableArray *sampleTemplate;
 //    NSMutableArray *fullTemplate;
     BOOL *selected;
-    UILabel *head;
-    UILabel *sample;
-    UILabel *full;
+    IBOutlet UITableView *mytable;
+    AISActivity *activity;
+    int selectIndex;
 //    UITableViewCell *cell ;
-    int currentSelect;
-    float currentHeight;
-    float newHeight;
 
     // A array Object
+    NSDictionary *listArray;
     NSMutableArray *myObject;
     
-    // A dictionary object
-    NSMutableDictionary *dict;
-    
-    // Define keys
-    NSString *headTemplate;
-    NSString *sampleTemplate;
-    NSString *fullTemplate;
-    NSString *heightTemplateCell;
     int *cellHeight;
     NSString *fullReturn;
+    NSSortDescriptor *descriptor;
+    AISAlertView *alertView;
 }
 @end
 
 @implementation TemplateViewController
-
+@synthesize delegate;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -55,23 +47,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"%@",[AISString TemplateArray]);
-    currentSelect = -1;
-    currentHeight = 60;
-    heightTemplateCell = @"heightTemplateCell";
-    
+    selectIndex = 0;
+
     myObject = [[NSMutableArray alloc] init];
-    for (int k = 0; k<[AISString TemplateArray].count; k++) {
-        dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                @"65", heightTemplateCell,
-                nil];
-        [myObject addObject:dict];
-    }
-    DLog(@"%lu",(unsigned long)myObject.count);
+   
+    messageTable.estimatedRowHeight = 100.0;
+    messageTable.rowHeight = UITableViewAutomaticDimension;
+    activity = [[AISActivity alloc] init];
     [self setTextLangague];
     
 }
 -(void)setTextLangague{
+    descriptor = [NSSortDescriptor sortDescriptorWithKey:RES_KEY_CONTACT_LAST_UPDATE  ascending:NO];
     
     self.tabBarController.tabBar.hidden = YES;
     [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"TEMPLATE"]];
@@ -83,7 +70,8 @@
         self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] TemplateAddButtonWithAction:@selector(templateAdd) withTarget:self];
        
     }
-//    [messageTable reloadData];
+    alertView = [[AISAlertView alloc] init];
+    [messageTable reloadData];
     
 }
 -(void)backAction{
@@ -94,11 +82,14 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self setTextLangague];
+    if ([[AISpList getTemplateListArray] count] == 0) {
+        [self callGetTemplateList];
+    }else{
+        [myObject addObjectsFromArray:[AISpList getTemplateListArray]];
+    }
 }
 -(void)selectTemplate{
-    NSArray *arr = [self.navigationController viewControllers];
-    MessageTableViewController *rvc = (MessageTableViewController *)[arr objectAtIndex:[arr count]-2];
-    rvc.msgText = fullReturn;
+    [delegate didFinishSelectedTemplate:fullReturn];
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)templateAdd{
@@ -117,97 +108,65 @@
     // Return the number of sections.
     return 1;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"%f",[[[myObject objectAtIndex:indexPath.row] objectForKey:heightTemplateCell] floatValue]);
-    return [[[myObject objectAtIndex:indexPath.row] objectForKey:heightTemplateCell] floatValue];
-}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
     return [myObject count];
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-     if ([self.templeSelected isEqualToString:@"YES"]) {
-        self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(selectTemplate) withTarget:self];
-     }
-    TemplateCell *cell = (TemplateCell *)[messageTable cellForRowAtIndexPath:indexPath];
-    for (int k = 0; k < [myObject count]; k++) {
-        NSLog(@"%d",k);
-        if ([[[myObject objectAtIndex:k] objectForKey:heightTemplateCell] floatValue] != 65) {
-//            [UIView animateWithDuration:.3f animations:^{
-                cell.descriptionTemplate.alpha = 0.0f;
-                cell.sampleDescriptionTemplate.alpha = 1.0f;
-            //            }];
-//            [messageTable cellForRowAtIndexPath:(NSIndexPath *)k];
-            
-            [tableView beginUpdates];
-            [tableView endUpdates];
-        }
 
-        [[myObject objectAtIndex:k] setValue:@"65" forKey:heightTemplateCell];
-    }
-//        NSLog(@"%d - : -",[messageTable indexPathForCell:cell].row);
-        CGFloat width = 280;
-        CGFloat height = 0;
-        CGRect r = [[[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"]boundingRectWithSize:CGSizeMake(width, height)
-                                                                                                                      options:NSStringDrawingUsesLineFragmentOrigin
-                                                                                                                   attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]}
-                                                                                                                      context:nil];
-        
-        [[myObject objectAtIndex:indexPath.row] setValue:[NSString stringWithFormat:@"%f",currentHeight+r.size.height+30] forKey:heightTemplateCell];
-        
-        fullReturn = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
-        
-        [cell setCellHeight:[[[myObject objectAtIndex:indexPath.row] objectForKey:heightTemplateCell] floatValue]];
-        
-        [UIView animateWithDuration:.3f animations:^{
-            cell.descriptionTemplate.alpha = 1.0f;
-            cell.sampleDescriptionTemplate.alpha = 0.0f;
-        }];
-        
-        [tableView beginUpdates];
-        [tableView endUpdates];
-    
-    
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     static NSString *CellIdentifier = @"TemplateCell";
-    
-    TemplateCell  *cell = (TemplateCell *)[messageTable dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    TemplateCell  __weak *weakCell = cell;
+    TemplateCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+//    TemplateCell  *cell = (TemplateCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+//    cell.rightUtilityButtons = [self rightButtons];
+    //    cell.delegate = self;
+    TemplateCell __weak * weakCell = cell;
     [cell setAppearanceWithBlock:^{
+        weakCell.containingTableView = messageTable;
         weakCell.rightUtilityButtons = [self rightButtons];
         weakCell.delegate = self;
-        weakCell.containingTableView = messageTable;
     } force:NO];
-    cell.nameTemplate.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"TITLE"];
-    cell.viewTemplate.layer.borderColor = [AISColor lightgrayColor].CGColor;
-    cell.sampleDescriptionTemplate.text =  [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
-    cell.descriptionTemplate.alpha = 0.0f;
-    cell.descriptionTemplate.text = [[[AISString TemplateArray] objectAtIndex:indexPath.row] objectForKey:@"DESCRIPTION"];
-    [cell setCellHeight:[[[myObject objectAtIndex:indexPath.row] objectForKey:heightTemplateCell] floatValue]];
+    cell.nameTemplate.text = [[myObject objectAtIndex:indexPath.row] objectForKey:RES_KEY_TEMPLATE_NAME];
+    
+    cell.descriptionTemplate.text = [[myObject objectAtIndex:indexPath.row] objectForKey:RES_KEY_TEMPLATE_MESSAGE];
+//    NSLog(@"Cell - > %f",cell.frame.size.height);
+    CGRect r = [[[myObject objectAtIndex:indexPath.row] objectForKey:RES_KEY_TEMPLATE_MESSAGE] boundingRectWithSize:CGSizeMake(cell.frame.size.width, 0)
+                                                                                                options:NSStringDrawingUsesLineFragmentOrigin
+                                                                                             attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]}
+                                                                                                context:nil];
+//    NSUInteger numLines = r.size.height/20;
+    [cell setCellHeight:(r.size.height + 80)];
     return cell;
 
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.templeSelected isEqualToString:@"YES"]) {
+        self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(selectTemplate) withTarget:self];
+        fullReturn = [[myObject objectAtIndex:indexPath.row] objectForKey:RES_KEY_TEMPLATE_MESSAGE];
+    }
+}
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+-(BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell{
+    return YES;
+}
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     
-//    [cell setAccessoryType:UITableViewCellAccessoryNone];
-//    selectIndex = (int) [testTable indexPathForCell:cell].row;
+    selectIndex = (int) [mytable indexPathForCell:cell].row;
     switch (index) {
         case 0:
         {
-            NSLog(@"Edit");
+            [self performSegueWithIdentifier:@"EditTemplate" sender:self];
             break;
         }
         case 1:
         {
-            NSLog(@"DELETE");
+            [self callDeleteTemplate:[[myObject objectAtIndex:selectIndex] objectForKey:RES_KEY_TEMPLATE_ID]];
             break;
         }
         default:
@@ -253,16 +212,93 @@
 {
     return 60.0f;
 }
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [myObject removeObjectAtIndex:indexPath.row];
-//        NSString *path = [[NSBundle mainBundle] pathForResource: @"TemplateList" ofType:@"plist"];
-//         NSMutableArray *delete = [[NSMutableArray alloc] initWithContentsOfFile: path];
-//        [delete removeObjectAtIndex:indexPath.row];
-//        NSLog(@"%@",myObject);
-//        [delete writeToFile:path atomically:YES];
-//        [messageTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-//    }
-//}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"EditTemplate"]) {
+        
+        AddTemplateViewController *edit = [segue destinationViewController];
+        edit.ID = [[myObject objectAtIndex:selectIndex] objectForKey:RES_KEY_TEMPLATE_ID];
+        edit.TemplateName = [[myObject objectAtIndex:selectIndex] objectForKey:RES_KEY_TEMPLATE_NAME];
+        edit.TemplateMessage = [[myObject objectAtIndex:selectIndex] objectForKey:RES_KEY_TEMPLATE_MESSAGE];
+        edit.delegate = self;
+        
+    }
+    if ([[segue identifier] isEqualToString:@"AddTemplate"]) {
+        
+        AddTemplateViewController *add = [segue destinationViewController];
+        add.delegate = self;
+        
+    }
+}
+
+-(void)callGetTemplateList{
+    [activity showActivity];
+    ServiceTP02_GetTemplateList *call = [[ServiceTP02_GetTemplateList alloc] init];
+    [call setDelegate:self];
+    [call requestService];
+}
+- (void)getTemplateListSuccess:(ResponseGetTemplateList *)responseGetTemplateList{
+    [activity dismissActivity];
+    for (TemplateDetail *templatesList in [responseGetTemplateList templateList]) {
+        listArray = [[NSDictionary alloc] initWithObjectsAndKeys:
+                        [templatesList ID],RES_KEY_TEMPLATE_ID,
+                        [templatesList name],RES_KEY_TEMPLATE_NAME,
+                        [templatesList message],RES_KEY_TEMPLATE_MESSAGE, nil];
+        [myObject addObject:listArray];
+    }
+    [AISpList setTemplateListArray:myObject];
+    [mytable reloadData];
+}
+- (void)getTemplateListError:(ResultStatus *)resultStatus{
+    [activity dismissActivity];
+    [self alert:[resultStatus responseMessage]];
+    
+}
+-(void)callDeleteTemplate:(NSString *)ID{
+    ServiceTP04_DeleteTemplate *delete = [[ServiceTP04_DeleteTemplate alloc] init];
+    [delete setParameterWithID:ID];
+    [delete setDelegate:self];
+    [delete requestService];
+}
+- (void)deleteTemplateSuccess{
+    [myObject removeObjectAtIndex:selectIndex];
+    [AISpList setTemplateListArray:myObject];
+    [messageTable reloadData];
+//    [self callGetTemplateList];
+}
+- (void)deleteTemplateError:(ResultStatus *)resultStatus{
+    [self alert:[resultStatus responseMessage]];
+    
+}
+
+- (void)didFinishAddTemplate:(TemplateDetail *)addTemplateArray{
+        listArray = [[NSDictionary alloc] initWithObjectsAndKeys:
+                     [addTemplateArray ID],RES_KEY_TEMPLATE_ID,
+                     [addTemplateArray name],RES_KEY_TEMPLATE_NAME,
+                     [addTemplateArray message],RES_KEY_TEMPLATE_MESSAGE, nil];
+    [myObject addObject:listArray];
+    [AISpList setTemplateListArray:myObject];
+    [messageTable reloadData];
+}
+- (void)didFinishUpdateTemplate:(TemplateDetail *)updateTemplateArray{
+    for (int k = 0; k < [myObject count]; k ++) {
+        if ([[updateTemplateArray ID] isEqualToString:[[myObject objectAtIndex:k] objectForKey:RES_KEY_TEMPLATE_ID]]) {
+            listArray = [[NSDictionary alloc] initWithObjectsAndKeys:
+                         [updateTemplateArray ID],RES_KEY_TEMPLATE_ID,
+                         [updateTemplateArray name],RES_KEY_TEMPLATE_NAME,
+                         [updateTemplateArray message],RES_KEY_TEMPLATE_MESSAGE, nil];
+            [myObject replaceObjectAtIndex:k withObject:listArray];
+        }
+    }
+    [AISpList setTemplateListArray:myObject];
+    [messageTable reloadData];
+}
+-(void)doneAction:(id)sender{
+    [alertView dismissAlertView];
+}
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
+    [alertView showAlertView];
+}
 @end

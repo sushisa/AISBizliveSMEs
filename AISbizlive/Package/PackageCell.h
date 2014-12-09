@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *sumSMS;
 @property (weak, nonatomic) IBOutlet UILabel *amountPackage;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionAmount;
+@property (strong, nonatomic) IBOutlet UIButton *packagebtn;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionSMS;
 @end

@@ -9,8 +9,11 @@
 #import "ServiceCT12_ImportContact.h"
 #import "ContactDetail.h"
 #import "ResponseGetContactList.h"
+#import "AISActivity.h"
 
-@implementation ServiceCT12_ImportContact
+@implementation ServiceCT12_ImportContact{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithContactList:(NSArray *)contactList
@@ -20,6 +23,8 @@
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc]init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_12_IMPORT_CONTACT_URL];
 
     NSMutableArray *contactList = [NSMutableArray new];
@@ -27,12 +32,12 @@
         NSDictionary *contactDict = @{REQ_KEY_CONTACT_FIRSTNAME     : [contact name],
                                       REQ_KEY_CONTACT_LASTNAME      : [contact lastname],
                                       REQ_KEY_CONTACT_MOBILE_NO     : [contact phoneNumber],
-                                      REQ_KEY_CONTACT_PHOTO         : @"Image",
+                                      REQ_KEY_CONTACT_PHOTO         : @"",
                                       REQ_KEY_CONTACT_SOURCE        : @"Import"};
         [contactList addObject:contactDict];
     }
     
-    NSDictionary *requestDict = @{REQ_KEY_CONTACT_LIST: contactList};
+    NSDictionary *requestDict = @{REQ_KEY_IMPORT_CONTACT_LIST: contactList};
     [super setRequestURL:requestURL];
     [super setRequestData:requestDict];
     [super requestService];
@@ -60,6 +65,8 @@
         responseDict = @{RES_KEY_CONTACT_LIST : arrContact};
     }
     //------------------------------- Test -------------------------------
+    
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate importContactError:resultStatus];
@@ -73,7 +80,9 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
+    
     [delegate importContactError:nil];
+    [activity dismissActivity];
 }
 
 

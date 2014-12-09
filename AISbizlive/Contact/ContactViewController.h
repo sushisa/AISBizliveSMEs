@@ -13,15 +13,27 @@
 #import "ServiceCT01_GetContactList.h"
 #import "ServiceCT06_GetGroupContactList.h"
 #import "ServiceCT04_DeleteContact.h"
-@interface ContactViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,SWTableViewCellDelegate,GetContactListDelegate,DeleteContactDelegate,GetGroupContactListDelegate>
+#import "ServiceCT11_DeleteGroupContact.h"
+#import "AddPeopleViewController.h"
+#import "DetailPeopleViewController.h"
+#import "AddGroupViewController.h"
+#import "DetailGroupViewController.h"
+@class ContactViewController;
+@protocol ContactViewControllerDelegate <NSObject>
+- (void)didFinishSelectedContact:(NSMutableArray *)contactsArray Group:(NSMutableArray *)groupsArray;
+@end
+@interface ContactViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,SWTableViewCellDelegate,GetContactListDelegate,DeleteContactDelegate,GetGroupContactListDelegate,DeleteGroupContactDelegate,AddPeopleViewControllerDelegate,DetailPeopleViewControllerDelegate,AddGroupViewControllerDelegate,DetailGroupViewControllerDelegate>
 {
     
+    IBOutlet UILabel *nameLogin;
     __weak IBOutlet UITextField *seachTextField;
     __weak IBOutlet UISegmentedControl *selectPeopleAndGroup;
-    __weak IBOutlet UITableView *testTable;
+    IBOutlet UITableView *testTable;
 }
 - (IBAction)actionSelect:(id)sender;
-
+@property (nonatomic, strong)NSMutableArray *messagegroupsArray;
+@property (nonatomic, strong)NSMutableArray *messagecontactsArray;
+@property (nonatomic, weak) id <ContactViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *contactSelect;
 
 @end

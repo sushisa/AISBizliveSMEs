@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ServiceCT02_AddContact.h"
-@interface AddPeopleViewController : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,AddContactListDelegate>{
+#import "ServiceCT03_EditContact.h"
+@class AddPeopleViewController;
+@protocol AddPeopleViewControllerDelegate <NSObject>
+- (void)didFinishAddContact:(NSDictionary *)contactsDict;
+- (void)didFinishUpdateContact:(NSDictionary *)contactsDict;
+@end
+@interface AddPeopleViewController : UIViewController<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,AddContactListDelegate,EditContactDelegate>{
     //Field
     __weak IBOutlet UITextField *mobileNoTextField;
     __weak IBOutlet UITextField *lastNameTextField;
@@ -20,6 +26,8 @@
     __weak IBOutlet UILabel *mobileLabel;
 }
 
+@property (nonatomic, weak) id <AddPeopleViewControllerDelegate> delegate;
+@property (strong, nonatomic) NSString *ID;
 @property (strong, nonatomic) NSString *firstName;
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *phoneNumber;

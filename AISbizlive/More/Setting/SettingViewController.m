@@ -2,21 +2,27 @@
 //  SettingViewController.m
 //  AISbizlive
 //
-//  Created by Wachirawit on 5/20/2557 BE.
+//  Created by Wachirawit on 10/22/2557 BE.
 //  Copyright (c) 2557 promptnow. All rights reserved.
 //
 
 #import "SettingViewController.h"
 #import "AISGlobal.h"
-@interface SettingViewController ()
+#import "SettingPackageCell.h"
 
+@interface SettingViewController ()
+{
+    NSMutableArray *profiles;
+    NSDictionary *listProfile;
+    AISAlertView *alertView;
+}
 @end
 
 @implementation SettingViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -26,13 +32,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    profiles = [[NSMutableArray alloc] init];
     [self setTextLangague];
 }
 -(void)backAction{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)setTextLangague{
+    alertView = [[AISAlertView alloc] init];
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"SETTING"]];
     [bathLabel setText:[AISString commonString:typeLabel KeyOfValue :@"BAHT"]];
@@ -40,16 +47,16 @@
     [message2Label setText:[AISString commonString:typeLabel KeyOfValue :@"MESSAGE"]];
     [message3Label setText:[AISString commonString:typeLabel KeyOfValue :@"MESSAGE"]];
     [yourBalanceLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_BALANCE"]];
-     [numberSMSLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_NUMBER"]];
-     [usedSMSLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_USED"]];
-     [smsBalanceLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_SMS"]];
+    [numberSMSLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_NUMBER"]];
+    [usedSMSLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_USED"]];
+    [smsBalanceLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_SMS"]];
     [yourPackageLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SETTING_PACKAGE"]];
     [changPasswordButton setTitle:[AISString commonString:typeButton KeyOfValue :@"CHANGE_PASS"] forState:UIControlStateNormal];
-    
     
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self setTextLangague];
+    [self callSetting];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,81 +64,64 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-//#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+        static NSString *CellIdentifier = @"settingPackageList";
+        SettingPackageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        NSDictionary *dict = [profiles objectAtIndex:indexPath.row];
+        cell.packageName.text = [dict objectForKey:RES_KEY_SETTING_PACKAGENAME];
     
-    // Configure the cell...
+    cell.expireDate.text = [AISString timeFormat:[dict objectForKey:RES_KEY_SETTING_EXPIREDATE]];
+        return cell;
+
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+
+        return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+        return profiles.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80.0f;
+}
+-(void)callSetting{
+    ServiceST01_SettingProfile *call = [[ServiceST01_SettingProfile alloc] init];
+    [call setDelegate:self];
+    [call requestService];
+}
+
+- (void)settingProfileSuccess:(ProfileDetail *)profileDetail{
+    //    *firstname,*lastname,*mobileno,*topupbalance,*totalSMS,*usedSMS,*balanceSMS;
+    nameLabel.text= [NSString stringWithFormat:@"%@ %@",[profileDetail firstname],[profileDetail lastname]];
+    mobileLabel.text =  [NSString stringWithFormat:@"%@-%@-%@",[[profileDetail mobileno] substringToIndex:2] ,[[[profileDetail mobileno] substringFromIndex:2] substringToIndex:4],[[profileDetail mobileno] substringFromIndex:6] ];
+    balanceLabel.text  = [AISString numberFormat:[profileDetail topupbalance]];
+    totalSMSLabel.text = [AISString numberFormat:[profileDetail totalSMS]];
+    usedLabel.text = [AISString numberFormat:[profileDetail usedSMS]];
+    smsbalanceLabel.text = [AISString numberFormat:[profileDetail balanceSMS]];
     
-    return cell;
+    for (ListPackageDetail *packageList in [profileDetail listPackage]) {
+        listProfile = [NSDictionary dictionaryWithObjectsAndKeys:
+                       [packageList name],RES_KEY_SETTING_PACKAGENAME,
+                       [packageList expiredate],RES_KEY_SETTING_EXPIREDATE,nil] ;
+        [profiles addObject:listProfile];
+    }
+    [packageTable reloadData];
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)settingProfileError:(ResultStatus *)resultStatus{
+    [self alert:[resultStatus responseMessage]];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+
+
+-(void)doneAction:(id)sender{
+    [alertView dismissAlertView];
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
+    [alertView showAlertView];
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

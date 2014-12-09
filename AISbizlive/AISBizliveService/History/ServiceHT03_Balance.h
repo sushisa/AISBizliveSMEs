@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "BizliveService.h"
-#import "ResponseTopup.h"
+#import "ResponseBalance.h"
 
 @protocol BalanceDelegate <NSObject>
 
-- (void)balanceSuccess:(ResponseTopup *)responseTopup;
+- (void)balanceSuccess:(ResponseBalance *)responseBalance;
 - (void)balanceError:(ResultStatus *)resultStatus;
 
 @end

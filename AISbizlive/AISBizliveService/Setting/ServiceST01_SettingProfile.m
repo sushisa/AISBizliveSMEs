@@ -7,11 +7,16 @@
 //
 
 #import "ServiceST01_SettingProfile.h"
+#import "AISActivity.h"
 
-@implementation ServiceST01_SettingProfile
+@implementation ServiceST01_SettingProfile{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 -(void)requestService{
+    activity = [[AISActivity alloc]init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_ST_01_SETTING_PROFILE_URL];
     
     [super setRequestURL:requestURL];
@@ -19,6 +24,7 @@
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate settingProfileError:resultStatus];
@@ -26,13 +32,16 @@
     }
     
     NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
-    ResponseSettingProfile *serviceData = [[ResponseSettingProfile alloc] initWithResponseData:responseData];
+    ProfileDetail *serviceData = [[ProfileDetail alloc] initWithResponseData:responseData];
     [delegate settingProfileSuccess:serviceData];
-    
 }
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate settingProfileError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [delegate settingProfileError:resultStatus];
+    [activity dismissActivity];
 }
 @end

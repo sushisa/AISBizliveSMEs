@@ -10,7 +10,7 @@
 
 @protocol LoginDelegate <NSObject>
 
-- (void)loginSuccess;
+- (void)loginSuccess:(NSDictionary *)resultLogin;
 - (void)loginError:(ResultStatus *)resultStatus;
 
 @end

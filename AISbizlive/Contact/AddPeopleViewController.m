@@ -13,17 +13,19 @@
     UIActionSheet *choosePhoto;
     NSString *imageName;
     AISAlertView *alertView;
+
+    NSDictionary *dict;
 }
 @end
 
 @implementation AddPeopleViewController
-
+@synthesize delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        NSLog(@"google");
+        
     }
     return self;
 }
@@ -31,27 +33,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setTextLangague];
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [self setTextLangague];
+}
+-(void)setTextLangague{
+    
     alertView = [[AISAlertView alloc] init];
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
                                              initWithTarget: self
                                              action: @selector(hideKeyboard:)];
     [oneTapGesture setNumberOfTouchesRequired:1];
     [[self view] addGestureRecognizer:oneTapGesture];
-    if (self.profile == nil || [self.profile isEqualToString: @""]) {
-        [imagePeople setBackgroundImage:[UIImage imageNamed:PROFILE_DEFALUT] forState:UIControlStateNormal];
-    }
-    else {
-        [imagePeople setBackgroundImage:[UIImage imageNamed:self.profile] forState:UIControlStateNormal];
-    }
-    [self setTextLangague];
-}
--(void)setTextLangague{
-    
     self.navigationController.navigationBarHidden = NO;
     self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(doneAction) withTarget:self];
-    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"ADDCONTACT"]];
+    if (self.firstName == nil || [self.firstName isEqualToString: @""]) {
+        
+        [imagePeople setBackgroundImage:[UIImage imageNamed:PROFILE_DEFALUT] forState:UIControlStateNormal];
+        [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"ADDCONTACT"]];
+    }
+    else {
+        
+//        if (self.profile == nil || [self.profile isEqualToString: @""]) {
+            [imagePeople setBackgroundImage:[UIImage imageNamed:PROFILE_DEFALUT] forState:UIControlStateNormal];
+//        }
+//        else{
+//            [imagePeople setBackgroundImage:[UIImage imageNamed:self.profile] forState:UIControlStateNormal];
+//        }
+        [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"EDITCONTACT"]];
+    }
     [nameLabel setText:[AISString commonString:typeLabel KeyOfValue :@"NAME"]];
     [nameTextField setText:self.firstName];
     [nameTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"NAME"]];
@@ -61,7 +74,9 @@
     [lastNameTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"LAST_NAME"]];
     
     [mobileLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_PHONE"]];
-    [mobileNoTextField setText:self.phoneNumber];
+    if (self.phoneNumber != nil) {
+        [mobileNoTextField setText:[AISString phoneFormat:self.phoneNumber]];
+    }
     [mobileNoTextField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_PHONE"]];
 
 }
@@ -81,7 +96,7 @@
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if ([textField isEqual:mobileNoTextField]) {
         if (mobileNoTextField.text.length == 10 && [mobileNoTextField.text rangeOfString:@"-"].location == NSNotFound) {
-            mobileNoTextField.text = [NSString stringWithFormat:@"%@-%@-%@",[mobileNoTextField.text substringToIndex:2] ,[[mobileNoTextField.text substringFromIndex:2] substringToIndex:4],[mobileNoTextField.text substringFromIndex:6] ];
+            mobileNoTextField.text = [AISString phoneFormat:mobileNoTextField.text];
         }
     }
 }
@@ -96,7 +111,21 @@
     }
     return YES;
 }
-
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if ([textField isEqual:nameTextField]) {
+        [lastNameTextField becomeFirstResponder];
+        return NO;
+    }
+    else if ([textField isEqual:lastNameTextField]) {
+        [mobileNoTextField becomeFirstResponder];
+        return NO;
+    }
+    else if ([textField isEqual:mobileNoTextField]) {
+        [self doneAction];
+        return NO;
+    }
+    return YES;
+}
 -(void)viewDidDisappear:(BOOL)animated{
     [self clearAllData];
 }
@@ -104,7 +133,9 @@
     [nameTextField setText:@""];
     [lastNameTextField setText:@""];
     [mobileNoTextField setText:@""];
+    [imagePeople setBackgroundColor:[UIColor whiteColor]];
     self.firstName = @"";
+    self.lastName = @"";
     self.phoneNumber = @"";
     self.profile = @"";
 }
@@ -112,45 +143,60 @@
     [self setTextLangague];
 }
 -(void)backAction{
-    if ([self.checkPush isEqualToString: @"YES"]) {
-        
-        [self.navigationController popViewControllerAnimated:YES];
+    
+    [nameTextField resignFirstResponder];
+    [lastNameTextField resignFirstResponder];
+    [mobileNoTextField resignFirstResponder];
+    if (self.firstName == nil || [self.firstName isEqualToString: @""]) {
+        if (![nameTextField.text isEqualToString:@""] || ![mobileNoTextField.text isEqualToString:@""] || ![lastNameTextField.text isEqualToString:@""]) {
+            [self alertTwo:[AISString commonString:typePopup KeyOfValue:@"BACK_CONTACT"]];
+        }
+        else{
+            if ([self.checkPush isEqualToString: @"YES"]) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            else {
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            }
+        }
     }
-    else {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    else{
+        if (![nameTextField.text isEqualToString:self.firstName] || ![lastNameTextField.text isEqualToString:self.lastName]) {
+            [self alertTwo:[AISString commonString:typePopup KeyOfValue:@"BACK_CONTACT"]];
+        }
+        else{
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
+   
 }
 -(void)doneAction{
-    if ([nameTextField.text isEqualToString:@""] && [lastNameTextField.text isEqualToString:@""]&& [mobileNoTextField.text isEqualToString:@""] ){
+    [alertView dismissAlertView];
+    [nameTextField resignFirstResponder];
+    [lastNameTextField resignFirstResponder];
+    [mobileNoTextField resignFirstResponder];
+    if ([nameTextField.text isEqualToString:@""] ){
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
     }
-    else if (mobileNoTextField.text.length != 12){
-        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDPHONE"]];
+    else if ([lastNameTextField.text isEqualToString:@""]){
+            [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
+    }
+    else if ([mobileNoTextField.text isEqualToString:@""] ){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDNIL"]];
+    }
+    else if (mobileNoTextField.text.length < 10){
+        [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDISNOPHONE"]];
     }
     else if (![[mobileNoTextField.text substringToIndex:2]  isEqual: @"08"] && ![[mobileNoTextField.text substringToIndex:2]  isEqual: @"09"] ){
         [self alert:[AISString commonString:typePopup KeyOfValue :@"TEXTFIELDISNOPHONE"]];
     }
     else {
-//        NSData *data = [imageName dataUsingEncoding: NSUnicodeStringEncoding];
-//        
-//        NSString *ret = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-
-        ServiceCT02_AddContact *callAddPeople = [[ServiceCT02_AddContact alloc] init];
-        [callAddPeople setFirstname:nameTextField.text];
-        [callAddPeople setLastname:lastNameTextField.text];
-        if (mobileNoTextField.text.length == 12) {
-            NSString *mobileText = [NSString stringWithFormat:@"%@%@%@",[mobileNoTextField.text substringToIndex:2] ,[[mobileNoTextField.text substringFromIndex:3] substringToIndex:4],[mobileNoTextField.text substringFromIndex:8] ];
-            [callAddPeople setMobileNO:mobileText];
+        if ([self.ID isEqualToString:@""] || self.ID == nil) {
+            [self callAddContact];
         }
         else{
-            [callAddPeople setMobileNO:mobileNoTextField.text];
+            [self callEditContact];
         }
-        [callAddPeople setImage64:@""];
-        [callAddPeople setContactSource:@"IOS"];
-        [callAddPeople setDelegate:self];
-        [callAddPeople requestService];
-        
-//        [self performSegueWithIdentifier: @"tabEN" sender: self];
     }
 }
 - (void)didReceiveMemoryWarning
@@ -213,6 +259,19 @@
     
 }
 
+-(void)alertTwo:(NSString *)message{
+    [alertView withActionLeft:@selector(cancelAction:) withActionRight:@selector(doneAction) withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"CANCEL"] RightString:[AISString commonString:typeButton KeyOfValue :@"OK"]];
+    [alertView showAlertView];
+}
+-(void)cancelAction:(id)sender{
+    [alertView dismissAlertView];
+    if ([self.checkPush isEqualToString: @"YES"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
+}
 -(void)doneAction:(id)sender{
     [alertView dismissAlertView];
 }
@@ -220,10 +279,79 @@
     [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
     [alertView showAlertView];
 }
+-(void)callAddContact{
+    ServiceCT02_AddContact *callAddPeople = [[ServiceCT02_AddContact alloc] init];
+    [callAddPeople setFirstname:nameTextField.text];
+    [callAddPeople setLastname:lastNameTextField.text];
+    if (mobileNoTextField.text.length == 12) {
+        NSString *mobileText = [NSString stringWithFormat:@"%@%@%@",[mobileNoTextField.text substringToIndex:2] ,[[mobileNoTextField.text substringFromIndex:3] substringToIndex:4],[mobileNoTextField.text substringFromIndex:8] ];
+        [callAddPeople setMobileNO:mobileText];
+    }
+    else{
+        [callAddPeople setMobileNO:mobileNoTextField.text];
+    }
+    [callAddPeople setImage64:@""];
+    [callAddPeople setContactSource:@"IOS"];
+    [callAddPeople setDelegate:self];
+    [callAddPeople requestService];
+}
+
 - (void)addContactSuccess:(ContactDetail *)contactDetail{
-    [self.navigationController popViewControllerAnimated:YES];
+    dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                   [contactDetail ID],RES_KEY_CONTACT_ID,
+                   [contactDetail name],RES_KEY_CONTACT_FIRSTNAME,
+                   [contactDetail lastname], RES_KEY_CONTACT_LASTNAME,
+                   [contactDetail phoneNumber],RES_KEY_CONTACT_MOBILE_NO,
+                   [contactDetail lastUpdate],RES_KEY_CONTACT_LAST_UPDATE,
+                   [contactDetail imageURL],RES_KEY_CONTACT_PHOTO_PATH,
+                   @"Ok_Grey.png",@"check",nil] ;
+    [delegate didFinishAddContact: dict];
+    if ([self.checkPush isEqualToString: @"YES"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 - (void)addContactError:(ResultStatus *)status{
+    [self alert:[status responseMessage]];
     
+}
+
+- (void)didFinishUpdateContact:(NSMutableArray *)contactsArray{
+    
+}
+-(void)callEditContact{
+   
+    ServiceCT03_EditContact *call = [[ServiceCT03_EditContact alloc] init];
+    
+    [call setID:self.ID];
+    [call setFirstname:nameTextField.text];
+    [call setLastname:lastNameTextField.text];
+    [call setImage64:@""];
+    if (mobileNoTextField.text.length == 12) {
+        NSString *mobileText = [NSString stringWithFormat:@"%@%@%@",[mobileNoTextField.text substringToIndex:2] ,[[mobileNoTextField.text substringFromIndex:3] substringToIndex:4],[mobileNoTextField.text substringFromIndex:8] ];
+        [call setMobileNO:mobileText];
+    }
+    else{
+        [call setMobileNO:mobileNoTextField.text];
+    }
+    [call setDelegate:self];
+    [call requestService];
+}
+- (void)editContactSuccess:(ContactDetail *)contactDetail{
+    dict = [NSDictionary dictionaryWithObjectsAndKeys:
+            [contactDetail ID],RES_KEY_CONTACT_ID,
+            [contactDetail name],RES_KEY_CONTACT_FIRSTNAME,
+            [contactDetail lastname], RES_KEY_CONTACT_LASTNAME,
+            [contactDetail phoneNumber],RES_KEY_CONTACT_MOBILE_NO,
+            [contactDetail lastUpdate],RES_KEY_CONTACT_LAST_UPDATE,
+            [contactDetail imageURL],RES_KEY_CONTACT_PHOTO_PATH,
+            @"Ok_Grey.png",@"check",nil] ;
+    [delegate didFinishUpdateContact: dict];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)editContactError:(ResultStatus *)status{
+    [self alert:[status responseMessage]];
 }
 @end

@@ -7,19 +7,24 @@
 //
 
 #import "ServiceCT01_GetContactList.h"
+#import "AISActivity.h"
 
-
-@implementation ServiceCT01_GetContactList
+@implementation ServiceCT01_GetContactList{
+    AISActivity *activity;
+}
 @synthesize getContactListDelegate, requestData;
-
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL,SERVICE_CT_01_GETCONTACTLIST_URL];
     [super setRequestURL:requestURL];
     [super requestService];
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    
+//    [activity dismissActivity];
     if (![Admin isOnline]) {
         //------------------------------- Test -------------------------------
         NSDictionary *contact1 = @{RES_KEY_CONTACT_ID           : @"01234",
@@ -116,9 +121,10 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    ResultStatus *resultStatus = [[ResultStatus alloc] init];
-    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
-    [resultStatus setResponseMessage:[status developerMessage]];
-    [getContactListDelegate getcontactListError:resultStatus];
+//    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+//    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+//    [resultStatus setResponseMessage:[status developerMessage]];
+    [getContactListDelegate getcontactListError:nil];
+    [activity dismissActivity];
 }
 @end

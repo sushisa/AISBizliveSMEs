@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface TopupHistoryViewController : UITableViewController
-
+#import "ServiceHT02_Topup.h"
+#import "topupHistoryCell.h"
+@interface TopupHistoryViewController : UITableViewController<TopupDelegate>
+{
+    IBOutlet UITableView *myTable;
+    
+}
 @end

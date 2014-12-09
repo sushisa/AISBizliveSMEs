@@ -7,9 +7,12 @@
 //
 
 #import "ServiceLG03_RequestOtpVerification.h"
+#import "AISActivity.h"
 
 
-@implementation ServiceLG03_RequestOtpVerification
+@implementation ServiceLG03_RequestOtpVerification{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithMSISDN:(NSString *)MSISDN
@@ -19,6 +22,8 @@
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_LG_03_REQUEST_OTP_URL];
     
     if (!self.MSISDN) {
@@ -33,6 +38,7 @@
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate requestOtpVerificationError:resultStatus];
@@ -43,7 +49,11 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate requestOtpVerificationError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [delegate requestOtpVerificationError:resultStatus];
+    [activity dismissActivity];
 }
 
 

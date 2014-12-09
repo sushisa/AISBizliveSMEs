@@ -77,15 +77,12 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [FBAppEvents activateApp];
-    [FBAppCall handleDidBecomeActiveWithSession:self.session];
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    
-     [self.session close];
+
 }
 
 @end

@@ -49,7 +49,7 @@
     
     [emailField setPlaceholder:[AISString commonString:typePlacehoder KeyOfValue :@"SIGNUP_EMAIL"]];
     [emailField setFont:[FontUtil fontWithFontSize:eFontSizeSmall]];
-    
+
     //Label
     [forgetPassLabel setText:[AISString commonString:typeLabel KeyOfValue :@"FORGETPASS"]];
     //Button

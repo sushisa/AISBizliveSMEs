@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DWTagList.h"
-@interface MessageTableViewController : UITableViewController <UITextViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,DWTagListDelegate,UITextFieldDelegate>
+#import "TemplateViewController.h"
+#import "ServiceTP02_GetTemplateList.h"
+#import "ServiceMS01_SendMessage.h"
+#import "ServiceMS02_SaveSchedule.h"
+#import "ServiceRC03_UpdateSchedule.h"
+#import "ServiceST01_SettingProfile.h"
+#import "ContactViewController.h"
+#import "TITokenField.h"
+@interface MessageTableViewController : UITableViewController <UITextViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate,TemplateViewControllerDelegate,GetTemplateListDelegate,SendMessageDelegate,SaveScheduleDelegate,SettingProfileDelegate,ContactViewControllerDelegate,TITokenFieldDelegate,UpdateScheduleDelegate>
 {
     //Table
     IBOutlet UITableView *myTableView;
@@ -53,10 +60,11 @@
     __weak IBOutlet UIImageView *immediatelyImage;
     
     //TextView
-    __weak IBOutlet UITextView *toTextField;
     __weak IBOutlet UITextView *messageTextField;
     __weak IBOutlet UIView *messageView;
-    __weak IBOutlet UIView *contactView;
+    
+    IBOutlet TITokenFieldView *contactView;
+//    __weak IBOutlet UIView *contactView;
     __weak IBOutlet UILabel *toLabel;
     
 //    __weak IBOutlet UIView *addTagView;
@@ -88,10 +96,6 @@
     __weak IBOutlet UILabel *expTimeTitle;
     
     __weak IBOutlet UILabel *bytesLabel;
-    __weak IBOutlet UILabel *realCharacterTitle;
-    
-    __weak IBOutlet UILabel *characterLabel;
-    __weak IBOutlet UILabel *characterTitle;
     
     __weak IBOutlet UILabel *messageNoLabel;
     __weak IBOutlet UILabel *messageNoTitle;
@@ -100,14 +104,14 @@
     __weak IBOutlet UIButton *saveTemplate;
     __weak IBOutlet UIButton *variableSMS;
    
+    IBOutlet UILabel *balanceSMS;
 }
-
-@property (nonatomic, strong) DWTagList             *tagList;
 - (IBAction)variableSMSBtn:(id)sender;
 - (IBAction)popupDetailMessage:(id)sender;
 
-@property (strong, nonatomic) NSString *msgText;
 @property (strong, nonatomic) NSArray *arrayContact;
+@property (strong, nonatomic) NSMutableArray *arraySchedule;
+
 - (IBAction)empTimeBtn:(id)sender;
 - (IBAction)sendTimeBtn:(id)sender;
 - (IBAction)endDateBtn:(id)sender;

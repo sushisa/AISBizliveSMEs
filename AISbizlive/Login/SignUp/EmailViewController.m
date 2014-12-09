@@ -72,7 +72,7 @@
     [emailTextField setText:@""];
     [emailTextField resignFirstResponder];
     [AISView changeLayerNomal:emailView];
-    [self alert:[AISString commonString:typePopup KeyOfValue :@"CONFIRMACTIVATE"]];
+    [self callRequestNewEmail];
     
 }
 - (IBAction)Donebtn:(id)sender {
@@ -89,8 +89,7 @@
         [self alert:[AISString commonString:typePopup KeyOfValue :@"EMAILACTIVATECODE"]];
     }
     else{
-        [self alert:[AISString commonString:typePopup KeyOfValue :@"CONFIRMTOSIGNIN"]];
-        [self performSegueWithIdentifier:@"emailToSignIn" sender:self];
+        [self callVerifyByEmail];
     }
 //    [self.navigationController dismissViewControllerAnimated:YES completion:Nil];
 }
@@ -101,5 +100,35 @@
 }
 -(void)doneAction:(id)sender{
     [alertView dismissAlertView];
+}
+
+-(void)callRequestNewEmail{
+    ServiceLG04_RequestEmailVerification *call = [[ServiceLG04_RequestEmailVerification alloc] init];
+    [call setParameterWithEmail:self.emailAddress];
+    [call setDelegate:self];
+    [call requestService];
+}
+- (void)requestEmailVerificationSuccess{
+    [self alert:[AISString commonString:typePopup KeyOfValue :@"CONFIRMACTIVATE"]];
+}
+- (void)requestEmailVerificationError:(ResultStatus *)resultStatus{
+    
+    [self alert:[resultStatus responseMessage]];
+    
+}
+-(void)callVerifyByEmail{
+    ServiceLG06_VerifyByEmail *call = [[ServiceLG06_VerifyByEmail alloc] init];
+    [call setParameterWithMSISDN:self.phoneNumber email:self.emailAddress emailVerifyCode:emailTextField.text];
+    [call setDelegate:self];
+    [call requestService];
+}
+- (void)verifyByEmailSuccess{
+    [self alert:[AISString commonString:typePopup KeyOfValue :@"CONFIRMTOSIGNIN"]];
+    [self performSegueWithIdentifier:@"emailToSignIn" sender:self];
+}
+- (void)verifyByEmailError:(ResultStatus *)resultStatus{
+    
+    
+    [self alert:[resultStatus responseMessage]];
 }
 @end

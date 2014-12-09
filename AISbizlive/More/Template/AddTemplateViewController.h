@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AddTemplateViewController : UIViewController <UITextViewDelegate,UITextFieldDelegate>
+#import "ServiceTP01_AddTemplate.h"
+#import "ServiceTP03_EditTemplate.h"
+@class AddTemplateViewController;
+@protocol AddTemplateViewControllerDelegate <NSObject>
+- (void)didFinishAddTemplate:(TemplateDetail *)addTemplateArray;
+- (void)didFinishUpdateTemplate:(TemplateDetail *)updateTemplateArray;
+@end
+@interface AddTemplateViewController : UIViewController <UITextViewDelegate,UITextFieldDelegate,AddTemplateDelegate,EditTemplateDelegate>
 {
     
     __weak IBOutlet UITextField *nameTemplate;
@@ -17,6 +23,10 @@
     __weak IBOutlet UILabel *descriptionTemplateLabel;
     __weak IBOutlet UILabel *textLength;
 }
+@property (nonatomic, weak) id <AddTemplateViewControllerDelegate> delegate;
 
+@property (strong, nonatomic) NSString *ID;
+@property (strong, nonatomic) NSString *TemplateName;
+@property (strong, nonatomic) NSString *TemplateMessage;
 @property (strong, nonatomic) NSString *descritionItem;
 @end

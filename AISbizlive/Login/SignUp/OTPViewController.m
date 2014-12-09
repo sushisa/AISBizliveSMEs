@@ -8,6 +8,7 @@
 
 #import "OTPViewController.h"
 #import "AISGlobal.h"
+#import "EmailViewController.h"
 @interface OTPViewController ()
 {
     AISAlertView *alertView;
@@ -80,8 +81,7 @@
         [self alert:[AISString commonString:typePopup KeyOfValue  :@"ACTIVATECODE"]];
     }
     else {
-        [self alert:[AISString commonString:typePopup KeyOfValue  :@"CONFIRMACTIVATE"]];
-        [self performSegueWithIdentifier:@"otpToEmail" sender:self];
+        [self callVarifyByOtp];
     }
 }
 -(void)alert:(NSString *)message{
@@ -93,9 +93,48 @@
     [otpTextField setText:@""];
     [otpTextField resignFirstResponder];
     [AISView changeLayerNomal:otpView];
-    [self alert:[NSString stringWithFormat:@"%@ %@",[AISString commonString:typePopup KeyOfValue  :@"SUCCESSSIGNUP"] ,self.phoneNumber]];
+    [self callRequestNewOtp];
 }
 -(void)doneAction:(id)sender{
     [alertView dismissAlertView];
+}
+
+-(void)callVarifyByOtp{
+    ServiceLG05_VerifyByOtp *call = [[ServiceLG05_VerifyByOtp alloc] init];
+    [call setParameterWithMSISDN:self.phoneNumber email:self.emailAddress otp:otpTextField.text];
+    [call setDelegate:self];
+    [call requestService];
+}
+- (void)verifyByOtpSuccess{
+    [self alert:[AISString commonString:typePopup KeyOfValue  :@"CONFIRMACTIVATE"]];
+    [self performSegueWithIdentifier:@"otpToEmail" sender:self];
+}
+- (void)verifyByOtpError:(ResultStatus *)resultStatus{
+    
+    [self alert:[resultStatus responseMessage]];
+    
+}
+-(void)callRequestNewOtp{
+    ServiceLG03_RequestOtpVerification *call = [[ServiceLG03_RequestOtpVerification alloc] init];
+    [call setParameterWithMSISDN:self.phoneNumber];
+    [call setDelegate:self];
+    [call requestService];
+}
+- (void)requestOtpVerificationSuccess{
+    [self alert:[NSString stringWithFormat:@"%@ %@",[AISString commonString:typePopup KeyOfValue  :@"SUCCESSSIGNUP"] ,self.phoneNumber]];
+}
+- (void)requestOtpVerificationError:(ResultStatus *)resultStatus{
+    
+    [self alert:[resultStatus responseMessage]];
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString: @"otpToEmail"]) {
+        EmailViewController *emailView = [segue destinationViewController];
+        emailView.emailAddress = self.emailAddress;
+        emailView.phoneNumber = self.phoneNumber;
+    }
 }
 @end

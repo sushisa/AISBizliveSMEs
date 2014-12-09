@@ -7,9 +7,11 @@
 //
 
 #import "ServiceMS02_SaveSchedule.h"
+#import "AISActivity.h"
 
-
-@implementation ServiceMS02_SaveSchedule
+@implementation ServiceMS02_SaveSchedule{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithMessageForm:(MessageForm *)messageForm
@@ -19,16 +21,31 @@
 
 - (void)requestService
 {
-    [super setRequestData:[_messageForm getForm]];
-    [super requestService];
+    activity = [[AISActivity alloc]init];
+    [activity showActivity];
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_MS_02_SAVE_SCHEDULE_URL];
+        [super setRequestData:[_messageForm getForm]];
+        [super setRequestURL:requestURL];
+        [super requestService];
 }
 
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate saveScheduleError:resultStatus];
+        return;
+    }
+    
     [delegate saveScheduleSuccess];
 }
-- (void)bizliveServiceError:(ResultStatus *)result
+- (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate saveScheduleError:result];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [activity dismissActivity];
+    [delegate saveScheduleError:resultStatus];
 }
 @end

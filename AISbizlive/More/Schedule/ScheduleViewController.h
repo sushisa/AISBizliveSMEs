@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ScheduleViewController : UITableViewController
-
+#import "ServiceRC01_GetScheduleList.h"
+#import "ServiceRC02_DeleteSchedule.h"
+#import "SWTableViewCell.h"
+@interface ScheduleViewController : UITableViewController<SWTableViewCellDelegate,GetScheduleListDelegate,DeleteScheduleDelegate>
+{
+    
+    IBOutlet UITableView *mytable;
+}
 @end

@@ -8,17 +8,19 @@
 
 #import "ImportContactViewController.h"
 #import "AISGlobal.h"
-#import "ContactCell.h"
+#import "ImportCell.h"
 @interface ImportContactViewController ()
 {
     NSDictionary *dict;
-    NSMutableArray *myObject,*check;
+    NSMutableArray *myObject;
+    NSMutableArray *returnArray;
     CFIndex number;
     NSString *Firstname ,*Lastname ;
     ABMultiValueRef Phone ;
-    NSString *lastname,*firstname,*phone1,*profileImage;
     NSMutableArray *selectedMarks;
     NSData *contactImageData ;
+    NSMutableArray *reqData;
+    AISAlertView *alertView;
 }
 @end
 
@@ -36,10 +38,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    firstname = @"firstname";
-    lastname = @"lastname";
-    phone1 = @"phone";
-    profileImage = @"profileImage";
+    alertView = [[AISAlertView alloc] init];
+    reqData = [[NSMutableArray alloc] init];
+    returnArray = [[NSMutableArray alloc] init];
     [self authorizationAddressBook];
     [self setTextLangague];
 }
@@ -70,13 +71,20 @@
 -(void)setTextLangague{
     self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
-     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(backAction) withTarget:self];
+     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] DoneButtonWithAction:@selector(doneAction) withTarget:self];
     [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue :@"IMPORTCONTACT"]];
     
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self setTextLangague];
     [self phonebook];
+}
+-(void)doneAction{
+    if ([reqData count] == 0) {
+        [self alert:[AISString commonString:typePopup KeyOfValue:@"IMPORT_NO_SELECT"]];
+    }else{
+        [self callImaportContact];
+    }
 }
 
 -(void)phonebook{
@@ -91,23 +99,26 @@
     for (int i = 0;i<number; i++) {
         ABRecordRef ref = CFArrayGetValueAtIndex(Contant, i);
         Firstname = [[NSString alloc] initWithFormat:@"%@",ABRecordCopyValue(ref, kABPersonFirstNameProperty) ];
+       
         Lastname = [[NSString alloc] initWithFormat:@"%@",ABRecordCopyValue(ref, kABPersonLastNameProperty) ];
-        
+        if ([Lastname isEqualToString:@"(null)"]) {
+            Lastname = @"";
+        }
        contactImageData  = (__bridge NSData *)ABPersonCopyImageDataWithFormat(ref, kABPersonImageFormatThumbnail);
         Phone = ABRecordCopyValue(ref, kABPersonPhoneProperty);
         if (ABMultiValueGetCount(Phone)>0){
             phones = [[NSString alloc] initWithFormat:@"%@",ABMultiValueCopyValueAtIndex(Phone, 0) ];
-            dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                    Firstname, firstname,
-                    Lastname, lastname,
-                    phones, phone1,
-                    contactImageData,profileImage,
-                    nil];
-            [myObject addObject:dict];
+            
+            NSString *mobileText = [NSString stringWithFormat:@"%@%@%@",[phones substringToIndex:3] ,[[phones substringFromIndex:4] substringToIndex:3],[phones substringFromIndex:8] ];
+            
+            ContactDetail *contact = [ContactDetail new];
+            contact.name = Firstname;
+            contact.lastname = Lastname;
+            contact.phoneNumber = mobileText;
+            [myObject addObject:contact];
         }
         
     }
-    check =[[NSMutableArray alloc] initWithArray:myObject];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -123,46 +134,106 @@
     // Return the number of sections.
     return 1;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *oneHeaderView = [[UIView alloc] initWithFrame:
-                             CGRectMake(0, 0, tableView.frame.size.width, 10.0)];
-    
-    oneHeaderView.backgroundColor = [UIColor whiteColor];
-    return oneHeaderView;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 10.0f;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [check count];
+    return [myObject count];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 75;
+    return 85.0f;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"contactCell";
-    ContactCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    ImportCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 //    if (cell == nil) {
 //        cell = [[ContactCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 //    }
-     NSDictionary *cellValue = [check objectAtIndex:indexPath.row];
-    if([cellValue objectForKey:profileImage] != nil){
-        cell.imageContact.image = [UIImage imageWithData:[cellValue objectForKey:profileImage]];
-    }
-    else {
+     ContactDetail *cellValue = [myObject objectAtIndex:indexPath.row];
+//    if([cellValue imageURL] != nil){
+//        cell.imageContact.image = [UIImage imageWithData:[cellValue objectForKey:profileImage]];
+//    }
+//    else {
         cell.imageContact.image = [UIImage imageNamed:PROFILE_DEFALUT];
-    }
-//    cell.imageContact
-    cell.nameContact.text =  [[NSString alloc]initWithFormat:@"%@ %@",[cellValue objectForKey:firstname],[cellValue objectForKey:lastname]];
-    cell.telContact.text =  [[NSString alloc]initWithFormat:@"%@",[cellValue objectForKey:phone1]];
+//    }
+    cell.nameContact.text =  [[NSString alloc]initWithFormat:@"%@ %@",[cellValue name],[cellValue lastname]];
+    cell.telContact.text =  [[NSString alloc]initWithFormat:@"%@",[cellValue phoneNumber]];
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [reqData addObject:[myObject objectAtIndex:indexPath.row]];
+}
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [reqData removeObject:[myObject objectAtIndex:indexPath.row]];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *oneHeaderView = [[UIView alloc] initWithFrame:
+                             CGRectMake(0, 0, tableView.frame.size.width, 60.0)];
+    
+    oneHeaderView.backgroundColor = [UIColor whiteColor];
+    UIView *twoHeaderView = [[UIView alloc] initWithFrame:
+                             CGRectMake(10, 10, tableView.frame.size.width-20, 40.0)];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [btn setTitle:[AISString commonString:typeButton KeyOfValue:@"SELECT_ALL"] forState:UIControlStateNormal];
+    [btn setTitleColor:[AISColor lightgrayColor] forState:UIControlStateNormal];
+    [btn setTitleColor:[AISColor lightgreenColor] forState:UIControlStateNormal];
+    [btn.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
+    [btn setImage:[UIImage imageNamed:OK_GREY] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:OK_GREEN] forState:UIControlStateSelected];
+    [btn  setImageEdgeInsets:UIEdgeInsetsMake(0,0,0,0)];
+    [btn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    btn.titleEdgeInsets = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 0.0f);
+    [btn setFrame:CGRectMake(tableView.frame.size.width-130, 5, 120.0, 30.0)];
+    [btn addTarget:self
+            action:@selector(selectAll:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [twoHeaderView addSubview:btn];
+    [oneHeaderView addSubview:twoHeaderView];
+    return oneHeaderView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 60.0f;
+}
+
+-(void) selectAll:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    [button setSelected:!button.selected];
+    if (button.selected) {
+        for (int i = 0; i < [myObject count]; i++) {
+                NSIndexPath *checkPath=[NSIndexPath indexPathForRow:i inSection:0];
+                [self tableView:mytable didSelectRowAtIndexPath:checkPath];
+                [mytable selectRowAtIndexPath:checkPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        }
+    }
+    else{
+        for (int i = 0; i < [myObject count]; i++) {
+            NSIndexPath *checkPath=[NSIndexPath indexPathForRow:i inSection:0];
+            [self tableView:mytable didDeselectRowAtIndexPath:checkPath];
+            [mytable deselectRowAtIndexPath:checkPath animated:YES];
+        }
+    }
+}
+-(void)callImaportContact{
+    ServiceCT12_ImportContact *call = [[ServiceCT12_ImportContact alloc] init];
+//    array[first , last , mobile]
+    [call setParameterWithContactList:reqData];
+    [call setDelegate:self];
+    [call requestService];
+}
+
+- (void)importContactSuccess:(ResponseGetContactList *)responseGetContactList{
+    
+    [self alertBack:[AISString commonString:typePopup KeyOfValue:@"IMPORT_SUCCESS"]];
+}
+- (void)importContactError:(ResultStatus *)status{
+    [self alert:[status responseMessage]];
 }
 /*
 // Override to support conditional editing of the table view.
@@ -214,4 +285,20 @@
 }
 */
 
+-(void)doneAction:(id)sender{
+    [alertView dismissAlertView];
+//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+-(void)alert:(NSString *)message{
+    [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
+    [alertView showAlertView];
+}
+-(void)doneActionBack:(id)sender{
+    [alertView dismissAlertView];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)alertBack:(NSString *)message{
+    [alertView withActionLeft:@selector(doneActionBack:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"OK"] RightString:nil];
+    [alertView showAlertView];
+}
 @end

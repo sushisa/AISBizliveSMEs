@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImportCell : UITableViewCell
+@interface ImportCell :UITableViewCell
+@property (strong, nonatomic) IBOutlet UIImageView *check;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageContact;
 @property (weak, nonatomic) IBOutlet UILabel *nameContact;
 @property (weak, nonatomic) IBOutlet UILabel *telContact;
 
-@property (strong, nonatomic) IBOutlet UIButton *editButton;
-@property (strong, nonatomic) IBOutlet UIButton *deleteButton;
 @end

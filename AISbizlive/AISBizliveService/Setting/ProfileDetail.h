@@ -13,6 +13,6 @@
 
 - (id)initWithResponseData:(NSDictionary *)responseData;
 
-@property (nonatomic, strong)NSString *firstname,*lastname,*mobileno,*topupbalance,*totalSMS,*usedSMS,*balanceSMS;
+@property (nonatomic, strong)NSString *firstname,*lastname,*photo,*mobileno,*topupbalance,*totalSMS,*usedSMS,*balanceSMS;
 @property (nonatomic, strong)NSArray *listPackage;
 @end

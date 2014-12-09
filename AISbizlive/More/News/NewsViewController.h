@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface NewsViewController : UITableViewController
-
+#import "ServiceNW01_GetNews.h"
+@interface NewsViewController : UITableViewController<GetNewsDelegate>
+{
+    IBOutlet UITableView *myTable;
+}
 @end

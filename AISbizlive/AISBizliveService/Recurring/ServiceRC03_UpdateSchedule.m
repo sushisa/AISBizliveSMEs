@@ -7,28 +7,44 @@
 //
 
 #import "ServiceRC03_UpdateSchedule.h"
-
-@implementation ServiceRC03_UpdateSchedule
+#import "AISActivity.h"
+@implementation ServiceRC03_UpdateSchedule{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
-- (void)setParameter:(MessageForm *)messageForm
+- (void)setParameter:(RecurringForm *)recurringForm
 {
-    self.messageForm = messageForm;
+    self.recurringForm = recurringForm;
 }
 
 - (void)requestService
 {
-    [super setRequestData:[self.messageForm getForm]];
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
+    NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_RC_03_EDIT_SCHEDULE_URL];
+    [super setRequestData:[self.recurringForm getForm]];
+    [super setRequestURL:requestURL];
     [super requestService];
 }
-
-- (void)bizliveServiceSuccess:(NSDictionary *)responseData
+- (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
+    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+    if (![resultStatus isResponseSuccess]) {
+        [delegate updateScheduleError:resultStatus];
+        return;
+    }
+    
     [delegate updateScheduleSuccess];
 }
-- (void)bizliveServiceError:(ResultStatus *)result
-{
-    [delegate updateScheduleError:result];
-}
 
+- (void)serviceBizLiveError:(ResponseStatus *)status
+{
+    [activity dismissActivity];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [delegate updateScheduleError:resultStatus];
+}
 @end

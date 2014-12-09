@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 #import "BizliveService.h"
-#import "ResponseSettingProfile.h"
+#import "ProfileDetail.h"
 @protocol SettingProfileDelegate <NSObject>
 
-- (void)settingProfileSuccess:(ResponseSettingProfile *)responseSettingProfile;
+- (void)settingProfileSuccess:(ProfileDetail *)profileDetail;
 - (void)settingProfileError:(ResultStatus *)resultStatus;
 
 @end

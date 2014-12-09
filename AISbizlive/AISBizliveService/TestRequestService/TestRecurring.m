@@ -25,46 +25,46 @@
     [service requestService];
 }
 
-- (void)getScheduleListSuccess:(MessageForm *)messageForm
-{
-    NSLog(@"messageId = %@\n", [messageForm messageID]);
-    NSLog(@"message = %@\n", [messageForm message]);
-    NSLog(@"timeExpire = %@\n", [messageForm timeExpire]);
-    NSLog(@"sendType = %@\n", [messageForm sendType]);
-    
-    for (NSString *groupID in [messageForm groupIDList]) {
-        NSLog(@"  groupIDList = %@\n", groupID);
-    }
-    
-    for (NSString *contactID in [messageForm contactIDList]) {
-        NSLog(@"  contactID = %@\n", contactID);
-    }
-    
-    for (NSString *mobileNO in [messageForm mobileNOList]) {
-        NSLog(@"  MobileNO = %@\n", mobileNO);
-    }
-    
-    NSLog(@"startDate = %@\n", [messageForm startDate]);
-    NSLog(@"endDate = %@\n", [messageForm endDate]);
-    NSLog(@"sendTime = %@\n", [messageForm sendTime]);
-    
-    NSLog(@"recurringType = %@\n", [messageForm recurringType]);
-    
-    for (NSString *dayOfMonth in [messageForm weeklyList]) {
-        NSLog(@"   dayOfMonth = %@\n", dayOfMonth);
-    }
-    
-    for (NSString *day in [messageForm monthlyList]) {
-        NSLog(@"   day = %@\n", day);
-    }
-    
-    
-    
-}
-- (void)getScheduleListError:(ResultStatus *)resultStatus
-{
-    
-}
+//- (void)getScheduleListSuccess:(MessageForm *)messageForm
+//{
+//    NSLog(@"messageId = %@\n", [messageForm messageID]);
+//    NSLog(@"message = %@\n", [messageForm message]);
+//    NSLog(@"timeExpire = %@\n", [messageForm timeExpire]);
+//    NSLog(@"sendType = %@\n", [messageForm sendType]);
+//    
+//    for (NSString *groupID in [messageForm groupIDList]) {
+//        NSLog(@"  groupIDList = %@\n", groupID);
+//    }
+//    
+//    for (NSString *contactID in [messageForm contactIDList]) {
+//        NSLog(@"  contactID = %@\n", contactID);
+//    }
+//    
+//    for (NSString *mobileNO in [messageForm mobileNOList]) {
+//        NSLog(@"  MobileNO = %@\n", mobileNO);
+//    }
+//    
+//    NSLog(@"startDate = %@\n", [messageForm startDate]);
+//    NSLog(@"endDate = %@\n", [messageForm endDate]);
+//    NSLog(@"sendTime = %@\n", [messageForm sendTime]);
+//    
+////    NSLog(@"recurringType = %@\n", [messageForm recurringType]);
+//    
+//    for (NSString *dayOfMonth in [messageForm weeklyList]) {
+//        NSLog(@"   dayOfMonth = %@\n", dayOfMonth);
+//    }
+//    
+//    for (NSString *day in [messageForm monthlyList]) {
+//        NSLog(@"   day = %@\n", day);
+//    }
+//    
+//    
+//    
+//}
+//- (void)getScheduleListError:(ResultStatus *)resultStatus
+//{
+//    
+//}
 
 #pragma mark - ServiceRC02_DeleteSchedule
 
@@ -72,7 +72,7 @@
 {
     ServiceRC02_DeleteSchedule *service = [ServiceRC02_DeleteSchedule new];
     [service setDelegate:self];
-    [service setParameterWithIDList:@[@"111",@"222"]];
+//    [service setParameterWithIDList:@[@"111",@"222"]];
     [service requestService];
 }
 
@@ -90,8 +90,8 @@
 {
     ServiceRC03_UpdateSchedule *service = [ServiceRC03_UpdateSchedule new];
     [service setDelegate:self];
-    MessageForm *messageForm = [MessageForm new];
-    [service setMessageForm:messageForm];
+//    MessageForm *messageForm = [MessageForm new];
+//    [service setMessageForm:messageForm];
     [service requestService];
 }
 

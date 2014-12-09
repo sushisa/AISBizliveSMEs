@@ -16,7 +16,7 @@
 {
     self = [super init];
     if (self) {
-        self.sendDate = responseData[RES_KEY_SEND_TIME];
+        self.sendDate = responseData[RES_KEY_CONTACT_SEND_DATE];
         self.message  = responseData[RES_KEY_MESSAGE];
     }
     return self;

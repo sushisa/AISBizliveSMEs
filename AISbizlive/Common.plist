@@ -7,7 +7,7 @@
 		<key>LOGIN</key>
 		<dict>
 			<key>EN</key>
-			<string>Sign In</string>
+			<string>Log In</string>
 			<key>TH</key>
 			<string>เข้าสู่ระบบ</string>
 		</dict>
@@ -130,6 +130,13 @@
 			<key>TH</key>
 			<string>เพิ่มรายชื่อ</string>
 		</dict>
+		<key>EDITCONTACT</key>
+		<dict>
+			<key>EN</key>
+			<string>Edit Contact</string>
+			<key>TH</key>
+			<string>แก้ไขรายชื่อ</string>
+		</dict>
 		<key>DETAILCONTACT</key>
 		<dict>
 			<key>EN</key>
@@ -143,6 +150,13 @@
 			<string>Add Group</string>
 			<key>TH</key>
 			<string>เพิ่มกลุ่ม</string>
+		</dict>
+		<key>EDITGROUP</key>
+		<dict>
+			<key>EN</key>
+			<string>Edit Group</string>
+			<key>TH</key>
+			<string>แก้ไขกลุ่ม</string>
 		</dict>
 		<key>NEWS</key>
 		<dict>
@@ -193,6 +207,13 @@
 			<key>TH</key>
 			<string>เพิ่มแบบข้อความ</string>
 		</dict>
+		<key>EDITTEMPLATE</key>
+		<dict>
+			<key>EN</key>
+			<string>Edit Template</string>
+			<key>TH</key>
+			<string>แก้ไขแบบข้อความ</string>
+		</dict>
 		<key>INFORMATION</key>
 		<dict>
 			<key>EN</key>
@@ -224,6 +245,13 @@
 			<key>TH</key>
 			<string>ตกลง</string>
 		</dict>
+		<key>OK</key>
+		<dict>
+			<key>EN</key>
+			<string>OK</string>
+			<key>TH</key>
+			<string>ตกลง</string>
+		</dict>
 		<key>ADD</key>
 		<dict>
 			<key>EN</key>
@@ -234,7 +262,7 @@
 		<key>PERSON</key>
 		<dict>
 			<key>EN</key>
-			<string>Person</string>
+			<string>Natural Person</string>
 			<key>TH</key>
 			<string>บุคคลธรรมดา</string>
 		</dict>
@@ -262,9 +290,9 @@
 		<key>SELECT_TEMPLATE</key>
 		<dict>
 			<key>EN</key>
-			<string>Select Template</string>
+			<string>Template</string>
 			<key>TH</key>
-			<string>เลือกแบบข้อความ</string>
+			<string>แบบข้อความ</string>
 		</dict>
 		<key>SAVE_TEMPLATE</key>
 		<dict>
@@ -278,7 +306,14 @@
 			<key>EN</key>
 			<string>Variable SMS</string>
 			<key>TH</key>
-			<string>ข้อความแบบตัวแปร</string>
+			<string>แบบตัวแปร</string>
+		</dict>
+		<key>PACKAGE</key>
+		<dict>
+			<key>EN</key>
+			<string>Add Package &gt;&gt;</string>
+			<key>TH</key>
+			<string>สมัครแพ็กเกจ &gt;&gt;</string>
 		</dict>
 		<key>CLEAR</key>
 		<dict>
@@ -353,7 +388,7 @@
 		<key>SIGNIN</key>
 		<dict>
 			<key>EN</key>
-			<string>Sign In</string>
+			<string>Log In</string>
 			<key>TH</key>
 			<string>เข้าสู่ระบบ</string>
 		</dict>
@@ -378,6 +413,13 @@
 			<key>TH</key>
 			<string>เชื่อมต่อกับเฟสบุ๊ค</string>
 		</dict>
+		<key>SELECT_ALL</key>
+		<dict>
+			<key>EN</key>
+			<string>Select All</string>
+			<key>TH</key>
+			<string>เลือกทั้งหมด</string>
+		</dict>
 	</dict>
 	<key>PLACEHODER</key>
 	<dict>
@@ -387,6 +429,13 @@
 			<string>Input Name</string>
 			<key>TH</key>
 			<string>ชื่อ</string>
+		</dict>
+		<key>NAME_GROUP</key>
+		<dict>
+			<key>EN</key>
+			<string>Group Name</string>
+			<key>TH</key>
+			<string>ชื่อกลุ่ม</string>
 		</dict>
 		<key>LAST_NAME</key>
 		<dict>
@@ -433,14 +482,14 @@
 		<key>SIGNUP_NAME</key>
 		<dict>
 			<key>EN</key>
-			<string>Input Name</string>
+			<string>Name</string>
 			<key>TH</key>
 			<string>ชื่อ</string>
 		</dict>
 		<key>SIGNUP_LASTNAME</key>
 		<dict>
 			<key>EN</key>
-			<string>Input  Last Name</string>
+			<string>Last Name</string>
 			<key>TH</key>
 			<string>นามสกุล</string>
 		</dict>
@@ -493,6 +542,13 @@
 			<key>TH</key>
 			<string>ยืนยันรหัสผ่านใหม่</string>
 		</dict>
+		<key>TEMPLATE_NAME</key>
+		<dict>
+			<key>EN</key>
+			<string>Template Name</string>
+			<key>TH</key>
+			<string>ชื่อแบบข้อความ</string>
+		</dict>
 		<key>MESSAGE</key>
 		<dict>
 			<key>EN</key>
@@ -503,6 +559,13 @@
 	</dict>
 	<key>LABEL</key>
 	<dict>
+		<key>WELCOME</key>
+		<dict>
+			<key>EN</key>
+			<string>Welcome</string>
+			<key>TH</key>
+			<string>ยินดีต้อนรับ</string>
+		</dict>
 		<key>ABOUT</key>
 		<dict>
 			<key>EN</key>
@@ -583,7 +646,7 @@
 		<key>SIGNUP_IDCARD</key>
 		<dict>
 			<key>EN</key>
-			<string>Id Card</string>
+			<string>ID Card</string>
 			<key>TH</key>
 			<string>รหัสประจำตัวประชาชน</string>
 		</dict>
@@ -811,6 +874,20 @@
 			<key>TH</key>
 			<string>ข้อความ</string>
 		</dict>
+		<key>SERVICE_CHARGE</key>
+		<dict>
+			<key>EN</key>
+			<string>Monthly Fee</string>
+			<key>TH</key>
+			<string>ค่าบริการรายเดือน</string>
+		</dict>
+		<key>NO_RESULT</key>
+		<dict>
+			<key>EN</key>
+			<string>No Result</string>
+			<key>TH</key>
+			<string>ไม่พบข้อมูล</string>
+		</dict>
 		<key>MESSAGE</key>
 		<dict>
 			<key>EN</key>
@@ -824,6 +901,13 @@
 			<string>Contact</string>
 			<key>TH</key>
 			<string>รายชื่อ</string>
+		</dict>
+		<key>ADD_CONTACT</key>
+		<dict>
+			<key>EN</key>
+			<string>Add Contact</string>
+			<key>TH</key>
+			<string>เพิ่มรายชื่อ</string>
 		</dict>
 		<key>TO</key>
 		<dict>
@@ -951,6 +1035,13 @@
 			<key>TH</key>
 			<string>กลุ่ม</string>
 		</dict>
+		<key>GROUPNAME</key>
+		<dict>
+			<key>EN</key>
+			<string>Group Name</string>
+			<key>TH</key>
+			<string>ชื่อกลุ่ม</string>
+		</dict>
 	</dict>
 	<key>POPUP</key>
 	<dict>
@@ -967,6 +1058,20 @@
 			<string>Invalid Email, please try again.</string>
 			<key>TH</key>
 			<string>กรุณาระบุ Email ให้ถูกต้อง</string>
+		</dict>
+		<key>TEXTFIELDNOEMAIL</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify email.</string>
+			<key>TH</key>
+			<string>กรุณาระบุ Email</string>
+		</dict>
+		<key>TEXTFIELDNOLOGIN</key>
+		<dict>
+			<key>EN</key>
+			<string>Invalid username or password.</string>
+			<key>TH</key>
+			<string></string>
 		</dict>
 		<key>TEXTFIELDTAXID</key>
 		<dict>
@@ -1052,6 +1157,20 @@
 			<key>TH</key>
 			<string>ระบบได้ทำการลงทะเบียนให้ท่านเรียบร้อยแล้ว กรุณา Log in เพื่อเข้าใช้ระบบงาน</string>
 		</dict>
+		<key>BACK_CONTACT</key>
+		<dict>
+			<key>EN</key>
+			<string>Do you want to save ?</string>
+			<key>TH</key>
+			<string>คุณต้องการที่จะบันทึกใช่หรือไม่</string>
+		</dict>
+		<key>LOGINFAIL</key>
+		<dict>
+			<key>EN</key>
+			<string>Invalid email or password, please try again.</string>
+			<key>TH</key>
+			<string>กรุณาระบุ Email และ รหัสผ่านให้ถูกต้อง</string>
+		</dict>
 		<key>ACTIVATECODE</key>
 		<dict>
 			<key>EN</key>
@@ -1094,6 +1213,13 @@
 			<key>TH</key>
 			<string>คุณต้องการที่จะลบกลุ่ม</string>
 		</dict>
+		<key>GROUPNAMENO</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify group name.</string>
+			<key>TH</key>
+			<string>กรุณาระบุชื่อกลุ่ม</string>
+		</dict>
 		<key>DELETEDESCIPTION</key>
 		<dict>
 			<key>EN</key>
@@ -1107,6 +1233,34 @@
 			<string>Please specify message.</string>
 			<key>TH</key>
 			<string>กรุณาระบุข้อความ</string>
+		</dict>
+		<key>MESSAGESUCCESS</key>
+		<dict>
+			<key>EN</key>
+			<string>Message already send</string>
+			<key>TH</key>
+			<string>ส่งข้อความเรียบร้อย</string>
+		</dict>
+		<key>MESSAGE_NO_DATE</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify start date.</string>
+			<key>TH</key>
+			<string>กรุณาระบุวันที่ส่งข้อความ</string>
+		</dict>
+		<key>MESSAGE_NO_SENDTIME</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify send time.</string>
+			<key>TH</key>
+			<string>กรุณาระบุเวลาที่ส่งข้อความ</string>
+		</dict>
+		<key>MESSAGE_NO_ENDDATE</key>
+		<dict>
+			<key>EN</key>
+			<string>Please specify end date.</string>
+			<key>TH</key>
+			<string>กรุณาระบุวันสิ้นสุดส่งข้อความ</string>
 		</dict>
 		<key>TOPUPNO</key>
 		<dict>
@@ -1142,6 +1296,34 @@
 			<string>Please specify message.</string>
 			<key>TH</key>
 			<string>กรุณาระบุข้อความให้ครบถ้วน</string>
+		</dict>
+		<key>IMPORT_SUCCESS</key>
+		<dict>
+			<key>EN</key>
+			<string>Import Success</string>
+			<key>TH</key>
+			<string>นำเข้ารายชื่อสำเร็จ</string>
+		</dict>
+		<key>IMPORT_NO_SELECT</key>
+		<dict>
+			<key>EN</key>
+			<string>Please choose contact</string>
+			<key>TH</key>
+			<string>กรุณาเลือกผู้ติดต่อ</string>
+		</dict>
+		<key>ADDTEMPLATE_SUCCESS</key>
+		<dict>
+			<key>EN</key>
+			<string>Add Template Success</string>
+			<key>TH</key>
+			<string>สร้างแบบข้อความสำเร็จ</string>
+		</dict>
+		<key>EDITTEMPLATE_SUCCESS</key>
+		<dict>
+			<key>EN</key>
+			<string>Edit Template Success</string>
+			<key>TH</key>
+			<string>แก้ไขแบบข้อความสำเร็จ</string>
 		</dict>
 	</dict>
 	<key>WEEK_DETAIL</key>

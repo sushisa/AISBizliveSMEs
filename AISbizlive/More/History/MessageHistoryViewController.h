@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface MessageHistoryViewController : UITableViewController
-
+#import "ServiceHT01_SendMessage.h"
+#import "messageHistoryCell.h"
+@interface MessageHistoryViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UIPickerViewDataSource,SendMessageHistoryDelegate>
+{
+    IBOutlet UITableView *myTable;
+    IBOutlet UIView *fillterView;
+    IBOutlet UIButton *fillterButton;
+    IBOutlet UILabel *fillterLabel;
+    IBOutlet UITextField *searchTextField;
+}
 @end

@@ -7,10 +7,13 @@
 //
 
 #import "ServiceCT11_DeleteGroupContact.h"
+#import "AISActivity.h"
 
 
 
-@implementation ServiceCT11_DeleteGroupContact
+@implementation ServiceCT11_DeleteGroupContact{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithGroupIDList:(NSArray *)groupIDList
@@ -20,6 +23,8 @@
 
 - (void)requestService
 {
+    activity =[[AISActivity alloc]init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_11_DELETE_GROUP_URL];
     
     if (!self.groupIDList) {
@@ -27,13 +32,9 @@
         [delegate deleteGroupContactError:resultStatus];
         return;
     }
-    NSMutableArray *groupList = [NSMutableArray new];
-    for (NSString *groupID in self.groupIDList) {
-        NSDictionary *groupDict = @{REQ_KEY_GROUP_ID: groupID};
-        [groupList addObject:groupDict];
-    }
     
-    NSDictionary *requestDict = @{REQ_KEY_GROUP_LIST: groupList};
+    
+    NSDictionary *requestDict = @{REQ_KEY_GROUP_LIST: self.groupIDList};
     [super setRequestURL:requestURL];
     [super setRequestData:requestDict];
     [super requestService];
@@ -41,6 +42,7 @@
 
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate deleteGroupContactError:resultStatus];
@@ -52,6 +54,7 @@
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
     [delegate deleteGroupContactError:nil];
+    [activity dismissActivity];
 }
 
 

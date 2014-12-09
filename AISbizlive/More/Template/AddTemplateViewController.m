@@ -19,7 +19,7 @@
 @end
 
 @implementation AddTemplateViewController
-
+@synthesize delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,7 +33,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"Add Template Load");
     alertView = [[AISAlertView alloc] init];
    
     UITapGestureRecognizer *oneTapGesture = [[UITapGestureRecognizer alloc]
@@ -41,52 +40,47 @@
                                              action: @selector(hideKeyboard:)];
     [oneTapGesture setNumberOfTouchesRequired:1];
     [[self view] addGestureRecognizer:oneTapGesture];
+    
+    [self setTextLangague];
+   
+    
+}
+-(void)setTextLangague{
+    if (self.ID == nil || [self.ID isEqualToString:@""]) {
+        [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"ADDTEMPLATE"]];
+    }
+    else{
+        [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"EDITTEMPLATE"]];
+    }
     if(self.descritionItem != nil){
         descritionTemplate.text = self.descritionItem;
         [textLength setText:[AISSMSCharacter bytesString:descritionTemplate.text]];
         self.tabBarController.tabBar.hidden = YES;
     }
-    
-    [self setTextLangague];
-    
-}
--(void)setTextLangague{
-    [self.navigationItem setTitle:[AISString commonString:typeTitle KeyOfValue:@"ADDTEMPLATE"]];
-    
-    
+    else{
+            [nameTemplate setText:self.TemplateName];
+            [descritionTemplate setText:self.TemplateMessage];
+    }
     self.navigationItem.rightBarButtonItem = [[AISNavigationBarItem alloc] AddButtonWithAction:@selector(templateAdd) withTarget:self];
     
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     [nameTemplateLabel setText:[AISString commonString:typeLabel KeyOfValue:@"ADDTEMPLATE_NAME"]];
-    
+    [nameTemplate setPlaceholder:[AISString commonString:typeLabel KeyOfValue:@"ADDTEMPLATE_NAME"]];
     [descriptionTemplateLabel setText:[AISString commonString:typeLabel KeyOfValue:@"ADDTEMPLATE_DESCRIPTION"]];
+    if (self.TemplateMessage != nil) {
+        [textLength setText:[AISSMSCharacter bytesString:descritionTemplate.text]];
+    }
     
 }
 -(void)templateAdd{
 
     if (![nameTemplate.text isEqualToString:@""] && ![descritionTemplate.text isEqualToString:@""]) {
-       
-        NSError *error;
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
-        NSString *documentsDirectory = [paths objectAtIndex:0]; //2
-        NSString *path = [documentsDirectory stringByAppendingPathComponent:@"TemplateList.plist"]; //3
-        
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        
-        if (![fileManager fileExistsAtPath: path]) //4
-        {
-            NSString *bundle = [[NSBundle mainBundle] pathForResource:@"TemplateList" ofType:@"plist"]; //5
-            
-            [fileManager copyItemAtPath:bundle toPath: path error:&error]; //6
+        if (self.ID == nil || [self.ID isEqualToString:@""]) {
+            [self callAddTemplate];
         }
-        NSMutableArray *favs = [[NSMutableArray alloc] initWithContentsOfFile: path];
-        NSDictionary *test = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                              nameTemplate.text, @"TITLE",
-                              descritionTemplate.text,@"DESCRIPTION",
-                              nil];
-        [favs addObject:test];
-        [favs writeToFile:path atomically:YES];
-        [self.navigationController popViewControllerAnimated:YES];
+        else{
+            [self callEditTemplate];
+        }
     }else{
         if([nameTemplate.text isEqualToString:@""] && [descritionTemplate.text isEqualToString:@""]){
             [self alert:[AISString commonString:typePopup KeyOfValue :@"TEMPLATENO"]];
@@ -133,15 +127,37 @@
     [alertView withActionLeft:@selector(doneAction:) withActionRight:nil withTarget:self message:message LeftString:[AISString commonString:typeButton KeyOfValue :@"DONE"] RightString:nil];
     [alertView showAlertView];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)callAddTemplate{
+    ServiceTP01_AddTemplate *call = [[ServiceTP01_AddTemplate alloc] init];
+    [call setParameterWithName:nameTemplate.text Message:descritionTemplate.text];
+    [call setDelegate:self];
+    [call requestService];
 }
-*/
 
+- (void)addTemplateSuccess:(TemplateDetail *)templateDetail{
+    [delegate didFinishAddTemplate:templateDetail];
+    [self alert:[AISString commonString:typePopup KeyOfValue:@"ADDTEMPLATE_SUCCESS"]];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)addTemplateError:(ResultStatus *)resultStatus{
+    
+    [self alert:[resultStatus responseMessage]];
+    
+}
+
+-(void)callEditTemplate{
+    ServiceTP03_EditTemplate *call = [[ServiceTP03_EditTemplate alloc] init];
+    [call setParameterWithID:self.ID Name:nameTemplate.text Message:descritionTemplate.text];
+    [call setDelegate:self];
+    [call requestService];
+}
+- (void)editTemplateSuccess:(TemplateDetail *)templateDetail{
+    [delegate didFinishUpdateTemplate:templateDetail];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)editTemplateError:(ResultStatus *)resultStatus{
+    
+    [self alert:[resultStatus responseMessage]];
+    
+}
 @end

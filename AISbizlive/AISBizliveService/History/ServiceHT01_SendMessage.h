@@ -10,14 +10,14 @@
 
 #import "BizliveService.h"
 #import "ResponseSendMessage.h"
-@protocol SendMessageDelegate <NSObject>
+@protocol SendMessageHistoryDelegate <NSObject>
 
-- (void)sendMessageSuccess:(ResponseSendMessage *)responseSendMessage;
-- (void)sendMessageError:(ResultStatus *)resultStatus;
+- (void)sendMessageHistorySuccess:(ResponseSendMessage *)responseSendMessage;
+- (void)sendMessageHistoryError:(ResultStatus *)resultStatus;
 
 @end
 
 @interface ServiceHT01_SendMessage : BizliveService
-@property (nonatomic, assign)id<SendMessageDelegate> delegate;
+@property (nonatomic, assign)id<SendMessageHistoryDelegate> delegate;
 
 @end

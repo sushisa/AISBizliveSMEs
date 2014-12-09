@@ -7,17 +7,23 @@
 //
 
 #import "ServiceIN03_TermCondition.h"
+#import "AISActivity.h"
 
-@implementation ServiceIN03_TermCondition
+@implementation ServiceIN03_TermCondition{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 -(void)requestService{
+    activity = [[AISActivity alloc]init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_IN_03_GET_TERM_URL];
     [super setRequestURL:requestURL];
     [super requestService];
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate termConditionError:resultStatus];
@@ -25,11 +31,14 @@
     }
     NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
     [delegate termConditionSuccess:responseData[RES_KEY_INFORMATION]];
-    
 }
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate termConditionError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [delegate termConditionError:resultStatus];
+    [activity dismissActivity];
 }
 @end

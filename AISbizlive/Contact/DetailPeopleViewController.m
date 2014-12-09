@@ -10,13 +10,14 @@
 #import "AISGlobal.h"
 @interface DetailPeopleViewController ()
 {
-    NSMutableArray *messageObject;
-    NSMutableArray *timeObject;
+    NSDictionary *dict;
+    NSMutableArray *messageHistory;
+    NSSortDescriptor *descriptor;
 }
 @end
 
 @implementation DetailPeopleViewController
-
+@synthesize delegate;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,8 +32,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    timeObject = [[NSMutableArray alloc] init];
-    messageObject = [[NSMutableArray alloc] init];
+    messageHistory = [[NSMutableArray alloc] init];
+    messageTable.estimatedRowHeight = 100.0;
+    messageTable.rowHeight = UITableViewAutomaticDimension;
     ServiceCT05_ContactMessageHistory *call = [[ServiceCT05_ContactMessageHistory alloc] init];
     [call setDelegate:self];
     [call setParameterWithID:self.ID];
@@ -42,6 +44,7 @@
 }
 -(void)setTextLangague{
     
+    descriptor =[NSSortDescriptor sortDescriptorWithKey:RES_KEY_CONTACT_SEND_DATE  ascending:NO];
     self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.leftBarButtonItem = [[AISNavigationBarItem alloc] BackButtonWithAction:@selector(backAction) withTarget:self];
     
@@ -54,8 +57,13 @@
     [lastNameField setText:self.lastName];
     
     [mobileLabel setText:[AISString commonString:typeLabel KeyOfValue :@"SIGNUP_PHONE"]];
-    [phoneNumberField setText:self.phoneNumber];
-    [profileImage setImage:[UIImage imageNamed:self.profile]];
+    [phoneNumberField setText:[AISString phoneFormat:self.phoneNumber]];
+//    if ([self.profile isEqualToString:@""] || self.profile == nil) {
+        [profileImage setImage:[UIImage imageNamed:PROFILE_DEFALUT]];
+//    }
+//    else{
+//        [profileImage setImage:[UIImage imageNamed:self.profile]];
+//    }
     [deleteButton setTitle:[AISString commonString:typeButton KeyOfValue :@"DELETE_CONTACT"] forState:UIControlStateNormal];
 }
 
@@ -66,14 +74,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)doneAction{
-    AISAlertView *ss = [[AISAlertView alloc]  withActionLeft:@selector(leftAction:) withActionRight:@selector(rightAction:) withTarget:self message:@"Delete Contact" LeftString:@"Cancel" RightString:@"OK"];
+    AISAlertView *ss = [[AISAlertView alloc]  withActionLeft:@selector(leftAction:) withActionRight:@selector(rightAction:) withTarget:self message:[NSString stringWithFormat:@"%@ '%@' %@",[AISString commonString:typePopup KeyOfValue:@"DELETEPEOPLE"],self.firstName,[AISString commonString:typePopup KeyOfValue :@"DELETEDESCIPTION"]] LeftString:@"Cancel" RightString:@"OK"];
     [ss showAlertView];
 }
 -(void)leftAction:(id)sender{
     [[AISAlertView alloc] dismissAlertView];
 }
 -(void)rightAction:(id)sender{
-    [[AISAlertView alloc] dismissAlertView];
+    [self callDeleteContact];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -88,13 +96,10 @@
     // Return the number of sections.
     return 1;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100.0f;
-}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [timeObject count];
+    return [messageHistory count];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -111,36 +116,52 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
     }
+    NSDictionary *cellDict = [messageHistory objectAtIndex:indexPath.row];
     UILabel  *head = (UILabel *)[cell viewWithTag:201];
-    head.text = [AISString timeFormat:[timeObject objectAtIndex:indexPath.row]];
+    head.text = [AISString timeFormat:[cellDict objectForKey:RES_KEY_CONTACT_SEND_DATE]];
     UILabel *sample = (UILabel *)[cell viewWithTag:202];
-    sample.text =   [messageObject objectAtIndex:indexPath.row];
+    sample.text =   [cellDict objectForKey:RES_KEY_MESSAGE];
     return cell;
     
 }
 - (void)contactMessageHistorySuccess:(ResponseContactMessageHistory *)responseContactMessageHistory{
     for (ContactMessageHistory *history in [responseContactMessageHistory historyList]) {
-        [timeObject addObject:[history sendDate]];
-        [messageObject addObject:[history message]];
-//        NSLog(@"%@\n",[history sendDate]);
-//        NSLog(@"%@\n",[history message]);
+        dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                [history sendDate],RES_KEY_CONTACT_SEND_DATE,
+                [history message],RES_KEY_MESSAGE,nil] ;
+        [messageHistory addObject:dict];
     }
+    
+    [messageHistory sortUsingDescriptors:[NSArray arrayWithObject:descriptor]];
+    if ([messageHistory count] == 0) {
+       UIView *dimView = [[UIView alloc] initWithFrame:CGRectMake(0, messageTable.frame.origin.y, messageTable.frame.size.width, messageTable.frame.size.height)];
+        dimView.backgroundColor = [UIColor whiteColor];
+        UILabel *noRe = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, messageTable.frame.size.width, 20)];
+        noRe.text = [AISString commonString:typeLabel KeyOfValue:@"NO_RESULT"];
+        noRe.textColor = [AISColor lightgreenColor];
+        [noRe setTextAlignment:NSTextAlignmentCenter];
+        [dimView addSubview:noRe];
+        [self.view addSubview:dimView];
+    }
+    [messageTable reloadData];
 //    NSLog(@"%@",responseContactMessageHistory);
 }
 - (void)contactMessageHistoryError:(ResultStatus *)status{
 //    NSLog(@"%@",status);
 }
-//- (void)contactMessageHistorySuccess:(ResponseContactMessageHistory *)responseContactMessageHistory;
-//- (void)contactMessageHistoryError:(ResultStatus *)status;
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)callDeleteContact{
+    [[AISAlertView alloc] dismissAlertView];
+    ServiceCT04_DeleteContact *deletePeople = [[ServiceCT04_DeleteContact alloc] init];
+    [deletePeople setDelegate:self];
+    [deletePeople setParameterWithContactIDList:[NSArray arrayWithObjects:self.ID, nil]];
+    [deletePeople requestService];
 }
-*/
-
+- (void)deleteContactSuccess{
+    [delegate didFinishDeleteContact:self.ID];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)deleteContactError:(ResultStatus *)status{
+    
+}
 @end

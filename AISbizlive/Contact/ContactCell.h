@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageContact;
 @property (weak, nonatomic) IBOutlet UILabel *nameContact;
 @property (weak, nonatomic) IBOutlet UILabel *telContact;
+@property (weak, nonatomic) IBOutlet UILabel *lastUpdate;
 
 @property (strong, nonatomic) IBOutlet UIImageView *checkContact;
 @property (weak, nonatomic) IBOutlet UIImageView *discriptionImage;

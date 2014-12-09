@@ -34,7 +34,6 @@
         self.sendTime = @"";
         
         //Recurring Object
-        self.recurringType = @"";
         self.weeklyList = [NSArray array];
         self.monthlyList = [NSArray array];
     }
@@ -46,7 +45,7 @@
     self = [super init];
     if (self) {
         //Message Object
-        self.messageID = responseData[RES_KEY_MESSAGE_ID];
+        
         self.message = responseData[RES_KEY_MESSAGE];
         self.timeExpire = responseData[RES_KEY_TIME_EXPIRE];
         self.sendType = responseData[RES_KEY_SEND_TYPE];
@@ -74,12 +73,7 @@
         
             //MobileList
             NSArray *mobileList = receiverList[RES_KEY_MOBILE_LIST];
-            NSMutableArray *mobileNOArray = [NSMutableArray array];
-            for (NSDictionary *mobile in mobileList) {
-                NSString *mobileNO = mobile[RES_KEY_CONTACT_MOBILE_NO];
-                [mobileNOArray addObject:mobileNO];
-            }
-            self.mobileNOList = mobileNOArray;
+            self.mobileNOList = mobileList;
         
         //Schedule Object
         NSDictionary *schedule = responseData[RES_KEY_SCHEDULE];
@@ -88,26 +82,15 @@
         self.sendTime = schedule[RES_KEY_SEND_TIME];
         
         //Recurring Object
-        NSDictionary *recurringList = responseData[RES_KEY_RECURRING_LIST];
-        self.recurringType = recurringList[RES_KEY_RECURRING_TYPE];
+        NSDictionary *recurringList = responseData[RES_KEY_RECURRING_RESPONSE_LIST];
         
-            //WeeklyList
-            NSArray *weeklyList = recurringList[RES_KEY_WEEKLY];
-            NSMutableArray *weeklyArray = [NSMutableArray array];
-            for (NSDictionary *weekly in weeklyList) {
-                NSString *dayOfWeek = weekly[RES_KEY_DAY_OF_WEEK];
-                [weeklyArray addObject:dayOfWeek];
-            }
-            self.weeklyList = weeklyArray;
+        //WeeklyList
+        NSArray *weeklyList = recurringList[RES_KEY_WEEKLY];
+        self.weeklyList = weeklyList;
             
-            //MonthlyList
-            NSArray *monthlyList = recurringList[RES_KEY_MONTHLY];
-            NSMutableArray *monthlyArray = [NSMutableArray array];
-            for (NSDictionary *monthly in monthlyList) {
-                NSString *dayOfMonth = monthly[RES_KEY_DAY];
-                [monthlyArray addObject:dayOfMonth];
-            }
-            self.monthlyList = monthlyArray;
+        //MonthlyList
+        NSArray *monthlyList = recurringList[RES_KEY_MONTHLY];
+        self.monthlyList = monthlyList;
     }
     return self;
 
@@ -117,29 +100,37 @@
 {
     _sendMessageType = sendMessageType;
 }
+- (void)setRecurringType:(RecurringType)recurringType
+{
+    _recurringType = recurringType;
+}
 
 - (NSDictionary *)getForm
 {
     
     //Prepare Message Form
     
-    NSDictionary *prepareMessage = @{RES_KEY_MESSAGE_ID    : self.messageID,
+    NSDictionary *prepareMessage = @{
                                   RES_KEY_MESSAGE       : self.message,
                                   RES_KEY_TIME_EXPIRE   : self.timeExpire,
-                                  RES_KEY_SEND_TYPE     : self.sendType};
+                                  RES_KEY_MESSAGE_TYPE     : [NSString stringWithFormat:@"%d",_sendMessageType]};
     
     NSMutableDictionary *requestData = [NSMutableDictionary dictionaryWithDictionary:prepareMessage];
     
-    NSMutableArray *weeklyListArray;
-    NSMutableArray *dayArray;
+    NSMutableDictionary *newdict = [[NSMutableDictionary alloc] init];
+    if ([self.contactIDList count] > 0 ) {
+        [newdict setObject:self.contactIDList forKey:RES_KEY_CONTACT_LIST];
+    }
+    if ([self.groupIDList count] > 0) {
+        [newdict setObject:self.groupIDList forKey:RES_KEY_CONTACT_GROUP_LIST];
+    }
+    if ([self.mobileNOList count] > 0) {
+        [newdict setObject:self.mobileNOList forKey:RES_KEY_MOBILE_LIST];
+    }
+    [requestData setObject:newdict forKey:RES_KEY_RECEIVER_LIST];
     
+    NSMutableDictionary *dayDict = [[NSMutableDictionary alloc] init];
     switch (_sendMessageType) {
-        case SEND_TYPE_IMMEDIATELY:
-            //Prepare Receiver Form
-            requestData[RES_KEY_RECEIVER_LIST] = @{RES_KEY_CONTACT_LIST : self.contactIDList,
-                                                   RES_KEY_GROUP_LIST   : self.groupIDList,
-                                                   RES_KEY_MOBILE_LIST    : self.mobileNOList};
-            break;
         case SEND_TYPE_SCHEDULE:
             //Prepare Schedule Form
             requestData[RES_KEY_SCHEDULE] = @{RES_KEY_START_DATE: self.startDate,
@@ -148,20 +139,19 @@
             break;
         case SEND_TYPE_RECURRING:
             //Prepare Recurring Form
-            weeklyListArray = [NSMutableArray new];
-            dayArray = [NSMutableArray new];
-            for (NSString *weekly in self.weeklyList) {
-                [weeklyListArray addObject:@{RES_KEY_DAY_OF_WEEK : weekly}];
-            }
             
-            for (NSString *day in self.monthlyList) {
-                [dayArray addObject:@{RES_KEY_DAY: day}];
-            }
+            requestData[RES_KEY_SCHEDULE] = @{RES_KEY_START_DATE: self.startDate,
+                                              RES_KEY_END_DATE  : self.endDate,
+                                              RES_KEY_SEND_TIME : self.sendTime};
+                if ([self.weeklyList count] > 0) {
+                    [dayDict setObject:self.weeklyList forKey:RES_KEY_WEEKLY];
+                }
+                if( [self.monthlyList count] > 0){
+                    [dayDict setObject:self.monthlyList forKey:RES_KEY_MONTHLY];
+                }
+                [dayDict setObject:[NSString stringWithFormat:@"%d",_recurringType] forKey:RES_KEY_RECURRING_TYPE];
             
-            
-            requestData[RES_KEY_RECURRING_LIST] = @{RES_KEY_RECURRING_TYPE  : self.recurringType,
-                                                    RES_KEY_WEEKLY          : weeklyListArray,
-                                                    RES_KEY_MONTHLY         : dayArray};
+                [requestData setObject:dayDict forKey:RES_KEY_RECURRING_LIST];
             break;
         default:
             break;

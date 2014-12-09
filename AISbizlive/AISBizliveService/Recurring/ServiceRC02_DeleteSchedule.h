@@ -17,9 +17,10 @@
 
 @interface ServiceRC02_DeleteSchedule : BizliveService
 
-- (void)setParameterWithIDList:(NSArray *)IDList;
+- (void)setParameterWithIDList:(NSString *)IDschedule InstanceID:(NSString *)IDInstance;
 
 @property (nonatomic, assign) id<DeleteScheduleDelegate> delegate;
-@property (nonatomic, strong) NSArray *IDList;
+@property (nonatomic, strong) NSString *IDschedule;
+@property (nonatomic, strong) NSString *IDInstance;
 
 @end

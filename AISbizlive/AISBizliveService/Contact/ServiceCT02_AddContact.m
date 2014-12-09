@@ -7,8 +7,11 @@
 //
 
 #import "ServiceCT02_AddContact.h"
+#import "AISActivity.h"
 
-@implementation ServiceCT02_AddContact
+@implementation ServiceCT02_AddContact{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithFirstname:(NSString *)firstname
@@ -26,6 +29,8 @@
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL,SERVICE_CT_02_ADDCONTACT_URL];
     NSDictionary *requestData = @{REQ_KEY_CONTACT_FIRSTNAME    : self.firstname,
                                   REQ_KEY_CONTACT_LASTNAME     : self.lastname,
@@ -40,6 +45,8 @@
 
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    
+    [activity dismissActivity];
     //------------------------ Test ------------------------
     
     if (![Admin isOnline]) {
@@ -83,6 +90,7 @@
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
     [delegate addContactError:nil];
+    [activity dismissActivity];
 }
 
 

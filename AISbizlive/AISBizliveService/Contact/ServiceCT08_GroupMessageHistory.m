@@ -7,9 +7,12 @@
 //
 
 #import "ServiceCT08_GroupMessageHistory.h"
+#import "AISActivity.h"
 
 
-@implementation ServiceCT08_GroupMessageHistory
+@implementation ServiceCT08_GroupMessageHistory{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithID:(NSString *)ID
@@ -19,6 +22,8 @@
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_08_GROUP_MESSAGE_HISTORY_URL];
     
     if (!self.ID) {
@@ -27,7 +32,7 @@
         return;
     }
     
-    NSDictionary *requestDict  = @{REQ_KEY_CONTACT_ID: self.ID};
+    NSDictionary *requestDict  = @{REQ_KEY_GROUP_ID: self.ID};
     
     [super setRequestData:requestDict];
     [super setRequestURL:requestURL];
@@ -44,6 +49,7 @@
         
         responseDict = @{RES_KEY_CONTACT_HISTORY_LIST: arrHistory};
     }
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate groupMessageHistoryError:resultStatus];
@@ -51,13 +57,14 @@
     }
     
     NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
-    ResponseContactMessageHistory *historyList = [[ResponseContactMessageHistory alloc] initWithResponseData:responseData];
+    ResponseGroupMessageHistory *historyList = [[ResponseGroupMessageHistory alloc] initWithResponseData:responseData];
     [delegate groupMessageHistorySuccess:historyList];
 }
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
     [delegate groupMessageHistoryError:nil];
+    [activity dismissActivity];
 }
 
 

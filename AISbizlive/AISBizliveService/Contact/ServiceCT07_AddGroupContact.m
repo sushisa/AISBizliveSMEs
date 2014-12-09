@@ -7,24 +7,22 @@
 //
 
 #import "ServiceCT07_AddGroupContact.h"
+#import "AISActivity.h"
 
-@implementation ServiceCT07_AddGroupContact
+@implementation ServiceCT07_AddGroupContact{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL,SERVICE_CT_07_ADDGROUP_URL];
-    
-    NSMutableArray *contactList = [NSMutableArray new];
-    for (NSString *contactID in self.contactID) {
-        
-        NSDictionary *contact = @{REQ_KEY_CONTACT_ID: contactID};
-        [contactList addObject:contact];
-    }
     
     NSDictionary *requestDict = @{REQ_KEY_GROUP_NAME  : self.groupName,
                                   REQ_KEY_GROUP_PHOTO : self.image,
-                                  RES_KEY_CONTACT_ID_LIST: contactList};
+                                  RES_KEY_CONTACT_ID_LIST: self.contactID};
     [super setRequestURL:requestURL];
     [super setRequestData:requestDict];
     [super requestService];
@@ -64,6 +62,8 @@
         responseDict = @{RES_KEY_GROUP_LIST    : @[group1]};
         responseDict = group1;
     }
+    [activity dismissActivity];
+
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate addGroupContactError:resultStatus];
@@ -75,11 +75,11 @@
     
     
     [delegate addGroupContactSuccess:groupContactDetail];
-    
 }
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
     [delegate addGroupContactError:nil];
+    [activity dismissActivity];
 }
 
 

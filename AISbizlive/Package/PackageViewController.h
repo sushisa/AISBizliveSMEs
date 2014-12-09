@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface PackageViewController : UITableViewController
+#import "ServicePK01_GetPackageList.h"
+@interface PackageViewController : UITableViewController<GetPackageDelegate>
 {
-    
+    IBOutlet UITableView *mytable;
 }
+- (IBAction)goToDetailPackage:(id)sender;
 @end

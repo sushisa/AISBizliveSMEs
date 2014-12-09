@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "BizliveService.h"
+#import "ResponseGetNews.h"
 @protocol GetNewsDelegate <NSObject>
 
-- (void)getNewsSuccess;
+- (void)getNewsSuccess:(ResponseGetNews *)responseGetNews;
 - (void)getNewsError:(ResultStatus *)resultStatus;
 
 @end

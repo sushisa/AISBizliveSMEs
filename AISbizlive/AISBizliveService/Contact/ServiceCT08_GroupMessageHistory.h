@@ -7,11 +7,11 @@
 //
 
 #import "BizliveService.h"
-#import "ResponseContactMessageHistory.h"
+#import "ResponseGroupMessageHistory.h"
 
 @protocol GroupMessageHistoryDelegate <NSObject>
 
-- (void)groupMessageHistorySuccess:(ResponseContactMessageHistory *)responseContactMessageHistory;
+- (void)groupMessageHistorySuccess:(ResponseGroupMessageHistory *)responseGroupMessageHistory;
 - (void)groupMessageHistoryError:(ResultStatus *)status;
 
 @end

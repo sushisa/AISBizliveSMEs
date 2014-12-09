@@ -25,16 +25,4 @@
     return self;
 }
 
-- (id)initWithPackageDetail:(NSArray*)PackageDetail
-{
-    self = [super init];
-    if (self) {
-        self.code = PackageDetail[0];
-        self.name = PackageDetail[1];
-        self.price = PackageDetail[2];
-        self.value = PackageDetail[3];
-    }
-    return self;
-}
-
 @end

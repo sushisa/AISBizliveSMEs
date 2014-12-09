@@ -7,8 +7,11 @@
 //
 
 #import "ServiceLG06_VerifyByEmail.h"
+#import "AISActivity.h"
 
-@implementation ServiceLG06_VerifyByEmail
+@implementation ServiceLG06_VerifyByEmail{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithMSISDN:(NSString *)MSISDN
@@ -21,6 +24,8 @@
 }
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_LG_06_VERIFY_EMAIL_URL];
     
     if (!self.email) {
@@ -37,6 +42,7 @@
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate verifyByEmailError:resultStatus];
@@ -47,6 +53,10 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate verifyByEmailError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [delegate verifyByEmailError:resultStatus];
+    [activity dismissActivity];
 }
 @end

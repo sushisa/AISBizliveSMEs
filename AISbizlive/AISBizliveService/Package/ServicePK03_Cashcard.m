@@ -7,13 +7,18 @@
 //
 
 #import "ServicePK03_Cashcard.h"
+#import "AISActivity.h"
 
-@implementation ServicePK03_Cashcard
+@implementation ServicePK03_Cashcard{
+    AISActivity *activity;
+}
 @synthesize delegate;
 - (void)setParameterWithSerialCode:(NSString *)SerialCode{
     self.serialCode =SerialCode;
 }
 -(void)requestService{
+    activity = [[AISActivity alloc]init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_PK_03_CASHCARD_URL];
     NSDictionary *requestDict = @{REQ_KEY_CASHCARD_SERIALCODE : self.serialCode};
     [super setRequestURL:requestURL];
@@ -22,6 +27,7 @@
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate cashCardError:resultStatus];
@@ -36,6 +42,10 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate cashCardError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [delegate cashCardError:resultStatus];
+    [activity dismissActivity];
 }
 @end

@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "BizliveService.h"
-#import "PackageDetail.h"
+#import "ResponseGetPackageList.h"
 @protocol GetPackageDelegate <NSObject>
 
-- (void)getPackageSuccess:(PackageDetail *)packageDetail;
+- (void)getPackageSuccess:(ResponseGetPackageList *)responsePackage;
 - (void)getPackageError:(ResultStatus *)resultStatus;
 
 @end

@@ -8,7 +8,11 @@
 
 #import "ServiceCT05_ContactMessageHistory.h"
 
-@implementation ServiceCT05_ContactMessageHistory
+#import "AISActivity.h"
+
+@implementation ServiceCT05_ContactMessageHistory{
+    AISActivity * activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithID:(NSString *)ID
@@ -18,6 +22,8 @@
 
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_05_CONTACT_MESSAGE_HISTORY_URL];
     
     if (!self.ID) {
@@ -47,6 +53,7 @@
         responseDict = @{RES_KEY_RESPONSE_DATA: contactHistoryList};
         
     }
+    [activity dismissActivity];
     
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
@@ -62,6 +69,7 @@
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
     [delegate contactMessageHistoryError:nil];
+    [activity dismissActivity];
 }
 
 

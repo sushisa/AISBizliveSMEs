@@ -7,12 +7,17 @@
 //
 
 #import "ServiceCT06_GetGroupContactList.h"
+#import "AISActivity.h"
 
 
-@implementation ServiceCT06_GetGroupContactList
+@implementation ServiceCT06_GetGroupContactList{
+    AISActivity *activity;
+}
 @synthesize delegate;
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+//    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL,SERVICE_CT_06_GETGROUPCONTACT_URL];
     [super setRequestURL:requestURL];
     [super requestService];
@@ -20,6 +25,7 @@
 
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+     [activity dismissActivity];
     if (![Admin isOnline]) {
         NSDictionary *contact1 = @{RES_KEY_CONTACT_ID           : @"01234",
                                    RES_KEY_CONTACT_FIRSTNAME         : @"Woravit",
@@ -53,15 +59,25 @@
         [delegate getGroupContactListError:resultStatus];
         return;
     }
-    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
-    ResponseGetGroupContactList *serviceData = [[ResponseGetGroupContactList alloc] initWithResponseData:responseData];
+    ResponseGetGroupContactList *serviceData = [[ResponseGetGroupContactList alloc] initWithResponseData:responseDict[RES_KEY_RESPONSE_DATA]];
     [delegate getGroupContactListSuccess:serviceData];
+//    
+//    ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
+//    if (![resultStatus isResponseSuccess]) {
+//        [delegate getGroupContactListError:resultStatus];
+//        return;
+//    }
+//    NSDictionary *responseData = responseDict[RES_KEY_RESPONSE_DATA];
+//    ResponseGetGroupContactList *serviceData = [[ResponseGetGroupContactList alloc] initWithResponseData:responseDict[RES_KEY_RESPONSE_DATA]];
+//    [delegate getGroupContactListSuccess:serviceData];
+//
     
 }
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
     [delegate getGroupContactListError:nil];
+    [activity dismissActivity];
 }
 
 

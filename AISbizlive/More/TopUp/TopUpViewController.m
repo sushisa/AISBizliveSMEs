@@ -8,6 +8,7 @@
 
 #import "TopUpViewController.h"
 #import "AISGlobal.h"
+#import "BizliveServiceParameter.h"
 @interface TopUpViewController ()
 {
     AISAlertView *alertView;
@@ -32,8 +33,9 @@
     NSLog(@"Top Up Load");
     alertView = [[AISAlertView alloc] init];
     [self setTextLangague];
-    currentLabel.text = @"1,000.00";
-    mobileLabel.text = @"09-5328-5722";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    mobileLabel.text = [AISString phoneFormat:[defaults objectForKey:REQ_KEY_USER_MOBILE_NO]];
+    currentBahtLabel.text = [defaults objectForKey:RES_KEY_SETTING_TOPUPBALANCE];
 }
 -(void)backAction{
     if ([self.checkPackage isEqualToString:@"YES"]) {

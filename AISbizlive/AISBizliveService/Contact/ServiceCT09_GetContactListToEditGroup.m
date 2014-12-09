@@ -7,8 +7,11 @@
 //
 
 #import "ServiceCT09_GetContactListToEditGroup.h"
+#import "AISActivity.h"
 
-@implementation ServiceCT09_GetContactListToEditGroup
+@implementation ServiceCT09_GetContactListToEditGroup{
+    AISActivity *activity;
+}
 @synthesize delegate;
 
 - (void)setParameterWithID:(NSString *)ID
@@ -17,6 +20,8 @@
 }
 - (void)requestService
 {
+    activity = [[AISActivity alloc] init];
+    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_CT_09_GETCONTACTLIST_TOEDITGROUP_URL];
     
     if (!self.ID) {
@@ -57,6 +62,7 @@
         responseDict = @{RES_KEY_GROUP_LIST    : @[group1]};
         responseDict = group1;
     }
+    [activity dismissActivity];
     ResultStatus *resultStatus = [[ResultStatus alloc] initWithResponse:responseDict];
     if (![resultStatus isResponseSuccess]) {
         [delegate getContactListToEditGroupError:resultStatus];
@@ -67,12 +73,12 @@
     
     
     [delegate getContactListToEditGroupSuccess:groupContactDetail];
-    
 }
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
     [delegate getContactListToEditGroupError:nil];
+    [activity dismissActivity];
 }
 
 

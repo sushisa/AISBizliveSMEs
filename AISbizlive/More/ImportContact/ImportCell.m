@@ -20,13 +20,6 @@
     self.layer.masksToBounds = YES;
     self.layer.borderColor = [[AISColor lightgrayColor] CGColor];
     self.layer.borderWidth = 1.0f;
-    self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width, 0, 40, self.contentView.frame.size.height)];
-    self.editButton.backgroundColor = [AISColor grayColor];
-    self.editButton.titleLabel.text = @"Edit";
-    
-    self.deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(self.contentView.frame.size.width+40, 0, 40, self.contentView.frame.size.height)];
-    self.deleteButton.backgroundColor = [UIColor redColor];
-    self.deleteButton.titleLabel.text = @"Delete";
     return self;
 }
 - (void)awakeFromNib
@@ -37,19 +30,17 @@
 {
     if(selected){
         self.layer.borderColor = [[AISColor lightgreenColor] CGColor];
-        
+        self.check.highlighted = YES;
         self.layer.borderWidth = 1.5f;
     }
     else{
         self.layer.borderColor = [[AISColor lightgrayColor] CGColor];
+        self.check.highlighted = NO;
         self.layer.borderWidth = 1.0f;
     }
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
-//-(void)setImageContact:(UIImageView *)imageContact{
-////    imageContact.layer.cornerRadius = 10.0f;
-//}
 - (void)setFrame:(CGRect)frame {
     frame.origin.x += 10;
     frame.origin.y += 5;

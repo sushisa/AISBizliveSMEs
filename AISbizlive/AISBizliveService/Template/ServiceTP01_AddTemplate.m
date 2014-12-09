@@ -7,8 +7,11 @@
 //
 
 #import "ServiceTP01_AddTemplate.h"
+#import "AISActivity.h"
 
-@implementation ServiceTP01_AddTemplate
+@implementation ServiceTP01_AddTemplate{
+    AISActivity *activity;
+}
 @synthesize delegate;
 - (void)setParameterWithName:(NSString *)name
                      Message:(NSString *)message{
@@ -16,6 +19,8 @@
     self.message = message;
 }
 -(void)requestService{
+    activity = [[AISActivity alloc] init];
+//    [activity showActivity];
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", SERVER_PREFIX_URL, SERVICE_TP_01_ADD_TEMPLATE_URL];
     
     NSDictionary *requestDict = @{REQ_KEY_TEMPLATE_NAME     : self.name,
@@ -26,6 +31,7 @@
 }
 - (void)serviceBizLiveSuccess:(NSDictionary *)responseDict
 {
+    [activity dismissActivity];
     if (![Admin isOnline]) {
         responseDict = @{RES_KEY_TEMPLATE_ID: @"1xx3234",
                          RES_KEY_TEMPLATE_NAME: @"Pluem",
@@ -45,7 +51,11 @@
 
 - (void)serviceBizLiveError:(ResponseStatus *)status
 {
-    [delegate addTemplateError:nil];
+    ResultStatus *resultStatus = [[ResultStatus alloc] init];
+    [resultStatus setResponseCode:[NSString stringWithFormat:@"%d",[status resultCode]]];
+    [resultStatus setResponseMessage:[status developerMessage]];
+    [activity dismissActivity];
+    [delegate addTemplateError:resultStatus];
 }
 
 @end

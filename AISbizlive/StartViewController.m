@@ -18,11 +18,11 @@
 
 @implementation StartViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
     defaults = [NSUserDefaults standardUserDefaults];
     if ([[defaults objectForKey:@"lang"] isEqualToString:@"EN"]) {
         [BtnchangeLanguage setOn:YES];
@@ -41,7 +41,7 @@
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
-    self.pageViewController.view.frame = CGRectMake(0, 65, self.view.frame.size.width, self.view.frame.size.height-250);
+    self.pageViewController.view.frame = CGRectMake(0, 103, self.view.frame.size.width, self.view.frame.size.height-250);
     
     
     [self addChildViewController:_pageViewController];
